@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="960"
+   height="860"
+   id="svg3214"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="01 - login.svg">
+  <defs
+     id="defs3216">
+    <clipPath
+       id="SVGID_112_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_111_"
+         overflow="visible"
+         id="use11665" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_113_"
+         overflow="visible"
+         id="use11673" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_111_-3"
+         overflow="visible"
+         id="use11665-9" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_113_-9"
+         overflow="visible"
+         id="use11673-9" />
+    </clipPath>
+    <clipPath
+       id="SVGID_12_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_11_"
+         overflow="visible"
+         id="use21775" />
+    </clipPath>
+    <clipPath
+       id="SVGID_14_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_13_"
+         overflow="visible"
+         id="use21783" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="338.76089"
+     inkscape:cy="583.39821"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer10"
+     showgrid="false"
+     inkscape:window-width="681"
+     inkscape:window-height="766"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3318"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3219">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer10"
+     inkscape:label="Background">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect3141"
+       width="960"
+       height="860"
+       x="0"
+       y="0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="caixa" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-192.36218)">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="70"
+       y="292.36218"
+       id="text3222"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3224"
+         x="70"
+         y="292.36218">Efetuar login</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="72"
+       y="332.36218"
+       id="text3129"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3131"
+         x="72"
+         y="332.36218"
+         style="font-size:14px">Entre com os dados de acesso da sua empresa.</tspan></text>
+    <g
+       transform="translate(9.11329,315.40118)"
+       id="g11659">
+      <defs
+         id="defs11661">
+        <path
+           inkscape:connector-curvature="0"
+           id="SVGID_111_"
+           d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z" />
+      </defs>
+      <clipPath
+         id="clipPath28820">
+        <use
+           height="1052.3622"
+           width="744.09448"
+           y="0"
+           x="0"
+           style="overflow:visible"
+           xlink:href="#SVGID_111_"
+           overflow="visible"
+           id="use28822" />
+      </clipPath>
+      <g
+         clip-path="url(#SVGID_112_)"
+         id="g11667">
+        <defs
+           id="defs11669">
+          <rect
+             id="SVGID_113_"
+             x="206.687"
+             y="57.759998"
+             width="300.62299"
+             height="24" />
+        </defs>
+        <clipPath
+           id="clipPath28827">
+          <use
+             height="1052.3622"
+             width="744.09448"
+             y="0"
+             x="0"
+             style="overflow:visible"
+             xlink:href="#SVGID_113_"
+             overflow="visible"
+             id="use28829" />
+        </clipPath>
+        <g
+           transform="translate(0,-3.814697e-6)"
+           clip-path="url(#SVGID_114_)"
+           id="g11675">
+          <image
+             style="overflow:visible"
+             overflow="visible"
+             width="256"
+             height="23"
+             xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAAUCAYAAABiQuNfAAAACXBIWXMAAAlhAAAJYQHPYu7hAAAA GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAF1JREFUeNrs2MENACAIA0A0DuZm Ojm4hgl3I/BoWkZmnoi4AXSzpxtAXwIAGltV5QqgAQACADABAA0AEACACQBoAIAAAEwAQAMABAAg AAA/AEADAAQAYAIAn3gCDACJ2hZbl74IeAAAAABJRU5ErkJggg=="
+             transform="matrix(1.1743,0,0,1.0435,206.687,57.7598)"
+             id="image11677" />
+        </g>
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#6d6d6d;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+       inkscape:connector-curvature="0"
+       stroke-miterlimit="10"
+       d="m 217.80029,373.66118 h 297.623 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 h -297.623 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+       id="path11679" />
+    <text
+       y="389.16098"
+       x="133.34718"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+       font-size="12"
+       id="text11681">E-mail:</text>
+    <g
+       transform="translate(9.11329,347.40118)"
+       id="g11659-3">
+      <defs
+         id="defs11661-9">
+        <path
+           inkscape:connector-curvature="0"
+           id="SVGID_111_-3"
+           d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z" />
+      </defs>
+      <clipPath
+         id="clipPath28820-7">
+        <use
+           height="1052.3622"
+           width="744.09448"
+           y="0"
+           x="0"
+           style="overflow:visible"
+           xlink:href="#SVGID_111_-3"
+           overflow="visible"
+           id="use28822-4" />
+      </clipPath>
+      <g
+         clip-path="url(#SVGID_112_-7)"
+         id="g11667-7">
+        <defs
+           id="defs11669-2">
+          <rect
+             id="SVGID_113_-9"
+             x="206.687"
+             y="57.759998"
+             width="300.62299"
+             height="24" />
+        </defs>
+        <clipPath
+           id="clipPath28827-5">
+          <use
+             height="1052.3622"
+             width="744.09448"
+             y="0"
+             x="0"
+             style="overflow:visible"
+             xlink:href="#SVGID_113_-9"
+             overflow="visible"
+             id="use28829-8" />
+        </clipPath>
+        <g
+           transform="translate(0,-3.814697e-6)"
+           clip-path="url(#SVGID_114_-3)"
+           id="g11675-7">
+          <image
+             style="overflow:visible"
+             overflow="visible"
+             width="256"
+             height="23"
+             xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAAUCAYAAABiQuNfAAAACXBIWXMAAAlhAAAJYQHPYu7hAAAA GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAF1JREFUeNrs2MENACAIA0A0DuZm Ojm4hgl3I/BoWkZmnoi4AXSzpxtAXwIAGltV5QqgAQACADABAA0AEACACQBoAIAAAEwAQAMABAAg AAA/AEADAAQAYAIAn3gCDACJ2hZbl74IeAAAAABJRU5ErkJggg=="
+             transform="matrix(1.1743,0,0,1.0435,206.687,57.7598)"
+             id="image11677-3" />
+        </g>
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#6d6d6d;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+       inkscape:connector-curvature="0"
+       stroke-miterlimit="10"
+       d="m 217.80029,405.66118 h 297.623 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 h -297.623 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+       id="path11679-3" />
+    <text
+       y="421.16098"
+       x="133.73389"
+       style="font-size:12px;font-family:sans;-inkscape-font-specification:sans"
+       font-size="12"
+       id="text11681-7">
+      <tspan
+         style="font-family:Sans;-inkscape-font-specification:Sans"
+         id="tspan3227">Senha:</tspan>
+    </text>
+    <g
+       id="g3047"
+       style="cursor: pointer"
+       onclick="window.location=&quot;03 - index.svg&quot;">
+      <g
+         id="g21769"
+         transform="translate(37.111572,47.01574)">
+        <defs
+           id="defs21771">
+          <path
+             d="m 39.5,409.26 h 74 c 1.657,0 3,1.343 3,3 v 19 c 0,1.657 -1.343,3 -3,3 h -74 c -1.657,0 -3,-1.343 -3,-3 l 0,0 v -19 c 0,-1.657 1.343,-3 3,-3 z"
+             id="SVGID_11_"
+             inkscape:connector-curvature="0" />
+        </defs>
+        <clipPath
+           id="clipPath28853">
+          <use
+             id="use28855"
+             overflow="visible"
+             xlink:href="#SVGID_11_"
+             style="overflow:visible"
+             x="0"
+             y="0"
+             width="744.09448"
+             height="1052.3622" />
+        </clipPath>
+        <g
+           id="g21777"
+           clip-path="url(#SVGID_12_)">
+          <defs
+             id="defs21779">
+            <rect
+               height="26"
+               width="81"
+               y="408.76001"
+               x="36"
+               id="SVGID_13_" />
+          </defs>
+          <clipPath
+             id="clipPath28860">
+            <use
+               id="use28862"
+               overflow="visible"
+               xlink:href="#SVGID_13_"
+               style="overflow:visible"
+               x="0"
+               y="0"
+               width="744.09448"
+               height="1052.3622" />
+          </clipPath>
+          <g
+             id="g21785"
+             clip-path="url(#SVGID_14_)"
+             transform="translate(-3.814697e-6,-3.051758e-5)">
+            <image
+               id="image21787"
+               transform="matrix(1.0125,0,0,1.04,36,408.7598)"
+               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAaCAYAAAAg0tunAAAACXBIWXMAAArrAAAK6wGCiw1aAAAA GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHpJREFUeNrs19sNgDAMQ9FWYjEG YkemYBgeDSNQNSB+zh3BcmK7zssWBcNM0Q4qpAS8dipkBGwc6IR/PuGTCjkH+oFJBzphISJE9EAO xOgPFCKPVA7MEQT89AdaIpaIJWKJ6IGwRDhQiLxV74WIHoheAUu0lQzj3AIMAM3eTdYEZbE2AAAA AElFTkSuQmCC"
+               height="25"
+               width="80"
+               overflow="visible"
+               style="overflow:visible" />
+          </g>
+        </g>
+      </g>
+      <path
+         id="path21789"
+         d="m 76.611572,456.27574 h 73.999998 c 1.657,0 3,1.343 3,3 v 19 c 0,1.657 -1.343,3 -3,3 H 76.611572 c -1.657,0 -3,-1.343 -3,-3 l 0,0 v -19 c 0,-1.657 1.343,-3 3,-3 z"
+         stroke-miterlimit="10"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#243356;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <text
+         id="text21791"
+         font-size="13"
+         style="font-size:13px;fill:#ffffff;font-family:ArialMT"
+         x="96"
+         y="472.36218">Login</text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="cursor:pointer;font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="364"
+       y="467.36218"
+       id="text3336"
+       sodipodi:linespacing="125%"
+       onclick="window.location=&quot;02a - forgot password.svg&quot;"><tspan
+         sodipodi:role="line"
+         id="tspan3338"
+         x="364"
+         y="467.36218"
+         style="font-size:14px;fill:#0000ff">esqueci minha senha</tspan></text>
+  </g>
+</svg>

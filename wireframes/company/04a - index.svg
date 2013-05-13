@@ -1,0 +1,1665 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="960"
+   height="860"
+   id="svg3214"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="04a - index.svg">
+  <defs
+     id="defs3216">
+    <clipPath
+       id="SVGID_12_">
+      <path
+         d="m 39.5,409.26 h 74 c 1.657,0 3,1.343 3,3 v 19 c 0,1.657 -1.343,3 -3,3 h -74 c -1.657,0 -3,-1.343 -3,-3 l 0,0 v -19 c 0,-1.657 1.343,-3 3,-3 z"
+         id="use21775"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_14_">
+      <rect
+         height="26"
+         width="81"
+         y="408.76001"
+         x="36"
+         id="use21783" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-7">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-2"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-6">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-0">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-1"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-4">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-6" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-3">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-3"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-3">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-2" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-9">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-29"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-9">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-7" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-1">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-22"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-8">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-4" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-8">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-0"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-2">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-61" />
+    </clipPath>
+    <clipPath
+       id="SVGID_74_">
+      <polygon
+         points="166.21,69.255 161.145,74.71 161.192,87.255 171.229,87.255 171.229,74.655 "
+         id="use30499" />
+    </clipPath>
+    <clipPath
+       id="SVGID_76_">
+      <rect
+         height="19"
+         width="11.084"
+         y="68.754997"
+         x="160.645"
+         id="use30507" />
+    </clipPath>
+    <clipPath
+       id="SVGID_70_">
+      <path
+         d="m 61.701,74.255 h 209 c 2.485,0 4.5,2.015 4.5,4.5 0,2.485 -2.015,4.5 -4.5,4.5 h -209 c -2.485,0 -4.5,-2.015 -4.5,-4.5 l 0,0 c 0,-2.485 2.015,-4.5 4.5,-4.5 z"
+         id="use30477"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_72_">
+      <rect
+         height="10"
+         width="219"
+         y="73.754997"
+         x="56.701"
+         id="use30485" />
+    </clipPath>
+    <clipPath
+       id="SVGID_16_">
+      <path
+         d="m 129.5,409.26 h 74 c 1.657,0 3,1.343 3,3 v 19 c 0,1.657 -1.343,3 -3,3 h -74 c -1.657,0 -3,-1.343 -3,-3 l 0,0 v -19 c 0,-1.657 1.343,-3 3,-3 z"
+         id="use21799"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_18_">
+      <rect
+         height="26"
+         width="81"
+         y="408.76001"
+         x="126"
+         id="use21807" />
+    </clipPath>
+    <clipPath
+       id="SVGID_16_-2">
+      <path
+         d="m 129.5,409.26 h 74 c 1.657,0 3,1.343 3,3 v 19 c 0,1.657 -1.343,3 -3,3 h -74 c -1.657,0 -3,-1.343 -3,-3 l 0,0 v -19 c 0,-1.657 1.343,-3 3,-3 z"
+         id="use21799-6"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_18_-9">
+      <rect
+         height="26"
+         width="81"
+         y="408.76001"
+         x="126"
+         id="use21807-4" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-3-5">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-3-1"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-3-2">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-2-3" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-88">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-6"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-90">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-8" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-39">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-9"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-0">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-70" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-78">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-25"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-24">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-9" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-95">
+      <path
+         inkscape:connector-curvature="0"
+         id="use11665-9-5"
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-5">
+      <rect
+         id="use11673-9-63"
+         x="206.687"
+         y="57.759998"
+         width="300.62299"
+         height="24" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-39-0">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-9-7"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-0-4">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-70-3" />
+    </clipPath>
+    <clipPath
+       id="SVGID_16_-2-1">
+      <path
+         d="m 129.5,409.26 h 74 c 1.657,0 3,1.343 3,3 v 19 c 0,1.657 -1.343,3 -3,3 h -74 c -1.657,0 -3,-1.343 -3,-3 l 0,0 v -19 c 0,-1.657 1.343,-3 3,-3 z"
+         id="use21799-6-6"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_18_-9-7">
+      <rect
+         height="26"
+         width="81"
+         y="408.76001"
+         x="126"
+         id="use21807-4-2" />
+    </clipPath>
+    <clipPath
+       id="SVGID_62_">
+      <path
+         d="m 210.06,270.26 h 181 c 1.104,0 2,0.896 2,2 v 19 c 0,1.104 -0.896,2 -2,2 h -181 c -1.104,0 -2,-0.896 -2,-2 l 0,0 v -19 c 0,-1.105 0.896,-2 2,-2 z"
+         id="use8695"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_64_">
+      <rect
+         height="24"
+         width="186"
+         y="269.76001"
+         x="207.56"
+         id="use8703" />
+    </clipPath>
+    <clipPath
+       id="SVGID_62_-9">
+      <path
+         d="m 210.06,270.26 h 181 c 1.104,0 2,0.896 2,2 v 19 c 0,1.104 -0.896,2 -2,2 h -181 c -1.104,0 -2,-0.896 -2,-2 l 0,0 v -19 c 0,-1.105 0.896,-2 2,-2 z"
+         id="use8695-0"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_64_-0">
+      <rect
+         height="24"
+         width="186"
+         y="269.76001"
+         x="207.56"
+         id="use8703-4" />
+    </clipPath>
+    <clipPath
+       id="SVGID_62_-9-3">
+      <path
+         d="m 210.06,270.26 h 181 c 1.104,0 2,0.896 2,2 v 19 c 0,1.104 -0.896,2 -2,2 h -181 c -1.104,0 -2,-0.896 -2,-2 l 0,0 v -19 c 0,-1.105 0.896,-2 2,-2 z"
+         id="use8695-0-7"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_64_-0-3">
+      <rect
+         height="24"
+         width="186"
+         y="269.76001"
+         x="207.56"
+         id="use8703-4-5" />
+    </clipPath>
+    <clipPath
+       id="SVGID_62_-9-3-0">
+      <path
+         d="m 210.06,270.26 h 181 c 1.104,0 2,0.896 2,2 v 19 c 0,1.104 -0.896,2 -2,2 h -181 c -1.104,0 -2,-0.896 -2,-2 l 0,0 v -19 c 0,-1.105 0.896,-2 2,-2 z"
+         id="use8695-0-7-7"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_64_-0-3-7">
+      <rect
+         height="24"
+         width="186"
+         y="269.76001"
+         x="207.56"
+         id="use8703-4-5-5" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-88-3">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-6-7"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-90-1">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-8-3" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-88-3-1">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-6-7-1"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-90-1-8">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-8-3-9" />
+    </clipPath>
+    <clipPath
+       id="SVGID_112_-7-88-3-8">
+      <path
+         d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z"
+         id="use11665-9-6-7-2"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_-3-90-1-4">
+      <rect
+         height="24"
+         width="300.62299"
+         y="57.759998"
+         x="206.687"
+         id="use11673-9-8-3-1" />
+    </clipPath>
+    <clipPath
+       id="SVGID_46_">
+      <rect
+         height="12"
+         width="12"
+         y="592.13"
+         x="416.84"
+         id="use8593" />
+    </clipPath>
+    <clipPath
+       id="SVGID_48_">
+      <rect
+         height="13"
+         width="13"
+         y="591.63"
+         x="416.34"
+         id="use8601" />
+    </clipPath>
+    <clipPath
+       id="SVGID_36_">
+      <rect
+         height="23"
+         width="16"
+         y="55.259998"
+         x="628.89001"
+         id="use36707" />
+    </clipPath>
+    <clipPath
+       id="SVGID_38_">
+      <rect
+         height="24"
+         width="17"
+         y="54.759998"
+         x="628.39001"
+         id="use36715" />
+    </clipPath>
+    <clipPath
+       id="SVGID_32_">
+      <rect
+         height="45.005001"
+         width="14"
+         y="95.259003"
+         x="629.883"
+         id="use36685" />
+    </clipPath>
+    <clipPath
+       id="SVGID_34_">
+      <rect
+         height="46.005001"
+         width="15"
+         y="94.759003"
+         x="629.383"
+         id="use36693" />
+    </clipPath>
+    <clipPath
+       id="SVGID_28_">
+      <rect
+         height="138"
+         width="16"
+         y="78.260002"
+         x="628.88"
+         id="use36653" />
+    </clipPath>
+    <clipPath
+       id="SVGID_30_">
+      <rect
+         height="139"
+         width="17"
+         y="77.760002"
+         x="628.38"
+         id="use36661" />
+    </clipPath>
+    <clipPath
+       id="SVGID_24_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_23_"
+         overflow="visible"
+         id="use36593" />
+    </clipPath>
+    <clipPath
+       id="SVGID_26_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_25_"
+         overflow="visible"
+         id="use36601" />
+    </clipPath>
+    <clipPath
+       id="SVGID_20_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_19_"
+         overflow="visible"
+         id="use36533" />
+    </clipPath>
+    <clipPath
+       id="SVGID_22_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_21_"
+         overflow="visible"
+         id="use36541" />
+    </clipPath>
+    <clipPath
+       id="SVGID_16_-4">
+      <rect
+         height="23"
+         width="101"
+         y="55.259998"
+         x="231.69"
+         id="use36399" />
+    </clipPath>
+    <clipPath
+       id="SVGID_18_-0">
+      <rect
+         height="24"
+         width="102"
+         y="54.759998"
+         x="231.19"
+         id="use36407" />
+    </clipPath>
+    <clipPath
+       id="SVGID_12_-1">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_11_"
+         overflow="visible"
+         id="use36375" />
+    </clipPath>
+    <clipPath
+       id="SVGID_14_-2">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_13_"
+         overflow="visible"
+         id="use36383" />
+    </clipPath>
+    <clipPath
+       id="SVGID_8_">
+      <rect
+         height="23"
+         width="109"
+         y="55.259998"
+         x="36.5"
+         id="use36351" />
+    </clipPath>
+    <clipPath
+       id="SVGID_10_">
+      <rect
+         height="24"
+         width="110"
+         y="54.759998"
+         x="36"
+         id="use36359" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="566.54639"
+     inkscape:cy="582.30231"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1364"
+     inkscape:window-height="766"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3427"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3219">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer11"
+     inkscape:label="Background">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect3141"
+       width="960"
+       height="860"
+       x="0"
+       y="0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-192.36215)">
+    <text
+       xml:space="preserve"
+       style="cursor:pointer;font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="605.06543"
+       y="284.08188"
+       id="text3501"
+       sodipodi:linespacing="125%"
+       onclick="window.location=&quot;09 - update company data.svg&quot;"><tspan
+         sodipodi:role="line"
+         id="tspan3503"
+         x="605.06543"
+         y="284.08188">Alterar dados</tspan></text>
+    <text
+       xml:space="preserve"
+       style="cursor:pointer;font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="720"
+       y="284.36215"
+       id="text3505"
+       sodipodi:linespacing="125%"
+       onclick="window.location=&quot;04a - index.svg&quot;"><tspan
+         sodipodi:role="line"
+         id="tspan3507"
+         x="720"
+         y="284.36215">Meus anúncios</tspan></text>
+    <text
+       xml:space="preserve"
+       style="cursor:pointer;font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="845.06543"
+       y="284.08188"
+       id="text3509"
+       sodipodi:linespacing="125%"
+       onclick="window.location=&quot;02 - login.svg&quot;"><tspan
+         sodipodi:role="line"
+         id="tspan3511"
+         x="845.06543"
+         y="284.08188">Sair</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:26.83804321px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="294"
+       y="294.36215"
+       id="text3131"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3133"
+         x="294"
+         y="294.36215">Nome da Empresa</tspan></text>
+    <rect
+       style="fill:#666666;fill-opacity:1;stroke:none"
+       id="rect3313"
+       width="203.36205"
+       height="124.50336"
+       x="69.212196"
+       y="277.05734"
+       ry="11.136902" />
+    <text
+       xml:space="preserve"
+       style="font-size:57.66688919px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="130"
+       y="348.03912"
+       id="text3315"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3317"
+         x="130"
+         y="348.03912"
+         style="font-size:33.513134px">Logo</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="300"
+       y="332.36215"
+       id="text3284"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="300"
+         y="332.36215"
+         id="tspan3286"><tspan
+           x="300"
+           y="332.36215"
+           style="font-size:14px"
+           id="tspan3288"> Suspendisse gravida pellentesque leo, a fermentum elit pretium eget. Class aptent </tspan></tspan><tspan
+         sodipodi:role="line"
+         x="300"
+         y="349.86215"
+         id="tspan3290"><tspan
+           x="300"
+           y="349.86215"
+           style="font-size:14px"
+           id="tspan3292">taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis </tspan></tspan><tspan
+         sodipodi:role="line"
+         x="300"
+         y="367.36215"
+         id="tspan3294"><tspan
+           x="300"
+           y="367.36215"
+           style="font-size:14px"
+           id="tspan3296">vel elit nibh, ac imperdiet velit. Ut ultrices quam a est fermentum congue sed at </tspan></tspan><tspan
+         sodipodi:role="line"
+         x="300"
+         y="384.86215"
+         id="tspan3298"><tspan
+           x="300"
+           y="384.86215"
+           style="font-size:14px"
+           id="tspan3300">purus. Vivamus eu lectus est, ac placerat leo. Praesent id massa lorem, sed </tspan></tspan><tspan
+         sodipodi:role="line"
+         x="300"
+         y="402.36215"
+         id="tspan3302"><tspan
+           x="300"
+           y="402.36215"
+           style="font-size:14px"
+           id="tspan3304">vulputate augue. Suspendisse ullamcorper, nunc at pellentesque fringilla, nibh dui </tspan></tspan><tspan
+         sodipodi:role="line"
+         x="300"
+         y="419.86215"
+         id="tspan3306"><tspan
+           x="300"
+           y="419.86215"
+           style="font-size:14px"
+           id="tspan3308">fermentum felis, at feugiat mauris odio vel felis. In sed tortor mauris, in aliquet </tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="784"
+       y="442.36215"
+       id="text16868"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan16870"
+         x="784"
+         y="442.36215"
+         style="font-size:12px;fill:#0000ff">[editar descrição]</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="548"
+       y="294.36215"
+       id="text16868-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan16870-3"
+         x="548"
+         y="294.36215"
+         style="font-size:12px;fill:#0000ff">[editar nome]</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="136"
+       y="420.36215"
+       id="text16868-7-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan16870-3-9"
+         x="136"
+         y="420.36215"
+         style="font-size:12px;fill:#0000ff">[editar logo]</tspan></text>
+    <g
+       id="g17709"
+       transform="translate(-1.0101525,59.494924)">
+      <g
+         id="g36369"
+         transform="translate(-68.190399,469.60235)">
+        <defs
+           id="defs36371">
+          <rect
+             height="23"
+             width="86.185997"
+             y="55.259998"
+             x="145.5"
+             id="SVGID_11_" />
+        </defs>
+        <clipPath
+           id="clipPath36824">
+          <use
+             id="use36826"
+             overflow="visible"
+             xlink:href="#SVGID_11_"
+             style="overflow:visible"
+             x="0"
+             y="0"
+             width="744.09448"
+             height="1052.3622" />
+        </clipPath>
+        <g
+           id="g36377"
+           clip-path="url(#SVGID_12_-1)">
+          <defs
+             id="defs36379">
+            <rect
+               height="24"
+               width="87.185997"
+               y="54.759998"
+               x="145"
+               id="SVGID_13_" />
+          </defs>
+          <clipPath
+             id="clipPath36831">
+            <use
+               id="use36833"
+               overflow="visible"
+               xlink:href="#SVGID_13_"
+               style="overflow:visible"
+               x="0"
+               y="0"
+               width="744.09448"
+               height="1052.3622" />
+          </clipPath>
+          <g
+             id="g36385"
+             clip-path="url(#SVGID_14_-2)"
+             transform="translate(1.525879e-5,0)">
+            <image
+               id="image36387"
+               transform="matrix(1.0021,0,0,1.0435,145,54.7598)"
+               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAAAYCAYAAAB+zTpYAAAACXBIWXMAAAsSAAALEgHS3X78AAAA GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFxJREFUeNrs18EJACAMxVAVB3P/ oVpdQPDSg/AyQgiftkdENlSx5hFMQyEEVwvOtBAK/luwghX89wYTbCJcEbDBClYwCDYRCoY72CcH E2EiFIwnBgUKJhh3tgADAEiIRiXyTPeIAAAAAElFTkSuQmCC"
+               height="23"
+               width="87"
+               overflow="visible"
+               style="overflow:visible" />
+          </g>
+        </g>
+      </g>
+      <rect
+         id="rect36389"
+         height="23"
+         width="86.185997"
+         stroke-miterlimit="10"
+         y="524.8623"
+         x="77.309601"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36423"
+         height="23"
+         width="86.185997"
+         y="547.8623"
+         x="77.309601"
+         style="fill:#ffffff" />
+      <rect
+         id="rect36425"
+         height="23"
+         width="86.185997"
+         stroke-miterlimit="10"
+         y="547.8623"
+         x="77.309601"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36441"
+         height="23"
+         width="86.185997"
+         y="570.8623"
+         x="77.309601"
+         style="fill:#edf5ff" />
+      <rect
+         id="rect36443"
+         height="23"
+         width="86.185997"
+         stroke-miterlimit="10"
+         y="570.8623"
+         x="77.309601"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36459"
+         height="23"
+         width="86.185997"
+         y="593.8623"
+         x="77.309601"
+         style="fill:#ffffff" />
+      <rect
+         id="rect36461"
+         height="23"
+         width="86.185997"
+         stroke-miterlimit="10"
+         y="593.8623"
+         x="77.309601"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36477"
+         height="23"
+         width="86.185997"
+         y="616.8623"
+         x="77.309601"
+         style="fill:#edf5ff" />
+      <rect
+         id="rect36479"
+         height="23"
+         width="86.185997"
+         stroke-miterlimit="10"
+         y="616.8623"
+         x="77.309601"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36495"
+         height="23"
+         width="86.185997"
+         y="639.8623"
+         x="77.309601"
+         style="fill:#ffffff" />
+      <rect
+         id="rect36497"
+         height="23"
+         width="86.185997"
+         stroke-miterlimit="10"
+         y="639.8623"
+         x="77.309601"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36513"
+         height="23"
+         width="86.185997"
+         y="662.8623"
+         x="77.309601"
+         style="fill:#edf5ff" />
+      <rect
+         id="rect36515"
+         height="23"
+         width="86.185997"
+         stroke-miterlimit="10"
+         y="662.8623"
+         x="77.309601"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+    </g>
+    <g
+       id="g17691"
+       transform="translate(0,60)">
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36391"
+         font-size="13"
+         x="86.809601"
+         y="540.36212">Ativo</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36427"
+         font-size="13"
+         x="86.809601"
+         y="563.36212">Sim</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36445"
+         font-size="13"
+         x="86.809601"
+         y="586.36212">Sim</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36463"
+         font-size="13"
+         x="86.809601"
+         y="609.36212">Sim</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36481"
+         font-size="13"
+         x="86.809601"
+         y="632.36212">Não</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36499"
+         font-size="13"
+         x="86.809601"
+         y="655.36212">Não</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36517"
+         font-size="13"
+         x="86.809601"
+         y="678.36212">Não</text>
+    </g>
+    <g
+       id="g17763"
+       transform="translate(-1.0101715,59.494924)">
+      <g
+         id="g36527"
+         transform="matrix(3.3285231,0,0,1,-825.85699,469.60235)">
+        <defs
+           id="defs36529">
+          <rect
+             height="23"
+             width="182.31"
+             y="55.259998"
+             x="332.69"
+             id="SVGID_19_" />
+        </defs>
+        <clipPath
+           id="clipPath36915">
+          <use
+             id="use36917"
+             overflow="visible"
+             xlink:href="#SVGID_19_"
+             style="overflow:visible"
+             x="0"
+             y="0"
+             width="744.09448"
+             height="1052.3622" />
+        </clipPath>
+        <g
+           id="g36535"
+           clip-path="url(#SVGID_20_)">
+          <defs
+             id="defs36537">
+            <rect
+               height="24"
+               width="183.31"
+               y="54.759998"
+               x="332.19"
+               id="SVGID_21_" />
+          </defs>
+          <clipPath
+             id="clipPath36922">
+            <use
+               id="use36924"
+               overflow="visible"
+               xlink:href="#SVGID_21_"
+               style="overflow:visible"
+               x="0"
+               y="0"
+               width="744.09448"
+               height="1052.3622" />
+          </clipPath>
+          <g
+             id="g36543"
+             clip-path="url(#SVGID_22_)">
+            <image
+               id="image36545"
+               transform="matrix(1.0017,0,0,1.0435,332.1899,54.7598)"
+               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALgAAAAYCAYAAABJLzcpAAAACXBIWXMAAAsSAAALEgHS3X78AAAA GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHFJREFUeNrs1gENgFAIRVF0BjOa zWwGmsIJ/5wI7O2OLTPviDgD5rmOd+DOwFgGzuyBV5UroODQdOAKjoJD1x/cwPGiQNeCGzh+cFBw UHAwcPCigIKz/MAVnNEvioLjRQEvCig4fGh3AhQcDBz+5xFgAALURmUB5jp9AAAAAElFTkSuQmCC"
+               height="23"
+               width="183"
+               overflow="visible"
+               style="overflow:visible" />
+          </g>
+        </g>
+      </g>
+      <rect
+         id="rect36547"
+         height="23"
+         width="606.82306"
+         stroke-miterlimit="10"
+         y="524.8623"
+         x="281.50934"
+         style="fill:none;stroke:#ffffff;stroke-width:1.82442415;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36551"
+         height="23"
+         width="606.82306"
+         y="547.8623"
+         x="281.50934"
+         style="fill:#ffffff" />
+      <rect
+         id="rect36553"
+         height="23"
+         width="606.82306"
+         stroke-miterlimit="10"
+         y="547.8623"
+         x="281.50934"
+         style="fill:none;stroke:#ffffff;stroke-width:1.82442415;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36557"
+         height="23"
+         width="606.82306"
+         y="570.8623"
+         x="281.50934"
+         style="fill:#edf5ff" />
+      <rect
+         id="rect36559"
+         height="23"
+         width="606.82306"
+         stroke-miterlimit="10"
+         y="570.8623"
+         x="281.50934"
+         style="fill:none;stroke:#ffffff;stroke-width:1.82442415;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36563"
+         height="23"
+         width="606.82306"
+         y="593.8623"
+         x="281.50934"
+         style="fill:#ffffff" />
+      <rect
+         id="rect36565"
+         height="23"
+         width="606.82306"
+         stroke-miterlimit="10"
+         y="593.8623"
+         x="281.50934"
+         style="fill:none;stroke:#ffffff;stroke-width:1.82442415;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36569"
+         height="23"
+         width="606.82306"
+         y="616.8623"
+         x="281.50934"
+         style="fill:#edf5ff" />
+      <rect
+         id="rect36571"
+         height="23"
+         width="606.82306"
+         stroke-miterlimit="10"
+         y="616.8623"
+         x="281.50934"
+         style="fill:none;stroke:#ffffff;stroke-width:1.82442415;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36575"
+         height="23"
+         width="606.82306"
+         y="639.8623"
+         x="281.50934"
+         style="fill:#ffffff" />
+      <rect
+         id="rect36577"
+         height="23"
+         width="606.82306"
+         stroke-miterlimit="10"
+         y="639.8623"
+         x="281.50934"
+         style="fill:none;stroke:#ffffff;stroke-width:1.82442415;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36581"
+         height="23"
+         width="606.82306"
+         y="662.8623"
+         x="281.50934"
+         style="fill:#edf5ff" />
+      <rect
+         id="rect36583"
+         height="23"
+         width="606.82306"
+         stroke-miterlimit="10"
+         y="662.8623"
+         x="281.50934"
+         style="fill:none;stroke:#ffffff;stroke-width:1.82442415;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+    </g>
+    <g
+       id="g17700"
+       transform="translate(0,60)">
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36549"
+         font-size="13"
+         x="288"
+         y="540.36212">Título</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36555"
+         font-size="13"
+         x="288"
+         y="563.36212">Consultor Sênior</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36561"
+         font-size="13"
+         x="288"
+         y="586.36212">Desenvolvedor Pleno</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36567"
+         font-size="13"
+         x="288"
+         y="609.36212">Estagiário em Catalyst</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36573"
+         font-size="13"
+         x="288"
+         y="632.36212">Sysadmin AWS</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36579"
+         font-size="13"
+         x="288"
+         y="655.36212">DBA PostgreSQL</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36585"
+         font-size="13"
+         x="288"
+         y="678.36212">DBA Oracle</text>
+    </g>
+    <g
+       id="g17736"
+       transform="translate(-1.0233665,59.494924)">
+      <g
+         id="g36587"
+         transform="translate(-350.1904,469.60235)">
+        <defs
+           id="defs36589">
+          <rect
+             height="23"
+             width="115"
+             y="55.259998"
+             x="515"
+             id="SVGID_23_" />
+        </defs>
+        <clipPath
+           id="clipPath36951">
+          <use
+             id="use36953"
+             overflow="visible"
+             xlink:href="#SVGID_23_"
+             style="overflow:visible"
+             x="0"
+             y="0"
+             width="744.09448"
+             height="1052.3622" />
+        </clipPath>
+        <g
+           id="g36595"
+           clip-path="url(#SVGID_24_)">
+          <defs
+             id="defs36597">
+            <rect
+               height="24"
+               width="116"
+               y="54.759998"
+               x="514.5"
+               id="SVGID_25_" />
+          </defs>
+          <clipPath
+             id="clipPath36958">
+            <use
+               id="use36960"
+               overflow="visible"
+               xlink:href="#SVGID_25_"
+               style="overflow:visible"
+               x="0"
+               y="0"
+               width="744.09448"
+               height="1052.3622" />
+          </clipPath>
+          <g
+             id="g36603"
+             clip-path="url(#SVGID_26_)"
+             transform="translate(-6.103516e-5,-3.814697e-6)">
+            <image
+               id="image36605"
+               transform="matrix(1.0087,0,0,1.0435,514.5,54.7598)"
+               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAYCAYAAADJcMJ/AAAACXBIWXMAAArrAAAK6wGCiw1aAAAA GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGlJREFUeNrs18ENgDAMA8BUYm86 GqMwSULHSNDdh38tG2Vl5h0ROxjvOmF6BWHSLsyq8gqaScMwNVMz6fjPFKaZxcziNEEzhYmZRZiY WdyZf59ZzTSzmFk0E6eJZjK4me/5Pp5ivk+AAQDS40qH6gQreAAAAABJRU5ErkJggg=="
+               height="23"
+               width="115"
+               overflow="visible"
+               style="overflow:visible" />
+          </g>
+        </g>
+      </g>
+      <rect
+         id="rect36607"
+         height="23"
+         width="115"
+         stroke-miterlimit="10"
+         y="524.8623"
+         x="164.80957"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36611"
+         height="23"
+         width="115"
+         y="547.8623"
+         x="164.80957"
+         style="fill:#ffffff" />
+      <rect
+         id="rect36613"
+         height="23"
+         width="115"
+         stroke-miterlimit="10"
+         y="547.8623"
+         x="164.80957"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36617"
+         height="23"
+         width="115"
+         y="570.8623"
+         x="164.80957"
+         style="fill:#edf5ff" />
+      <rect
+         id="rect36619"
+         height="23"
+         width="115"
+         stroke-miterlimit="10"
+         y="570.8623"
+         x="164.80957"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36623"
+         height="23"
+         width="115"
+         y="593.8623"
+         x="164.80957"
+         style="fill:#ffffff" />
+      <rect
+         id="rect36625"
+         height="23"
+         width="115"
+         stroke-miterlimit="10"
+         y="593.8623"
+         x="164.80957"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36629"
+         height="23"
+         width="115"
+         y="616.8623"
+         x="164.80957"
+         style="fill:#edf5ff" />
+      <rect
+         id="rect36631"
+         height="23"
+         width="115"
+         stroke-miterlimit="10"
+         y="616.8623"
+         x="164.80957"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36635"
+         height="23"
+         width="115"
+         y="639.8623"
+         x="164.80957"
+         style="fill:#ffffff" />
+      <rect
+         id="rect36637"
+         height="23"
+         width="115"
+         stroke-miterlimit="10"
+         y="639.8623"
+         x="164.80957"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+      <rect
+         id="rect36641"
+         height="23"
+         width="115"
+         y="662.8623"
+         x="164.80957"
+         style="fill:#edf5ff" />
+      <rect
+         id="rect36643"
+         height="23"
+         width="115"
+         stroke-miterlimit="10"
+         y="662.8623"
+         x="164.80957"
+         style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+    </g>
+    <g
+       id="g17682"
+       transform="translate(0,60)">
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36609"
+         font-size="13"
+         x="174.30957"
+         y="540.36212">Promovido</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36615"
+         font-size="13"
+         x="174.30957"
+         y="563.36212">Sim</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36621"
+         font-size="13"
+         x="174.30957"
+         y="586.36212">Não</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36627"
+         font-size="13"
+         x="174.30957"
+         y="609.36212">Não</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36633"
+         font-size="13"
+         x="174.30957"
+         y="632.36212">Não</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36639"
+         font-size="13"
+         x="174.30957"
+         y="655.36212">Não</text>
+      <text
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans"
+         id="text36645"
+         font-size="13"
+         x="174.30957"
+         y="678.36212">Não</text>
+    </g>
+    <rect
+       style="fill:none;stroke:#808080;stroke-width:1.15559828;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+       x="74.387405"
+       y="584.94006"
+       stroke-miterlimit="10"
+       width="813.23444"
+       height="160.84439"
+       id="rect36723" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="84.285713"
+       y="563.79071"
+       id="text17790"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan17792"
+         x="84.285713"
+         y="563.79071">Clique em um anúncio para visualizá-lo ou alterá-lo:</tspan></text>
+    <line
+       id="line27765"
+       y2="774.36285"
+       x2="642.22974"
+       y1="774.36285"
+       x1="635.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27767"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="636"
+       y="772.36212">1</text>
+    <line
+       id="line27769"
+       y2="774.36285"
+       x2="663.22968"
+       y1="774.36285"
+       x1="656.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27771"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="657"
+       y="772.36212">2</text>
+    <line
+       id="line27773"
+       y2="774.36285"
+       x2="684.22968"
+       y1="774.36285"
+       x1="677.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27775"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="678"
+       y="772.36212">3</text>
+    <text
+       id="text27777"
+       font-size="13"
+       style="font-size:13px;font-family:ArialMT"
+       x="699"
+       y="772.36212">4</text>
+    <line
+       id="line27779"
+       y2="774.36285"
+       x2="726.22974"
+       y1="774.36285"
+       x1="719.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27781"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="720"
+       y="772.36212">5</text>
+    <line
+       id="line27783"
+       y2="774.36285"
+       x2="747.22974"
+       y1="774.36285"
+       x1="740.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27785"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="741"
+       y="772.36212">6</text>
+    <line
+       id="line27787"
+       y2="774.36285"
+       x2="768.22974"
+       y1="774.36285"
+       x1="761.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27789"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="762"
+       y="772.36212">7</text>
+    <line
+       id="line27791"
+       y2="774.36285"
+       x2="789.22974"
+       y1="774.36285"
+       x1="782.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27793"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="783"
+       y="772.36212">8</text>
+    <polygon
+       id="polygon27795"
+       points="81.047,721.32 81.047,710.32 71.88,715.82 "
+       transform="translate(542.0747,52.542848)" />
+    <text
+       id="text27799"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:Arial-BoldMT"
+       x="558.86029"
+       y="772.36212">
+      <tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial"
+         id="tspan23420">Anterior</tspan>
+    </text>
+    <polygon
+       id="polygon27801"
+       points="283.24,721.32 283.24,710.32 292.407,715.82 "
+       transform="translate(542.0747,52.542848)" />
+    <text
+       id="text27805"
+       font-size="13"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000099;font-family:Arial;-inkscape-font-specification:Arial"
+       x="838.38623"
+       y="772.36212">Próximo</text>
+    <line
+       id="line27807"
+       y2="774.17285"
+       x2="810.22974"
+       y1="774.17285"
+       x1="803.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27809"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="804"
+       y="772.17273">9</text>
+    <rect
+       style="opacity:0.70247934000000001;fill:#b3b3b3;fill-opacity:1;stroke:none"
+       id="rect31629"
+       width="815.05078"
+       height="50"
+       x="74"
+       y="472.36215" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="93.944183"
+       y="502.77826"
+       id="text31631"
+       sodipodi:linespacing="125%"
+       onclick="window.location=&quot;04b - validate e-mail.svg&quot;"><tspan
+         sodipodi:role="line"
+         id="tspan31633"
+         x="93.944183"
+         y="502.77826">Você ainda não validou seu e-mail. <tspan
+   style="fill:#0000ff"
+   id="tspan31635">[Reenviar confirmação]</tspan>.</tspan></text>
+  </g>
+</svg>

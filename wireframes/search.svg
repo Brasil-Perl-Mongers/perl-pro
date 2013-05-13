@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="960"
+   height="860"
+   id="svg3041"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="search.svg">
+  <defs
+     id="defs3043">
+    <clipPath
+       id="SVGID_112_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_111_"
+         overflow="visible"
+         id="use11665" />
+    </clipPath>
+    <clipPath
+       id="SVGID_114_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_113_"
+         overflow="visible"
+         id="use11673" />
+    </clipPath>
+    <clipPath
+       id="SVGID_12_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_11_"
+         overflow="visible"
+         id="use21775" />
+    </clipPath>
+    <clipPath
+       id="SVGID_14_">
+      <use
+         height="1052.3622"
+         width="744.09448"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_13_"
+         overflow="visible"
+         id="use21783" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="482.02067"
+     inkscape:cy="430.58301"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:window-width="1364"
+     inkscape:window-height="766"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3353"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3046">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Background">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect3051"
+       width="960"
+       height="860"
+       x="0"
+       y="0" />
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-192.36218)">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="30"
+       y="252.36218"
+       id="text3049"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3051"
+         x="30"
+         y="252.36218">Pesquisa</tspan></text>
+    <g
+       transform="matrix(1.7539402,0,0,1,-179.56354,224.60238)"
+       id="g11659">
+      <defs
+         id="defs11661">
+        <path
+           inkscape:connector-curvature="0"
+           id="SVGID_111_"
+           d="M 208.187,58.26 H 505.81 c 0.553,0 1,0.448 1,1 v 21 c 0,0.552 -0.447,1 -1,1 H 208.187 c -0.552,0 -1,-0.448 -1,-1 l 0,0 v -21 c 0,-0.552 0.448,-1 1,-1 z" />
+      </defs>
+      <clipPath
+         id="clipPath26407">
+        <use
+           height="1052.3622"
+           width="744.09448"
+           y="0"
+           x="0"
+           style="overflow:visible"
+           xlink:href="#SVGID_111_"
+           overflow="visible"
+           id="use26409" />
+      </clipPath>
+      <g
+         clip-path="url(#SVGID_112_)"
+         id="g11667">
+        <defs
+           id="defs11669">
+          <rect
+             id="SVGID_113_"
+             x="206.687"
+             y="57.759998"
+             width="300.62299"
+             height="24" />
+        </defs>
+        <clipPath
+           id="clipPath26414">
+          <use
+             height="1052.3622"
+             width="744.09448"
+             y="0"
+             x="0"
+             style="overflow:visible"
+             xlink:href="#SVGID_113_"
+             overflow="visible"
+             id="use26416" />
+        </clipPath>
+        <g
+           transform="translate(0,-3.814697e-6)"
+           clip-path="url(#SVGID_114_)"
+           id="g11675">
+          <image
+             style="overflow:visible"
+             overflow="visible"
+             width="256"
+             height="23"
+             xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAAUCAYAAABiQuNfAAAACXBIWXMAAAlhAAAJYQHPYu7hAAAA GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAF1JREFUeNrs2MENACAIA0A0DuZm Ojm4hgl3I/BoWkZmnoi4AXSzpxtAXwIAGltV5QqgAQACADABAA0AEACACQBoAIAAAEwAQAMABAAg AAA/AEADAAQAYAIAn3gCDACJ2hZbl74IeAAAAABJRU5ErkJggg=="
+             transform="matrix(1.1743,0,0,1.0435,206.687,57.7598)"
+             id="image11677" />
+        </g>
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#6d6d6d;stroke-width:1.31638515;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+       inkscape:connector-curvature="0"
+       stroke-miterlimit="10"
+       d="m 185.36833,283.02057 h 522.93539 c 0.97165,0 1.75704,0.44184 1.75704,0.98625 v 20.71112 c 0,0.54441 -0.78539,0.98625 -1.75704,0.98625 H 185.36833 c -0.96988,0 -1.75704,-0.44184 -1.75704,-0.98625 l 0,0 v -20.71112 c 0,-0.54441 0.78716,-0.98625 1.75704,-0.98625 z"
+       id="path11679" />
+    <text
+       y="298.36218"
+       x="100"
+       style="font-size:12px;font-family:Verdana-Bold"
+       font-size="12"
+       id="text11681">
+      <tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana Bold"
+         id="tspan23187">Pesquisar:</tspan>
+    </text>
+    <line
+       id="line27765"
+       y2="952.36292"
+       x2="126.22971"
+       y1="952.36292"
+       x1="119.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27767"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="120"
+       y="950.36218">1</text>
+    <line
+       id="line27769"
+       y2="952.36292"
+       x2="147.22971"
+       y1="952.36292"
+       x1="140.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27771"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="141"
+       y="950.36218">2</text>
+    <line
+       id="line27773"
+       y2="952.36292"
+       x2="168.22971"
+       y1="952.36292"
+       x1="161.99971"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27775"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="162"
+       y="950.36218">3</text>
+    <text
+       id="text27777"
+       font-size="13"
+       style="font-size:13px;font-family:ArialMT"
+       x="183"
+       y="950.36218">4</text>
+    <line
+       id="line27779"
+       y2="952.36292"
+       x2="210.22971"
+       y1="952.36292"
+       x1="203.99971"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27781"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="204"
+       y="950.36218">5</text>
+    <line
+       id="line27783"
+       y2="952.36292"
+       x2="231.22971"
+       y1="952.36292"
+       x1="224.99971"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27785"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="225"
+       y="950.36218">6</text>
+    <line
+       id="line27787"
+       y2="952.36292"
+       x2="252.22971"
+       y1="952.36292"
+       x1="245.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27789"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="246"
+       y="950.36218">7</text>
+    <line
+       id="line27791"
+       y2="952.36292"
+       x2="273.22971"
+       y1="952.36292"
+       x1="266.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27793"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="267"
+       y="950.36218">8</text>
+    <polygon
+       id="polygon27795"
+       points="81.047,721.32 81.047,710.32 71.88,715.82 "
+       transform="translate(26.0747,230.54288)" />
+    <text
+       id="text27799"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:Arial-BoldMT"
+       x="42.860298"
+       y="950.36218">
+      <tspan
+         style="-inkscape-font-specification:Arial;font-family:Arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan23420">Anterior</tspan>
+    </text>
+    <polygon
+       id="polygon27801"
+       points="283.24,721.32 283.24,710.32 292.407,715.82 "
+       transform="translate(26.0747,230.54288)" />
+    <text
+       id="text27805"
+       font-size="13"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000099;font-family:Arial;-inkscape-font-specification:Arial"
+       x="322.3862"
+       y="950.36218">Próximo</text>
+    <line
+       id="line27807"
+       y2="952.17291"
+       x2="294.22971"
+       y1="952.17291"
+       x1="287.99969"
+       stroke-miterlimit="10"
+       style="fill:none;stroke:#000099;stroke-miterlimit:10" />
+    <text
+       id="text27809"
+       font-size="13"
+       style="font-size:13px;fill:#000099;font-family:ArialMT"
+       x="288"
+       y="950.17279">9</text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="98.994949"
+       y="328.22495"
+       id="text4032"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4034"
+         x="98.994949"
+         y="328.22495"
+         style="font-size:14px;fill:#0000ff">[pesquisa avançada]</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="98.994949"
+       y="349.37723"
+       id="text4036"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4038"
+         x="98.994949"
+         y="349.37723"
+         style="font-size:14px;fill:#0000ff">[assinar RSS desta pesquisa]</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 2" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer"
+     transform="translate(0,-192.36218)">
+    <g
+       id="g4419"
+       onclick="window.location=&quot;job.svg&quot;">
+      <rect
+         ry="0"
+         y="518.81372"
+         x="213.34734"
+         height="26.454216"
+         width="97.781265"
+         id="rect4122-9-0"
+         style="opacity:0.70247934000000001;fill:#ffff00;fill-opacity:1;stroke:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3053"
+         y="538.55865"
+         x="39.680801"
+         style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:20px;font-weight:bold"
+           id="tspan3057"
+           y="538.55865"
+           x="39.680801"
+           sodipodi:role="line">Desenvolvedor Catalyst Júnior</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3981"
+         y="567.70154"
+         x="48.319199"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:16px"
+           y="567.70154"
+           x="48.319199"
+           id="tspan3983"
+           sodipodi:role="line">São Paulo - SP</tspan><tspan
+           id="tspan3987"
+           style="font-size:16px;font-weight:normal"
+           y="587.70154"
+           x="48.319199"
+           sodipodi:role="line">Empresa X</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text23020-1"
+         y="615.70154"
+         x="50.319199"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:14px;font-weight:bold;-inkscape-font-specification:Sans Bold"
+           y="615.70154"
+           x="50.319199"
+           id="tspan23022-2"
+           sodipodi:role="line">mais detalhes</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="191.2661"
+       y="298.56339"
+       id="text4118"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4120"
+         x="191.2661"
+         y="298.56339"
+         style="font-size:12px">catalyst</tspan></text>
+    <g
+       transform="translate(696.2661,-128.19639)"
+       id="g21769">
+      <defs
+         id="defs21771">
+        <path
+           inkscape:connector-curvature="0"
+           id="SVGID_11_"
+           d="m 39.5,409.26 h 74 c 1.657,0 3,1.343 3,3 v 19 c 0,1.657 -1.343,3 -3,3 h -74 c -1.657,0 -3,-1.343 -3,-3 l 0,0 v -19 c 0,-1.657 1.343,-3 3,-3 z" />
+      </defs>
+      <clipPath
+         id="clipPath26440">
+        <use
+           height="1052.3622"
+           width="744.09448"
+           y="0"
+           x="0"
+           style="overflow:visible"
+           xlink:href="#SVGID_11_"
+           overflow="visible"
+           id="use26442" />
+      </clipPath>
+      <g
+         clip-path="url(#SVGID_12_)"
+         id="g21777">
+        <defs
+           id="defs21779">
+          <rect
+             id="SVGID_13_"
+             x="36"
+             y="408.76001"
+             width="81"
+             height="26" />
+        </defs>
+        <clipPath
+           id="clipPath26447">
+          <use
+             height="1052.3622"
+             width="744.09448"
+             y="0"
+             x="0"
+             style="overflow:visible"
+             xlink:href="#SVGID_13_"
+             overflow="visible"
+             id="use26449" />
+        </clipPath>
+        <g
+           transform="translate(-3.814697e-6,-3.051758e-5)"
+           clip-path="url(#SVGID_14_)"
+           id="g21785">
+          <image
+             style="overflow:visible"
+             overflow="visible"
+             width="80"
+             height="25"
+             xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAaCAYAAAAg0tunAAAACXBIWXMAAArrAAAK6wGCiw1aAAAA GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHpJREFUeNrs19sNgDAMQ9FWYjEG YkemYBgeDSNQNSB+zh3BcmK7zssWBcNM0Q4qpAS8dipkBGwc6IR/PuGTCjkH+oFJBzphISJE9EAO xOgPFCKPVA7MEQT89AdaIpaIJWKJ6IGwRDhQiLxV74WIHoheAUu0lQzj3AIMAM3eTdYEZbE2AAAA AElFTkSuQmCC"
+             transform="matrix(1.0125,0,0,1.04,36,408.7598)"
+             id="image21787" />
+        </g>
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#243356;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+       inkscape:connector-curvature="0"
+       stroke-miterlimit="10"
+       d="m 735.7661,281.06361 h 74 c 1.657,0 3,1.343 3,3 v 19 c 0,1.657 -1.343,3 -3,3 h -74 c -1.657,0 -3,-1.343 -3,-3 l 0,0 v -19 c 0,-1.657 1.343,-3 3,-3 z"
+       id="path21789" />
+    <text
+       y="297.56342"
+       x="741.87793"
+       style="font-size:13px;fill:#ffffff;font-family:ArialMT"
+       font-size="13"
+       id="text21791">Pesquisar</text>
+    <g
+       id="g4429"
+       onclick="window.location=&quot;job.svg&quot;">
+      <rect
+         ry="0"
+         y="652.81372"
+         x="193.34734"
+         height="26.454216"
+         width="97.781265"
+         id="rect4122-9"
+         style="opacity:0.70247934;fill:#ffff00;fill-opacity:1;stroke:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3053-8"
+         y="672.04602"
+         x="39.680801"
+         style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:20px;font-weight:bold"
+           id="tspan3057-7"
+           y="672.04602"
+           x="39.680801"
+           sodipodi:role="line">Programador Catalyst</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3981-4"
+         y="702.04602"
+         x="49.680801"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:16px"
+           y="702.04602"
+           x="49.680801"
+           id="tspan3983-3"
+           sodipodi:role="line">Campinas - SP</tspan><tspan
+           id="tspan3987-8"
+           style="font-size:16px;font-weight:normal"
+           y="722.04602"
+           x="49.680801"
+           sodipodi:role="line">Empresa Y</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text23020-1-5"
+         y="752.04602"
+         x="49.680801"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:14px;font-weight:bold;-inkscape-font-specification:Sans Bold"
+           y="752.04602"
+           x="49.680801"
+           id="tspan23022-2-2"
+           sodipodi:role="line">mais detalhes</tspan></text>
+    </g>
+    <g
+       id="g4439"
+       onclick="window.location=&quot;job.svg&quot;">
+      <g
+         transform="translate(-0.31919861,59.999997)"
+         id="g23301">
+        <g
+           id="g23237"
+           transform="translate(0,80)">
+          <text
+             sodipodi:linespacing="125%"
+             id="text3053-3"
+             y="662.36218"
+             x="40"
+             style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:20px;font-weight:bold"
+               id="tspan3057-2"
+               y="662.36218"
+               x="40"
+               sodipodi:role="line">Programador Perl</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3981-2"
+             y="692.36218"
+             x="50"
+             style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             xml:space="preserve"><tspan
+               style="font-size:16px"
+               y="692.36218"
+               x="50"
+               id="tspan3983-32"
+               sodipodi:role="line">Rio de Janeiro - RJ</tspan><tspan
+               id="tspan3987-0"
+               style="font-size:16px;font-weight:normal"
+               y="712.36218"
+               x="50"
+               sodipodi:role="line">Empresa Z</tspan></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="50"
+           y="822.36218"
+           id="text23020-1-2"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan23022-2-8"
+             x="50"
+             y="822.36218"
+             style="font-size:14px;font-weight:bold;-inkscape-font-specification:Sans Bold">mais detalhes</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g4405">
+      <rect
+         y="362.36218"
+         x="34"
+         height="140"
+         width="890.01019"
+         id="rect25233"
+         style="opacity:0.70247934000000001;fill:#333333;fill-opacity:1;stroke:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text25238"
+         y="380.73257"
+         x="784.6449"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:13px;fill:#ffffff"
+           y="380.73257"
+           x="784.6449"
+           id="tspan25240"
+           sodipodi:role="line">anúncio destacado</tspan></text>
+      <rect
+         ry="0"
+         y="376.67349"
+         x="283.06165"
+         height="33.525284"
+         width="134.14676"
+         id="rect4122-2"
+         style="opacity:0.70247934000000001;fill:#ffff00;fill-opacity:1;stroke:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3053-5"
+         y="402.36218"
+         x="39.680801"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:28px;font-weight:bold;fill:#ffffff"
+           id="tspan3057-9"
+           y="402.36218"
+           x="39.680801"
+           sodipodi:role="line">Desenvolvedor Catalyst Sênior</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3981-5"
+         y="432.36218"
+         x="49.680801"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:16px;fill:#ffffff"
+           y="432.36218"
+           x="49.680801"
+           id="tspan3983-7"
+           sodipodi:role="line">São Paulo - SP</tspan><tspan
+           id="tspan3987-1"
+           style="font-size:16px;font-weight:normal;fill:#ffffff"
+           y="452.36218"
+           x="49.680801"
+           sodipodi:role="line">Empresa X</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text23020-1-3"
+         y="482.36218"
+         x="49.680801"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:14px;font-weight:bold;-inkscape-font-specification:Sans Bold;fill:#ffffff"
+           y="482.36218"
+           x="49.680801"
+           id="tspan23022-2-5"
+           sodipodi:role="line">mais detalhes</tspan></text>
+    </g>
+  </g>
+</svg>
