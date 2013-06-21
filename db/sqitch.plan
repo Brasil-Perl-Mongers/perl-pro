@@ -2,3 +2,4 @@
 %project=perlpro
 %uri=https://github.com/Brasil-Perl-Mongers/perl-pro
 
+schema_system 2013-06-21T18:31:04Z André Walker <andre@andrewalker.net> # System schema, including authentication and authorization
