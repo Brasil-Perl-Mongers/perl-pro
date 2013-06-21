@@ -13,3 +13,4 @@ table_company_feed [schema_company table_company] 2013-06-21T21:47:14Z André Wa
 table_user_company [schema_company schema_system table_user table_company] 2013-06-21T22:13:26Z André Walker <andre@andrewalker.net> # Link users and companies (each user will manage a different company)
 schema_job 2013-06-21T22:27:38Z André Walker <andre@andrewalker.net> # Job schema
 table_job [schema_job schema_company table_company] 2013-06-21T22:31:35Z André Walker <andre@andrewalker.net> # Job table
+table_promotion [schema_job table_job] 2013-06-21T22:48:22Z André Walker <andre@andrewalker.net> # Table to record promotion (premium advertising) of jobs
