@@ -10,7 +10,7 @@ BEGIN;
     CREATE TABLE "user_email" (
         id SERIAL PRIMARY KEY,
         "user" TEXT NOT NULL,
-        email TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE,
         is_main_address BOOLEAN NOT NULL DEFAULT FALSE,
         FOREIGN KEY("user") REFERENCES "user"(login) ON UPDATE CASCADE ON DELETE CASCADE
     );
