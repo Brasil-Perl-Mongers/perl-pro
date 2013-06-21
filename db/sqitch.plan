@@ -10,3 +10,4 @@ table_user_role [schema_system table_user table_role] 2013-06-21T18:57:08Z Andr�
 schema_company 2013-06-21T19:14:03Z André Walker <andre@andrewalker.net> # Company schema
 table_company [schema_company] 2013-06-21T21:34:30Z André Walker <andre@andrewalker.net> # Company table
 table_company_feed [schema_company table_company] 2013-06-21T21:47:14Z André Walker <andre@andrewalker.net> # Create notifications feed table for companies
+table_user_company [schema_company schema_system table_user table_company] 2013-06-21T22:13:26Z André Walker <andre@andrewalker.net> # Link users and companies (each user will manage a different company)
