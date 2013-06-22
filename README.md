@@ -1,4 +1,4 @@
-perl-jobs-br
-============
+# perlpro
 
-Site de divulgação de vagas de emprego para programadores Perl no Brasil.
+Catálogo de vagas de emprego para programadores Perl no Brasil, assim como
+divulgação do perfil de empresas e uso que fazem da linguagem Perl.
