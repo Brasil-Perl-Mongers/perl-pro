@@ -288,7 +288,7 @@ footer h4.underline-block {
     line-height: 40px;
 }
 
-footer .navbar img {
+.navbar .nav img {
     vertical-align: text-bottom;
     margin-right: 7px;
     display: inline-block
