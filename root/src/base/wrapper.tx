@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>PerlPro</title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="<: $static_uri :>/css/style.css" rel="stylesheet">
+    <meta charset="utf-8">
+</head>
+<body>
+    <div id="wrapper">
+
+        <!-- top menu (with the gray background) -->
+        <header>
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <div class="nav-collapse collapse">
+                            <div class="company-access pull-right"><button class="btn-large btn-util"><: $l('ACESSO DA EMPRESA') :></button></div>
+                            <ul class="nav">
+                                <li><a href="#"><img src="<: $static_uri :>/img/home.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
+                                <li><a href="#"><: $l('Procurar Vagas') :></a></li>
+                                <li><a href="#"><: $l('Catálogo de Empresas') :></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="push"><!-- make the footer stick to the bottom -->
+
+            <!-- top banner (logo + slogan) - with that big orange background on the top -->
+            <div id="big-orange-background">
+                <div class="container">
+                    <div class="banner-row row">
+                        <div class="logo span4">
+                            <img src="<: $static_uri :>/img/logo.png" alt="PerlPro" />
+                            <span class="logo-helper"></span> <!-- cross-browser hack to make the logo vertically aligned in the middle -->
+                        </div>
+:# TODO: i18n
+:# The slogan is not localized yet because it wouldn't make much sense, it seems,
+:# because markup would have to be included in the translation
+                        <div class="slogan span7">
+                            <hr/>
+                            <div class="slogan-line1"><strong>Empregos</strong> para programadores</div>
+                            <div class="slogan-line2"><strong>Perl</strong> <em>em todo o Brasil</em></div>
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- search bar -->
+            <div id="searchbar-container">
+                <div class="container">
+                    <div class="searchbar row">
+                        <div class="span12">
+                            <form class="form-search pull-left" method="get" action="/search">
+                                <input type="text" class="input-xxlarge flat-input" placeholder="Encontre uma vaga" />
+                                <img src="<: $static_uri :>/img/search.png" />
+                                <button class="btn-action btn-small" type="submit"><: $l('Busca') :></button>
+                            </form>
+                            <p class="advanced-search"><: $l('Ou faça uma') :><br/><a href="#"><: $l('Busca Avançada') :></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- main content -->
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+:                       content()
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <footer>
+            <div class="footer-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="span5">
+                            <div class="footer-navbar navbar underline-block">
+                                <ul class="nav">
+                                    <li><a href="#"><img src="<: $static_uri :>/img/home-white.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
+                                    <li><a href="#"><: $l('Empregos') :></a></li>
+                                    <li><a href="#"><: $l('Acesso da Empresa') :></a></li>
+                                </ul>
+                            </div>
+                            <h4><: $l('Cadastre sua empresa') :></h3>
+                            <p><: $l('Encontre os melhores profissionais de Perl') :></p>
+                            <button class="btn-small btn-important pull-left"><: $l('Anuncie') :></button>
+                            <p class="how-it-works pull-left"><a href="#"><: $l('Como funciona?') :></a></p>
+                        </div>
+                        <div class="span3">
+                            <h4 class="underline-block">Siga nas redes sociais</h3>
+                            <ul class="social-icons">
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-facebook.png"  alt="Facebook" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-google.png"    alt="Google+" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-linkedin.png"  alt="LinkedIn" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-twitter.png"   alt="Twitter" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-rss.png"       alt="RSS/Atom Feeds" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-youtube.png"   alt="Youtube" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-wordpress.png" alt="Wordpress" /></a></li>
+                            </ul>
+                        </div>
+                        <div class="span4">
+                            <h4 class="underline-block"><: $l('Receba nossas novidades') :></h3>
+                            <form>
+                                <input type="text" class="input-block-level flat-input" placeholder="<: $l('Digite seu e-mail') :>">
+                                <button class="input-block-level flat-input btn-action btn-small"><: $l('Cadastrar') :></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="credits">
+                <div class="container">
+                    <div class="row">
+                        <div class="span6">
+                            <p>2013 PerlPro &mdash; <: $l('Todos os direitos reservados.') :></p>
+                        </div>
+                        <div class="span6 text-right">
+                            <p><: $l('Desenvolvido por André Walker. Design por Nova1.') :></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

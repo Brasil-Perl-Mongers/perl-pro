@@ -1,0 +1,313 @@
+/* typography and general styles */
+
+html, body {
+    height: 100%;
+}
+body {
+    font-family: "Droid Sans", sans-serif;
+    font-size: 16px;
+    color: #333333;
+    background: #eeeeee;
+}
+input, button, select, textarea {
+    font-family: "Droid Sans", sans-serif;
+}
+p {
+    font-size: 16px;
+}
+strong {
+    font-size: 16px;
+    font-weight: bold;
+}
+small {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+
+/* buttons */
+
+.btn-large {
+    border-radius: 3px;
+    width: 180px;
+    font-size: 16px;
+    padding: 7px 0;
+    border: 0;
+}
+
+.btn-small {
+    border: 0;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 7px 16px;
+}
+
+.btn-util { color: #ffffff; background-color: #4eabea }
+.btn-save { color: #ffffff; background-color: #27ae60 }
+.btn-action { color: #ffffff; background-color: #e57e21 }
+.btn-important { color: #ffffff; background-color: #e74c3c }
+
+
+/* inputs */
+
+#wrapper input.flat-input, .flat-input {
+    font-size: 16px;
+    box-shadow: none;
+    padding: 7px 6px;
+    height: auto;
+    border: 0;
+}
+
+
+/* titles */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Droid Serif", serif;
+}
+h1 { font-size: 42px }
+h2 { font-size: 36px }
+h3 { font-size: 28px }
+h4 { font-size: 22px }
+
+
+/* links */
+
+a:link, a:visited {
+    color: #333333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: #333333;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+footer a:link,
+footer a:visited,
+#searchbar-container a:link,
+#searchbar-container a:visited {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer a:hover, footer a:focus,
+#searchbar-container a:hover, #searchbar-container a:focus {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+/* header (top menu) */
+
+header {
+    height: 50px;
+    clear: both;
+}
+
+#wrapper .navbar-inner {
+    box-shadow: none;
+    background-image: none;
+    background-color: #eeeeee;
+    border: 0
+}
+
+.company-access {
+    padding: 8px 0;
+}
+
+.navbar .nav > li > a {
+    text-shadow: none;
+    color: #333333;
+    font-size: 16px;
+    padding: 15px;
+    line-height: 23px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.navbar .nav > li > a:focus,
+.navbar .nav > li > a:hover {
+    color: #333333;
+    text-decoration: underline;
+}
+
+
+/* top orange banner */
+
+#big-orange-background {
+    background: #e68228;
+    color: #ffffff;
+    width: 100%;
+}
+
+.banner-row > .logo {
+    text-align: center;
+    height: 250px;
+}
+
+.banner-row > .logo > img {
+    vertical-align: middle;
+}
+
+.banner-row > .logo > .logo-helper {
+    height: 100%;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.banner-row > .slogan {
+    text-align: center;
+    min-height: 250px;
+}
+
+.slogan-line1, .slogan-line1 strong, .slogan-line1 em {
+    font-size: 36px;
+    line-height: 50px;
+}
+.slogan-line2 {
+    line-height: 90px;
+}
+.slogan-line2 strong {
+    font-size: 72px;
+    line-height: 90px;
+    font-family: "Droid Serif", serif;
+    vertical-align: middle;
+}
+.slogan-line2 em {
+    background: #27ae60;
+    border: 0;
+    border-radius: 4px;
+    padding: 8px 12px;
+    display: inline-block;
+    vertical-align: middle;
+    font-style: normal;
+    font-size: 50px;
+    line-height: 50px;
+    margin: 12px 20px;
+}
+
+
+/* search bar (gray) */
+
+#searchbar-container {
+    color: #ffffff;
+    background: #555555;
+    width: 100%;
+}
+
+#searchbar-container form {
+    margin: 9px 0;
+}
+
+#searchbar-container img {
+    margin: 0 20px 0 -40px;
+}
+
+#searchbar-container input.flat-input {
+    font-size: 18px;
+    line-height: 20px;
+    height: 20px;
+    padding: 11px 6px;
+}
+
+#searchbar-container button {
+    font-size: 18px;
+    line-height: 20px;
+    padding: 11px 20px;
+}
+
+#searchbar-container p.advanced-search {
+    float: left;
+    padding: 0 10px;
+    margin: 10px;
+    border-left: 1px solid #666;
+}
+
+
+/* sticky footer */
+
+#wrapper {
+    height: 100%;
+    display: table;
+    width: 100%;
+}
+
+#push {
+    height: auto;
+    display: table-row;
+}
+
+footer {
+    padding: 17px 0 18px 0;
+    width: 100%;
+    height: 1px;
+    display: table-row;
+}
+
+footer .footer-inner {
+    background-color: #444444;
+    color: #ffffff;
+    padding: 25px;
+}
+
+footer .credits, footer .credits p {
+    background: #eeeeee;
+    font: 13px/40px "Droid Serif", serif;
+    margin: 0;
+}
+
+p.how-it-works {
+    padding: 7px 12px;
+    margin-left: 12px;
+    border-left: 1px solid #666;
+}
+
+footer ul.social-icons,
+footer ul.social-icons li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: none;
+}
+
+footer ul.social-icons li {
+    float: left;
+    margin: 0 3px;
+}
+
+footer .underline-block {
+    border-bottom: 1px solid #666;
+}
+footer h4.underline-block {
+    margin: 0 0 20px 0;
+    padding: 10px 0;
+    line-height: 40px;
+}
+
+footer .navbar img {
+    vertical-align: text-bottom;
+    margin-right: 7px;
+    display: inline-block
+}
+footer .footer-navbar {
+    float: none;
+    height: 60px;
+}
+footer .navbar .nav > li {
+    margin: 10px 0;
+}
+footer .navbar .nav > li > a {
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 23px;
+    padding: 10px;
+}
+footer .navbar .nav > li > a:focus,
+footer .navbar .nav > li > a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
