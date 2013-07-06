@@ -16,6 +16,8 @@ requires 'Catalyst::Action::RenderView';
 requires 'Moose';
 requires 'namespace::autoclean';
 requires 'Config::General';
+requires 'Text::Xslate';
+requires 'Catalyst::View::Xslate';
 test_requires 'Test::More' => '0.88';
 catalyst;
 
