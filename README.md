@@ -8,3 +8,13 @@ Para o deploy do banco de dados, primeiro crie o banco de dados no PostgreSQL, e
 
     $ cpanm App::Sqitch
     $ sqitch deploy
+
+Depois disso, configure a aplicação:
+
+    $ cp perlpro_web_local.conf-example perlpro_web_local.conf
+    $ $EDITOR perlpro_web_local.conf
+
+Por fim, instale dependências e ponha o site no ar:
+
+    $ cpanm --installdeps .
+    $ plackup
