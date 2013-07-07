@@ -1,0 +1,7 @@
+<model DB>
+    <connect_info>
+        dsn dbi:Pg:dbname=perlpro
+        user andre
+        password ""
+    </connect_info>
+</model>
