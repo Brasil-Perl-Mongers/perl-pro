@@ -9,30 +9,33 @@
         <fieldset>
             <legend>Dados do usuário</legend>
             <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="nome de usuário para login" />
+                <input type="text" class="span6 flat-input" placeholder="nome (administrador)" name="user.register.name" />
             </div>
             <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="e-mail (do funcionário que administra)" />
+                <input type="text" class="span6 flat-input" placeholder="e-mail (administrador)" name="user.register.email" />
             </div>
             <div class="controls controls-row">
-                <input type="password" class="span3 flat-input" placeholder="senha" />
-                <input type="password" class="span3 flat-input" placeholder="confirme sua senha" />
+                <input type="text" class="span6 flat-input" placeholder="nome de usuário para login" name="user.register.login" />
+            </div>
+            <div class="controls controls-row">
+                <input type="password" class="span3 flat-input" placeholder="senha" name="user.register.password" />
+                <input type="password" class="span3 flat-input" placeholder="confirme sua senha" name="user.register.confirm_password" />
             </div>
         </fieldset>
         <fieldset>
             <legend>Contato &amp; Localização</legend>
             <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="endereço da empresa" />
+                <input type="text" class="span6 flat-input" placeholder="endereço da empresa" name="company.register.address" />
             </div>
             <div class="controls controls-row">
-                <input type="text" class="span4 flat-input" placeholder="cidade" />
-                <input type="text" class="span2 flat-input" placeholder="estado" />
+                <input type="text" class="span4 flat-input" placeholder="cidade" name="company.register.city" />
+                <input type="text" class="span2 flat-input" placeholder="estado" name="company.register.state" />
             </div>
             <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="e-mail da empresa para contato (público)" />
+                <input type="text" class="span6 flat-input" placeholder="e-mail da empresa para contato (público)" name="company.register.email" />
             </div>
             <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="telefone da empresa para contato (público)" />
+                <input type="text" class="span6 flat-input" placeholder="telefone da empresa para contato (público)" name="company.register.phone" />
             </div>
         </fieldset>
     </div>
@@ -40,10 +43,10 @@
         <fieldset>
             <legend>Dados da empresa</legend>
             <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="nome da empresa" />
+                <input type="text" class="span6 flat-input" placeholder="nome da empresa" name="company.register.name" />
             </div>
             <div class="controls controls-row">
-                <textarea class="span6 flat-input" rows="14" placeholder="escreva algumas linhas descrevendo sua empresa, e como ela utiliza Perl em seu dia-a-dia"></textarea>
+                <textarea class="span6 flat-input" rows="16" placeholder="escreva algumas linhas descrevendo sua empresa, e como ela utiliza Perl em seu dia-a-dia" name="company.register.description"></textarea>
             </div>
         </fieldset>
     </div>
