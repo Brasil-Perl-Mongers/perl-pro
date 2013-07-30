@@ -7,9 +7,7 @@ BEGIN { extends 'Catalyst::Controller' }
 
 __PACKAGE__->config(namespace => '');
 
-sub index :Path :Args(0) {
-    my ( $self, $c ) = @_;
-}
+sub index :Path :Args(0) {}
 
 sub default :Path {
     my ( $self, $c ) = @_;
