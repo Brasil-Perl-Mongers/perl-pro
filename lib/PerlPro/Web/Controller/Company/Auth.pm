@@ -7,7 +7,7 @@ BEGIN { extends 'PerlPro::Web::ControllerBase::Auth' }
 
 sub base : Chained('/') PathPart('company') CaptureArgs(0) {}
 
-sub _build_first_page { '/company/data' }
+sub _build_first_page { '/company/home' }
 
 __PACKAGE__->meta->make_immutable;
 

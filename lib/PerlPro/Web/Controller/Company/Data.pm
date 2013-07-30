@@ -7,10 +7,15 @@ BEGIN { extends 'Catalyst::Controller' }
 
 sub base :Chained('/company/auth/requires_login') PathPart('') CaptureArgs(0) {}
 
-sub display :Chained('base') PathPart('data') Args(0) GET {
+sub display :Chained('base') PathPart('home') Args(0) GET {
     my ( $self, $ctx ) = @_;
+
     # display page of "Company Data"
     # load data from DB
+
+    $ctx->stash(
+        template => 'company/home.tx'
+    );
 }
 
 sub update : Chained('base') PathPart('data') Args(1) PUT {
