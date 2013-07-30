@@ -35,16 +35,29 @@ sub catalog :Chained('base') PathPart('') Args(0) GET {
 
 sub register :Chained('base') Does('DisplayExecute') Args(0) {}
 
-sub register_display {
-    my ( $self, $ctx ) = @_;
-}
-
 sub register_execute {
     my ( $self, $ctx ) = @_;
 
-    # TODO
-    # We could deal with DataManager here, if necessary. Although
-    # DisplayExecute already does that automatically if we want.
+    $ctx->stash->{DO_NOT_APPLY_DM} = 1;
+
+    my $dm = $ctx->model('DataManager');
+    my $user = $ctx->req->params->{user}{register};
+    my $company = $ctx->req->params->{company}{register};
+
+    $dm->apply_one('company.register', $company);
+
+    my $company_obj = $dm->get_outcome_for('company.register');
+
+    if ($company_obj) {
+        $user->{company} = $company_obj->name_in_url;
+    }
+
+    $dm->apply_one('user.register', $user);
+
+    if (!$dm->success) {
+        $ctx->log->warn('registration form invalid');
+        $company_obj->delete if $company_obj;
+    }
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -82,10 +95,6 @@ Display a list of all companies registered.
 =head2 register
 
 Register a new company.
-
-=head2 register_display
-
-Show the template with the form to register a new company.
 
 =head2 register_execute
 
