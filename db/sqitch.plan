@@ -18,3 +18,4 @@ table_attribute [schema_job table_job] 2013-06-21T23:06:35Z André Walker <andre
 table_company_email [schema_company table_company] 2013-07-30T13:56:12Z André Walker <andre@andrewalker.net> # List of company's e-mail addresses
 table_company_phone [schema_company table_company] 2013-07-30T13:59:58Z André Walker <andre@andrewalker.net> # List of company's phone numbers
 table_company_website [schema_company table_company] 2013-07-30T14:02:11Z André Walker <andre@andrewalker.net> # List of company's websites
+table_company_location [schema_company table_company] 2013-07-30T14:06:23Z André Walker <andre@andrewalker.net> # List of company's locations
