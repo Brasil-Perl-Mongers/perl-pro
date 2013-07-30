@@ -10,6 +10,12 @@ name 'PerlPro-Web';
 all_from 'lib/PerlPro/Web.pm';
 
 requires 'Catalyst::Runtime' => '5.90042';
+requires 'Catalyst::Plugin::Params::Nested';
+requires 'Catalyst::Plugin::Session';
+requires 'Catalyst::Plugin::Session::State::Cookie';
+requires 'Catalyst::Plugin::Session::Store::File';
+requires 'Catalyst::Plugin::Authentication';
+requires 'Catalyst::Plugin::Authorization::Roles';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Action::RenderView';
@@ -21,6 +27,7 @@ requires 'DBIx::Class';
 requires 'Catalyst::Model::DBIC::Schema';
 requires 'Text::Xslate';
 requires 'Catalyst::View::Xslate';
+requires 'Catalyst::View::JSON';
 test_requires 'Test::More' => '0.88';
 catalyst;
 

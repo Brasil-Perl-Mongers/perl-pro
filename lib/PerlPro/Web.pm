@@ -9,6 +9,15 @@ use Catalyst::Runtime 5.90042;
 use Catalyst qw/
     ConfigLoader
     Static::Simple
+
+    Params::Nested
+
+    Session
+    Session::State::Cookie
+    Session::Store::File
+
+    Authentication
+    Authorization::Roles
 /;
 
 extends 'Catalyst';
