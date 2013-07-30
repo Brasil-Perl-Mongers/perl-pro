@@ -236,6 +236,10 @@ header {
     width: 100%;
 }
 
+.main-content {
+    margin-top: 35px;
+}
+
 #push {
     height: auto;
     display: table-row;
