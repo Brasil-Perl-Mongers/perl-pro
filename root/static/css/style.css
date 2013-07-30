@@ -50,12 +50,15 @@ small {
 
 /* inputs */
 
-#wrapper input.flat-input, .flat-input {
+#wrapper input.flat-input,
+#wrapper textarea.flat-input,
+.flat-input {
     font-size: 16px;
     box-shadow: none;
     padding: 7px 6px;
     height: auto;
     border: 0;
+    border-radius: 2px;
 }
 
 
@@ -323,4 +326,9 @@ footer .navbar .nav > li > a:hover {
 
 .qtip {
     max-width: 1200px;
+}
+
+hr.thick {
+    border-size: 3px;
+    border-color: #dddddd;
 }

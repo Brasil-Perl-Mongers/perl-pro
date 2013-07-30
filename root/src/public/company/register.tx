@@ -1,0 +1,57 @@
+: cascade base::wrapper
+: block content {
+<h2><: $l('Criar conta') :></h2>
+<hr class="thick" />
+<p><: $l('Preencha os campos abaixo para criar a sua conta. Após finalizar o cadastro, você poderá adicionar mais informações e cadastrar ofertas de vagas.') :></p>
+<form action="" method="post" class="container">
+<div class="row">
+    <div class="span6">
+        <fieldset>
+            <legend>Dados do usuário</legend>
+            <div class="controls controls-row">
+                <input type="text" class="span6 flat-input" placeholder="nome de usuário para login" />
+            </div>
+            <div class="controls controls-row">
+                <input type="text" class="span6 flat-input" placeholder="e-mail (do funcionário que administra)" />
+            </div>
+            <div class="controls controls-row">
+                <input type="password" class="span3 flat-input" placeholder="senha" />
+                <input type="password" class="span3 flat-input" placeholder="confirme sua senha" />
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Contato &amp; Localização</legend>
+            <div class="controls controls-row">
+                <input type="text" class="span6 flat-input" placeholder="endereço da empresa" />
+            </div>
+            <div class="controls controls-row">
+                <input type="text" class="span4 flat-input" placeholder="cidade" />
+                <input type="text" class="span2 flat-input" placeholder="estado" />
+            </div>
+            <div class="controls controls-row">
+                <input type="text" class="span6 flat-input" placeholder="e-mail da empresa para contato (público)" />
+            </div>
+            <div class="controls controls-row">
+                <input type="text" class="span6 flat-input" placeholder="telefone da empresa para contato (público)" />
+            </div>
+        </fieldset>
+    </div>
+    <div class="span6">
+        <fieldset>
+            <legend>Dados da empresa</legend>
+            <div class="controls controls-row">
+                <input type="text" class="span6 flat-input" placeholder="nome da empresa" />
+            </div>
+            <div class="controls controls-row">
+                <textarea class="span6 flat-input" rows="14" placeholder="escreva algumas linhas descrevendo sua empresa, e como ela utiliza Perl em seu dia-a-dia"></textarea>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<hr class="thick" />
+<div class="text-right">
+    <button class="btn-small btn-important"><: $l('Cancelar') :></button>
+    <button type="submit" class="btn-small btn-save"><: $l('Criar Conta') :></button>
+</div>
+</form>
+: }
