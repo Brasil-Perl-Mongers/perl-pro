@@ -51,5 +51,4 @@ André Walker
 
 =head1 LICENSE
 
-This library is free software. You can redistribute it and/or modify
-it under the same terms as Perl itself.
+TODO
