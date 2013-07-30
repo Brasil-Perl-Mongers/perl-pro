@@ -27,7 +27,7 @@ sub verifiers_specs {
                     type       => EmailAddress,
                     post_check => sub {
                         my $s = shift;
-                        my $email_rs = $self->result_source->related_source('emails')->resultset;
+                        my $email_rs = $self->result_source->related_source('user_emails')->resultset;
                         my $count = $email_rs->count({ email => $s->get_value('email') });
                         return $count == 0;
                     }
@@ -75,10 +75,12 @@ sub action_specs {
             my $company = delete $values{company};
             my $email = delete $values{email};
 
+            delete $values{confirm_password};
+
             my $row = $self->create(\%values);
 
-            $row->add_to_companies({ company => $company });
-            $row->add_to_emails({ email => $email, is_main_address => 1 });
+            $row->add_to_companies({ name_in_url => $company });
+            $row->add_to_user_emails({ email => $email, is_main_address => 1 });
 
             return $row;
         },

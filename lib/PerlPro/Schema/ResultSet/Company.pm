@@ -44,7 +44,7 @@ sub action_specs {
 
             my $name_in_url = lc Text::Unaccent::PurePerl::unac_string($values{name});
             $name_in_url =~ s/\s+/_/g;
-            $name_in_url =~ s/[^a-z_]//g;
+            $name_in_url =~ s/[^a-z0-9_]//g;
 
             my $row = $self->create({
                 name_in_url => $name_in_url,
@@ -52,10 +52,10 @@ sub action_specs {
                 description => $values{description},
             });
 
-            $row->add_to_emails({ email => $values{email}, is_main_address => 1 });
-            $row->add_to_phones({ phone => $values{phone}, is_main_phone   => 1 });
+            $row->add_to_company_emails({ email => $values{email}, is_main_address => 1 });
+            $row->add_to_company_phones({ phone => $values{phone}, is_main_phone   => 1 });
 
-            $row->add_to_locations({
+            $row->add_to_company_locations({
                 address         => $values{address},
                 city            => $values{city},
                 state           => $values{state},
