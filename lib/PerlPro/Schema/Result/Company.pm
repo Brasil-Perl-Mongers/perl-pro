@@ -127,6 +127,66 @@ __PACKAGE__->add_unique_constraint("company_name_key", ["name"]);
 
 =head1 RELATIONS
 
+=head2 company_emails
+
+Type: has_many
+
+Related object: L<PerlPro::Schema::Result::CompanyEmail>
+
+=cut
+
+__PACKAGE__->has_many(
+  "company_emails",
+  "PerlPro::Schema::Result::CompanyEmail",
+  { "foreign.company" => "self.name_in_url" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 company_locations
+
+Type: has_many
+
+Related object: L<PerlPro::Schema::Result::CompanyLocation>
+
+=cut
+
+__PACKAGE__->has_many(
+  "company_locations",
+  "PerlPro::Schema::Result::CompanyLocation",
+  { "foreign.company" => "self.name_in_url" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 company_phones
+
+Type: has_many
+
+Related object: L<PerlPro::Schema::Result::CompanyPhone>
+
+=cut
+
+__PACKAGE__->has_many(
+  "company_phones",
+  "PerlPro::Schema::Result::CompanyPhone",
+  { "foreign.company" => "self.name_in_url" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 company_websites
+
+Type: has_many
+
+Related object: L<PerlPro::Schema::Result::CompanyWebsite>
+
+=cut
+
+__PACKAGE__->has_many(
+  "company_websites",
+  "PerlPro::Schema::Result::CompanyWebsite",
+  { "foreign.company" => "self.name_in_url" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 jobs
 
 Type: has_many
@@ -168,8 +228,8 @@ Composing rels: L</user_companies> -> user
 __PACKAGE__->many_to_many("users", "user_companies", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-07 00:28:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nbZopZOpopsnOi8vhxyCyw
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-30 11:17:17
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:lMJ8NYwyuhhnNOARy/CLrw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
