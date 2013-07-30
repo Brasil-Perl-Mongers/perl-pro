@@ -5,23 +5,25 @@ use utf8;
 
 BEGIN { extends 'Catalyst::Controller' }
 
-sub display : Chained('/company/requires_login') PathPart('data') Args(0) GET {
+sub base :Chained('/company/auth/requires_login') PathPart('') CaptureArgs(0) {}
+
+sub display :Chained('base') PathPart('data') Args(0) GET {
     my ( $self, $ctx ) = @_;
     # display page of "Company Data"
     # load data from DB
 }
 
-sub update : Chained('/company/requires_login') PathPart('data') Args(1) PUT {
+sub update : Chained('base') PathPart('data') Args(1) PUT {
     my ( $self, $ctx, $field ) = @_;
     # update a given field (by AJAX)
 }
 
-sub add_data : Chained('/company/requires_login') PathPart('add_data') Args(0) POST {
+sub add_data : Chained('base') PathPart('add_data') Args(0) POST {
     my ( $self, $ctx ) = @_;
     # add a new item of the given field (by AJAX), e.g., add new phone
 }
 
-sub remove_data : Chained('/company/requires_login') PathPart('remove') Args(2) DELETE {
+sub remove_data : Chained('base') PathPart('remove') Args(2) DELETE {
     my ( $self, $ctx, $field, $item ) = @_;
     # remove item of the given field (by AJAX), e.g., delete phone
 }

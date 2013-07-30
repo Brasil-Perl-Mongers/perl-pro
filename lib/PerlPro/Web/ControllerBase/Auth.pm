@@ -12,8 +12,6 @@ has first_page => (
     lazy    => 1,
 );
 
-sub base : Chained('/') PathPart('') CaptureArgs(0) {}
-
 sub requires_login : Chained('base') PathPart('') CaptureArgs(0) {
     my ( $self, $ctx ) = @_;
 
