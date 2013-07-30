@@ -181,6 +181,17 @@ __PACKAGE__->many_to_many("roles", "user_roles", "role");
 # Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-07 00:28:29
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tTgPBJWAGNcxKUqe8RINYA
 
+__PACKAGE__->add_columns(
+    "password",
+    {
+        data_type           => "text",
+        is_nullable         => 0,
+        encode_column       => 1,
+        encode_class        => 'Crypt::Eksblowfish::Bcrypt',
+        encode_args         => { key_nul => 0, cost => 8 },
+        encode_check_method => 'check_password',
+    },
+);
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 1;

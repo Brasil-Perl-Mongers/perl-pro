@@ -44,7 +44,7 @@ has outcomes => (
 
 sub _flatten {
     my ( $self, $href ) = @_;
-    my $v = Ictum::Data::Visitor->new;
+    my $v = PerlPro::Data::Visitor->new;
     $v->visit($href);
     return $v->final_value;
 }

@@ -136,12 +136,12 @@
             </div>
         </footer>
     </div>
-    <form id="login_form" class="hide container-fluid">
+    <form id="login_form" class="hide container-fluid" action="/company/login" method="post">
         <div class="row-fluid">
             <div class="span5">
                 <h4 class="underline-block"><: $l('Já tenho uma conta') :></h4>
                 <p>
-                    <input type="text" name="username" placeholder="login" class="input-block-level flat-input" />
+                    <input type="text" name="login" placeholder="login" class="input-block-level flat-input" />
                 </p>
                 <p>
                     <input type="password" name="password" placeholder="senha" class="input-block-level flat-input" />
