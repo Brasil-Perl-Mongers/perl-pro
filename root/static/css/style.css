@@ -311,3 +311,12 @@ footer .navbar .nav > li > a:hover {
     color: #ffffff;
     text-decoration: underline;
 }
+
+#login_form {
+    width: 600px;
+    max-width: 600px;
+}
+
+.qtip {
+    max-width: 1200px;
+}
