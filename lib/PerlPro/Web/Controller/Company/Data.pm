@@ -5,10 +5,25 @@ use utf8;
 
 BEGIN { extends 'Catalyst::Controller' }
 
-sub index :Path Args(0) {
-    my ( $self, $c ) = @_;
+sub display : Chained('/company/requires_login') PathPart('data') Args(0) GET {
+    my ( $self, $ctx ) = @_;
+    # display page of "Company Data"
+    # load data from DB
+}
 
-    $c->response->body('Matched PerlPro::Web::Controller::Company::Data.');
+sub update : Chained('/company/requires_login') PathPart('data') Args(1) PUT {
+    my ( $self, $ctx, $field ) = @_;
+    # update a given field (by AJAX)
+}
+
+sub add_data : Chained('/company/requires_login') PathPart('add_data') Args(0) POST {
+    my ( $self, $ctx ) = @_;
+    # add a new item of the given field (by AJAX), e.g., add new phone
+}
+
+sub remove_data : Chained('/company/requires_login') PathPart('remove') Args(2) DELETE {
+    my ( $self, $ctx, $field, $item ) = @_;
+    # remove item of the given field (by AJAX), e.g., delete phone
 }
 
 __PACKAGE__->meta->make_immutable;
