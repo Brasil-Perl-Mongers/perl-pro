@@ -16,3 +16,4 @@ table_job [schema_job schema_company table_company] 2013-06-21T22:31:35Z André 
 table_promotion [schema_job table_job] 2013-06-21T22:48:22Z André Walker <andre@andrewalker.net> # Table to record promotion (premium advertising) of jobs
 table_attribute [schema_job table_job] 2013-06-21T23:06:35Z André Walker <andre@andrewalker.net> # Attributes required or desired in a job offer
 table_company_email [schema_company table_company] 2013-07-30T13:56:12Z André Walker <andre@andrewalker.net> # List of company's e-mail addresses
+table_company_phone [schema_company table_company] 2013-07-30T13:59:58Z André Walker <andre@andrewalker.net> # List of company's phone numbers
