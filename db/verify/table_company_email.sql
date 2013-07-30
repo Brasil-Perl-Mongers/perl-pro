@@ -2,6 +2,6 @@
 
 BEGIN;
 
-    SELECT company, email FROM company.company_email WHERE FALSE;
+    SELECT company, email, is_main_address FROM company.company_email WHERE FALSE;
 
 ROLLBACK;

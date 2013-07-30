@@ -2,6 +2,6 @@
 
 BEGIN;
 
-    SELECT company, url FROM company.company_website WHERE FALSE;
+    SELECT company, url, is_main_website FROM company.company_website WHERE FALSE;
 
 ROLLBACK;

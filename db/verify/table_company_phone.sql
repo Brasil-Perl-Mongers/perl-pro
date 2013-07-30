@@ -2,6 +2,6 @@
 
 BEGIN;
 
-    SELECT company, phone FROM company.company_phone WHERE FALSE;
+    SELECT company, phone, is_main_phone FROM company.company_phone WHERE FALSE;
 
 ROLLBACK;
