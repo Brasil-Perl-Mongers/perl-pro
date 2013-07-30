@@ -48,6 +48,12 @@ __PACKAGE__->table("company.company_phone");
   data_type: 'text'
   is_nullable: 0
 
+=head2 is_main_phone
+
+  data_type: 'boolean'
+  default_value: false
+  is_nullable: 0
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -55,6 +61,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_foreign_key => 1, is_nullable => 0 },
   "phone",
   { data_type => "text", is_nullable => 0 },
+  "is_main_phone",
+  { data_type => "boolean", default_value => \"false", is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -89,8 +97,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-30 11:17:17
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:DrG/k1g909P2KdVVLh3mbQ
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-30 19:43:52
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:1pJ/hbrCDW2ZTOo1O2VmyQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
