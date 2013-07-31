@@ -5,10 +5,42 @@ use utf8;
 
 BEGIN { extends 'Catalyst::Controller' }
 
-sub index :Path Args(0) {
-    my ( $self, $c ) = @_;
+sub base :Chained('/company/auth/requires_login') PathPart('') CaptureArgs(0) {}
 
-    $c->response->body('Matched PerlPro::Web::Controller::Company::Job.');
+sub index :Chained('base') PathPart('my_jobs') Args(0) GET {
+    my ( $self, $ctx ) = @_;
+
+    # display listing with all jobs of this company
+    # load data from DB
+
+    $ctx->stash(
+        template => 'company/my_jobs.tx',
+        current_page => 'my_jobs',
+    );
+}
+
+sub remove :Chained('base') PathPart('job') Args(1) DELETE {
+    my ( $self, $ctx ) = @_;
+
+    # remove job, return HTTP code for success, and some data like "OK"
+}
+
+sub add_job :Chained('base') Does('DisplayExecute') Args(0) {
+    my ( $self, $ctx ) = @_;
+
+    $ctx->stash(
+        template => 'company/add_job.tx',
+        current_page => 'add_job',
+    );
+}
+
+sub update_job :Chained('base') Does('DisplayExecute') Args(0) {
+    my ( $self, $ctx ) = @_;
+
+    $ctx->stash(
+        template => 'company/update_job.tx',
+        current_page => 'my_jobs', # just to color something in the menu
+    );
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -32,7 +64,15 @@ manage them (CRUD).
 
 =head1 METHODS
 
+=head2 base
+
 =head2 index
+
+=head2 remove
+
+=head2 add_job
+
+=head2 update_job
 
 =head1 AUTHOR
 
