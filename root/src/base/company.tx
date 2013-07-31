@@ -1,0 +1,154 @@
+<:
+    my $company_data_active = $current_page == 'home'
+                            ? raw(' class="active"')
+                            : ''
+                            ;
+
+    my $my_jobs_active      = $current_page == 'my_jobs'
+                            ? raw(' class="active"')
+                            : ''
+                            ;
+
+    my $add_job_active      = $current_page == 'add_job'
+                            ? raw(' class="active"')
+                            : ''
+                            ;
+
+    my $promote_job_active  = $current_page == 'promote_job'
+                            ? raw(' class="active"')
+                            : ''
+                            ;
+:>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>PerlPro</title>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.0/jquery.qtip.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="<: $static_uri :>/css/style.css" rel="stylesheet">
+    <meta charset="utf-8">
+</head>
+<body>
+    <div id="wrapper">
+
+        <!-- top menu (with the gray background) -->
+        <header>
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <div class="nav-collapse collapse">
+                            <div class="logout pull-right"><button class="btn-small btn-important"><: $l('SAIR') :></button></div>
+                            <ul class="nav">
+                                <li><a href="#"><img src="<: $static_uri :>/img/home.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
+                                <li><a href="#"><: $l('Procurar Vagas') :></a></li>
+                                <li><a href="#"><: $l('Catálogo de Empresas') :></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="push"><!-- make the footer stick to the bottom -->
+
+            <div id="small-black-background">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <div class="logo pull-left">
+                                <img src="<: $static_uri :>/img/logo_small.png" alt="PerlPro logo" />
+                            </div>
+                            <ul class="nav nav-pills">
+                                <li<: $company_data_active :>>
+                                    <a href="#"><: $l('Dados da Empresa') :></a>
+                                </li>
+                                <li<: $my_jobs_active :>>
+                                    <a href="#"><: $l('Meus anúncios') :></a>
+                                </li>
+                                <li<: $add_job_active :>>
+                                    <a href="#"><: $l('Adicionar anúncio') :></a>
+                                </li>
+                                <li<: $promote_job_active :>>
+                                    <a href="#"><: $l('Promover anúncio') :></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- main content -->
+            <div class="container main-content">
+                <div class="row">
+                    <div class="span12">
+:                       content()
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <footer>
+            <div class="footer-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="span5">
+                            <div class="footer-navbar navbar underline-block">
+                                <ul class="nav">
+                                    <li><a href="#"><img src="<: $static_uri :>/img/home-white.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
+                                    <li><a href="#"><: $l('Empregos') :></a></li>
+                                    <li><a href="#"><: $l('Acesso da Empresa') :></a></li>
+                                </ul>
+                            </div>
+                            <h4><: $l('Cadastre sua empresa') :></h4>
+                            <p><: $l('Encontre os melhores profissionais de Perl') :></p>
+                            <button class="btn-small btn-important pull-left"><: $l('Anuncie') :></button>
+                            <p class="how-it-works pull-left"><a href="#"><: $l('Como funciona?') :></a></p>
+                        </div>
+                        <div class="span3">
+                            <h4 class="underline-block">Siga nas redes sociais</h4>
+                            <ul class="social-icons">
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-facebook.png"  alt="Facebook" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-google.png"    alt="Google+" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-linkedin.png"  alt="LinkedIn" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-twitter.png"   alt="Twitter" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-rss.png"       alt="RSS/Atom Feeds" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-youtube.png"   alt="Youtube" /></a></li>
+                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-wordpress.png" alt="Wordpress" /></a></li>
+                            </ul>
+                        </div>
+                        <div class="span4">
+                            <h4 class="underline-block"><: $l('Receba nossas novidades') :></h4>
+                            <form>
+                                <input type="text" class="input-block-level flat-input" placeholder="<: $l('Digite seu e-mail') :>">
+                                <button class="input-block-level flat-input btn-action btn-small"><: $l('Cadastrar') :></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="credits">
+                <div class="container">
+                    <div class="row">
+                        <div class="span6">
+                            <p>2013 PerlPro &mdash; <: $l('Todos os direitos reservados.') :></p>
+                        </div>
+                        <div class="span6 text-right">
+                            <p><: $l('Desenvolvido por André Walker. Design por Nova1.') :></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.0/jquery.qtip.min.js"></script>
+    <script src="<: $static_uri :>/js/main.js"></script>
+</body>
+</html>

@@ -67,11 +67,20 @@ small {
 h1, h2, h3, h4, h5, h6 {
     font-family: "Droid Serif", serif;
 }
-h1 { font-size: 42px }
-h2 { font-size: 36px }
-h3 { font-size: 28px }
-h4 { font-size: 22px }
+h1 { font-size: 42px; line-height: 50px; }
+h2 { font-size: 36px; line-height: 40px; }
+h3 { font-size: 28px; line-height: 32px; }
+h4 { font-size: 22px; line-height: 25px; }
 
+h1.underlined, h2.underlined, h3.underlined, h4.underlined {
+    font-family: "Droid Sans", sans-serif;
+    border: none;
+    border-bottom: 1px solid #dddddd;
+    padding: 4px 0;
+}
+
+h1.underlined,
+h2.underlined { border-width: 3px }
 
 /* links */
 
@@ -118,7 +127,7 @@ header {
     border: 0
 }
 
-.company-access {
+.company-access, .logout {
     padding: 8px 0;
 }
 
@@ -138,6 +147,81 @@ header {
     text-decoration: underline;
 }
 
+
+/* header for logged in users */
+
+#small-black-background {
+    background: #555555;
+    color: #ffffff;
+    width: 100%;
+}
+
+#small-black-background .logo {
+    margin: 8px;
+}
+
+#small-black-background li {
+    margin: 0;
+}
+
+#small-black-background ul {
+    margin: 23px 10px;
+    float: left;
+}
+
+#small-black-background ul.nav > li > a:link,
+#small-black-background ul.nav > li > a:visited,
+#small-black-background ul.nav > li > a:active {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+#small-black-background ul.nav > li > a:hover,
+#small-black-background ul.nav > li > a:focus,
+#small-black-background ul.nav > li.active > a {
+    color: #ffffff;
+    background: #4eabea;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.label-company-data {
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 30px;
+    text-align: right;
+}
+
+.label-company-data img {
+    margin: 6px;
+    display: inline-block;
+}
+
+.value-company-data li {
+    line-height: 30px;
+}
+
+.company-data-basic-info-row {
+    margin: 50px 0;
+}
+
+a.update-data:link,
+a.update-data:visited {
+    color: #999999;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+a.update-data:hover,
+a.update-data:active,
+a.update-data:focus {
+    color: #999999;
+    text-decoration: underline;
+    font-weight: normal;
+    font-size: 16px;
+}
 
 /* top orange banner */
 
@@ -330,6 +414,6 @@ footer .navbar .nav > li > a:hover {
 }
 
 hr.thick {
-    border-size: 3px;
+    border-width: 2px;
     border-color: #dddddd;
 }

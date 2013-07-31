@@ -14,7 +14,8 @@ sub display :Chained('base') PathPart('home') Args(0) GET {
     # load data from DB
 
     $ctx->stash(
-        template => 'company/home.tx'
+        template => 'company/home.tx',
+        current_page => 'home',
     );
 }
 

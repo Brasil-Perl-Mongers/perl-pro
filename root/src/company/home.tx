@@ -1,1 +1,78 @@
-Home page for logged in users
+:cascade base::company
+:block content -> {
+<h2 class="underlined"><: $l('Minha conta') :></h2>
+
+<div class="company-data-basic-info-row">
+    <div class="row">
+        <div class="span12">
+            <h3 class="underlined"><: $l('Informações básicas') :></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span2">
+            <h4>Avatar</h4>
+        </div>
+        <div class="span4">
+            <h4>Amazon do Brasil <a href="#" class="update-data"><: $l('Alterar') :></a></h4>
+            <p>contato@amazon.com.br <a href="#" class="update-data"><: $l('Alterar') :></a></p>
+            <p>8 vagas cadastradas</p>
+            <button class="btn-util btn-small"><: $l('Gerenciar anúncios') :></button>
+        </div>
+        <div class="span6">
+            <p class="lead"><: $l('Último acesso: ') :>04/06/2013</p>
+            <button class="btn-large btn-save"><: $l('Alterar e-mail') :></button>
+            <button class="btn-large btn-action"><: $l('Alterar senha') :></button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span6">
+        <h3 class="underlined"><: $l('Contato & Localização') :></h3>
+        <div class="row">
+            <div class="span2 label-company-data">Site <img src="<: $static_uri :>/img/icon.world.png" alt="world icon" /></div>
+            <div class="span4 value-company-data">
+                <ul>
+                    <li>www.empresa.com.br</li>
+                    <li><a href="" class="update-data"><: $l('Adicionar site') :></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2 label-company-data">E-mail <img src="<: $static_uri :>/img/icon.letter.png" alt="letter icon" /></div>
+            <div class="span4 value-company-data">
+                <ul>
+                    <li>contato@empresa.com.br</li>
+                    <li><a href="" class="update-data"><: $l('Adicionar e-mail') :></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2 label-company-data">Fone <img src="<: $static_uri :>/img/icon.phone.png" alt="phone icon" /></div>
+            <div class="span4 value-company-data">
+                <ul>
+                    <li>(11) 1234-5678</li>
+                    <li><a href="" class="update-data"><: $l('Adicionar telefone') :></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2 label-company-data">Endereço <img src="<: $static_uri :>/img/icon.address.png" alt="address icon" /></div>
+            <div class="span4 value-company-data">
+                <ul>
+                    <li>Av. Foo Bar, 789, São Paulo - SP</li>
+                    <li><a href="" class="update-data"><: $l('Adicionar endereço') :></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="span6">
+        <h3 class="underlined">Descrição da empresa</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.</p>
+        <p><a href="#" class="update-data"><: $l('Alterar') :></a></p>
+    </div>
+</div>
+
+<hr class="thick" />
+
+: }
