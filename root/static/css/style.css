@@ -417,3 +417,72 @@ hr.thick {
     border-width: 2px;
     border-color: #dddddd;
 }
+
+table.my_jobs {
+    border-collapse: separate;
+    border-spacing: 10px;
+    vertical-align: middle
+}
+
+table.my_jobs form {
+    margin: 0;
+}
+
+table.my_jobs,
+table.my_jobs tr,
+table.my_jobs tr td,
+table.my_jobs tr th {
+    border-style: none;
+}
+
+table.my_jobs th {
+    padding: 0;
+    font-weight: normal;
+}
+
+table.my_jobs td.published_at {
+    background: #dddddd;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+table.my_jobs td.description {
+    background: #dddddd;
+}
+
+table.my_jobs td.promote {
+    background: #4eabea;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 3px;
+}
+
+table.my_jobs td.already_promoted {
+    background: #9eccec;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 3px;
+}
+
+table.my_jobs td.active {
+    background: #27ae60;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 3px;
+}
+
+table.my_jobs td.inactive {
+    background: #e89988;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 3px;
+}
+
+table.my_jobs td.edit,
+table.my_jobs td.remove {
+    background: #e57e21;
+    text-align: center;
+    cursor: pointer;
+}
+
