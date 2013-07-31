@@ -1,7 +1,10 @@
 :cascade base::company
 :block content -> {
-<div class="pull-right"><button class="btn-util btn-large"><: $l('Adicionar novo') :></button></div>
-<h2 class="underlined"><: $l('Meus anúncios') :></h2>
+
+<h2 class="underlined">
+    <: $l('Meus anúncios') :>
+    <div class="pull-right"><button class="btn-util btn-large"><: $l('Adicionar novo') :></button></div>
+</h2>
 
 <table class="table">
     <thead>
@@ -16,36 +19,36 @@
     </thead>
     <tbody>
         <tr>
-            <td>14.03</td>
-            <td>Ativo</td>
+            <td class="published_at">14.03</td>
+            <td class="active">Ativo</td>
             <td>Programador Front-End</td>
-            <td>Promover</td>
-            <td>Editar</td>
-            <td>Remover</td>
+            <td class="promote">Promover</td>
+            <td class="edit"><i class="icon-pencil"></i></td>
+            <td class="remove"><i class="icon-trash"></i></td>
         </tr>
         <tr>
-            <td>14.03</td>
-            <td>Ativo</td>
+            <td class="published_at">14.03</td>
+            <td class="active">Ativo</td>
             <td>Programador Front-End</td>
-            <td>Promover</td>
-            <td>Editar</td>
-            <td>Remover</td>
+            <td class="promote">Promover</td>
+            <td class="edit"><i class="icon-pencil"></i></td>
+            <td class="remove"><i class="icon-trash"></i></td>
         </tr>
         <tr>
-            <td>14.03</td>
-            <td>Ativo</td>
+            <td class="published_at">14.03</td>
+            <td class="inactive">Inativo</td>
             <td>Programador Front-End</td>
-            <td>Promover</td>
-            <td>Editar</td>
-            <td>Remover</td>
+            <td class="promote">Promover</td>
+            <td class="edit"><i class="icon-pencil"></i></td>
+            <td class="remove"><i class="icon-trash"></i></td>
         </tr>
         <tr>
-            <td>14.03</td>
-            <td>Ativo</td>
+            <td class="published_at">14.03</td>
+            <td class="active">Ativo</td>
             <td>Programador Front-End</td>
-            <td>Promover</td>
-            <td>Editar</td>
-            <td>Remover</td>
+            <td class="already_promoted">Já promovido</td>
+            <td class="edit"><i class="icon-pencil"></i></td>
+            <td class="remove"><i class="icon-trash"></i></td>
         </tr>
     </tbody>
 </table>
