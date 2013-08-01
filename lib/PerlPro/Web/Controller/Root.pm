@@ -7,12 +7,22 @@ BEGIN { extends 'Catalyst::Controller' }
 
 __PACKAGE__->config(namespace => '');
 
-sub index :Path :Args(0) {}
+sub index :Path Args(0) {
+    my ( $self, $ctx ) = @_;
+
+    $ctx->detach('/public/home/home');
+}
+
+sub favicon : Path('favicon.ico') Args(0) {
+    my ( $self, $ctx ) = @_;
+    $ctx->serve_static;
+}
 
 sub default :Path {
-    my ( $self, $c ) = @_;
-    $c->response->body( 'Page not found' );
-    $c->response->status(404);
+    my ( $self, $ctx ) = @_;
+
+    $ctx->res->status(404);
+    $ctx->res->body( 'Page not found' );
 }
 
 sub end : ActionClass('RenderView') {}
@@ -35,7 +45,7 @@ PerlPro::Web::Controller::Root - Root Controller for PerlPro::Web
 
 =head2 index
 
-The root page (/)
+The root page (/). Loads the `home` action in the controller L<PerlPro::Web::Controller::Public::Home#home>.
 
 =head2 default
 
