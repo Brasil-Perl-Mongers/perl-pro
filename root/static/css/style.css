@@ -533,7 +533,7 @@ footer .navbar .nav > li > a:hover {
 }
 
 .qtip-bootstrap {
-    background: #dddddd;
+    background: #eeeeee;
 }
 
 hr.thick {
@@ -643,4 +643,81 @@ ul.requirements > li {
     background: #ddd;
     display: block;
     float: left;
+}
+
+.box {
+    background: #dddddd;
+    margin: 0 0 35px;
+    padding: 10px 25px;
+}
+
+.box hr {
+    border-color: #ccc;
+    background: #ccc;
+}
+
+.home-box {
+    min-height: 220px;
+}
+
+ul.job-list,
+ul.job-list li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.job-list li {
+    display: block;
+    background: #dddddd;
+    color: #333333;
+    padding: 8px 10px;
+    margin: 7px 0;
+    border-left-width: 6px;
+    border-left-style: solid;
+}
+
+ul.job-list li.company-color1 {
+    border-color: #2980b9;
+}
+
+ul.job-list li.company-color2 {
+    border-color: #1abc9c;
+}
+
+ul.job-list li.company-color3 {
+    border-color: #f1c40f;
+}
+
+ul.job-list li.company-color4 {
+    border-color: #2c3e50;
+}
+
+ul.job-list li.company-color5 {
+    border-color: #c0392b;
+}
+
+ul.job-list li.company-color6 {
+    border-color: #27ae60;
+}
+
+ul.job-list li.company-color7 {
+    border-color: #95a5a6;
+}
+
+ul.job-list li .position-name {
+    font-weight: bold;
+}
+
+a.company-name:link,
+a.company-name:visited,
+a.company-name:hover,
+a.company-name:active,
+a.company-name:focus {
+    color: #e57e21;
+    font-weight: normal;
+}
+
+.recent-jobs-row, .hot-jobs-row {
+    margin: 0 0 40px 0;
 }
