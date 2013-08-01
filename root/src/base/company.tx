@@ -42,7 +42,13 @@
                         <span class="icon-bar"></span>
                         </button>
                         <div class="nav-collapse collapse">
-                            <div class="logout pull-right"><a href="<: $uri('/company/logout') :>" class="btn-small btn-important"><: $l('SAIR') :></a></div>
+                            <div class="logout pull-right">
+                                <a href="<: $uri('/company/logout') :>" class="btn-small btn-important"><: $l('SAIR') :></a>
+                            </div>
+                            <div class="logged-as pull-right">
+                                <: $l('Logado como') :><br/>
+                                <strong><: $user.login :></strong>
+                            </div>
                             <ul class="nav">
                                 <li><a href="#"><img src="<: $static_uri :>/img/home.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
                                 <li><a href="#"><: $l('Procurar Vagas') :></a></li>

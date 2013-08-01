@@ -721,3 +721,16 @@ a.company-name:focus {
 .recent-jobs-row, .hot-jobs-row {
     margin: 0 0 40px 0;
 }
+
+.logged-as {
+    border-right: 1px solid #cccccc;
+    padding: 3px 15px;
+    margin: 7px 15px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.logged-as strong {
+    font-size: 14px;
+    line-height: 16px;
+}

@@ -41,12 +41,11 @@ sub send_to_login {
 sub get_auth_data {
     my ( $self, $ctx ) = @_;
 
-    my $obj = $ctx->user->get_object;
-
+    # common data to company and general website administration
+    # this is saved when the user logs in
     return (
         _perlpro_auth_data => {
             is_logged_in             => 1,
-            # company                => ...
             # can_blah_blah          => $ctx->check_user_roles(...)
             # is_blah_blah           => $ctx->check_user_roles(...)
         }

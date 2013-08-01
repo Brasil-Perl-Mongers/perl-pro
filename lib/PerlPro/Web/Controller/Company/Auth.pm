@@ -16,6 +16,22 @@ after login_display => sub {
     );
 };
 
+around get_auth_data => sub {
+    my $orig = shift;
+    my $self = shift;
+    my $ctx  = shift;
+
+    my %result = $self->$orig($ctx, @_);
+
+    my $obj = $ctx->user->get_object;
+
+    $result{_perlpro_auth_data}{is_admin} = 0;
+    $result{_perlpro_auth_data}{user}     = $obj;
+    $result{_perlpro_auth_data}{company}  = $obj->user_companies->first->company;
+
+    return %result;
+};
+
 __PACKAGE__->meta->make_immutable;
 
 1;
