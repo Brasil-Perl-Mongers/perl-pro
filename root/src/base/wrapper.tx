@@ -153,7 +153,7 @@
                 <div class="span6 offset1">
                     <h4><: $l('Ainda não é cadastrado?') :></h4>
                     <p><: $l('Crie uma conta gratuita e encontre os melhores profissionais em todo o Brasil') :></p>
-                    <button class="btn-important btn-large">Cadastre-se</button>
+                    <a href="<: $uri('/company/register') :>" class="btn-important btn-large">Cadastre-se</a>
                 </div>
             </div>
         </div>

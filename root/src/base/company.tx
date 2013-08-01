@@ -42,7 +42,7 @@
                         <span class="icon-bar"></span>
                         </button>
                         <div class="nav-collapse collapse">
-                            <div class="logout pull-right"><button class="btn-small btn-important"><: $l('SAIR') :></button></div>
+                            <div class="logout pull-right"><a href="<: $uri('/company/logout') :>" class="btn-small btn-important"><: $l('SAIR') :></a></div>
                             <ul class="nav">
                                 <li><a href="#"><img src="<: $static_uri :>/img/home.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
                                 <li><a href="#"><: $l('Procurar Vagas') :></a></li>
@@ -65,13 +65,13 @@
                             </div>
                             <ul class="nav nav-pills">
                                 <li<: $company_data_active :>>
-                                    <a href="#"><: $l('Dados da Empresa') :></a>
+                                    <a href="<: $uri('/company/home') :>"><: $l('Dados da Empresa') :></a>
                                 </li>
                                 <li<: $my_jobs_active :>>
-                                    <a href="#"><: $l('Meus anúncios') :></a>
+                                    <a href="<: $uri('/company/my_jobs') :>"><: $l('Meus anúncios') :></a>
                                 </li>
                                 <li<: $add_job_active :>>
-                                    <a href="#"><: $l('Adicionar anúncio') :></a>
+                                    <a href="<: $uri('/company/add_job') :>"><: $l('Adicionar anúncio') :></a>
                                 </li>
                                 <li<: $promote_job_active :>>
                                     <a href="#"><: $l('Promover anúncio') :></a>

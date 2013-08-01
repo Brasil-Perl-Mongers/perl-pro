@@ -27,31 +27,96 @@ small {
 
 /* buttons */
 
+a.btn-large,
+a.btn-large:link,
+a.btn-large:visited,
+a.btn-large:hover,
+a.btn-large:active,
+button.btn-large,
 .btn-large {
     border-radius: 3px;
     width: 180px;
     font-size: 16px;
     padding: 7px 0;
     border: 0;
+    display: inline-block;
+    text-align: center;
 }
 
+a.btn-small,
+a.btn-small:link,
+a.btn-small:visited,
+a.btn-small:hover,
+a.btn-small:active,
+button.btn-small,
 .btn-small {
     border: 0;
     border-radius: 3px;
     font-size: 16px;
     padding: 7px 16px;
+    display: inline-block;
+    text-align: center;
 }
 
-.btn-util { color: #ffffff; background-color: #4eabea }
-.btn-save { color: #ffffff; background-color: #27ae60 }
-.btn-action { color: #ffffff; background-color: #e57e21 }
-.btn-important { color: #ffffff; background-color: #e74c3c }
+a.btn-util,
+a.btn-util:link,
+a.btn-util:visited,
+a.btn-util:hover,
+a.btn-util:active,
+button.btn-util,
+.btn-util {
+    color: #ffffff;
+    background-color: #4eabea;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+a.btn-save,
+a.btn-save:link,
+a.btn-save:visited,
+a.btn-save:hover,
+a.btn-save:active,
+button.btn-save,
+.btn-save {
+    color: #ffffff;
+    background-color: #27ae60;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+a.btn-action,
+a.btn-action:link,
+a.btn-action:visited,
+a.btn-action:hover,
+a.btn-action:active,
+button.btn-action,
+.btn-action {
+    color: #ffffff;
+    background-color: #e57e21;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+a.btn-important,
+a.btn-important:link,
+a.btn-important:visited,
+a.btn-important:hover,
+a.btn-important:active,
+button.btn-important,
+.btn-important {
+    color: #ffffff;
+    background-color: #e74c3c;
+    text-decoration: none;
+    font-weight: normal;
+}
 
 
 /* inputs */
 
 #wrapper input.flat-input,
 #wrapper textarea.flat-input,
+input.flat-input,
+textarea.flat-input,
 .flat-input {
     font-size: 16px;
     box-shadow: none;
@@ -411,6 +476,10 @@ footer .navbar .nav > li > a:hover {
 
 .qtip {
     max-width: 1200px;
+}
+
+.qtip-bootstrap {
+    background: #dddddd;
 }
 
 hr.thick {
