@@ -9,6 +9,13 @@ sub base : Chained('/') PathPart('company') CaptureArgs(0) {}
 
 sub _build_first_page { '/company/home' }
 
+after login_display => sub {
+    my ( $self, $ctx ) = @_;
+    $ctx->stash(
+        template => 'company/login.tx'
+    );
+};
+
 __PACKAGE__->meta->make_immutable;
 
 1;
