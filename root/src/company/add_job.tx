@@ -1,0 +1,114 @@
+:cascade base::company
+:block content -> {
+<form action="<:# TODO :>" method="post">
+<h2 class="underlined">
+    <: $l('Adicionar anúncio de vaga') :>
+    <div class="pull-right">
+        <select name="active">
+            <option value="1"><: $l('Vaga ativa') :></option>
+            <option value="0"><: $l('Vaga inativa') :></option>
+        </select>
+    </div>
+</h2>
+
+<div class="jobs-form-basic-info-row">
+    <div class="row">
+        <div class="span12">
+            <h3 class="underlined"><: $l('Informações básicas') :></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <div class="controls-row">
+                <input type="text" class="flat-input span6" placeholder="Título" />
+            </div>
+            <div class="controls-row">
+                <input type="text" class="flat-input span6" placeholder="Local / Endereço" />
+            </div>
+            <div class="controls-row">
+                <input type="text" class="flat-input span3" placeholder="Fone" />
+                <input type="text" class="flat-input span3" placeholder="E-mail" />
+            </div>
+            <div class="controls-row">
+                <input type="text" class="flat-input span6" placeholder="Quantidade de Vagas" />
+            </div>
+        </div>
+        <div class="span6">
+            <div class="controls-row">
+                <textarea class="span6 flat-input" rows="7" placeholder="Descrição da Vaga"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jobs-form-contract-salary-row">
+    <div class="row">
+        <div class="span12">
+            <h3 class="underlined"><: $l('Contrato & Salário') :></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <div class="controls-row">
+                <input type="text" class="flat-input span3" placeholder="Salário" />
+                <input type="text" class="flat-input span3" placeholder="Duração do Contrato" />
+            </div>
+            <div class="controls-row">
+                <select class="span3"><option>Forma de contratação</option></select>
+                <div class="span3">
+                    <label class="checkbox"><input type="checkbox"> Presencial</label>
+                </div>
+            </div>
+        </div>
+        <div class="span6">
+            <h4><: $l('Período & Relacionamento') :></h4>
+            <button>Integral</button>
+            <button>Meio período</button>
+            <button>Estágio</button>
+            <button>Freelance</button>
+        </div>
+    </div>
+</div>
+
+<div class="jobs-form-contract-salary-row">
+    <div class="row">
+        <div class="span12">
+            <h3 class="underlined"><: $l('Requisitos') :></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <div class="controls-row">
+                <label class="controls-label">Necessário conhecimento em:</label>
+                <input type="text" class="flat-input span5" placeholder="Digite separado por vírgula" />
+                <button class="span1">Adicionar</button>
+            </div>
+            <div class="row">
+                <ul>
+                    <li>Moose</li>
+                    <li>Catalyst</li>
+                    <li>PSGI</li>
+                    <li>Plack</li>
+                </ul>
+            </div>
+        </div>
+        <div class="span6">
+            <div class="controls-row">
+                <label class="controls-label">Não obrigatório, mas desejável:</label>
+                <input type="text" class="flat-input span5" placeholder="Digite separado por vírgula" />
+                <button class="span1">Adicionar</button>
+            </div>
+            <div class="row">
+                <ul>
+                    <li>Moose</li>
+                    <li>Catalyst</li>
+                    <li>PSGI</li>
+                    <li>Plack</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</form>
+: }
