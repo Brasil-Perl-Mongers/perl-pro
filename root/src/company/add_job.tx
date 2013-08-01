@@ -1,6 +1,6 @@
 :cascade base::company
 :block content -> {
-<form action="<:# TODO :>" method="post">
+<form action="<:# TODO :>" method="post" id="jobs_form">
 <h2 class="underlined">
     <: $l('Adicionar anúncio de vaga') :>
     <div class="pull-right">
@@ -54,23 +54,31 @@
                 <input type="text" class="flat-input span3" placeholder="Duração do Contrato" />
             </div>
             <div class="controls-row">
-                <select class="span3"><option>Forma de contratação</option></select>
+                <select class="span3">
+                    <option selected>Forma de contratação</option>
+                    <option>CLT</option>
+                    <option>PJ</option>
+                </select>
                 <div class="span3">
                     <label class="checkbox"><input type="checkbox"> Presencial</label>
                 </div>
             </div>
         </div>
         <div class="span6">
-            <h4><: $l('Período & Relacionamento') :></h4>
-            <button>Integral</button>
-            <button>Meio período</button>
-            <button>Estágio</button>
-            <button>Freelance</button>
+            <h4 class="form-label"><: $l('Período & Relacionamento') :></h4>
+            <div data-toggle="buttons-radio" class="btn-radio">
+                <button class="btn btn-flat btn-small btn-red" type="button">Integral</button>
+                <button class="btn btn-flat btn-small btn-green" type="button">Meio período</button>
+                <button class="btn btn-flat btn-small btn-blue" type="button">Estágio</button>
+                <button class="btn btn-flat btn-small btn-purple" type="button">Freelance</button>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="jobs-form-contract-salary-row">
+</form>
+
+<div class="jobs-form-requirements-row">
     <div class="row">
         <div class="span12">
             <h3 class="underlined"><: $l('Requisitos') :></h3>
@@ -78,37 +86,48 @@
     </div>
     <div class="row">
         <div class="span6">
-            <div class="controls-row">
-                <label class="controls-label">Necessário conhecimento em:</label>
-                <input type="text" class="flat-input span5" placeholder="Digite separado por vírgula" />
-                <button class="span1">Adicionar</button>
+            <h4 class="form-label">Necessário conhecimento em:</h4>
+            <div class="row">
+                <div class="span6">
+                    <input type="text" class="flat-input input-requirements" placeholder="Digite separado por vírgula" />
+                    <button class="btn-small btn-action" type="button">Adicionar</button>
+                </div>
             </div>
             <div class="row">
-                <ul>
-                    <li>Moose</li>
-                    <li>Catalyst</li>
-                    <li>PSGI</li>
-                    <li>Plack</li>
-                </ul>
+                <div class="span6">
+                    <ul class="requirements">
+                        <li>Moose</li>
+                        <li>Catalyst</li>
+                        <li>PSGI</li>
+                        <li>Plack</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="span6">
+            <h4 class="form-label">Não obrigatório, mas desejável:</h4>
             <div class="controls-row">
-                <label class="controls-label">Não obrigatório, mas desejável:</label>
-                <input type="text" class="flat-input span5" placeholder="Digite separado por vírgula" />
-                <button class="span1">Adicionar</button>
+                <input type="text" class="flat-input input-requirements" placeholder="Digite separado por vírgula" />
+                <button class="btn-small btn-action" type="button">Adicionar</button>
             </div>
             <div class="row">
-                <ul>
-                    <li>Moose</li>
-                    <li>Catalyst</li>
-                    <li>PSGI</li>
-                    <li>Plack</li>
-                </ul>
+                <div class="span6">
+                    <ul class="requirements">
+                        <li>Moose</li>
+                        <li>Catalyst</li>
+                        <li>PSGI</li>
+                        <li>Plack</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-</form>
+<hr class="thick" />
+
+<div class="text-right">
+    <button type="reset" class="btn-small btn-important" form="jobs_form"><: $l('Cancelar') :></button>
+    <button type="submit" class="btn-small btn-save" form="jobs_form"><: $l('Salvar') :></button>
+</div>
 : }

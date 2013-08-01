@@ -27,6 +27,19 @@ small {
 
 /* buttons */
 
+button.btn.btn-flat,
+a.btn.btn-flat:link,
+a.btn.btn-flat:visited,
+a.btn.btn-flat:hover,
+a.btn.btn-flat:active,
+button.btn-flat,
+a.btn-flat {
+    border: 0 none;
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
 a.btn-large,
 a.btn-large:link,
 a.btn-large:visited,
@@ -63,7 +76,11 @@ a.btn-util:link,
 a.btn-util:visited,
 a.btn-util:hover,
 a.btn-util:active,
-button.btn-util,
+button.btn.btn-util,
+button.btn.btn-util:hover,
+button.btn.btn-util:focus,
+button.btn.btn-util:active,
+button.btn.btn-util.active,
 .btn-util {
     color: #ffffff;
     background-color: #4eabea;
@@ -76,7 +93,11 @@ a.btn-save:link,
 a.btn-save:visited,
 a.btn-save:hover,
 a.btn-save:active,
-button.btn-save,
+button.btn.btn-save,
+button.btn.btn-save:hover,
+button.btn.btn-save:focus,
+button.btn.btn-save:active,
+button.btn.btn-save.active,
 .btn-save {
     color: #ffffff;
     background-color: #27ae60;
@@ -89,7 +110,11 @@ a.btn-action:link,
 a.btn-action:visited,
 a.btn-action:hover,
 a.btn-action:active,
-button.btn-action,
+button.btn.btn-action,
+button.btn.btn-action:hover,
+button.btn.btn-action:focus,
+button.btn.btn-action:active,
+button.btn.btn-action.active,
 .btn-action {
     color: #ffffff;
     background-color: #e57e21;
@@ -102,7 +127,11 @@ a.btn-important:link,
 a.btn-important:visited,
 a.btn-important:hover,
 a.btn-important:active,
-button.btn-important,
+button.btn.btn-important,
+button.btn.btn-important:hover,
+button.btn.btn-important:focus,
+button.btn.btn-important:active,
+button.btn.btn-important.active,
 .btn-important {
     color: #ffffff;
     background-color: #e74c3c;
@@ -110,6 +139,31 @@ button.btn-important,
     font-weight: normal;
 }
 
+.btn-radio .btn-flat {
+    opacity: 0.3;
+}
+.btn-radio .btn-flat:hover,
+.btn-radio .btn-flat:active,
+.btn-radio .btn-flat.active {
+    opacity: 1;
+}
+
+.btn.btn-red, .btn.btn-red:hover, .btn.btn-red:active .btn.btn-red.active {
+    background-color: #c0392b;
+    color: #ffffff;
+}
+.btn.btn-blue, .btn.btn-blue:hover, .btn.btn-blue:active .btn.btn-blue.active {
+    background-color: #4eabea;
+    color: #ffffff;
+}
+.btn.btn-purple, .btn.btn-purple:hover, .btn.btn-purple:active .btn.btn-purple.active {
+    background-color: #8e44ad;
+    color: #ffffff;
+}
+.btn.btn-green, .btn.btn-green:hover, .btn.btn-green:active .btn.btn-green.active {
+    background-color: #27ae60;
+    color: #ffffff;
+}
 
 /* inputs */
 
@@ -555,3 +609,38 @@ table.my_jobs td.remove {
     cursor: pointer;
 }
 
+h4.form-label {
+    font-family: "Droid Sans", sans-serif;
+    font-size: 17px;
+    line-height: 20px;
+}
+
+label {
+    font-family: "Droid Sans", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 7px 6px;
+    margin: 0;
+}
+
+.input-requirements {
+    width: 430px;
+    vertical-align: middle;
+    margin: 10px;
+}
+
+ul.requirements,
+ul.requirements li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.requirements > li {
+    border-radius: 3px;
+    margin: 5px;
+    padding: 7px 15px;
+    background: #ddd;
+    display: block;
+    float: left;
+}
