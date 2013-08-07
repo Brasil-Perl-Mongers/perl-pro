@@ -5,14 +5,14 @@ use utf8;
 
 BEGIN { extends 'Catalyst::Controller' }
 
-sub base :Chained('/') PathPart('company') CaptureArgs(0) {
+sub base :Chained('/') PathPart('') CaptureArgs(0) {
     my ( $self, $ctx ) = @_;
     $ctx->stash(
         current_model_instance => $ctx->model('DB::Company')
     );
 }
 
-sub profile :Chained('base') PathPart('') Args(1) GET {
+sub profile :Chained('base') PathPart('company') Args(1) GET {
     my ( $self, $ctx, $company ) = @_;
 
     $ctx->stash(
@@ -20,7 +20,7 @@ sub profile :Chained('base') PathPart('') Args(1) GET {
     );
 }
 
-sub catalog :Chained('base') PathPart('') Args(0) GET {
+sub catalog :Chained('base') PathPart('companies') Args(0) GET {
     my ( $self, $ctx ) = @_;
 
     # TODO: paging
@@ -31,33 +31,6 @@ sub catalog :Chained('base') PathPart('') Args(0) GET {
     $ctx->stash(
         companies => [ $ctx->model->search->all ]
     );
-}
-
-sub register :Chained('base') Does('DisplayExecute') Args(0) {}
-
-sub register_execute {
-    my ( $self, $ctx ) = @_;
-
-    $ctx->stash->{DO_NOT_APPLY_DM} = 1;
-
-    my $dm = $ctx->model('DataManager');
-    my $user = $ctx->req->params->{user}{register};
-    my $company = $ctx->req->params->{company}{register};
-
-    $dm->apply_one('company.register', $company);
-
-    my $company_obj = $dm->get_outcome_for('company.register');
-
-    if ($company_obj) {
-        $user->{company} = $company_obj->name_in_url;
-    }
-
-    $dm->apply_one('user.register', $user);
-
-    if (!$dm->success) {
-        $ctx->log->warn('registration form invalid');
-        $company_obj->delete if $company_obj;
-    }
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -76,7 +49,7 @@ PerlPro::Web::Controller::Public::Company - Catalyst Controller
 
 =head1 DESCRIPTION
 
-Controller for browsing companies, and registering a new company.
+Controller for browsing companies.
 
 =head1 METHODS
 
@@ -91,14 +64,6 @@ Display the profile of a given company.
 =head2 catalog
 
 Display a list of all companies registered.
-
-=head2 register
-
-Register a new company.
-
-=head2 register_execute
-
-Save the form.
 
 =head1 AUTHOR
 

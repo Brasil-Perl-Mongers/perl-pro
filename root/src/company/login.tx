@@ -1,6 +1,6 @@
 : cascade base::wrapper
 : block content {
-<form class="container-fluid" action="<: $uri('/company/login') :>" method="post">
+<form class="container-fluid" action="<: $uri('/account/login') :>" method="post">
     <div class="row-fluid">
         <div class="span5">
             <h4 class="underline-block"><: $l('Já tenho uma conta') :></h4>
@@ -17,7 +17,7 @@
         <div class="span6 offset1">
             <h4><: $l('Ainda não é cadastrado?') :></h4>
             <p><: $l('Crie uma conta gratuita e encontre os melhores profissionais em todo o Brasil') :></p>
-            <a class="btn-important btn-large" href="<: $uri('/company/register') :>">Cadastre-se</a>
+            <a class="btn-important btn-large" href="<: $uri('/account/new') :>">Cadastre-se</a>
         </div>
     </div>
 </form>

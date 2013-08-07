@@ -54,7 +54,7 @@
                     <div class="box home-box">
                         <h4><: $l('Acesso da empresa') :></h4>
                         <hr/>
-                        <form action="<: $uri('/company/login') :>" method="post">
+                        <form action="<: $uri('/account/login') :>" method="post">
                             <input type="text" name="login" placeholder="Digite seu login" class="input-block-level flat-input" />
                             <input type="password" name="password" placeholder="Digite sua senha" class="input-block-level flat-input" />
                             <p class="text-right">
@@ -68,7 +68,7 @@
                         <h4><: $l('Cadastre uma vaga') :></h4>
                         <hr/>
                         <p><: $l('Crie uma conta gratuita e encontre os melhores profissionais do Brasil') :></p>
-                        <p><a href="<: $uri('/company/register') :>" class="btn-small btn-important"><: $l('Cadastre-se') :></a></p>
+                        <p><a href="<: $uri('/account/new') :>" class="btn-small btn-important"><: $l('Cadastre-se') :></a></p>
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@
             </ul>
             <hr/>
             <div class="text-center">
-                <a href="<: $uri('/company/catalog') :>" class="btn-action btn-large"><: $l('Ver catálogo') :></a>
+                <a href="<: $uri('/companies') :>" class="btn-action btn-large"><: $l('Ver catálogo') :></a>
             </div>
         </div>
         <div class="box">

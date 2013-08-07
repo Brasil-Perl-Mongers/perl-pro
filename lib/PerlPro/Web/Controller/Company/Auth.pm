@@ -5,9 +5,9 @@ use utf8;
 
 BEGIN { extends 'PerlPro::Web::ControllerBase::Auth' }
 
-sub base : Chained('/') PathPart('company') CaptureArgs(0) {}
+sub base : Chained('/') PathPart('account') CaptureArgs(0) {}
 
-sub _build_first_page { '/company/home' }
+sub _build_first_page { '/account/home' }
 
 after login_display => sub {
     my ( $self, $ctx ) = @_;

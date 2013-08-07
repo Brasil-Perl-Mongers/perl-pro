@@ -24,9 +24,9 @@
                         <div class="nav-collapse collapse">
                             <div class="company-access pull-right"><button class="btn-large btn-util"><: $l('ACESSO DA EMPRESA') :></button></div>
                             <ul class="nav">
-                                <li><a href="#"><img src="<: $static_uri :>/img/home.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
-                                <li><a href="#"><: $l('Procurar Vagas') :></a></li>
-                                <li><a href="#"><: $l('Catálogo de Empresas') :></a></li>
+                                <li><a href="<: $uri('/home') :>"><img src="<: $static_uri :>/img/home.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
+                                <li><a href="<: $uri('/search') :>"><: $l('Procurar Vagas') :></a></li>
+                                <li><a href="<: $uri('/companies') :>"><: $l('Catálogo de Empresas') :></a></li>
                             </ul>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                                 <img src="<: $static_uri :>/img/search.png" />
                                 <button class="btn-action btn-small" type="submit"><: $l('Busca') :></button>
                             </form>
-                            <p class="advanced-search"><: $l('Ou faça uma') :><br/><a href="#"><: $l('Busca Avançada') :></a></p>
+                            <p class="advanced-search"><: $l('Ou faça uma') :><br/><a href="<: $uri('/search') :>"><: $l('Busca Avançada') :></a></p>
                         </div>
                     </div>
                 </div>
@@ -87,14 +87,14 @@
                         <div class="span5">
                             <div class="footer-navbar navbar underline-block">
                                 <ul class="nav">
-                                    <li><a href="#"><img src="<: $static_uri :>/img/home-white.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
-                                    <li><a href="#"><: $l('Empregos') :></a></li>
-                                    <li><a href="#"><: $l('Acesso da Empresa') :></a></li>
+                                    <li><a href="<: $uri('/home') :>"><img src="<: $static_uri :>/img/home-white.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
+                                    <li><a href="<: $uri('/search') :>"><: $l('Empregos') :></a></li>
+                                    <li><a href="<: $uri('/account/login') :>"><: $l('Acesso da Empresa') :></a></li>
                                 </ul>
                             </div>
                             <h4><: $l('Cadastre sua empresa') :></h4>
                             <p><: $l('Encontre os melhores profissionais de Perl') :></p>
-                            <button class="btn-small btn-important pull-left"><: $l('Anuncie') :></button>
+                            <a href="<: $uri('/account/new') :>" class="btn-small btn-important pull-left"><: $l('Anuncie') :></a>
                             <p class="how-it-works pull-left"><a href="#"><: $l('Como funciona?') :></a></p>
                         </div>
                         <div class="span3">
@@ -133,7 +133,7 @@
             </div>
         </footer>
 
-        <form id="login_form" class="hide container-fluid" action="/company/login" method="post">
+        <form id="login_form" class="hide container-fluid" action="<: $uri('/account/login') :>" method="post">
             <div class="row-fluid">
                 <div class="span5">
                     <h4 class="underline-block"><: $l('Já tenho uma conta') :></h4>
@@ -150,7 +150,7 @@
                 <div class="span6 offset1">
                     <h4><: $l('Ainda não é cadastrado?') :></h4>
                     <p><: $l('Crie uma conta gratuita e encontre os melhores profissionais em todo o Brasil') :></p>
-                    <a href="<: $uri('/company/register') :>" class="btn-important btn-large">Cadastre-se</a>
+                    <a href="<: $uri('/account/new') :>" class="btn-important btn-large">Cadastre-se</a>
                 </div>
             </div>
         </form>

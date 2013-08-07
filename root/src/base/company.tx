@@ -43,16 +43,16 @@
                         </button>
                         <div class="nav-collapse collapse">
                             <div class="logout pull-right">
-                                <a href="<: $uri('/company/logout') :>" class="btn-small btn-important"><: $l('SAIR') :></a>
+                                <a href="<: $uri('/account/logout') :>" class="btn-small btn-important"><: $l('SAIR') :></a>
                             </div>
                             <div class="logged-as pull-right">
                                 <: $l('Logado como') :><br/>
                                 <strong><: $user.login :></strong>
                             </div>
                             <ul class="nav">
-                                <li><a href="#"><img src="<: $static_uri :>/img/home.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
-                                <li><a href="#"><: $l('Procurar Vagas') :></a></li>
-                                <li><a href="#"><: $l('Catálogo de Empresas') :></a></li>
+                                <li><a href="<: $uri('/home') :>"><img src="<: $static_uri :>/img/home.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
+                                <li><a href="<: $uri('/search') :>"><: $l('Procurar Vagas') :></a></li>
+                                <li><a href="<: $uri('/companies') :>"><: $l('Catálogo de Empresas') :></a></li>
                             </ul>
                         </div>
                     </div>
@@ -71,13 +71,13 @@
                             </div>
                             <ul class="nav nav-pills">
                                 <li<: $company_data_active :>>
-                                    <a href="<: $uri('/company/home') :>"><: $l('Dados da Empresa') :></a>
+                                    <a href="<: $uri('/account/home') :>"><: $l('Dados da Empresa') :></a>
                                 </li>
                                 <li<: $my_jobs_active :>>
-                                    <a href="<: $uri('/company/my_jobs') :>"><: $l('Meus anúncios') :></a>
+                                    <a href="<: $uri('/account/my_jobs') :>"><: $l('Meus anúncios') :></a>
                                 </li>
                                 <li<: $add_job_active :>>
-                                    <a href="<: $uri('/company/add_job') :>"><: $l('Adicionar anúncio') :></a>
+                                    <a href="<: $uri('/account/add_job') :>"><: $l('Adicionar anúncio') :></a>
                                 </li>
                                 <li<: $promote_job_active :>>
                                     <a href="#"><: $l('Promover anúncio') :></a>
@@ -106,14 +106,14 @@
                         <div class="span5">
                             <div class="footer-navbar navbar underline-block">
                                 <ul class="nav">
-                                    <li><a href="#"><img src="<: $static_uri :>/img/home-white.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
-                                    <li><a href="#"><: $l('Empregos') :></a></li>
-                                    <li><a href="#"><: $l('Acesso da Empresa') :></a></li>
+                                    <li><a href="<: $uri('/home') :>"><img src="<: $static_uri :>/img/home-white.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
+                                    <li><a href="<: $uri('/search') :>"><: $l('Empregos') :></a></li>
+                                    <li><a href="<: $uri('/account/login') :>"><: $l('Acesso da Empresa') :></a></li>
                                 </ul>
                             </div>
                             <h4><: $l('Cadastre sua empresa') :></h4>
                             <p><: $l('Encontre os melhores profissionais de Perl') :></p>
-                            <button class="btn-small btn-important pull-left"><: $l('Anuncie') :></button>
+                            <a href="<: $uri('/account/add_job') :>" class="btn-small btn-important pull-left"><: $l('Anuncie') :></a>
                             <p class="how-it-works pull-left"><a href="#"><: $l('Como funciona?') :></a></p>
                         </div>
                         <div class="span3">
