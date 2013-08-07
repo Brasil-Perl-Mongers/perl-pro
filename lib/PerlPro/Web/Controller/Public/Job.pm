@@ -5,10 +5,26 @@ use utf8;
 
 BEGIN { extends 'Catalyst::Controller' }
 
-sub index :Path Args(0) {
-    my ( $self, $c ) = @_;
+sub base :Chained('/') PathPart('') CaptureArgs(0) {
+    my ( $self, $ctx ) = @_;
 
-    $c->response->body('Matched PerlPro::Web::Controller::Public::Job in Public::Job.');
+    $ctx->stash( current_model => 'DB::Job' );
+}
+
+sub advanced_search :Chained('base') PathPart('search') Args(0) GET {}
+
+sub list :Chained('base') PathPart('jobs') Args(0) GET {
+    my ( $self, $ctx ) = @_;
+
+    my $params = {}; # TODO: deal with $ctx->req->query_params
+
+    $ctx->stash( jobs => [ $ctx->model->search($params)->all ] );
+}
+
+sub view :Chained('base') PathPart('job') Args(1) GET {
+    my ( $self, $ctx, $job_id ) = @_;
+
+    $ctx->stash( job => $ctx->model->find($job_id) );
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -31,7 +47,24 @@ Controller for viewing, listing and searching open positions for jobs.
 
 =head1 METHODS
 
-=head2 index
+=head2 base
+
+Top of the chain for all actions in this controller.
+
+=head2 advanced_search
+
+Page to display "Advanced Search" form. The form will be submitted (via HTTP
+method GET) to the L</list> action below, so that the results will be displayed
+in the default job listing page.
+
+=head2 list
+
+Lists all the active job open positions (paginated), optionally limited by
+search parameters.
+
+=head2 view
+
+View one particular job.
 
 =head1 AUTHOR
 
