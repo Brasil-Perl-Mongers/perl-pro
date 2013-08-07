@@ -201,6 +201,10 @@ h1.underlined, h2.underlined, h3.underlined, h4.underlined {
 h1.underlined,
 h2.underlined { border-width: 3px }
 
+h1.light, h2.light, h3.light, h4.light {
+    font-weight: normal; /* maybe we should apply it to all h* by default */
+}
+
 /* links */
 
 a:link, a:visited {
@@ -536,6 +540,11 @@ footer .navbar .nav > li > a:hover {
     background: #eeeeee;
 }
 
+hr {
+    border-color: #cccccc;
+    background: #cccccc;
+}
+
 hr.thick {
     border-width: 2px;
     border-color: #dddddd;
@@ -757,4 +766,49 @@ ul.company-catalog > li > img {
 
 ul.company-catalog > li .company-name {
     font-weight: bold;
+}
+
+ol.companies,
+ol.companies > li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ol.companies {
+    margin: 0 -10px;
+}
+
+ol.companies > li {
+    margin: 10px;
+    width: 545px;
+    height: 170px;
+    display: block;
+    float: left;
+    background: #dddddd;
+    padding: 15px;
+}
+
+ol.companies > li img {
+    display: block;
+    float: left;
+    width: 200px;
+    height: 170px;
+    margin: 0;
+    border: 0 none;
+}
+ol.companies > li .data {
+    width: 325px;
+    float: left;
+    margin: 0 0 0 20px;
+}
+
+ol.companies > li h4 {
+    margin: 0 0 5px;
+    padding: 0 0 5px;
+    border-bottom: 2px solid #cccccc;
+}
+
+ol.companies > li hr {
+    margin: 10px 0;
 }
