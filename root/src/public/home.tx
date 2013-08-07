@@ -79,10 +79,22 @@
         <div class="box">
             <h4><: $l('Catálogo de Empresas') :></h4>
             <hr/>
-            <ul>
-                <li>Estante Virtual</li>
-                <li>perldelux</li>
-                <li>b-datum</li>
+            <ul class="company-catalog">
+                <li>
+                    <img src="<: $static_uri :>/company/estante-virtual-small.png" alt="Logotipo da Estante Virtual">
+                    <span class="company-name">Estante Virtual</span><br/>
+                    <span class="open-positions">10 vagas abertas</span>
+                </li>
+                <li>
+                    <img src="<: $static_uri :>/company/perldelux-small.png" alt="Logotipo da perldelux">
+                    <span class="company-name">perldelux</span><br/>
+                    <span class="open-positions">10 vagas abertas</span>
+                </li>
+                <li>
+                    <img src="<: $static_uri :>/company/b-datum-small.png" alt="Logotipo da b-datum">
+                    <span class="company-name">b-datum</span><br/>
+                    <span class="open-positions">10 vagas abertas</span>
+                </li>
             </ul>
             <hr/>
             <div class="text-center">

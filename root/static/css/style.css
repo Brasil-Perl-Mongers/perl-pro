@@ -734,3 +734,27 @@ a.company-name:focus {
     font-size: 14px;
     line-height: 16px;
 }
+
+ul.company-catalog,
+ul.company-catalog > li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.company-catalog > li {
+    margin: 10px 0;
+    line-height: 18px;
+    font-size: 14px;
+}
+
+ul.company-catalog > li > img {
+    width: 60px;
+    height: 38px;
+    float: left;
+    margin: 0 7px 0 0;
+}
+
+ul.company-catalog > li .company-name {
+    font-weight: bold;
+}
