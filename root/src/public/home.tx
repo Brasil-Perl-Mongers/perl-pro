@@ -13,32 +13,32 @@
             <ul class="recent-jobs job-list">
                 <li class="company-color1">
                     <span class="position-name">Programador Front-End</span> em
-                    <a href="<: $uri('/company/aware/profile') :>" class="company-name">Aware</a> @
+                    <a href="<: $uri('/company/aware') :>" class="company-name">Aware</a> @
                     <span class="city-name">São Paulo</span>
                 </li>
                 <li class="company-color2">
                     <span class="position-name">Analista de Banco de Dados</span> em
-                    <a href="<: $uri('/company/estante_virtual/profile') :>" class="company-name">Estante Virtual</a> @
+                    <a href="<: $uri('/company/estante_virtual') :>" class="company-name">Estante Virtual</a> @
                     <span class="city-name">Hortolândia</span>
                 </li>
                 <li class="company-color2">
                     <span class="position-name">Programador</span> em
-                    <a href="<: $uri('/company/estante_virtual/profile') :>" class="company-name">Estante Virtual</a> @
+                    <a href="<: $uri('/company/estante_virtual') :>" class="company-name">Estante Virtual</a> @
                     <span class="city-name">Rio de Janeiro</span>
                 </li>
                 <li class="company-color1">
                     <span class="position-name">Desenvolvedor Catalyst</span> em
-                    <a href="<: $uri('/company/aware/profile') :>" class="company-name">Aware</a> @
+                    <a href="<: $uri('/company/aware') :>" class="company-name">Aware</a> @
                     <span class="city-name">São Paulo</span>
                 </li>
                 <li class="company-color3">
                     <span class="position-name">Analista de Sistemas</span> em
-                    <a href="<: $uri('/company/bdatum/profile') :>" class="company-name">b-datum</a> @
+                    <a href="<: $uri('/company/bdatum') :>" class="company-name">b-datum</a> @
                     <span class="city-name">São Paulo</span>
                 </li>
                 <li class="company-color4">
                     <span class="position-name">Analista de Sistemas</span> em
-                    <a href="<: $uri('/company/perldelux/profile') :>" class="company-name">perldelux</a> @
+                    <a href="<: $uri('/company/perldelux') :>" class="company-name">perldelux</a> @
                     <span class="city-name">São Paulo</span>
                 </li>
             </ul>
