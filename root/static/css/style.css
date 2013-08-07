@@ -191,6 +191,15 @@ h2 { font-size: 36px; line-height: 40px; }
 h3 { font-size: 28px; line-height: 32px; }
 h4 { font-size: 22px; line-height: 25px; }
 
+h1.serif-underlined, h2.serif-underlined, h3.serif-underlined, h4.serif-underlined {
+    border: none;
+    border-bottom: 1px solid #dddddd;
+    padding: 4px 0;
+}
+
+h1.serif-underlined,
+h2.serif-underlined { border-width: 3px }
+
 h1.underlined, h2.underlined, h3.underlined, h4.underlined {
     font-family: "Droid Sans", sans-serif;
     border: none;
@@ -812,3 +821,8 @@ ol.companies > li h4 {
 ol.companies > li hr {
     margin: 10px 0;
 }
+
+.job-search-row {
+    margin: 50px 0;
+}
+
