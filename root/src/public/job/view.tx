@@ -1,0 +1,104 @@
+: cascade base::wrapper
+: block content -> {
+<h2 class="underlined"><span class="light"><: $l('Vaga:') :></span> Programador Front-End</h2>
+<div class="pull-right">
+    <a href="#" class="btn btn-flat btn-util btn-small"><i class="icon-white icon-share"></i> Compartilhar</a>
+    <a href="#" class="btn btn-flat btn-action btn-small"><i class="icon-white icon-envelope"></i> Indique esta vaga</a>
+</div>
+<div class="subtitle">na <i class="icon-briefcase"></i> <a href="#" class="company-name">Amazon do Brasil</a> em <i class="icon-map-marker"></i> São Paulo</div>
+
+<div class="job-view-row">
+    <div class="row">
+        <div class="span6">
+            <h4 class="underlined"><: $l('Descrição da Vaga') :></h4>
+             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta faucibus mauris, in scelerisque augue luctus id. Duis venenatis neque ipsum, id tempor tortor hendrerit at. Cras sodales imperdiet enim a luctus. Etiam fringilla arcu eu sem elementum gravida. Proin ullamcorper lectus neque, at eleifend velit varius faucibus. Nunc tincidunt erat eu massa tempor, sit amet lacinia odio aliquet. Quisque ut consequat diam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus porttitor in orci eget luctus. Curabitur a elit eget diam cursus laoreet. Integer semper adipiscing porttitor.</p>
+
+             <p>Integer eget risus magna. Quisque interdum semper suscipit. Proin interdum lectus at arcu dapibus, at dignissim ante malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed mollis leo magna, vel tempor eros tincidunt sit amet. Nullam quam nisi, tempus sit amet tempor vitae, venenatis vitae massa. Vestibulum lacinia ligula sit amet vehicula feugiat.</p>
+
+             <p>Vestibulum aliquet massa non fermentum placerat. Proin justo erat, placerat sed faucibus sit amet, pharetra vel risus. Phasellus facilisis, neque vitae viverra sollicitudin, sapien sem auctor enim, iaculis imperdiet orci est et dolor. Etiam orci orci, vehicula eu enim vel, fringilla egestas sem. Vestibulum ac condimentum risus, a mollis justo. In hac habitasse platea dictumst. In at tempor nibh. Sed at magna rutrum, egestas nulla nec, dictum tortor. Sed eu consectetur lorem, eu condimentum nulla.</p>
+
+            <h4 class="underlined"><: $l('Requisitos') :></h4>
+            <h5><: $l('Necessário conhecimento em: ') :></h5>
+            <ul class="requirements">
+                <li>Moose</li>
+                <li>Catalyst</li>
+                <li>Perl</li>
+                <li>PostgreSQL</li>
+            </ul>
+            <br class="clearfix">
+            <h5><: $l('Não necessário, mas desejável: ') :></h5>
+            <ul class="requirements">
+                <li>Moose</li>
+                <li>Catalyst</li>
+                <li>Perl</li>
+                <li>PostgreSQL</li>
+            </ul>
+        </div>
+        <div class="span6">
+            <h4 class="underlined"><: $l('Contrato & Salário') :></h4>
+            <p>
+                <strong><: $l('Salário:') :> </strong>R$ 1.123,50<br>
+                <strong><: $l('Contrato:') :> </strong>CLT, 6 meses<br>
+                Vaga Presencial
+            </p>
+            <p>... Integral</p>
+
+            <h4 class="underlined"><: $l('A Empresa') :></h4>
+            <ul>
+                <li>www.empresa.com.br</li>
+                <li>contato@empresa.com.br</li>
+                <li>(11) 1234-5678</li>
+                <li>Av. Foo Bar, 789, São Paulo - SP</li>
+            </ul>
+            <p>Aenean volutpat enim in turpis porttitor, in sollicitudin dui sodales. Suspendisse lorem lacus, placerat ut rhoncus volutpat, gravida eget lorem. Etiam fringilla urna ut iaculis volutpat. Sed lacinia mi et felis volutpat dapibus. Praesent rutrum sollicitudin quam tincidunt elementum. Fusce blandit enim lacus, vel fringilla eros tristique eu. Ut a aliquam orci. Fusce pellentesque ac massa vitae dictum. Integer ultricies egestas eros, et hendrerit sem viverra ac. Vivamus ultricies vestibulum felis ut gravida. Morbi iaculis lorem nec magna tincidunt, eget lacinia velit auctor. Pellentesque purus ante, vulputate ut mi in, elementum elementum nisl. Aenean sit amet massa lorem. Praesent consequat ligula a lorem molestie sodales. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus cursus risus nibh, at scelerisque nisl iaculis vitae.</p>
+
+            <iframe width="570" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=CZmK8f958A74FQBZKAIdv17U-ik_ePT84GdkiDH0UAfsfeodrg&amp;q=2511+Gallatin+Ave,+Nashville&amp;aq=&amp;sll=36.195542,-86.742978&amp;sspn=0.009386,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=2511+Gallatin+Ave,+Nashville,+Davidson,+Tennessee+37206&amp;ll=36.195542,-86.742983&amp;spn=0.150156,0.338173&amp;t=m&amp;z=12&amp;output=embed"></iframe>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span6">
+        <h4 class="serif-underlined"><: $l('Vagas similares') :></h4>
+        <ul class="job-list">
+            <li class="company-color1">
+                <span class="position-name">Programador Front-End</span> @
+                <span class="city-name">São Paulo</span>
+            </li>
+            <li class="company-color2">
+                <span class="position-name">Analista de Banco de Dados</span> @
+                <span class="city-name">São Paulo</span>
+            </li>
+            <li class="company-color2">
+                <span class="position-name">Programador Back-End</span> @
+                <span class="city-name">São Paulo</span>
+            </li>
+            <li class="company-color3">
+                <span class="position-name">Programador Mojolicious</span> @
+                <span class="city-name">Campinas</span>
+            </li>
+        </ul>
+    </div>
+    <div class="span6">
+        <h4 class="serif-underlined"><: $l('Mais vagas em ') :> <a href="#" class="company-name">Amazon do Brasil</a></h4>
+        <ul class="job-list">
+            <li class="company-color4">
+                <span class="position-name">Programador Front-End</span> @
+                <span class="city-name">São Paulo</span>
+            </li>
+            <li class="company-color5">
+                <span class="position-name">Analista de Banco de Dados</span> @
+                <span class="city-name">São Paulo</span>
+            </li>
+            <li class="company-color6">
+                <span class="position-name">Programador Back-End</span> @
+                <span class="city-name">São Paulo</span>
+            </li>
+            <li class="company-color4">
+                <span class="position-name">Programador Mojolicious</span> @
+                <span class="city-name">Campinas</span>
+            </li>
+        </ul>
+    </div>
+</div>
+: }

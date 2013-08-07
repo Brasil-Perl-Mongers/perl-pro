@@ -210,8 +210,8 @@ h1.underlined, h2.underlined, h3.underlined, h4.underlined {
 h1.underlined,
 h2.underlined { border-width: 3px }
 
-h1.light, h2.light, h3.light, h4.light {
-    font-weight: normal; /* maybe we should apply it to all h* by default */
+.light {
+    font-weight: normal;
 }
 
 /* links */
@@ -826,3 +826,10 @@ ol.companies > li hr {
     margin: 50px 0;
 }
 
+.clearfix {
+    clear: both;
+}
+
+.job-view-row {
+    margin: 50px 0;
+}

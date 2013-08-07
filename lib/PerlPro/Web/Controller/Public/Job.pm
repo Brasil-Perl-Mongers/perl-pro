@@ -24,6 +24,8 @@ sub list :Chained('base') PathPart('jobs') Args(0) GET {
 sub view :Chained('base') PathPart('job') Args(1) GET {
     my ( $self, $ctx, $job_id ) = @_;
 
+    return; # XXX: no-op to develop design first
+
     $ctx->stash( job => $ctx->model->find($job_id) );
 }
 
