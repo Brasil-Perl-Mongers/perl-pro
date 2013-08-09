@@ -1,4 +1,0 @@
-: cascade base::wrapper
-: block content {
-<p>Teste</p>
-: }
