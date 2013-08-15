@@ -833,3 +833,119 @@ ol.companies > li hr {
 .job-view-row {
     margin: 50px 0;
 }
+
+h4.underlined{
+    margin-top: 20px;
+}
+
+.rightlined{
+    border-right: 1px solid #ccc;
+    padding: 0 10px;
+}
+
+/* home slideshow */
+
+.carousel-inner{
+    background: #ccc;
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    display: block;
+    line-height: 1;
+    width: 35%;
+    margin-left: 10%;
+    margin-top: 2%;
+    position: relative;
+    float: left;
+}
+
+.carousel-caption {
+    width: 45%;
+    height: auto;
+    padding: 2%;
+    display: block;
+    background: transparent;
+    clear: right;
+    position: relative;
+    float: left;
+    color: #333;
+}
+
+.job-description, .job-title, .job-util, .job-date{
+    color: #333 !important;
+}
+
+.carousel-caption .job-description {
+    margin: 20px 0;
+}
+
+.carousel-caption .job-util {
+    list-style-type: none;
+    margin: 10px 0;
+}
+
+.job-date{
+    padding-bottom: 20px;
+    border-bottom: 1px solid #DDD;
+}
+
+.job-util li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.job-util li:last-child{
+    margin-right: 0;
+}
+
+#indicators {
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    padding: 0;
+    text-align: center;
+}
+
+.carousel-indicators {
+    position: relative;
+    z-index: 5;
+    margin: 0 auto;
+    list-style: none;
+    width: auto;
+    height: 20px;
+}
+
+.carousel-indicators li {
+    background-color: #fff;
+    display: inline-block;
+    float: none;
+    cursor: pointer;
+}
+
+.carousel-indicators .active {
+    background-color: #ccc;
+}
+
+
+/* company public view css rules */
+
+#company-logo {
+    text-align: center;
+}
+
+#company-info {
+    list-style-type: none;
+    margin: 0 0 0 10px;
+}
+
+#company-info li i {
+    margin-right: 10px;
+}
+
+#company-address {
+    margin-top: 15px;
+}
+
+#company-description{
+    margin: 20px 0;
+}
