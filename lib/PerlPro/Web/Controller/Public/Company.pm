@@ -15,6 +15,8 @@ sub base :Chained('/') PathPart('') CaptureArgs(0) {
 sub profile :Chained('base') PathPart('company') Args(1) GET {
     my ( $self, $ctx, $company ) = @_;
 
+    return;
+
     $ctx->stash(
         item => $ctx->model->find($company)
     );
