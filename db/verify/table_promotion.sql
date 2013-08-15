@@ -2,6 +2,8 @@
 
 BEGIN;
 
-    SELECT id, job, status, begins_at, ends_at FROM job.promotion WHERE FALSE;
+    SET search_path = 'perlpro';
+
+    SELECT id, job, status, begins_at, ends_at FROM promotion WHERE FALSE;
 
 ROLLBACK;

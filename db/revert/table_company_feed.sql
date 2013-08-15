@@ -2,7 +2,9 @@
 
 BEGIN;
 
-    DROP TABLE company.company_feed;
-    DROP TYPE  company.company_feed_type;
+    SET search_path = 'perlpro';
+
+    DROP TABLE company_feed;
+    DROP TYPE  company_feed_type;
 
 COMMIT;

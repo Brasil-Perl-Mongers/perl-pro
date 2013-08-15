@@ -2,7 +2,9 @@
 
 BEGIN;
 
-    DROP TABLE job.attribute;
-    DROP TYPE job.attribute_type;
+    SET search_path = 'perlpro';
+
+    DROP TABLE attribute;
+    DROP TYPE attribute_type;
 
 COMMIT;

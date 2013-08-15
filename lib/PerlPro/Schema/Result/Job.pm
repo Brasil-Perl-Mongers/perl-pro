@@ -29,11 +29,11 @@ use base 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
 
-=head1 TABLE: C<job.job>
+=head1 TABLE: C<job>
 
 =cut
 
-__PACKAGE__->table("job.job");
+__PACKAGE__->table("job");
 
 =head1 ACCESSORS
 
@@ -42,7 +42,7 @@ __PACKAGE__->table("job.job");
   data_type: 'integer'
   is_auto_increment: 1
   is_nullable: 0
-  sequence: 'job.job_id_seq'
+  sequence: 'perlpro.job_id_seq'
 
 =head2 created_at
 
@@ -92,8 +92,8 @@ __PACKAGE__->table("job.job");
 
 =head2 status
 
-  data_type: 'job.job_status'
-  default_value: 'active'::job.job_status
+  data_type: 'perlpro.job_status'
+  default_value: 'active'::perlpro.job_status
   is_nullable: 0
   size: 4
 
@@ -105,7 +105,7 @@ __PACKAGE__->add_columns(
     data_type         => "integer",
     is_auto_increment => 1,
     is_nullable       => 0,
-    sequence          => "job.job_id_seq",
+    sequence          => "perlpro.job_id_seq",
   },
   "created_at",
   {
@@ -139,8 +139,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 0 },
   "status",
   {
-    data_type => "job.job_status",
-    default_value => \"'active'::job.job_status",
+    data_type => "perlpro.job_status",
+    default_value => \"'active'::perlpro.job_status",
     is_nullable => 0,
     size => 4,
   },
@@ -206,8 +206,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-07 00:28:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Y4aPRbQbv6a5SSXLpouIsQ
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-15 14:19:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gsvrm/dmShX05x68W38u+A
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

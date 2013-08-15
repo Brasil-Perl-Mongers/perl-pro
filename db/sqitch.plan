@@ -2,20 +2,18 @@
 %project=perlpro
 %uri=https://github.com/Brasil-Perl-Mongers/perl-pro
 
-schema_system 2013-06-21T18:31:04Z André Walker <andre@andrewalker.net> # System schema, including authentication and authorization
-table_user [schema_system] 2013-06-21T18:37:05Z André Walker <andre@andrewalker.net> # Users table
-table_user_email [table_user schema_system] 2013-06-21T18:44:28Z André Walker <andre@andrewalker.net> # Users e-mails table
-table_role [schema_system] 2013-06-21T18:49:46Z André Walker <andre@andrewalker.net> # Roles for authorization
-table_user_role [schema_system table_user table_role] 2013-06-21T18:57:08Z André Walker <andre@andrewalker.net> # Link users and roles
-schema_company 2013-06-21T19:14:03Z André Walker <andre@andrewalker.net> # Company schema
-table_company [schema_company] 2013-06-21T21:34:30Z André Walker <andre@andrewalker.net> # Company table
-table_company_feed [schema_company table_company] 2013-06-21T21:47:14Z André Walker <andre@andrewalker.net> # Create notifications feed table for companies
-table_user_company [schema_company schema_system table_user table_company] 2013-06-21T22:13:26Z André Walker <andre@andrewalker.net> # Link users and companies (each user will manage a different company)
-schema_job 2013-06-21T22:27:38Z André Walker <andre@andrewalker.net> # Job schema
-table_job [schema_job schema_company table_company] 2013-06-21T22:31:35Z André Walker <andre@andrewalker.net> # Job table
-table_promotion [schema_job table_job] 2013-06-21T22:48:22Z André Walker <andre@andrewalker.net> # Table to record promotion (premium advertising) of jobs
-table_attribute [schema_job table_job] 2013-06-21T23:06:35Z André Walker <andre@andrewalker.net> # Attributes required or desired in a job offer
-table_company_email [schema_company table_company] 2013-07-30T13:56:12Z André Walker <andre@andrewalker.net> # List of company's e-mail addresses
-table_company_phone [schema_company table_company] 2013-07-30T13:59:58Z André Walker <andre@andrewalker.net> # List of company's phone numbers
-table_company_website [schema_company table_company] 2013-07-30T14:02:11Z André Walker <andre@andrewalker.net> # List of company's websites
-table_company_location [schema_company table_company] 2013-07-30T14:06:23Z André Walker <andre@andrewalker.net> # List of company's locations
+schema_perlpro 2013-08-15T14:10:05Z André Walker <andre@andrewalker.net> # Main schema
+table_user [schema_perlpro] 2013-06-21T18:37:05Z André Walker <andre@andrewalker.net> # Users table
+table_user_email [schema_perlpro table_user] 2013-06-21T18:44:28Z André Walker <andre@andrewalker.net> # Users e-mails table
+table_role [schema_perlpro] 2013-06-21T18:49:46Z André Walker <andre@andrewalker.net> # Roles for authorization
+table_user_role [schema_perlpro table_user table_role] 2013-06-21T18:57:08Z André Walker <andre@andrewalker.net> # Link users and roles
+table_company [schema_perlpro] 2013-06-21T21:34:30Z André Walker <andre@andrewalker.net> # Company table
+table_company_feed [schema_perlpro table_company] 2013-06-21T21:47:14Z André Walker <andre@andrewalker.net> # Create notifications feed table for companies
+table_user_company [schema_perlpro table_user table_company] 2013-06-21T22:13:26Z André Walker <andre@andrewalker.net> # Link users and companies (each user will manage a different company)
+table_job [schema_perlpro table_company] 2013-06-21T22:31:35Z André Walker <andre@andrewalker.net> # Job table
+table_promotion [schema_perlpro table_job] 2013-06-21T22:48:22Z André Walker <andre@andrewalker.net> # Table to record promotion (premium advertising) of jobs
+table_attribute [schema_perlpro table_job] 2013-06-21T23:06:35Z André Walker <andre@andrewalker.net> # Attributes required or desired in a job offer
+table_company_email [schema_perlpro table_company] 2013-07-30T13:56:12Z André Walker <andre@andrewalker.net> # List of company's e-mail addresses
+table_company_phone [schema_perlpro table_company] 2013-07-30T13:59:58Z André Walker <andre@andrewalker.net> # List of company's phone numbers
+table_company_website [schema_perlpro table_company] 2013-07-30T14:02:11Z André Walker <andre@andrewalker.net> # List of company's websites
+table_company_location [schema_perlpro table_company] 2013-07-30T14:06:23Z André Walker <andre@andrewalker.net> # List of company's locations

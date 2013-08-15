@@ -29,11 +29,11 @@ use base 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
 
-=head1 TABLE: C<company.company_feed>
+=head1 TABLE: C<company_feed>
 
 =cut
 
-__PACKAGE__->table("company.company_feed");
+__PACKAGE__->table("company_feed");
 
 =head1 ACCESSORS
 
@@ -42,7 +42,7 @@ __PACKAGE__->table("company.company_feed");
   data_type: 'integer'
   is_auto_increment: 1
   is_nullable: 0
-  sequence: 'company.company_feed_id_seq'
+  sequence: 'perlpro.company_feed_id_seq'
 
 =head2 company
 
@@ -58,7 +58,7 @@ __PACKAGE__->table("company.company_feed");
 
 =head2 type
 
-  data_type: 'company.company_feed_type'
+  data_type: 'perlpro.company_feed_type'
   is_nullable: 0
   size: 4
 
@@ -75,7 +75,7 @@ __PACKAGE__->add_columns(
     data_type         => "integer",
     is_auto_increment => 1,
     is_nullable       => 0,
-    sequence          => "company.company_feed_id_seq",
+    sequence          => "perlpro.company_feed_id_seq",
   },
   "company",
   { data_type => "text", is_nullable => 0 },
@@ -87,7 +87,7 @@ __PACKAGE__->add_columns(
     original      => { default_value => \"now()" },
   },
   "type",
-  { data_type => "company.company_feed_type", is_nullable => 0, size => 4 },
+  { data_type => "perlpro.company_feed_type", is_nullable => 0, size => 4 },
   "content",
   { data_type => "text", is_nullable => 1 },
 );
@@ -105,8 +105,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-07 00:28:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:eGFGSh+ixHbgYJm3L4K9dw
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-15 14:19:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:cZLMh8ySBO9qBAVdZyPMXg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

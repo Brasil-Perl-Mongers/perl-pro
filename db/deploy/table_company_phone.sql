@@ -1,11 +1,11 @@
 -- Deploy table_company_phone
--- requires: schema_company
+-- requires: schema_perlpro
 -- requires: table_company
 
 BEGIN;
 
     SET client_min_messages = 'warning';
-    SET search_path = 'company';
+    SET search_path = 'perlpro';
 
     CREATE TABLE company_phone (
         company TEXT NOT NULL,

@@ -1,11 +1,11 @@
 -- Deploy table_company_location
--- requires: schema_company
+-- requires: schema_perlpro
 -- requires: table_company
 
 BEGIN;
 
     SET client_min_messages = 'warning';
-    SET search_path = 'company';
+    SET search_path = 'perlpro';
 
     -- TODO: maybe link with Google Maps
 

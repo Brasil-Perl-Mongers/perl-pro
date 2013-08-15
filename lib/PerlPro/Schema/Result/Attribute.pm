@@ -29,11 +29,11 @@ use base 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
 
-=head1 TABLE: C<job.attribute>
+=head1 TABLE: C<attribute>
 
 =cut
 
-__PACKAGE__->table("job.attribute");
+__PACKAGE__->table("attribute");
 
 =head1 ACCESSORS
 
@@ -50,7 +50,7 @@ __PACKAGE__->table("job.attribute");
 
 =head2 required_or_desired
 
-  data_type: 'job.attribute_type'
+  data_type: 'perlpro.attribute_type'
   is_nullable: 0
   size: 4
 
@@ -62,7 +62,7 @@ __PACKAGE__->add_columns(
   "attribute",
   { data_type => "text", is_nullable => 0 },
   "required_or_desired",
-  { data_type => "job.attribute_type", is_nullable => 0, size => 4 },
+  { data_type => "perlpro.attribute_type", is_nullable => 0, size => 4 },
 );
 
 =head1 PRIMARY KEY
@@ -97,8 +97,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-07 00:28:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wC6D8JyBmmLVDprxsAxMoA
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-15 14:19:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3i84VKV/h0VLVHdqSVtSJw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

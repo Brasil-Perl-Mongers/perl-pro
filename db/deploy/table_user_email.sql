@@ -1,10 +1,10 @@
 -- Deploy table_user_email
 -- requires: table_user
--- requires: schema_system
+-- requires: schema_perlpro
 
 BEGIN;
 
-    SET search_path = 'system';
+    SET search_path = 'perlpro';
     SET client_min_messages = 'warning';
 
     CREATE TABLE "user_email" (

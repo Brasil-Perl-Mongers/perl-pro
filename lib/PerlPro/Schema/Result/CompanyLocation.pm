@@ -29,11 +29,11 @@ use base 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
 
-=head1 TABLE: C<company.company_location>
+=head1 TABLE: C<company_location>
 
 =cut
 
-__PACKAGE__->table("company.company_location");
+__PACKAGE__->table("company_location");
 
 =head1 ACCESSORS
 
@@ -42,7 +42,7 @@ __PACKAGE__->table("company.company_location");
   data_type: 'integer'
   is_auto_increment: 1
   is_nullable: 0
-  sequence: 'company.company_location_id_seq'
+  sequence: 'perlpro.company_location_id_seq'
 
 =head2 company
 
@@ -84,7 +84,7 @@ __PACKAGE__->add_columns(
     data_type         => "integer",
     is_auto_increment => 1,
     is_nullable       => 0,
-    sequence          => "company.company_location_id_seq",
+    sequence          => "perlpro.company_location_id_seq",
   },
   "company",
   { data_type => "text", is_foreign_key => 1, is_nullable => 0 },
@@ -130,8 +130,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-30 11:17:17
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:9O8wue36qamNJDTSfvOSfA
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-15 14:19:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Y+L8g4gVNgE95L+7+hBdYQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

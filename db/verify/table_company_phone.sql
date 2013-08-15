@@ -2,6 +2,8 @@
 
 BEGIN;
 
-    SELECT company, phone, is_main_phone FROM company.company_phone WHERE FALSE;
+    SET search_path = 'perlpro';
+
+    SELECT company, phone, is_main_phone FROM company_phone WHERE FALSE;
 
 ROLLBACK;

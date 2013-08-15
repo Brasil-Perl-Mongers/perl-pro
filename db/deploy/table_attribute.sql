@@ -1,11 +1,11 @@
 -- Deploy table_attribute
--- requires: schema_job
+-- requires: schema_perlpro
 -- requires: table_job
 
 BEGIN;
 
     SET client_min_messages = 'warning';
-    SET search_path = 'job';
+    SET search_path = 'perlpro';
 
     CREATE TYPE attribute_type AS ENUM(
         'required', 'desired'

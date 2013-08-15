@@ -1,11 +1,11 @@
 -- Deploy table_user_role
--- requires: schema_system
+-- requires: schema_perlpro
 -- requires: table_user
 -- requires: table_role
 
 BEGIN;
 
-    SET search_path = 'system';
+    SET search_path = 'perlpro';
     SET client_min_messages = 'warning';
 
     CREATE TABLE user_role (

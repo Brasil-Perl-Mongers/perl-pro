@@ -2,6 +2,8 @@
 
 BEGIN;
 
-    SELECT company, url, is_main_website FROM company.company_website WHERE FALSE;
+    SET search_path = 'perlpro';
+
+    SELECT company, url, is_main_website FROM company_website WHERE FALSE;
 
 ROLLBACK;

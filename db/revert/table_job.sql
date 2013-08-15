@@ -2,7 +2,9 @@
 
 BEGIN;
 
-    DROP TABLE job.job;
-    DROP TYPE job.job_status;
+    SET search_path = 'perlpro';
+
+    DROP TABLE job;
+    DROP TYPE job_status;
 
 COMMIT;

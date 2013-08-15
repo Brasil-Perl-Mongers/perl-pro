@@ -1,10 +1,10 @@
 -- Deploy table_company
--- requires: schema_company
+-- requires: schema_perlpro
 
 BEGIN;
 
     SET client_min_messages = 'warning';
-    SET search_path = 'company';
+    SET search_path = 'perlpro';
 
     CREATE TABLE company (
         name_in_url TEXT PRIMARY KEY,

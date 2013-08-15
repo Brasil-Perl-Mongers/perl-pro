@@ -2,6 +2,8 @@
 
 BEGIN;
 
-    SELECT "user", "company" FROM company.user_company WHERE FALSE;
+    SET search_path = 'perlpro';
+
+    SELECT "user", "company" FROM user_company WHERE FALSE;
 
 ROLLBACK;

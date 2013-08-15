@@ -29,11 +29,11 @@ use base 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
 
-=head1 TABLE: C<job.promotion>
+=head1 TABLE: C<promotion>
 
 =cut
 
-__PACKAGE__->table("job.promotion");
+__PACKAGE__->table("promotion");
 
 =head1 ACCESSORS
 
@@ -42,7 +42,7 @@ __PACKAGE__->table("job.promotion");
   data_type: 'integer'
   is_auto_increment: 1
   is_nullable: 0
-  sequence: 'job.promotion_id_seq'
+  sequence: 'perlpro.promotion_id_seq'
 
 =head2 job
 
@@ -52,8 +52,8 @@ __PACKAGE__->table("job.promotion");
 
 =head2 status
 
-  data_type: 'job.promotion_status'
-  default_value: 'pending-payment'::job.promotion_status
+  data_type: 'perlpro.promotion_status'
+  default_value: 'pending-payment'::perlpro.promotion_status
   is_nullable: 0
   size: 4
 
@@ -78,14 +78,14 @@ __PACKAGE__->add_columns(
     data_type         => "integer",
     is_auto_increment => 1,
     is_nullable       => 0,
-    sequence          => "job.promotion_id_seq",
+    sequence          => "perlpro.promotion_id_seq",
   },
   "job",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "status",
   {
-    data_type => "job.promotion_status",
-    default_value => \"'pending-payment'::job.promotion_status",
+    data_type => "perlpro.promotion_status",
+    default_value => \"'pending-payment'::perlpro.promotion_status",
     is_nullable => 0,
     size => 4,
   },
@@ -134,8 +134,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-07 00:28:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jNT6LxoHJbXUv1gabcn5mQ
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-15 14:19:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Cfkrj2Ru9t1jTYffLS4hAg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

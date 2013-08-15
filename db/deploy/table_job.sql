@@ -1,16 +1,15 @@
 -- Deploy table_job
--- requires: schema_job
--- requires: schema_company
+-- requires: schema_perlpro
 -- requires: table_company
 
 BEGIN;
 
     SET client_min_messages = 'warning';
-    SET search_path = 'job', 'company';
+    SET search_path = 'perlpro';
 
-    CREATE TYPE job.job_status AS ENUM('active', 'expired', 'canceled');
+    CREATE TYPE job_status AS ENUM('active', 'expired', 'canceled');
 
-    CREATE TABLE job.job (
+    CREATE TABLE job (
         id SERIAL PRIMARY KEY,
         created_at TIMESTAMP NOT NULL DEFAULT NOW(),
         last_modified TIMESTAMP NOT NULL DEFAULT NOW(),

@@ -2,6 +2,8 @@
 
 BEGIN;
 
-    SELECT role_name FROM "system"."role" WHERE FALSE;
+    SET search_path = 'perlpro';
+
+    SELECT role_name FROM role WHERE FALSE;
 
 ROLLBACK;

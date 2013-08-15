@@ -2,6 +2,8 @@
 
 BEGIN;
 
-    DROP TABLE company.company_phone;
+    SET search_path = 'perlpro';
+
+    DROP TABLE company_phone;
 
 COMMIT;

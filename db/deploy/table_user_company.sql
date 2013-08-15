@@ -1,15 +1,14 @@
 -- Deploy table_user_company
--- requires: schema_company
--- requires: schema_system
+-- requires: schema_perlpro
 -- requires: table_user
 -- requires: table_company
 
 BEGIN;
 
     SET client_min_messages = 'warning';
-    SET search_path = 'system','company';
+    SET search_path = 'perlpro';
 
-    CREATE TABLE company.user_company (
+    CREATE TABLE user_company (
         "user" TEXT NOT NULL,
         "company" TEXT NOT NULL,
         PRIMARY KEY ("user", "company"),

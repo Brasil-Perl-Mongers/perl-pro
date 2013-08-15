@@ -2,6 +2,8 @@
 
 BEGIN;
 
-    SELECT id, "user", email, is_main_address FROM "system"."user_email" WHERE FALSE;
+    SET search_path = 'perlpro';
+
+    SELECT id, "user", email, is_main_address FROM user_email WHERE FALSE;
 
 ROLLBACK;

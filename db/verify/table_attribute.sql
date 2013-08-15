@@ -2,6 +2,8 @@
 
 BEGIN;
 
-    SELECT job, attribute, required_or_desired FROM job.attribute WHERE FALSE;
+    SET search_path = 'perlpro';
+
+    SELECT job, attribute, required_or_desired FROM attribute WHERE FALSE;
 
 ROLLBACK;

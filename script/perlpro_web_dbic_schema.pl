@@ -10,7 +10,7 @@ my $opts = {
     dump_directory => "$Bin/../lib",
     components => [ 'EncodedColumn', 'InflateColumn::DateTime' ],
     quote_names => 1,
-    db_schema => [ 'job', 'company', 'system' ],
+    db_schema => [ 'perlpro' ],
 };
 
 my $info = PerlPro::Web->model('DB')->connect_info;

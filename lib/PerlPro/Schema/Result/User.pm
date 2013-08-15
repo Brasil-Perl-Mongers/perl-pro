@@ -29,11 +29,11 @@ use base 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
 
-=head1 TABLE: C<system.user>
+=head1 TABLE: C<user>
 
 =cut
 
-__PACKAGE__->table("system.user");
+__PACKAGE__->table("user");
 
 =head1 ACCESSORS
 
@@ -178,8 +178,8 @@ Composing rels: L</user_roles> -> role
 __PACKAGE__->many_to_many("roles", "user_roles", "role");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-07 00:28:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tTgPBJWAGNcxKUqe8RINYA
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-15 14:19:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2cnTBH2kTbBA+2HZ77kVXg
 
 __PACKAGE__->add_columns(
     "password",

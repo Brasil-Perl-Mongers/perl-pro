@@ -2,6 +2,8 @@
 
 BEGIN;
 
-    SELECT company, email, is_main_address FROM company.company_email WHERE FALSE;
+    SET search_path = 'perlpro';
+
+    SELECT company, email, is_main_address FROM company_email WHERE FALSE;
 
 ROLLBACK;

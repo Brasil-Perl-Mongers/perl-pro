@@ -29,11 +29,11 @@ use base 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
 
-=head1 TABLE: C<company.company_website>
+=head1 TABLE: C<company_website>
 
 =cut
 
-__PACKAGE__->table("company.company_website");
+__PACKAGE__->table("company_website");
 
 =head1 ACCESSORS
 
@@ -97,8 +97,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-07-30 19:43:52
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:zn3eEXcvkKV4vMEfcKWjqA
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-15 14:19:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+a0JSV/ZXUBsKUNml8efsQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

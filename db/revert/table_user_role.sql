@@ -2,6 +2,8 @@
 
 BEGIN;
 
-    DROP TABLE "system"."user_role";
+    SET search_path = 'perlpro';
+
+    DROP TABLE user_role;
 
 COMMIT;
