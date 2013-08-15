@@ -5,7 +5,68 @@
         <div class="hot-jobs-row">
             <h3><: $l('Vagas em Destaque') :></h3>
             <div class="hot-jobs">
-                <strong>TODO</strong>
+
+                <div id="myCarousel" class="carousel slide">
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="http://getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                            <div class="carousel-caption">
+                                <h4 class="job-title underlined">Programador Catalyst</h4>
+                                <p class="job-description">Vaga para programador web para atuar em seu departamento de criação e desenvolvimento.</p>
+                                <p class="job-date">Publicado em 04 de junho de 2013</p>
+
+                                <ul class="job-util">
+                                    <li><i class="icon-map-marker"></i>São Paulo</li>
+                                    <li>R$ 1.500,00</li>
+                                    <li><a href="" class="btn btn-danger">Ver vaga</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="http://getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                            <div class="carousel-caption">
+                                <h4 class="job-title underlined">Vaga 2</h4>
+                                <p class="job-description">Vaga para programador web para atuar em seu departamento de criação e desenvolvimento.</p>
+                                <p class="job-date">Publicado em 04 de junho de 2013</p>
+
+                                <ul class="job-util">
+                                    <li><i class="icon-map-marker"></i>São Paulo</li>
+                                    <li>R$ 1.500,00</li>
+                                    <li><a href="" class="btn btn-danger">Ver vaga</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="http://getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-03.jpg" alt="">
+                            <div class="carousel-caption">
+                                <h4 class="job-title underlined">Vaga 3</h4>
+                                <p class="job-description">Vaga para programador web para atuar em seu departamento de criação e desenvolvimento.</p>
+                                <p class="job-date">Publicado em 04 de junho de 2013</p>
+
+                                <ul class="job-util">
+                                    <li><i class="icon-map-marker"></i>São Paulo</li>
+                                    <li>R$ 1.500,00</li>
+                                    <li><a href="" class="btn btn-danger">Ver vaga</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+
+                    <div id="indicators">
+                        <ol class="carousel-indicators">
+                          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                          <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                          <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                        </ol>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="recent-jobs-row">
