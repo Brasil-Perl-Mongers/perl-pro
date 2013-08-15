@@ -5,40 +5,69 @@ use utf8;
 
 BEGIN { extends 'Catalyst::Controller' }
 
-sub base :Chained('/company/auth/requires_login') PathPart('') CaptureArgs(0) {}
+sub base :Chained('/company/auth/requires_login') PathPart('') CaptureArgs(0) {
+    my ( $self, $ctx ) = @_;
+
+    $ctx->stash( current_model => 'DB::Job' );
+}
+
+sub item : Chained('base') PathPart('job') CaptureArgs(1) {
+    my ( $self, $ctx, $id ) = @_;
+
+    $ctx->stash(
+        id   => $id,
+        item => $ctx->model->find($id),
+    );
+}
 
 sub index :Chained('base') PathPart('my_jobs') Args(0) GET {
     my ( $self, $ctx ) = @_;
 
-    # display listing with all jobs of this company
-    # load data from DB
+    my $p      = int($ctx->req->params->{page} || 1);
+    my $search = $ctx->model->search;
+    my $pager  = $search->pager;
+    my @items  = $search->page($p)->all;
 
     $ctx->stash(
-        template => 'company/my_jobs.tx',
+        template     => 'company/my_jobs.tx',
         current_page => 'my_jobs',
+        items        => \@items,
+        pager        => $pager,
     );
 }
 
-sub remove :Chained('base') PathPart('job') Args(1) DELETE {
+sub remove :Chained('item') PathPart('job') Args(1) DELETE {
     my ( $self, $ctx ) = @_;
 
-    # remove job, return HTTP code for success, and some data like "OK"
+    my $item = $ctx->stash->{item};
+
+    if (!$item) {
+        $ctx->detach('/not_found');
+    }
+
+    # TODO:
+    # maybe avoid really deleting, and use some sort of flag
+    # maybe even just set it as inactive
+    $item->delete;
+
+    $ctx->res->status(200);
+    $ctx->res->body('OK');
 }
 
 sub add_job :Chained('base') Does('DisplayExecute') Args(0) {
     my ( $self, $ctx ) = @_;
 
     $ctx->stash(
-        template => 'company/add_job.tx',
+        template     => 'company/add_job.tx',
         current_page => 'add_job',
     );
 }
 
-sub update_job :Chained('base') Does('DisplayExecute') Args(0) {
+sub update :Chained('item') PathPart('update') Does('DisplayExecute') Args(0) {
     my ( $self, $ctx ) = @_;
 
     $ctx->stash(
-        template => 'company/update_job.tx',
+        template     => 'company/update_job.tx',
         current_page => 'my_jobs', # just to color something in the menu
     );
 }
@@ -66,13 +95,15 @@ manage them (CRUD).
 
 =head2 base
 
+=head2 item
+
 =head2 index
 
 =head2 remove
 
 =head2 add_job
 
-=head2 update_job
+=head2 update
 
 =head1 AUTHOR
 
