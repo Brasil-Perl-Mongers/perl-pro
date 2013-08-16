@@ -10,11 +10,8 @@ sub base :Chained('/company/auth/requires_login') PathPart('') CaptureArgs(0) {}
 sub display :Chained('base') PathPart('home') Args(0) GET {
     my ( $self, $ctx ) = @_;
 
-    # display page of "Company Data"
-    # load data from DB
-
     $ctx->stash(
-        template => 'company/home.tx',
+        template     => 'company/home.tx',
         current_page => 'home',
     );
 }
@@ -54,7 +51,15 @@ Controller for a logged in user, from a company, update company data.
 
 =head1 METHODS
 
-=head2 index
+=head2 base
+
+=head2 display
+
+=head2 update
+
+=head2 add_data
+
+=head2 remove_data
 
 =head1 AUTHOR
 
