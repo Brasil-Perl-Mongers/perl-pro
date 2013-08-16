@@ -47,6 +47,7 @@ __PACKAGE__->table("company_feed");
 =head2 company
 
   data_type: 'text'
+  is_foreign_key: 1
   is_nullable: 0
 
 =head2 happened_at
@@ -78,7 +79,7 @@ __PACKAGE__->add_columns(
     sequence          => "perlpro.company_feed_id_seq",
   },
   "company",
-  { data_type => "text", is_nullable => 0 },
+  { data_type => "text", is_foreign_key => 1, is_nullable => 0 },
   "happened_at",
   {
     data_type     => "timestamp",
@@ -104,9 +105,26 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
+=head1 RELATIONS
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-15 14:19:37
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:cZLMh8ySBO9qBAVdZyPMXg
+=head2 company
+
+Type: belongs_to
+
+Related object: L<PerlPro::Schema::Result::Company>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "company",
+  "PerlPro::Schema::Result::Company",
+  { name_in_url => "company" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
+);
+
+
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-16 00:26:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:xuqJU7RkMXTA+lMA9XnJ3w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

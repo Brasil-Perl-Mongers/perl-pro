@@ -142,6 +142,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 company_feeds
+
+Type: has_many
+
+Related object: L<PerlPro::Schema::Result::CompanyFeed>
+
+=cut
+
+__PACKAGE__->has_many(
+  "company_feeds",
+  "PerlPro::Schema::Result::CompanyFeed",
+  { "foreign.company" => "self.name_in_url" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 company_locations
 
 Type: has_many
@@ -228,8 +243,8 @@ Composing rels: L</user_companies> -> user
 __PACKAGE__->many_to_many("users", "user_companies", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-15 14:19:37
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ty3PHMDTJO8M1w9NI1e3rA
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-16 00:26:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bf54Th1fWaXrBfHRmWHXxA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

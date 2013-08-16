@@ -21,7 +21,8 @@ BEGIN;
         company TEXT NOT NULL,
         happened_at TIMESTAMP NOT NULL DEFAULT NOW(),
         "type" company_feed_type NOT NULL,
-        content TEXT
+        content TEXT,
+        FOREIGN KEY (company) REFERENCES company(name_in_url) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
 COMMIT;
