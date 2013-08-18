@@ -7,7 +7,8 @@ extends 'DBIx::Class::ResultSet';
 with 'PerlPro::Role::Verification';
 
 use MooseX::Types::Email qw/EmailAddress/;
-use MooseX::Types::Moose qw/Str/;
+use MooseX::Types::Moose qw/Str Bool/;
+use MooseX::Types::URI qw/Uri/;
 use HTML::Entities ();
 use Text::Unaccent::PurePerl ();
 
@@ -32,7 +33,35 @@ sub verifiers_specs {
             filters => [
                 sub { HTML::Entities::encode_entities( $_[0] ) }
             ],
-        )
+        ),
+        add_email => Data::Verifier->new(
+            profile => {
+                company => { required => 1, type => Str },
+                email   => { required => 1, type => EmailAddress },
+                is_main => { required => 0, type => Bool },
+            },
+        ),
+        add_phone => Data::Verifier->new(
+            profile => {
+                company => { required => 1, type => Str },
+                phone   => { required => 1, type => Str },
+                is_main => { required => 0, type => Bool },
+            },
+        ),
+        add_website => Data::Verifier->new(
+            profile => {
+                company => { required => 1, type => Str },
+                url     => { required => 1, type => Uri },
+                is_main => { required => 0, type => Bool },
+            },
+        ),
+        add_location => Data::Verifier->new(
+            profile => {
+                company  => { required => 1, type => Str },
+                location => { required => 1, type => Str },
+                is_main  => { required => 0, type => Bool },
+            },
+        ),
     };
 }
 
@@ -63,6 +92,42 @@ sub action_specs {
                 is_main_address => 1,
             });
 
+            return $row;
+        },
+        add_email => sub {
+            my %values = shift->valid_values;
+            my $row = $self->find($values{company});
+            $row->add_to_emails({
+                email => $values{email},
+                is_main_address => $values{is_main},
+            });
+            return $row;
+        },
+        add_phone => sub {
+            my %values = shift->valid_values;
+            my $row = $self->find($values{company});
+            $row->add_to_phones({
+                phone => $values{phone},
+                is_main_phone => $values{is_main},
+            });
+            return $row;
+        },
+        add_website => sub {
+            my %values = shift->valid_values;
+            my $row = $self->find($values{company});
+            $row->add_to_websites({
+                url => $values{url},
+                is_main_website => $values{is_main},
+            });
+            return $row;
+        },
+        add_location => sub {
+            my %values = shift->valid_values;
+            my $row = $self->find($values{company});
+            $row->add_to_locations({
+                location => $values{location},
+                is_main_address => $values{is_main},
+            });
             return $row;
         },
     };
