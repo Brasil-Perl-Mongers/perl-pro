@@ -50,6 +50,12 @@ has auth => (
     },
 );
 
+has test_root_dir => (
+    isa => 'Str',
+    is => 'ro',
+    default => sub { $Bin },
+);
+
 
 sub require_fixtures {
     my ($self) = @_;
@@ -142,16 +148,9 @@ sub require_fixtures {
         ['company3', 'Front-end Developer', 'We need a good front-end developer', 1000.00, 'Anywhere'],
     ]);
 
-    open(my $lock,'>', "$Bin/.lock-fixtures") or die "Can't create lock: $!";
-    close($lock);
+    $self->create_lock;
 
     return;
-}
-
-sub fixtures_in_db {
-    my ($self) = @_;
-
-    return -e "$Bin/.lock-fixtures";
 }
 
 sub clear_fixtures {
@@ -174,9 +173,26 @@ sub clear_fixtures {
     $db->resultset('User')->find($_)->delete
       for (qw/user1-c1 user2-c1 user1-c2 user1-c3/);
 
-    unlink "$Bin/.lock-fixtures";
+    $self->remove_lock;
 
     return;
+}
+
+sub create_lock {
+    my $self = shift;
+    open(my $lock,'>', $self->test_root_dir . "/.lock-fixtures") or die "Can't create lock: $!";
+    close($lock);
+}
+
+sub remove_lock {
+    my $self = shift;
+    unlink $self->test_root_dir . "/.lock-fixtures";
+}
+
+sub fixtures_in_db {
+    my ($self) = @_;
+
+    return -e $self->test_root_dir . "/.lock-fixtures";
 }
 
 __PACKAGE__->meta->make_immutable;
