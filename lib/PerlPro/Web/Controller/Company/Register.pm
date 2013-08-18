@@ -44,6 +44,10 @@ sub register_execute {
         $ctx->log->warn('registration form invalid');
         $company_obj->delete if $company_obj;
     }
+
+    $ctx->stash(
+        fields => {}, # TODO: deal with $dm->results
+    );
 }
 
 __PACKAGE__->meta->make_immutable;

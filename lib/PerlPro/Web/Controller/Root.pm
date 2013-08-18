@@ -20,6 +20,11 @@ sub favicon : Path('favicon.ico') Args(0) {
 
 sub default :Path {
     my ( $self, $ctx ) = @_;
+    $ctx->detach( 'not_found' );
+}
+
+sub not_found :Private {
+    my ( $self, $ctx ) = @_;
 
     $ctx->log->warn("404 on " . $ctx->req->path);
 
@@ -30,6 +35,7 @@ sub default :Path {
 
 sub unauthorized :Private {
     my ( $self, $ctx ) = @_;
+
     $ctx->log->warn("403 on " . $ctx->req->path);
 
     # TODO: create a template
@@ -83,7 +89,7 @@ Root controller for the PerlPro Web app, with methods used by the entire site.
 
 =head2 index
 
-The root page. Loads the `home` action in the controller L<PerlPro::Web::Controller::Public::Home#home>.
+The root page. Detaches to L<PerlPro::Web::Controller::Public::Home/home>.
 
 =head2 favicon
 
@@ -92,6 +98,10 @@ the icon from servername/favicon.ico, so we serve statically from there instead
 of the default static folder (root/static).
 
 =head2 default
+
+Alias for L</not_found>.
+
+=head2 not_found
 
 Standard 404 page (Not found).
 
