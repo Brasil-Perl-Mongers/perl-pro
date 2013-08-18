@@ -1,5 +1,5 @@
 : cascade base::wrapper
-: block content {
+: block content | fif($fields) {
 <h2><: $l('Criar conta') :></h2>
 <hr class="thick" />
 <p><: $l('Preencha os campos abaixo para criar a sua conta. Após finalizar o cadastro, você poderá adicionar mais informações e cadastrar ofertas de vagas.') :></p>

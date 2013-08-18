@@ -130,6 +130,7 @@
                         </div>
                         <div class="span4">
                             <h4 class="underline-block"><: $l('Receba nossas novidades') :></h4>
+:#                          TODO: MailChimp or whatever
                             <form>
                                 <input type="text" class="input-block-level flat-input" placeholder="<: $l('Digite seu e-mail') :>">
                                 <button class="input-block-level flat-input btn-action btn-small"><: $l('Cadastrar') :></button>

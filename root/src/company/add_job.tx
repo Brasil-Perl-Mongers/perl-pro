@@ -1,5 +1,7 @@
 :cascade base::company
 :block content -> {
+
+:block main_form | fif($fields) -> {
 <form action="<:# TODO :>" method="post" id="jobs_form">
 <h2 class="underlined">
     <: $l('Adicionar anúncio de vaga') :>
@@ -75,8 +77,8 @@
         </div>
     </div>
 </div>
-
 </form>
+: }
 
 <div class="jobs-form-requirements-row">
     <div class="row">
