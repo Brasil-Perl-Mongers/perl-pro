@@ -86,10 +86,10 @@ sub login_execute {
             password => $params->{password},
         })
     ) {
-        $ctx->log->info("AUTHENTICATED USER $params->{username}");
+        $ctx->log->info("AUTHENTICATED USER $params->{login}");
     }
     else {
-        $ctx->log->info("COULD NOT AUTHENTICATE USER: $params->{username}");
+        $ctx->log->info("COULD NOT AUTHENTICATE USER $params->{login}");
     }
 }
 

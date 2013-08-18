@@ -5,6 +5,7 @@ $ENV{PERLPRO_WEB_CONFIG_LOCAL_SUFFIX} = 'testing';
 use Moose;
 use FindBin '$Bin';
 use PerlPro::TestTools::Mech;
+use PerlPro::TestTools::Auth;
 use namespace::autoclean;
 
 has app => (
@@ -24,11 +25,29 @@ has db => (
     }
 );
 
+has current_page => (
+    is  => 'rw',
+    isa => 'Str',
+);
+
 has mech => (
     isa     => 'PerlPro::TestTools::Mech',
     is      => 'ro',
     lazy    => 1,
     default => sub { my $s = shift; PerlPro::TestTools::Mech->new },
+);
+
+has auth => (
+    isa     => 'PerlPro::TestTools::Auth',
+    is      => 'ro',
+    lazy    => 1,
+    default => sub {
+        my $s = shift;
+        PerlPro::TestTools::Auth->new(
+            mech => $s->mech,
+            page => $s->current_page
+        );
+    },
 );
 
 
@@ -78,13 +97,18 @@ sub require_fixtures {
         ['company3', 'http://company3.com', 1],
     ]);
 
-    $db->resultset('User')->populate([
-        ['login', 'password', 'name'],
-        ['user1-c1', '-', 'User one C1'],
-        ['user2-c1', '-', 'User two C1'],
-        ['user1-c2', '-', 'User one C2'],
-        ['user1-c3', '-', 'User one C3'],
-    ]);
+    my @users = (
+        ['user1-c1', 'u1-123', 'User one C1'],
+        ['user2-c1', 'u2-123', 'User two C1'],
+        ['user1-c2', 'u3-123', 'User one C2'],
+        ['user1-c3', 'u4-123', 'User one C3'],
+    );
+
+    $db->resultset('User')->create({
+        login    => $_->[0],
+        password => $_->[1],
+        name     => $_->[2],
+    }) for @users;
 
     $db->resultset('UserRole')->populate([
         [ 'user', 'role' ],
