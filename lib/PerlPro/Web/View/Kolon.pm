@@ -1,6 +1,8 @@
 package PerlPro::Web::View::Kolon;
 use utf8;
 use Moose;
+use Text::Xslate qw/html_builder/;
+use HTML::FillInForm;
 use namespace::autoclean;
 
 extends 'Catalyst::View::Xslate';
@@ -8,9 +10,14 @@ extends 'Catalyst::View::Xslate';
 has '+expose_methods' => (
     default => sub { {
         l   => 'localize',
-        le  => 'localize_error',
         uri => 'view_uri_for',
     } },
+);
+
+has '+function' => (
+    default => sub { +{
+        fif => \&fillinform,
+    } }
 );
 
 sub ACCEPT_CONTEXT {
@@ -29,31 +36,18 @@ sub localize {
 
     return unless $text;
 
+    # TODO: real localization (if necessary)
     return $text;
 
     return $c->loc($text, @args) || $text;
 }
 
-sub localize_error {
-    my ( $self, $c, $text, @args ) = @_;
-
-    return unless $text;
-
-    if ($text =~ /^invalid_(.*)/) {
-        my $fieldname = $1;
-        return 'Este campo está inválido.';
-        #return $c->loc("[_1] inválido", $c->loc($fieldname) || $fieldname, @args);
-        #return $c->loc("inválido", @args);
-    }
-
-    if ($text =~ /^missing_(.*)/) {
-        my $fieldname = $1;
-        return 'Este campo é obrigatório.';
-        #return $c->loc("[_1] é obrigatório", $c->loc($fieldname) || $fieldname, @args);
-        #return $c->loc("este campo é obrigatório", @args);
-    }
-
-    return shift->localize(@_);
+sub fillinform {
+    my ($form_values) = @_;
+    return html_builder {
+        my ($html) = @_;
+        return HTML::FillInForm->fill(\$html, $form_values);
+    };
 }
 
 __PACKAGE__->meta->make_immutable;
