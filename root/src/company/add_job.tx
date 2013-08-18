@@ -1,4 +1,4 @@
-:cascade base::company
+:cascade company::wrapper
 :block content -> {
 
 :block main_form | fif($fields) -> {

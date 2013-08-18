@@ -1,4 +1,4 @@
-:cascade base::company
+:cascade company::wrapper
 :block content -> {
 <h2 class="underlined"><: $l('Minha conta') :></h2>
 

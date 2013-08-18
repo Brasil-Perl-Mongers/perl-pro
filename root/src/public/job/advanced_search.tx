@@ -1,4 +1,4 @@
-:cascade base::wrapper
+:cascade public::wrapper
 :block content -> {
 <form action="<: $uri('/jobs') :>" method="get" id="job_search_form">
 <h2 class="light serif-underlined"><: $l('Busca Avançada') :></h2>

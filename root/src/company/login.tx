@@ -1,4 +1,4 @@
-: cascade base::wrapper
+: cascade public::wrapper
 : block content {
 <form class="container-fluid" action="<: $uri('/account/login') :>" method="post">
     <div class="row-fluid">

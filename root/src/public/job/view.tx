@@ -1,4 +1,4 @@
-: cascade base::wrapper
+: cascade public::wrapper
 : block content -> {
 <h2 class="underlined"><span class="light"><: $l('Vaga:') :></span> Programador Front-End</h2>
 <div class="pull-right">

@@ -1,4 +1,4 @@
-: cascade base::wrapper
+: cascade public::wrapper
 : block content {
 <div class="row">
     <div class="span8">

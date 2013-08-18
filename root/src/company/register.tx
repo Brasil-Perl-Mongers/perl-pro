@@ -1,4 +1,4 @@
-: cascade base::wrapper
+: cascade public::wrapper
 : block content | fif($fields) {
 <h2><: $l('Criar conta') :></h2>
 <hr class="thick" />
