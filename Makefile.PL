@@ -41,7 +41,7 @@ requires 'Catalyst::View::Xslate';
 requires 'Catalyst::View::JSON';
 test_requires 'Test::More' => '0.88';
 test_requires 'pQuery';
-test_requires 'Test::WWW::Mechanize';
+test_requires 'Test::WWW::Mechanize::Catalyst';
 test_requires 'WWW::Mechanize::TreeBuilder';
 catalyst;
 
