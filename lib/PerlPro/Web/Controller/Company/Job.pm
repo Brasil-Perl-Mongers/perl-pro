@@ -24,9 +24,9 @@ sub index :Chained('base') PathPart('my_jobs') Args(0) GET {
     my ( $self, $ctx ) = @_;
 
     my $p      = int($ctx->req->params->{page} || 1);
-    my $search = $ctx->model->search;
+    my $search = $ctx->model->search->page($p);
     my $pager  = $search->pager;
-    my @items  = $search->page($p)->all;
+    my @items  = $search->all;
 
     $ctx->stash(
         template     => 'company/my_jobs.tx',
