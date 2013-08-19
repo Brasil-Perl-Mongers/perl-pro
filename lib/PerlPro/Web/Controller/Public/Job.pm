@@ -24,9 +24,13 @@ sub list :Chained('base') PathPart('jobs') Args(0) GET {
 sub view :Chained('base') PathPart('job') Args(1) GET {
     my ( $self, $ctx, $job_id ) = @_;
 
-    return; # XXX: no-op to develop design first
+    my $job_company = $ctx->model->get_job_and_company_by_job_id($job_id)
+      or $ctx->detach('/not_found');
 
-    $ctx->stash( job => $ctx->model->find($job_id) );
+    $ctx->stash(
+        j => $job_company->{job},
+        c => $job_company->{company},
+    );
 }
 
 __PACKAGE__->meta->make_immutable;

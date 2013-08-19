@@ -12,6 +12,7 @@ use PerlPro::Web::Controller::Public::Job;
 my $t = PerlPro::TestTools->new;
 $t->require_fixtures;
 my $mech = $t->mech;
+my $job_rs = $t->db->resultset('Job');
 
 {
     $mech->get_ok('/jobs', 'job listing loads ok');
@@ -27,7 +28,9 @@ my $mech = $t->mech;
 # this is probably going to be the biggest test script
 
 {
-    $mech->get_ok('/job/1', 'job view loads ok');
+    ok(my $job = $job_rs->search({ company => 'company1' })->first, 'found job in db');
+
+    $mech->get_ok('/job/' . $job->id, 'job view loads ok');
     my $p = $mech->pquery;
     # TODO:
     # there should be a more specific way to search
@@ -35,7 +38,7 @@ my $mech = $t->mech;
     my $job_details = $p->find('.job-view-row')->eq(0)->text;
     like($p->find('h2')->text, qr{Catalyst Developer}, q{the job title is where it's supposed to be});
     like($job_details, qr{We need a good Catalyst developer}, q{the job description is where it's supposed to be});
-    like($job_details, qr{R$ 10\.000,00}, q{the salary is where it's supposed to be});
+    like($job_details, qr{R\$\s*10\.000,00}, q{the salary is where it's supposed to be});
 }
 
 done_testing();
