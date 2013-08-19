@@ -133,6 +133,96 @@ sub action_specs {
     };
 }
 
+sub get_for_profile {
+    my ($self, $id) = @_;
+
+    my $company = $self->find($id);
+
+    return unless $company;
+
+    my $website_obj = $company->company_websites->search({}, {
+        order_by => { -desc => 'is_main_website' }
+    })->first;
+    my $phone_obj = $company->company_phones->search({}, {
+        order_by => { -desc => 'is_main_phone' }
+    })->first;
+    my $email_obj = $company->company_emails->search({}, {
+        order_by => { -desc => 'is_main_address' }
+    })->first;
+    my $location_obj = $company->company_locations->search({}, {
+        order_by => { -desc => 'is_main_address' }
+    })->first;
+
+    my $url   = $website_obj ? $website_obj->url : '';
+    my $email = $email_obj   ? $email_obj->email : '';
+    my $phone = $phone_obj   ? $phone_obj->phone : '';
+
+    my $formatted_address = $location_obj
+                          ? ( $location_obj->address . ", "
+                            . $location_obj->city    . " - "
+                            . $location_obj->state )
+                          : ''
+                          ;
+
+    my @jobs = $company->jobs->search({
+        status => 'active', # TODO: promoted first
+    }, {
+        order_by => { -desc => 'created_at' },
+        rows => 8,
+    })->all;
+    my $jc     = scalar @jobs;
+    my $middle = int($jc/2);
+    my $part_one = \@jobs;
+    my $part_two = [];
+
+    if ($middle > 0) {
+        $part_one = [ @jobs[0..$middle] ];
+        $part_two = [ @jobs[($middle+1)..$jc] ];
+    }
+
+    return {
+        name_in_url       => $company->name_in_url,
+        name              => $company->name,
+        description       => $company->description,
+        website           => $url,
+        email             => $email,
+        phone             => $phone,
+        formatted_address => $formatted_address,
+        jobs_part_1       => $part_one,
+        jobs_part_2       => $part_two,
+    }
+}
+
+sub get_for_catalog {
+    my ($self, $page) = @_;
+
+    # TODO: real paging
+    my $search = $self->search({}, { rows => 50, page => $page });
+    my @result;
+
+    for my $c ($search->all) {
+        my $website_obj = $c->company_websites->search({}, {
+            order_by => { -desc => 'is_main_website' }
+        })->first;
+        my $location_obj = $c->company_locations->search({}, {
+            order_by => { -desc => 'is_main_address' }
+        })->first;
+
+        push @result, {
+            name => $c->name,
+            name_in_url => $c->name_in_url,
+            open_positions => $c->jobs->search({ status => 'active' })->count,
+            website => $website_obj ? $website_obj->url : '',
+            city => $location_obj ? $location_obj->city : '',
+        };
+    }
+
+    return {
+        companies => \@result,
+        pager => $search->pager,
+    };
+}
+
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);
 
 1;

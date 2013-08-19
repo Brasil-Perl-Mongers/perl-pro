@@ -13,25 +13,21 @@ sub base :Chained('/') PathPart('') CaptureArgs(0) {
 }
 
 sub profile :Chained('base') PathPart('company') Args(1) GET {
-    my ( $self, $ctx, $company ) = @_;
-
-    return;
+    my ( $self, $ctx, $id ) = @_;
 
     $ctx->stash(
-        item => $ctx->model->find($company)
+        c => $ctx->model->get_for_profile($id)
     );
 }
 
 sub catalog :Chained('base') PathPart('companies') Args(0) GET {
     my ( $self, $ctx ) = @_;
 
-    # TODO: paging
-    # This is obviously dangerous as it could potentially lock the database and
-    # completely fill memory, but it's good enough for a MVP, as we don't
-    # expect millions of companies too soon.
-    # But it should be fixed soon.
+    my $search = $ctx->model->get_for_catalog(int($ctx->req->params->{p} || 1));
+
     $ctx->stash(
-        companies => [ $ctx->model->search->all ]
+        companies => $search->{companies},
+        pager     => $search->{pager},
     );
 }
 

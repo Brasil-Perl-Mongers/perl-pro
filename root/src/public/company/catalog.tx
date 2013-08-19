@@ -7,90 +7,22 @@
             <hr />
         </div>
         <ol class="companies">
+:       for $companies -> $c {
             <li>
-                <img src="<: $static_uri :>/company/google-medium.png" alt="Logo Google" />
+                <img src="http://lorempixel.com/200/170/abstract" alt="Logo <: $c.name :>" />
                 <div class="data">
-                    <h4>Google do Brasil</h4>
-                    <span class="website">www.google.com.br</span><br><br>
-                    <span class="city"><i class="icon-map-marker"></i> São Paulo</span><br>
-                    <span class="open-positions">16 ofertas disponíveis</span><br>
+                    <h4><: $c.name :></h4>
+                    <span class="website"><: $c.website :></span><br><br>
+                    <span class="city"><i class="icon-map-marker"></i> <: $c.city :></span><br>
+                    <span class="open-positions"><: $c.open_positions :> ofertas disponíveis</span><br>
                     <hr>
                     <div class="text-center">
-                        <a href="#" class="btn-small btn-util"><: $l('Ver empresa') :></a>
-                        <a href="#" class="btn-small btn-important"><: $l('Ver vagas') :></a>
+                        <a href="<: $uri('/company/' ~ $c.name_in_url) :>" class="btn-small btn-util"><: $l('Ver empresa') :></a>
+                        <a href="<: $uri('/jobs/company/' ~ $c.name_in_url) :>" class="btn-small btn-important"><: $l('Ver vagas') :></a>
                     </div>
                 </div>
             </li>
-            <li>
-                <img src="<: $static_uri :>/company/google-medium.png" alt="Logo Google" />
-                <div class="data">
-                    <h4>Google do Brasil</h4>
-                    <span class="website">www.google.com.br</span><br><br>
-                    <span class="city"><i class="icon-map-marker"></i> São Paulo</span><br>
-                    <span class="open-positions">16 ofertas disponíveis</span><br>
-                    <hr>
-                    <div class="text-center">
-                        <a href="#" class="btn-small btn-util"><: $l('Ver empresa') :></a>
-                        <a href="#" class="btn-small btn-important"><: $l('Ver vagas') :></a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="<: $static_uri :>/company/google-medium.png" alt="Logo Google" />
-                <div class="data">
-                    <h4>Google do Brasil</h4>
-                    <span class="website">www.google.com.br</span><br><br>
-                    <span class="city"><i class="icon-map-marker"></i> São Paulo</span><br>
-                    <span class="open-positions">16 ofertas disponíveis</span><br>
-                    <hr>
-                    <div class="text-center">
-                        <a href="#" class="btn-small btn-util"><: $l('Ver empresa') :></a>
-                        <a href="#" class="btn-small btn-important"><: $l('Ver vagas') :></a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="<: $static_uri :>/company/google-medium.png" alt="Logo Google" />
-                <div class="data">
-                    <h4>Google do Brasil</h4>
-                    <span class="website">www.google.com.br</span><br><br>
-                    <span class="city"><i class="icon-map-marker"></i> São Paulo</span><br>
-                    <span class="open-positions">16 ofertas disponíveis</span><br>
-                    <hr>
-                    <div class="text-center">
-                        <a href="#" class="btn-small btn-util"><: $l('Ver empresa') :></a>
-                        <a href="#" class="btn-small btn-important"><: $l('Ver vagas') :></a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="<: $static_uri :>/company/google-medium.png" alt="Logo Google" />
-                <div class="data">
-                    <h4>Google do Brasil</h4>
-                    <span class="website">www.google.com.br</span><br><br>
-                    <span class="city"><i class="icon-map-marker"></i> São Paulo</span><br>
-                    <span class="open-positions">16 ofertas disponíveis</span><br>
-                    <hr>
-                    <div class="text-center">
-                        <a href="#" class="btn-small btn-util"><: $l('Ver empresa') :></a>
-                        <a href="#" class="btn-small btn-important"><: $l('Ver vagas') :></a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="<: $static_uri :>/company/google-medium.png" alt="Logo Google" />
-                <div class="data">
-                    <h4>Google do Brasil</h4>
-                    <span class="website">www.google.com.br</span><br><br>
-                    <span class="city"><i class="icon-map-marker"></i> São Paulo</span><br>
-                    <span class="open-positions">16 ofertas disponíveis</span><br>
-                    <hr>
-                    <div class="text-center">
-                        <a href="#" class="btn-small btn-util"><: $l('Ver empresa') :></a>
-                        <a href="#" class="btn-small btn-important"><: $l('Ver vagas') :></a>
-                    </div>
-                </div>
-            </li>
+:       }
         </ol>
     </div>
 </div>
