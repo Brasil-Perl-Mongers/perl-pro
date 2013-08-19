@@ -19,7 +19,7 @@
                                 <ul class="job-util">
                                     <li><i class="icon-map-marker"></i>São Paulo</li>
                                     <li>R$ 1.500,00</li>
-                                    <li><a href="" class="btn btn-danger">Ver vaga</a></li>
+                                    <li><a href="" class="btn btn-flat btn-important">Ver vaga</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 <ul class="job-util">
                                     <li><i class="icon-map-marker"></i>São Paulo</li>
                                     <li>R$ 1.500,00</li>
-                                    <li><a href="" class="btn btn-danger">Ver vaga</a></li>
+                                    <li><a href="" class="btn btn-flat btn-important">Ver vaga</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                 <ul class="job-util">
                                     <li><i class="icon-map-marker"></i>São Paulo</li>
                                     <li>R$ 1.500,00</li>
-                                    <li><a href="" class="btn btn-danger">Ver vaga</a></li>
+                                    <li><a href="" class="btn btn-flat btn-important">Ver vaga</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -72,40 +72,17 @@
         <div class="recent-jobs-row">
             <h3><: $l('Vagas Recentes') :></h3>
             <ul class="recent-jobs job-list">
+:           for $recent_jobs -> $j {
                 <li class="company-color1">
-                    <span class="position-name">Programador Front-End</span> em
-                    <a href="<: $uri('/company/aware') :>" class="company-name">Aware</a> @
-                    <span class="city-name">São Paulo</span>
+                    <span class="position-name"><: $j.title :></span> em
+                    <a href="<: $uri('/company/' ~ $j.company_url) :>" class="company-name"><: $j.company_name :></a> @
+                    <span class="city-name"><: $j.location :></span>
                 </li>
-                <li class="company-color2">
-                    <span class="position-name">Analista de Banco de Dados</span> em
-                    <a href="<: $uri('/company/estante_virtual') :>" class="company-name">Estante Virtual</a> @
-                    <span class="city-name">Hortolândia</span>
-                </li>
-                <li class="company-color2">
-                    <span class="position-name">Programador</span> em
-                    <a href="<: $uri('/company/estante_virtual') :>" class="company-name">Estante Virtual</a> @
-                    <span class="city-name">Rio de Janeiro</span>
-                </li>
-                <li class="company-color1">
-                    <span class="position-name">Desenvolvedor Catalyst</span> em
-                    <a href="<: $uri('/company/aware') :>" class="company-name">Aware</a> @
-                    <span class="city-name">São Paulo</span>
-                </li>
-                <li class="company-color3">
-                    <span class="position-name">Analista de Sistemas</span> em
-                    <a href="<: $uri('/company/bdatum') :>" class="company-name">b-datum</a> @
-                    <span class="city-name">São Paulo</span>
-                </li>
-                <li class="company-color4">
-                    <span class="position-name">Analista de Sistemas</span> em
-                    <a href="<: $uri('/company/perldelux') :>" class="company-name">perldelux</a> @
-                    <span class="city-name">São Paulo</span>
-                </li>
+:           }
             </ul>
             <div class="text-right">
-                <a href=""><: $l('Veja todas as vagas') :></a> |
-                <a href=""><: $l('Catálogo de empresas') :></a>
+                <a href="<: $uri('/jobs') :>"><: $l('Veja todas as vagas') :></a> |
+                <a href="<: $uri('/companies') :>"><: $l('Catálogo de empresas') :></a>
             </div>
         </div>
 
@@ -142,17 +119,17 @@
             <hr/>
             <ul class="company-catalog">
                 <li>
-                    <img src="<: $static_uri :>/company/estante-virtual-small.png" alt="Logotipo da Estante Virtual">
+                    <img src="http://lorempixel.com/60/38" alt="Logotipo da Estante Virtual">
                     <span class="company-name">Estante Virtual</span><br/>
                     <span class="open-positions">10 vagas abertas</span>
                 </li>
                 <li>
-                    <img src="<: $static_uri :>/company/perldelux-small.png" alt="Logotipo da perldelux">
+                    <img src="http://lorempixel.com/60/38" alt="Logotipo da perldelux">
                     <span class="company-name">perldelux</span><br/>
                     <span class="open-positions">10 vagas abertas</span>
                 </li>
                 <li>
-                    <img src="<: $static_uri :>/company/b-datum-small.png" alt="Logotipo da b-datum">
+                    <img src="http://lorempixel.com/60/38" alt="Logotipo da b-datum">
                     <span class="company-name">b-datum</span><br/>
                     <span class="open-positions">10 vagas abertas</span>
                 </li>

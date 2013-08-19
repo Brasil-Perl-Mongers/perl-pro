@@ -21,6 +21,7 @@ my $mech = $t->mech;
 
     my $p = $mech->pquery;
 
+    # TODO: test promoted jobs
     is($p->find('.hot-jobs .carousel')->size(), 1, 'there is a carousel in the page');
     is($p->find('.recent-jobs li')->size(), 3, 'there are three recent jobs');
     $p->find('.recent-jobs li')->each(sub {

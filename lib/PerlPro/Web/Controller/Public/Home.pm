@@ -7,7 +7,9 @@ BEGIN { extends 'Catalyst::Controller' }
 
 sub home :Chained('/') Args(0) {
     my ( $self, $ctx ) = @_;
+
     $ctx->stash(
+        recent_jobs => $ctx->model('DB::Job')->get_recent_jobs,
         template => 'public/home.tx'
     );
 }

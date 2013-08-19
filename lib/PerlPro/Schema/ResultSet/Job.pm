@@ -99,6 +99,31 @@ sub action_specs {
     };
 }
 
+sub get_recent_jobs {
+    my $self = shift;
+    my @result;
+
+    my $jobs = $self->search({
+        status => 'active',
+    }, {
+        order_by => { -desc => 'created_at' },
+        rows => 6,
+    });
+
+    for my $j ($jobs->all) {
+        my $c = $j->company;
+        push @result, {
+            title => $j->title,
+            company_url => $c->name_in_url,
+            company_name => $c->name,
+            location => $j->location,
+            id => $j->id,
+        };
+    }
+
+    return \@result;
+}
+
 sub get_job_and_company_by_job_id {
     my ( $self, $id ) = @_;
 
