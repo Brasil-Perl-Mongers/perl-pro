@@ -9,7 +9,6 @@ use pQuery;
 use PerlPro::TestTools;
 use PerlPro::Web::Controller::Public::Job;
 
-
 my $t = PerlPro::TestTools->new;
 $t->require_fixtures;
 my $mech = $t->mech;
@@ -22,6 +21,10 @@ my $mech = $t->mech;
     # TODO
     # see how the company catalog test is implemented, and port here
 }
+
+# TODO:
+# test search, with as many filters as possible
+# this is probably going to be the biggest test script
 
 {
     $mech->get_ok('/job/1', 'job view loads ok');
