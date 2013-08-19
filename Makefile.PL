@@ -40,6 +40,9 @@ requires 'HTML::FillInForm';
 requires 'Catalyst::View::Xslate';
 requires 'Catalyst::View::JSON';
 test_requires 'Test::More' => '0.88';
+test_requires 'pQuery';
+test_requires 'Test::WWW::Mechanize';
+test_requires 'WWW::Mechanize::TreeBuilder';
 catalyst;
 
 install_script glob('script/*.pl');

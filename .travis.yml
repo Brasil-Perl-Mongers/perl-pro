@@ -1,0 +1,9 @@
+language: perl
+perl:
+      - "5.18"
+      - "5.16"
+before_install:
+   - cpanm -n App::Sqitch Catalyst::Devel
+before_script:
+   - psql -c 'CREATE DATABASE perlpro_testing;' -U postgres
+   - sqitch -d perlpro_testing -u postgres deploy
