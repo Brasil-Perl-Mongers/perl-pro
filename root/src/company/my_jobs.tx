@@ -18,38 +18,20 @@
         </tr>
     </thead>
     <tbody>
+:       for $jobs -> $j {
         <tr>
-            <td class="published_at">14.03</td>
+            <td class="published_at"><: $j.created_at.strftime('%d.%m') :></td>
+:           if $j.status == 'active' {
             <td class="active">Ativo</td>
-            <td class="description"><strong>Programador Front-End</strong> @ Hortolândia</td>
+:           } else {
+            <td class="inactive">Inativo</td>
+:           }
+            <td class="description"><strong><: $j.title :></strong> @ <: $j.location :></td>
             <td class="promote">Promover</td>
             <td class="edit"><i class="icon-pencil icon-white"></i></td> <:# use javascript to go to edit page :>
             <td class="remove"><i class="icon-trash icon-white"></i></td> <:# use javascript to delete :>
         </tr>
-        <tr>
-            <td class="published_at">10.03</td>
-            <td class="active">Ativo</td>
-            <td class="description"><strong>Programador Front-End</strong> @ Hortolândia</td>
-            <td class="promote">Promover</td>
-            <td class="edit"><i class="icon-pencil icon-white"></i></td>
-            <td class="remove"><i class="icon-trash icon-white"></i></td>
-        </tr>
-        <tr>
-            <td class="published_at">20.02</td>
-            <td class="inactive">Inativo</td>
-            <td class="description"><strong>Programador Front-End</strong> @ Hortolândia</td>
-            <td class="promote">Promover</td>
-            <td class="edit"><i class="icon-pencil icon-white"></i></td>
-            <td class="remove"><i class="icon-trash icon-white"></i></td>
-        </tr>
-        <tr>
-            <td class="published_at">01.02</td>
-            <td class="active">Ativo</td>
-            <td class="description"><strong>Programador Front-End</strong> @ Hortolândia</td>
-            <td class="already_promoted">Já promovido</td>
-            <td class="edit"><i class="icon-pencil icon-white"></i></td>
-            <td class="remove"><i class="icon-trash icon-white"></i></td>
-        </tr>
+:       }
     </tbody>
 </table>
 
