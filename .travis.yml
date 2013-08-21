@@ -3,6 +3,7 @@ perl:
       - "5.18"
       - "5.16"
 before_install:
+   - sudo locale-gen --no-archive pt_BR.UTF-8
    - cpanm -n App::Sqitch Catalyst::Devel
 before_script:
    - cp perlpro_web_testing.conf perlpro_web_local.conf
