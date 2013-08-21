@@ -10,13 +10,11 @@ use PerlPro::TestTools;
 use PerlPro::Web::Controller::Company::Job;
 
 my $t = PerlPro::TestTools->new( current_page => '/account/my_jobs' );
-$t->require_fixtures;
 my $m = $t->mech;
 my $page = $t->current_page;
 
 # list my jobs
 for my $user ('user1-c1', 'user2-c1') {
-    diag("testing user $user");
     $t->auth->login_ok($user);
 
     my $q = $m->pquery;
@@ -33,12 +31,11 @@ for my $user ('user1-c1', 'user2-c1') {
 }
 
 # create job
-diag('TODO create job');
-
-# update job
-diag('TODO update job');
-
-# remove job
-diag('TODO remove job');
+TODO: {
+    local $TODO = "not implemented yet";
+    fail('create job');
+    fail('update job');
+    fail('remove job');
+}
 
 done_testing();

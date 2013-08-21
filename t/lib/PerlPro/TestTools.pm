@@ -56,8 +56,21 @@ has test_root_dir => (
     default => sub { $Bin },
 );
 
+has requires_fixtures => (
+    isa => 'Bool',
+    is => 'ro',
+    default => 1,
+);
 
-sub require_fixtures {
+sub BUILD {
+    my $self = shift;
+
+    if ($self->requires_fixtures) {
+        $self->install_fixtures;
+    }
+}
+
+sub install_fixtures {
     my ($self) = @_;
 
     return if $self->fixtures_in_db;
@@ -92,6 +105,7 @@ sub require_fixtures {
     $db->resultset('CompanyPhone')->populate([
         [ 'company', 'phone', 'is_main_phone' ],
         ['company1', '1234-5678', 1],
+        ['company1', '91234-5678', 0],
         ['company2', '5678-1234', 1],
         ['company3', '1235-4678', 1],
     ]);
@@ -99,8 +113,11 @@ sub require_fixtures {
     $db->resultset('CompanyWebsite')->populate([
         [ 'company', 'url', 'is_main_website' ],
         ['company1', 'http://company1.com', 1],
+        ['company1', 'http://www.company1.com', 0],
         ['company2', 'http://company2.com', 1],
+        ['company2', 'http://www.company2.com', 0],
         ['company3', 'http://company3.com', 1],
+        ['company3', 'http://www.company3.com', 0],
     ]);
 
     my @users = (

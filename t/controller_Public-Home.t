@@ -12,8 +12,7 @@ use PerlPro::Web::Controller::Public::Home;
 my @jobs = ('Catalyst Developer', 'Database analyst', 'Front-end Developer');
 my @cmps = ('Company One', 'Company Two', 'Company Three');
 
-my $t = PerlPro::TestTools->new;
-$t->require_fixtures;
+my $t    = PerlPro::TestTools->new;
 my $mech = $t->mech;
 
 {
@@ -21,7 +20,11 @@ my $mech = $t->mech;
 
     my $p = $mech->pquery;
 
-    # TODO: test promoted jobs
+TODO: {
+    local $TODO = "should test promoted jobs";
+    fail('not implemented');
+}
+
     is($p->find('.hot-jobs .carousel')->size(), 1, 'there is a carousel in the page');
     is($p->find('.recent-jobs li')->size(), 3, 'there are three recent jobs');
     $p->find('.recent-jobs li')->each(sub {

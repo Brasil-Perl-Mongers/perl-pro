@@ -10,10 +10,9 @@ use pQuery;
 use PerlPro::TestTools;
 use PerlPro::Web::Controller::Public::Company;
 
-my @companies = ('Company One', 'Company Two', 'Company Three');
+my @companies = ( 'Company One', 'Company Two', 'Company Three' );
 
-my $t = PerlPro::TestTools->new;
-$t->require_fixtures;
+my $t    = PerlPro::TestTools->new;
 my $mech = $t->mech;
 
 {

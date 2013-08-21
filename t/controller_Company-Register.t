@@ -9,10 +9,10 @@ use PerlPro::TestTools;
 use PerlPro::Web::Controller::Company::Register;
 
 my $t = PerlPro::TestTools->new( current_page => '/account/new' );
-$t->require_fixtures;
-my $m = $t->mech;
-my $page = $t->current_page;
-my $db = $t->db;
+
+my $m       = $t->mech;
+my $page    = $t->current_page;
+my $db      = $t->db;
 my $user_rs = $db->resultset('User');
 my $comp_rs = $db->resultset('Company');
 

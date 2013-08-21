@@ -9,7 +9,6 @@ use PerlPro::TestTools;
 use PerlPro::Web::Controller::Company::Auth;
 
 my $t = PerlPro::TestTools->new( current_page => '/account/home' );
-$t->require_fixtures;
 
 my $auth = $t->auth;
 
