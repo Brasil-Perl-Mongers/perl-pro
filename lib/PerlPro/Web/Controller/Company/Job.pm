@@ -61,7 +61,6 @@ sub add_job :Chained('base') Does('DisplayExecute') Args(0) {
     $ctx->stash(
         template     => 'company/add_job.tx',
         current_page => 'add_job',
-        fields => {}, # TODO: deal with $dm->results
     );
 }
 
@@ -71,7 +70,7 @@ sub update :Chained('item') PathPart('update') Does('DisplayExecute') Args(0) {
     $ctx->stash(
         template     => 'company/update_job.tx',
         current_page => 'my_jobs', # just to color something in the menu
-        fields => {}, # TODO: deal with $dm->results
+        fields => {}, # TODO: deal with $ctx->stash->{item}
     );
 }
 
