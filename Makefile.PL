@@ -33,6 +33,7 @@ requires 'Config::General';
 requires 'DBD::Pg';
 requires 'DBIx::Class';
 requires 'DBIx::Class::EncodedColumn';
+requires 'DateTime::Format::Pg';
 requires 'Crypt::Eksblowfish::Bcrypt';
 requires 'Catalyst::Model::DBIC::Schema';
 requires 'Text::Xslate';
