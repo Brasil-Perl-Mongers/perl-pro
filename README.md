@@ -1,5 +1,7 @@
 # perlpro
 
+[![Build Status](https://api.travis-ci.org/Brasil-Perl-Mongers/perl-pro.png?branch=master)](http://travis-ci.org/Brasil-Perl-Mongers/perl-pro)
+
 Catálogo de vagas de emprego para programadores Perl no Brasil, assim como divulgação do perfil de empresas e uso que fazem da linguagem Perl.
 
 **Visite nossa [wiki](https://github.com/Brasil-Perl-Mongers/perl-pro/wiki) para acompanhar o desenvolvimento do layout!**
