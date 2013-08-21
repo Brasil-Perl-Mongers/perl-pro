@@ -46,7 +46,8 @@ sub fillinform {
     my ($form_values) = @_;
     return html_builder {
         my ($html) = @_;
-        return HTML::FillInForm->fill(\$html, $form_values);
+        my $escaped = $$html;
+        return HTML::FillInForm->fill(\$escaped, $form_values || {});
     };
 }
 

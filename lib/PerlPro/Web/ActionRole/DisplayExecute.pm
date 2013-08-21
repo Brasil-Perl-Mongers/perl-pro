@@ -8,6 +8,7 @@ after execute => sub {
     $controller_name =~ s/^PerlPro::Web::Controller//;
     $controller_name =~ s/:://g;
 
+    my $method         = $ctx->req->method;
     my $name           = $self->{name};
     my $execute_action = "${name}_execute";
     my $display_action = "${name}_display";
@@ -16,7 +17,7 @@ after execute => sub {
         $ctx->stash(%$dm_data);
     }
 
-    if ($ctx->req->method eq 'POST') {
+    if ($method eq 'POST' || $method eq 'PUT') {
         if ($controller->can($execute_action)) {
             $controller->$execute_action($ctx, @rest);
         }
@@ -30,9 +31,18 @@ after execute => sub {
         my @data_for_session = (is_success => $dm->success);
 
         if (!$dm->success) {
+            my $results = $dm->results;
+            my $fields = {};
+            for my $r (keys %$results) {
+                my $scope = $results->{$r};
+                for my $f (keys %{ $scope->fields }) {
+                    $fields->{$r . '.' . $f} = $scope->get_original_value($f);
+                }
+            }
             push @data_for_session, (
                 messages   => $dm->messages,
-                results    => $dm->results,
+                results    => $results,
+                fields     => $fields,
             );
         }
 
@@ -61,7 +71,7 @@ after execute => sub {
 
         $ctx->detach;
     }
-    elsif ($controller->can($display_action)) {
+    elsif ($method eq 'GET' && $controller->can($display_action)) {
         $controller->$display_action($ctx, @rest)
     }
 };

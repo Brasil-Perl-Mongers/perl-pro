@@ -1,8 +1,9 @@
 : cascade public::wrapper
-: block content | fif($fields) {
+: block content {
 <h2><: $l('Criar conta') :></h2>
 <hr class="thick" />
 <p><: $l('Preencha os campos abaixo para criar a sua conta. Após finalizar o cadastro, você poderá adicionar mais informações e cadastrar ofertas de vagas.') :></p>
+: block main_form | fif($fields) -> {
 <form action="" method="post" class="container">
 <div class="row">
     <div class="span6">
@@ -57,4 +58,5 @@
     <button type="submit" class="btn-small btn-save"><: $l('Criar Conta') :></button>
 </div>
 </form>
+: }
 : }
