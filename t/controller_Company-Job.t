@@ -8,6 +8,7 @@ my $t = PerlPro::TestTools->new( current_page => '/account/my_jobs' );
 my $m = $t->mech;
 my $page = $t->current_page;
 my $job_to_be_updated = 0;
+sub get_job { $t->db->resultset('Job')->find($job_to_be_updated) }
 
 # list my jobs
 for my $user ('user1-c1', 'user2-c1') {
@@ -48,6 +49,8 @@ for my $user ('user1-c1', 'user2-c1') {
     is($form->value('job.create_or_update.vacancies'), '1', 'vacancies is set correctly in the form');
     ok(!$form->value('job.create_or_update.is_at_office'), '`is at office` is set correctly in the form');
     is($form->value('job.create_or_update.status'), 'active', 'status is set correctly in the form');
+    ok(!$form->value('job.create_or_update.required_attributes'), 'required_attributes are set correctly in the form');
+    ok(!$form->value('job.create_or_update.desired_attributes'), 'desired_attributes are set correctly in the form');
 
 # TODO:
 #    is($form->value('job.create_or_update.contract_duration'), '', 'contract duration is set correctly in the form');
@@ -56,16 +59,18 @@ for my $user ('user1-c1', 'user2-c1') {
     $m->submit_form_ok({
         form_id => 'jobs_form',
         fields => {
-            'job.create_or_update.title'         => 'Test job title 1',
-            'job.create_or_update.description'   => 'Test job desc 1',
-            'job.create_or_update.salary'        => 'R$ 1.000.000,56',  # 2 dots, 1 comma
-            'job.create_or_update.location'      => 'Test location 1',
-            'job.create_or_update.phone'         => '(11) 91234-5676',
-            'job.create_or_update.email'         => 'abcd',             # invalid
-            'job.create_or_update.vacancies'     => '1',
-            'job.create_or_update.contract_type' => 'clt',
-            'job.create_or_update.is_at_office'  => 1,
-            'job.create_or_update.status'        => 'active',
+            'job.create_or_update.title'               => 'Test job title 1',
+            'job.create_or_update.description'         => 'Test job desc 1',
+            'job.create_or_update.salary'              => 'R$ 1.000.000,56',  # 2 dots, 1 comma
+            'job.create_or_update.location'            => 'Test location 1',
+            'job.create_or_update.phone'               => '(11) 91234-5676',
+            'job.create_or_update.email'               => 'abcd',             # invalid
+            'job.create_or_update.vacancies'           => '1',
+            'job.create_or_update.contract_type'       => 'clt',
+            'job.create_or_update.is_at_office'        => 1,
+            'job.create_or_update.status'              => 'active',
+            'job.create_or_update.required_attributes' => 'Moose,DBIx::Class,Ser pró-ativo',
+            'job.create_or_update.desired_attributes'  => 'jQuery,HTML5',
         },
     });
 
@@ -83,20 +88,24 @@ for my $user ('user1-c1', 'user2-c1') {
     is($form->value('job.create_or_update.contract_type'), 'clt', '(invalid e-mail) contract type is set correctly in the form');
     is($form->value('job.create_or_update.is_at_office'), 1, '(invalid e-mail) `is at office` is set correctly in the form');
     is($form->value('job.create_or_update.status'), 'active', '(invalid e-mail) status is set correctly in the form');
+    is($form->value('job.create_or_update.required_attributes'), 'Moose,DBIx::Class,Ser pró-ativo', '(invalid e-mail) required_attributes are set correctly in the form');
+    is($form->value('job.create_or_update.desired_attributes'), 'jQuery,HTML5', '(invalid e-mail) desired_attributes are set correctly in the form');
 
     $m->submit_form_ok({
         form_id => 'jobs_form',
         fields => {
-            'job.create_or_update.title'         => '',                 # required
-            'job.create_or_update.description'   => 'Test job desc 1',
-            'job.create_or_update.salary'        => 'R$ 1.000.000,56',  # 2 dots, 1 comma
-            'job.create_or_update.location'      => 'Test location 1',
-            'job.create_or_update.phone'         => '(11) 91234-5676',
-            'job.create_or_update.email'         => 'abcd@andre.com',
-            'job.create_or_update.vacancies'     => '1',
-            'job.create_or_update.contract_type' => 'clt',
-            'job.create_or_update.is_at_office'  => 1,
-            'job.create_or_update.status'        => 'active',
+            'job.create_or_update.title'               => '',                 # required
+            'job.create_or_update.description'         => 'Test job desc 1',
+            'job.create_or_update.salary'              => 'R$ 1.000.000,56',  # 2 dots, 1 comma
+            'job.create_or_update.location'            => 'Test location 1',
+            'job.create_or_update.phone'               => '(11) 91234-5676',
+            'job.create_or_update.email'               => 'abcd@andre.com',
+            'job.create_or_update.vacancies'           => '1',
+            'job.create_or_update.contract_type'       => 'clt',
+            'job.create_or_update.is_at_office'        => 1,
+            'job.create_or_update.status'              => 'active',
+            'job.create_or_update.required_attributes' => 'Moose,DBIx::Class,Ser pró-ativo',
+            'job.create_or_update.desired_attributes'  => 'jQuery,HTML5',
         },
     });
 
@@ -114,20 +123,24 @@ for my $user ('user1-c1', 'user2-c1') {
     is($form->value('job.create_or_update.contract_type'), 'clt', '(missing title) contract type is set correctly in the form');
     is($form->value('job.create_or_update.is_at_office'), 1, '(missing title) `is at office` is set correctly in the form');
     is($form->value('job.create_or_update.status'), 'active', '(missing title) status is set correctly in the form');
+    is($form->value('job.create_or_update.required_attributes'), 'Moose,DBIx::Class,Ser pró-ativo', '(missing title) required_attributes are set correctly in the form');
+    is($form->value('job.create_or_update.desired_attributes'), 'jQuery,HTML5', '(missing title) desired_attributes are set correctly in the form');
 
     $m->submit_form_ok({
         form_id => 'jobs_form',
         fields => {
-            'job.create_or_update.title'         => 'Test job title 1',
-            'job.create_or_update.description'   => 'Test job desc 1',
-            'job.create_or_update.salary'        => 'R$ 1.000.000,56',  # 2 dots, 1 comma
-            'job.create_or_update.location'      => 'Test location 1',
-            'job.create_or_update.phone'         => '(11) 91234-5676',
-            'job.create_or_update.email'         => 'abcd@andre.com',
-            'job.create_or_update.vacancies'     => '1',
-            'job.create_or_update.contract_type' => 'clt',
-            'job.create_or_update.is_at_office'  => 1,
-            'job.create_or_update.status'        => 'active',
+            'job.create_or_update.title'               => 'Test job title 1',
+            'job.create_or_update.description'         => 'Test job desc 1',
+            'job.create_or_update.salary'              => 'R$ 1.000.000,56',  # 2 dots, 1 comma
+            'job.create_or_update.location'            => 'Test location 1',
+            'job.create_or_update.phone'               => '(11) 91234-5676',
+            'job.create_or_update.email'               => 'abcd@andre.com',
+            'job.create_or_update.vacancies'           => '1',
+            'job.create_or_update.contract_type'       => 'clt',
+            'job.create_or_update.is_at_office'        => 1,
+            'job.create_or_update.status'              => 'active',
+            'job.create_or_update.required_attributes' => 'Moose,DBIx::Class,Ser pró-ativo',
+            'job.create_or_update.desired_attributes'  => 'jQuery,HTML5',
         },
     });
 
@@ -140,12 +153,24 @@ for my $user ('user1-c1', 'user2-c1') {
 
     $job_to_be_updated = $new_max;
 
+    is_deeply({
+        map {
+            ($_->attribute => $_->required_or_desired)
+        } get_job()->attributes->all
+    }, {
+        'Moose' => 'required',
+        'DBIx::Class' => 'required',
+        'Ser pró-ativo' => 'required',
+        'jQuery' => 'desired',
+        'HTML5' => 'desired',
+    }, 'attributes are correctly set in the db');
+
+
     $t->auth->logout();
 }
 
 # update job
 {
-    sub get_job { $t->db->resultset('Job')->find($job_to_be_updated) };
     $t->auth->login_ok('user1-c2');
     $m->get_ok('/account/job/' . $job_to_be_updated);
 
@@ -160,20 +185,24 @@ for my $user ('user1-c1', 'user2-c1') {
     is($form->value('job.create_or_update.vacancies'), '1', 'vacancies is set correctly in the form');
     is($form->value('job.create_or_update.is_at_office'), 1, '`is at office` is set correctly in the form');
     is($form->value('job.create_or_update.status'), 'active', 'status is set correctly in the form');
+    is($form->value('job.create_or_update.required_attributes'), 'Moose,DBIx::Class,Ser pró-ativo', 'required_attributes are set correctly in the form');
+    is($form->value('job.create_or_update.desired_attributes'), 'jQuery,HTML5', 'desired_attributes are set correctly in the form');
 
     $m->submit_form(
         form_id => 'jobs_form',
         fields => {
-            'job.create_or_update.title'         => 'Test job title 1',
-            'job.create_or_update.description'   => 'Test job desc 1',
-            'job.create_or_update.salary'        => '',
-            'job.create_or_update.location'      => 'Test location 1',
-            'job.create_or_update.phone'         => '(11) 91234-5676',
-            'job.create_or_update.email'         => 'abcd@andre.com',
-            'job.create_or_update.vacancies'     => '1',
-            'job.create_or_update.contract_type' => 'clt',
-            'job.create_or_update.is_at_office'  => 1,
-            'job.create_or_update.status'        => 'active',
+            'job.create_or_update.title'               => 'Test job title 1',
+            'job.create_or_update.description'         => 'Test job desc 1',
+            'job.create_or_update.salary'              => '',
+            'job.create_or_update.location'            => 'Test location 1',
+            'job.create_or_update.phone'               => '(11) 91234-5676',
+            'job.create_or_update.email'               => 'abcd@andre.com',
+            'job.create_or_update.vacancies'           => '1',
+            'job.create_or_update.contract_type'       => 'clt',
+            'job.create_or_update.is_at_office'        => 1,
+            'job.create_or_update.status'              => 'active',
+            'job.create_or_update.required_attributes' => 'Moose,DBIx::Class,Ser pró-ativo',
+            'job.create_or_update.desired_attributes'  => 'jQuery,HTML5',
         },
     );
 
@@ -191,55 +220,75 @@ for my $user ('user1-c1', 'user2-c1') {
     is($form->value('job.create_or_update.contract_type'), 'clt', '(missing salary) contract type is set correctly in the form');
     is($form->value('job.create_or_update.is_at_office'), 1, '(missing salary) `is at office` is set correctly in the form');
     is($form->value('job.create_or_update.status'), 'active', '(missing salary) status is set correctly in the form');
+    is($form->value('job.create_or_update.required_attributes'), 'Moose,DBIx::Class,Ser pró-ativo', '(missing salary) required_attributes are set correctly in the form');
+    is($form->value('job.create_or_update.desired_attributes'), 'jQuery,HTML5', '(missing salary) desired_attributes are set correctly in the form');
 
     $m->submit_form(
         form_id => 'jobs_form',
         fields => {
-            'job.create_or_update.title'         => 'Test job title 1',
-            'job.create_or_update.description'   => 'Test job desc 1',
-            'job.create_or_update.salary'        => 'invalid',              # invalid
-            'job.create_or_update.location'      => 'Test location 1',
-            'job.create_or_update.phone'         => '(11) 91234-5676',
-            'job.create_or_update.email'         => 'abcd@andre.com',
-            'job.create_or_update.vacancies'     => '1',
-            'job.create_or_update.contract_type' => 'clt',
-            'job.create_or_update.is_at_office'  => 1,
-            'job.create_or_update.status'        => 'active',
+            'job.create_or_update.title'               => 'Test job title 1',
+            'job.create_or_update.description'         => 'Test job desc 1',
+            'job.create_or_update.salary'              => 'invalid',              # invalid
+            'job.create_or_update.location'            => 'Test location 1',
+            'job.create_or_update.phone'               => '(11) 91234-5676',
+            'job.create_or_update.email'               => 'abcd@andre.com',
+            'job.create_or_update.vacancies'           => '1',
+            'job.create_or_update.contract_type'       => 'clt',
+            'job.create_or_update.is_at_office'        => 1,
+            'job.create_or_update.status'              => 'active',
+            'job.create_or_update.required_attributes' => 'Moose,DBIx::Class,Ser pró-ativo',
+            'job.create_or_update.desired_attributes'  => 'jQuery,HTML5',
         },
     );
 
     like(get_job()->salary, qr{^R\$\s*1.000.000,56$}, 'job was not updated');
 
     $form = $m->form_id( 'jobs_form' );
-    is($form->value('job.create_or_update.id'), $job_to_be_updated, '(missing salary) id is set correctly in the form');
-    is($form->value('job.create_or_update.title'), 'Test job title 1', '(missing salary) title is set correctly in the form');
-    is($form->value('job.create_or_update.description'), 'Test job desc 1', '(missing salary) description is set correctly in the form');
-    is($form->value('job.create_or_update.salary'), 'invalid', '(missing salary) salary is set correctly in the form');
-    is($form->value('job.create_or_update.location'), 'Test location 1', '(missing salary) location is set correctly in the form');
-    is($form->value('job.create_or_update.phone'), '(11) 91234-5676', '(missing salary) phone is set correctly in the form');
-    is($form->value('job.create_or_update.email'), 'abcd@andre.com', '(missing salary) email is set correctly in the form');
-    is($form->value('job.create_or_update.vacancies'), '1', '(missing salary) vacancies is set correctly in the form');
-    is($form->value('job.create_or_update.contract_type'), 'clt', '(missing salary) contract type is set correctly in the form');
-    is($form->value('job.create_or_update.is_at_office'), 1, '(missing salary) `is at office` is set correctly in the form');
-    is($form->value('job.create_or_update.status'), 'active', '(missing salary) status is set correctly in the form');
+    is($form->value('job.create_or_update.id'), $job_to_be_updated, '(invalid salary) id is set correctly in the form');
+    is($form->value('job.create_or_update.title'), 'Test job title 1', '(invalid salary) title is set correctly in the form');
+    is($form->value('job.create_or_update.description'), 'Test job desc 1', '(invalid salary) description is set correctly in the form');
+    is($form->value('job.create_or_update.salary'), 'invalid', '(invalid salary) salary is set correctly in the form');
+    is($form->value('job.create_or_update.location'), 'Test location 1', '(invalid salary) location is set correctly in the form');
+    is($form->value('job.create_or_update.phone'), '(11) 91234-5676', '(invalid salary) phone is set correctly in the form');
+    is($form->value('job.create_or_update.email'), 'abcd@andre.com', '(invalid salary) email is set correctly in the form');
+    is($form->value('job.create_or_update.vacancies'), '1', '(invalid salary) vacancies is set correctly in the form');
+    is($form->value('job.create_or_update.contract_type'), 'clt', '(invalid salary) contract type is set correctly in the form');
+    is($form->value('job.create_or_update.is_at_office'), 1, '(invalid salary) `is at office` is set correctly in the form');
+    is($form->value('job.create_or_update.status'), 'active', '(invalid salary) status is set correctly in the form');
+    is($form->value('job.create_or_update.required_attributes'), 'Moose,DBIx::Class,Ser pró-ativo', '(invalid salary) required_attributes are set correctly in the form');
+    is($form->value('job.create_or_update.desired_attributes'), 'jQuery,HTML5', '(invalid salary) desired_attributes are set correctly in the form');
 
     $m->submit_form(
         form_id => 'jobs_form',
         fields => {
-            'job.create_or_update.title'         => 'Test job title 1',
-            'job.create_or_update.description'   => 'Test job desc 1',
-            'job.create_or_update.salary'        => 'R$ 1.321.456,56',
-            'job.create_or_update.location'      => 'Test location 1',
-            'job.create_or_update.phone'         => '(11) 91234-5676',
-            'job.create_or_update.email'         => 'abcd@andre.com',
-            'job.create_or_update.vacancies'     => '1',
-            'job.create_or_update.contract_type' => 'clt',
-            'job.create_or_update.is_at_office'  => 1,
-            'job.create_or_update.status'        => 'active',
+            'job.create_or_update.title'               => 'Test job title 1',
+            'job.create_or_update.description'         => 'Test job desc 1',
+            'job.create_or_update.salary'              => 'R$ 1.321.456,56',
+            'job.create_or_update.location'            => 'Test location 1',
+            'job.create_or_update.phone'               => '(11) 91234-5676',
+            'job.create_or_update.email'               => 'abcd@andre.com',
+            'job.create_or_update.vacancies'           => '1',
+            'job.create_or_update.contract_type'       => 'clt',
+            'job.create_or_update.is_at_office'        => 1,
+            'job.create_or_update.status'              => 'active',
+            'job.create_or_update.required_attributes' => 'Moose,Ser pró-ativo',
+            'job.create_or_update.desired_attributes'  => 'jQuery,HTML5,Catalyst',
         },
     );
 
-    like(get_job()->salary, qr{^R\$\s*1.321.456,56$}, 'job was not updated');
+    like(get_job()->salary, qr{^R\$\s*1.321.456,56$}, 'job was updated');
+
+    is_deeply({
+        map {
+            ($_->attribute => $_->required_or_desired)
+        } get_job()->attributes->all
+    }, {
+        'Moose' => 'required',
+        'Ser pró-ativo' => 'required',
+        'Catalyst' => 'desired',
+        'jQuery' => 'desired',
+        'HTML5' => 'desired',
+    }, 'attributes are correctly set in the db');
 
     $t->auth->logout();
 }

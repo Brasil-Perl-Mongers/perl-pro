@@ -4,6 +4,8 @@
 :block main_form | fif($fields) -> {
 <form action="<: $form_action_uri :>" method="post" id="jobs_form">
 <input type="hidden" name="job.create_or_update.id" />
+<input type="hidden" name="job.create_or_update.required_attributes" id="required_attributes_field" />
+<input type="hidden" name="job.create_or_update.desired_attributes" id="desired_attributes_field" />
 <h2 class="underlined">
     <: $l('Adicionar anúncio de vaga') :>
     <div class="pull-right">
@@ -101,6 +103,7 @@
             <div class="row">
                 <div class="span6">
                     <ul class="requirements">
+                        <!-- load with javascript -->
                         <li>Moose</li>
                         <li>Catalyst</li>
                         <li>PSGI</li>
@@ -118,6 +121,7 @@
             <div class="row">
                 <div class="span6">
                     <ul class="requirements">
+                        <!-- load with javascript -->
                         <li>Moose</li>
                         <li>Catalyst</li>
                         <li>PSGI</li>

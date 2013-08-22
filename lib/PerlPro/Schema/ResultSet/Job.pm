@@ -7,9 +7,10 @@ extends 'DBIx::Class::ResultSet';
 with 'PerlPro::Role::Verification';
 
 use MooseX::Types::Email qw/EmailAddress/;
-use MooseX::Types::Moose qw/Int Str Num ArrayRef Bool/;
+use MooseX::Types::Moose qw/Int Str Bool/;
 use PerlPro::Types::Contract qw/ContractType ContractHours/;
 use PerlPro::Types::Money qw/Money/;
+use PerlPro::Types::AttributeArray qw/AttributeArray/;
 use Scalar::Util qw/blessed/;
 
 use Data::Verifier;
@@ -36,8 +37,8 @@ sub verifiers_specs {
                 is_at_office        => { required => 0, type => Bool },
                 location            => { required => 1, type => Str },
                 status              => { required => 1, type => Str },
-                desired_attributes  => { required => 0, type => ArrayRef[Str] },
-                required_attributes => { required => 0, type => ArrayRef[Str] },
+                desired_attributes  => { required => 0, type => AttributeArray, coerce => 1 },
+                required_attributes => { required => 0, type => AttributeArray, coerce => 1 },
             }
         ),
     };
@@ -199,8 +200,8 @@ sub get_to_update {
         is_at_office        => !$item->get_column('is_telecommute'),
         location            => $item->get_column('location'),
         status              => $item->get_column('status'),
-        required_attributes => { map { $_->id, $_->attribute } @required },
-        desired_attributes  => { map { $_->id, $_->attribute } @desired },
+        required_attributes => [ map { $_->get_column('attribute') } @required ],
+        desired_attributes  => [ map { $_->get_column('attribute') } @desired ],
     );
 
     return {

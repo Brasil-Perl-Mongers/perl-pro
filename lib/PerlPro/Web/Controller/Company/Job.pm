@@ -43,6 +43,7 @@ sub remove :Chained('item') PathPart('job') Args(1) DELETE {
     my $item = $ctx->stash->{item};
 
     if (!$item) {
+        # TODO: we could have a job_not_found action
         $ctx->detach('/not_found');
     }
 
@@ -60,12 +61,6 @@ sub add_job :Chained('base') PathPart('job/new') Does('DisplayExecute') Args(0) 
 
     if (ref $ctx->req->params->{job}) {
         $ctx->req->params->{job}{create_or_update}{company} = $ctx->user->get_object->user_companies->first->get_column('company');
-        if (!$ctx->req->params->{job}{create_or_update}{desired_attributes}) {
-            $ctx->req->params->{job}{create_or_update}{desired_attributes} = [];
-        }
-        if (!$ctx->req->params->{job}{create_or_update}{required_attributes}) {
-            $ctx->req->params->{job}{create_or_update}{required_attributes} = [];
-        }
     }
 
     my $uri = $ctx->req->uri;
@@ -80,17 +75,17 @@ sub add_job :Chained('base') PathPart('job/new') Does('DisplayExecute') Args(0) 
     );
 }
 
+sub add_job_display {
+    my ( $self, $ctx ) = @_;
+
+    _flatten_attributes($ctx->stash->{fields});
+}
+
 sub update :Chained('item') PathPart('') Does('DisplayExecute') Args(0) GET POST {
     my ( $self, $ctx ) = @_;
 
     if (ref $ctx->req->params->{job}) {
         $ctx->req->params->{job}{create_or_update}{company} = $ctx->user->get_object->user_companies->first->get_column('company');
-        if (!$ctx->req->params->{job}{create_or_update}{desired_attributes}) {
-            $ctx->req->params->{job}{create_or_update}{desired_attributes} = [];
-        }
-        if (!$ctx->req->params->{job}{create_or_update}{required_attributes}) {
-            $ctx->req->params->{job}{create_or_update}{required_attributes} = [];
-        }
     }
 
     my $uri = $ctx->req->uri;
@@ -103,6 +98,28 @@ sub update :Chained('item') PathPart('') Does('DisplayExecute') Args(0) GET POST
         uri_to_redirect => [ $self->action_for('update'), [ $ctx->stash->{id} ] ],
     );
 }
+
+sub update_display {
+    my ( $self, $ctx ) = @_;
+
+    _flatten_attributes($ctx->stash->{fields});
+}
+
+sub _flatten_attributes {
+    my $f = shift;
+
+    # the names are too long!
+    my $d = 'job.create_or_update.desired_attributes';
+    my $r = 'job.create_or_update.required_attributes';
+
+    if ( $f->{$d} && ref $f->{$d} ) {
+        $f->{$d} = join ',', @{ $f->{$d} };
+    }
+    if ( $f->{$r} && ref $f->{$r} ) {
+        $f->{$r} = join ',', @{ $f->{$r} };
+    }
+}
+
 
 __PACKAGE__->meta->make_immutable;
 
