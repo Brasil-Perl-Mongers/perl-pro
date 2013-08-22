@@ -6,7 +6,9 @@ use namespace::autoclean;
 extends 'DBIx::Class::ResultSet';
 with 'PerlPro::Role::Verification';
 
-use MooseX::Types::Moose qw/Int Str ArrayRef/;
+use MooseX::Types::Email qw/EmailAddress/;
+use MooseX::Types::Moose qw/Int Str Num ArrayRef Bool/;
+use PerlPro::Types::Contract qw/ContractType ContractHours/;
 
 use Data::Verifier;
 
@@ -18,10 +20,21 @@ sub verifiers_specs {
     return {
         create => Data::Verifier->new(
             profile => {
-                company             => { required => 1, type => Str },
-                title               => { required => 1, type => Str },
-                description         => { required => 1, type => Str },
-                salary              => { required => 1, type => Str },
+                company       => { required => 1, type => Str },
+                title         => { required => 1, type => Str },
+                description   => { required => 1, type => Str },
+                salary        => {
+                    required => 1,
+                    type     => Num,
+                    coercion => \&_real_to_float,
+                },
+                phone               => { required => 0, type => Str },
+                email               => { required => 0, type => EmailAddress },
+                vacancies           => { required => 0, type => Int },
+                contract_type       => { required => 1, type => ContractType },
+                contract_hours      => { required => 1, type => ContractHours },
+                contract_duration   => { required => 0, type => Str }, # TODO: DateTime?
+                is_at_office        => { required => 0, type => Bool },
                 location            => { required => 1, type => Str },
                 status              => { required => 1, type => Str },
                 desired_attributes  => { required => 0, type => ArrayRef[Str] },
@@ -30,11 +43,22 @@ sub verifiers_specs {
         ),
         update => Data::Verifier->new(
             profile => {
-                id                  => { required => 1, type => Int },
-                company             => { required => 1, type => Str },
-                title               => { required => 1, type => Str },
-                description         => { required => 1, type => Str },
-                salary              => { required => 1, type => Str },
+                id            => { required => 1, type => Int },
+                company       => { required => 1, type => Str },
+                title         => { required => 1, type => Str },
+                description   => { required => 1, type => Str },
+                salary        => {
+                    required => 1,
+                    type     => Num,
+                    coercion => \&_real_to_float,
+                },
+                phone               => { required => 0, type => Str },
+                email               => { required => 0, type => EmailAddress },
+                vacancies           => { required => 0, type => Int },
+                contract_type       => { required => 1, type => ContractType },
+                contract_hours      => { required => 1, type => ContractHours },
+                contract_duration   => { required => 0, type => Str }, # TODO: DateTime?
+                is_at_office        => { required => 0, type => Bool },
                 location            => { required => 1, type => Str },
                 status              => { required => 1, type => Str },
                 desired_attributes  => { required => 0, type => ArrayRef[Str] },
@@ -49,14 +73,13 @@ sub action_specs {
     return {
         create => sub {
             my %values = shift->valid_values;
-            my $row = $self->create({
-                company     => $values{company},
-                title       => $values{title},
-                description => $values{description},
-                salary      => $values{salary},
-                location    => $values{location},
-                status      => $values{status},
-            });
+            my %row_values;
+            for (qw/company title description salary phone email vacancies contract_type contract_hours contract_duration location status/) {
+                $row_values{$_} = $values{$_} if $values{$_};
+            }
+            $row_values{is_telecommute} = !$values{is_at_office};
+
+            my $row = $self->create(\%row_values);
 
             for my $type (qw/required desired/) {
                 for my $attr (@{ $values{"${type}_attributes"} }) {
@@ -76,14 +99,13 @@ sub action_specs {
 
             $row->attributes->delete;
 
-            $row->update({
-                company     => $values{company},
-                title       => $values{title},
-                description => $values{description},
-                salary      => $values{salary},
-                location    => $values{location},
-                status      => $values{status},
-            });
+            my %row_values;
+            for (qw/company title description salary phone email vacancies contract_type contract_hours contract_duration location status/) {
+                $row_values{$_} = $values{$_} if $values{$_};
+            }
+            $row_values{is_telecommute} = !$values{is_at_office};
+
+            $row->update(\%row_values);
 
             for my $type (qw/required desired/) {
                 for my $attr (@{ $values{"${type}_attributes"} }) {
@@ -189,6 +211,16 @@ sub get_job_and_company_by_job_id {
             other_jobs        => [ $other_jobs->all ],
         },
     };
+}
+
+sub _real_to_float {
+    my $value = shift;
+    $value =~ s/R\$//;
+    $value =~ s/\s*//g;
+    $value =~ s/,/|COMMA|/;
+    $value =~ s/\./,/g;
+    $value =~ s/|COMMA|/\./;
+    return 0 + sprintf("%.2f", $value);
 }
 
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);
