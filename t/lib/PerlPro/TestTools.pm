@@ -179,18 +179,28 @@ sub clear_fixtures {
 
     my $db = $self->db;
 
-    $db->resultset('Role')->find($_)->delete
-      for (
+    for (
         'site-admin',           'site-manage-all-companies',
         'company-manage-jobs',  'company-manage-profile',
         'company-manage-admin', 'company-basic',
-      );
+      )
+    {
+        if ( my $row = $db->resultset('Role')->find($_) ) {
+            $row->delete;
+        }
+    }
 
-    $db->resultset('Company')->find($_)->delete
-      for (qw/company1 company2 company3/);
+    for (qw/company1 company2 company3/) {
+        if ( my $row = $db->resultset('Company')->find($_) ) {
+            $row->delete;
+        }
+    }
 
-    $db->resultset('User')->find($_)->delete
-      for (qw/user1-c1 user2-c1 user1-c2 user1-c3/);
+    for (qw/user1-c1 user2-c1 user1-c2 user1-c3/) {
+        if ( my $row = $db->resultset('User')->find($_) ) {
+            $row->delete;
+        }
+    }
 
     $self->remove_lock;
 
