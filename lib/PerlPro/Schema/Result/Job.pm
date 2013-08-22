@@ -90,6 +90,47 @@ __PACKAGE__->table("job");
   data_type: 'text'
   is_nullable: 0
 
+=head2 phone
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 email
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 vacancies
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 contract_type
+
+  data_type: 'perlpro.job_contract_type'
+  default_value: 'other'::perlpro.job_contract_type
+  is_nullable: 0
+  size: 4
+
+=head2 contract_hours
+
+  data_type: 'perlpro.job_contract_hours'
+  default_value: 'freelance'::perlpro.job_contract_hours
+  is_nullable: 0
+  size: 4
+
+=head2 contract_duration
+
+  data_type: 'interval'
+  is_nullable: 1
+
+=head2 is_telecommute
+
+  data_type: 'boolean'
+  default_value: false
+  is_nullable: 0
+
 =head2 status
 
   data_type: 'perlpro.job_status'
@@ -137,6 +178,30 @@ __PACKAGE__->add_columns(
   { data_type => "money", is_nullable => 0 },
   "location",
   { data_type => "text", is_nullable => 0 },
+  "phone",
+  { data_type => "text", is_nullable => 1 },
+  "email",
+  { data_type => "text", is_nullable => 1 },
+  "vacancies",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "contract_type",
+  {
+    data_type => "perlpro.job_contract_type",
+    default_value => \"'other'::perlpro.job_contract_type",
+    is_nullable => 0,
+    size => 4,
+  },
+  "contract_hours",
+  {
+    data_type => "perlpro.job_contract_hours",
+    default_value => \"'freelance'::perlpro.job_contract_hours",
+    is_nullable => 0,
+    size => 4,
+  },
+  "contract_duration",
+  { data_type => "interval", is_nullable => 1 },
+  "is_telecommute",
+  { data_type => "boolean", default_value => \"false", is_nullable => 0 },
   "status",
   {
     data_type => "perlpro.job_status",
@@ -206,8 +271,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-15 14:19:37
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gsvrm/dmShX05x68W38u+A
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-22 12:36:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+qN5b3t8++9PcVUQXfITnQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -58,8 +58,10 @@
             <div class="controls-row">
                 <select class="span3">
                     <option selected>Forma de contratação</option>
-                    <option>CLT</option>
-                    <option>PJ</option>
+                    <option value="clt">CLT</option>
+                    <option value="pj">PJ</option>
+                    <option value="internship">Estágio</option>
+                    <option value="other">Outro</option>
                 </select>
                 <div class="span3">
                     <label class="checkbox"><input type="checkbox"> Presencial</label>
