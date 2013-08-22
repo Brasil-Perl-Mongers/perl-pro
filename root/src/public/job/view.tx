@@ -16,7 +16,7 @@
     <div class="row">
         <div class="span6">
             <h4 class="underlined"><: $l('Descrição da Vaga') :></h4>
-             <p><: $j.description :></p>
+            <p><: $j.description :></p>
             <h4 class="underlined"><: $l('Requisitos') :></h4>
             <h5><: $l('Necessário conhecimento em: ') :></h5>
             <ul class="requirements">
