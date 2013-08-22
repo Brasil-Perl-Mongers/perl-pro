@@ -153,7 +153,7 @@ for my $user ('user1-c1', 'user2-c1') {
     is($form->value('job.create_or_update.id'), $job_to_be_updated, 'id is set correctly in the form');
     is($form->value('job.create_or_update.title'), 'Test job title 1', 'title is set correctly in the form');
     is($form->value('job.create_or_update.description'), 'Test job desc 1', 'description is set correctly in the form');
-    is($form->value('job.create_or_update.salary'), 'R$ 1.000.000,56', 'salary is set correctly in the form');
+    like($form->value('job.create_or_update.salary'), qr{^R\$\s*1.000.000,56$}, 'salary is set correctly in the form');
     is($form->value('job.create_or_update.location'), 'Test location 1', 'location is set correctly in the form');
     is($form->value('job.create_or_update.phone'), '(11) 91234-5676', 'phone is set correctly in the form');
     is($form->value('job.create_or_update.email'), 'abcd@andre.com', 'email is set correctly in the form');
@@ -177,7 +177,7 @@ for my $user ('user1-c1', 'user2-c1') {
         },
     );
 
-    is(get_job()->salary, 'R$ 1.000.000,56', 'job was not updated');
+    like(get_job()->salary, qr{^R\$\s*1.000.000,56$}, 'job was not updated');
 
     $form = $m->form_id( 'jobs_form' );
     is($form->value('job.create_or_update.id'), $job_to_be_updated, '(missing salary) id is set correctly in the form');
@@ -208,7 +208,7 @@ for my $user ('user1-c1', 'user2-c1') {
         },
     );
 
-    is(get_job()->salary, 'R$ 1.000.000,56', 'job was not updated');
+    like(get_job()->salary, qr{^R\$\s*1.000.000,56$}, 'job was not updated');
 
     $form = $m->form_id( 'jobs_form' );
     is($form->value('job.create_or_update.id'), $job_to_be_updated, '(missing salary) id is set correctly in the form');
@@ -239,7 +239,7 @@ for my $user ('user1-c1', 'user2-c1') {
         },
     );
 
-    is(get_job()->salary, 'R$ 1.321.456,56', 'job was updated');
+    like(get_job()->salary, qr{^R\$\s*1.321.456,56$}, 'job was not updated');
 
     $t->auth->logout();
 }
