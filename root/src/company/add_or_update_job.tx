@@ -2,13 +2,14 @@
 :block content -> {
 
 :block main_form | fif($fields) -> {
-<form action="<:# TODO :>" method="post" id="jobs_form">
+<form action="<: $form_action_uri :>" method="post" id="jobs_form">
+<input type="hidden" name="job.create_or_update.id" />
 <h2 class="underlined">
     <: $l('Adicionar anúncio de vaga') :>
     <div class="pull-right">
-        <select name="active">
-            <option value="1"><: $l('Vaga ativa') :></option>
-            <option value="0"><: $l('Vaga inativa') :></option>
+        <select name="job.create_or_update.status">
+            <option value="active"><: $l('Vaga ativa') :></option>
+            <option value="canceled"><: $l('Vaga inativa') :></option>
         </select>
     </div>
 </h2>
@@ -22,22 +23,22 @@
     <div class="row">
         <div class="span6">
             <div class="controls-row">
-                <input type="text" class="flat-input span6" placeholder="Título" />
+                <input type="text" class="flat-input span6" placeholder="Título" name="job.create_or_update.title" />
             </div>
             <div class="controls-row">
-                <input type="text" class="flat-input span6" placeholder="Local / Endereço" />
+                <input type="text" class="flat-input span6" placeholder="Local / Endereço" name="job.create_or_update.location" />
             </div>
             <div class="controls-row">
-                <input type="text" class="flat-input span3" placeholder="Fone" />
-                <input type="text" class="flat-input span3" placeholder="E-mail" />
+                <input type="text" class="flat-input span3" placeholder="Fone" name="job.create_or_update.phone" />
+                <input type="text" class="flat-input span3" placeholder="E-mail" name="job.create_or_update.email" />
             </div>
             <div class="controls-row">
-                <input type="text" class="flat-input span6" placeholder="Quantidade de Vagas" />
+                <input type="text" class="flat-input span6" placeholder="Quantidade de Vagas" name="job.create_or_update.vacancies" />
             </div>
         </div>
         <div class="span6">
             <div class="controls-row">
-                <textarea class="span6 flat-input" rows="7" placeholder="Descrição da Vaga"></textarea>
+                <textarea class="span6 flat-input" rows="7" placeholder="Descrição da Vaga" name="job.create_or_update.description"></textarea>
             </div>
         </div>
     </div>
@@ -52,11 +53,11 @@
     <div class="row">
         <div class="span6">
             <div class="controls-row">
-                <input type="text" class="flat-input span3" placeholder="Salário" />
-                <input type="text" class="flat-input span3" placeholder="Duração do Contrato" />
+                <input type="text" class="flat-input span3" placeholder="Salário" name="job.create_or_update.salary" />
+                <input type="text" class="flat-input span3" placeholder="Duração do Contrato" name="job.create_or_update.contract_duration" />
             </div>
             <div class="controls-row">
-                <select class="span3">
+                <select class="span3" name="job.create_or_update.contract_type">
                     <option selected>Forma de contratação</option>
                     <option value="clt">CLT</option>
                     <option value="pj">PJ</option>
@@ -64,7 +65,7 @@
                     <option value="other">Outro</option>
                 </select>
                 <div class="span3">
-                    <label class="checkbox"><input type="checkbox"> Presencial</label>
+                    <label class="checkbox"><input type="checkbox" name="job.create_or_update.is_at_office" value="1"> Presencial</label>
                 </div>
             </div>
         </div>

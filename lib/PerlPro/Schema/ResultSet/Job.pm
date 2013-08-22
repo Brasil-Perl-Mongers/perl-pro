@@ -9,6 +9,7 @@ with 'PerlPro::Role::Verification';
 use MooseX::Types::Email qw/EmailAddress/;
 use MooseX::Types::Moose qw/Int Str Num ArrayRef Bool/;
 use PerlPro::Types::Contract qw/ContractType ContractHours/;
+use Scalar::Util qw/blessed/;
 
 use Data::Verifier;
 
@@ -18,39 +19,16 @@ sub verifiers_specs {
     my $self = shift;
 
     return {
-        create => Data::Verifier->new(
+        create_or_update => Data::Verifier->new(
             profile => {
+                id            => { required => 0, type => Int },
                 company       => { required => 1, type => Str },
                 title         => { required => 1, type => Str },
                 description   => { required => 1, type => Str },
                 salary        => {
                     required => 1,
                     type     => Num,
-                    coercion => \&_real_to_float,
-                },
-                phone               => { required => 0, type => Str },
-                email               => { required => 0, type => EmailAddress },
-                vacancies           => { required => 0, type => Int },
-                contract_type       => { required => 1, type => ContractType },
-                contract_hours      => { required => 1, type => ContractHours },
-                contract_duration   => { required => 0, type => Str }, # TODO: DateTime?
-                is_at_office        => { required => 0, type => Bool },
-                location            => { required => 1, type => Str },
-                status              => { required => 1, type => Str },
-                desired_attributes  => { required => 0, type => ArrayRef[Str] },
-                required_attributes => { required => 0, type => ArrayRef[Str] },
-            }
-        ),
-        update => Data::Verifier->new(
-            profile => {
-                id            => { required => 1, type => Int },
-                company       => { required => 1, type => Str },
-                title         => { required => 1, type => Str },
-                description   => { required => 1, type => Str },
-                salary        => {
-                    required => 1,
-                    type     => Num,
-                    coercion => \&_real_to_float,
+                    coercion => \&_brl_to_float,
                 },
                 phone               => { required => 0, type => Str },
                 email               => { required => 0, type => EmailAddress },
@@ -71,41 +49,21 @@ sub verifiers_specs {
 sub action_specs {
     my $self = shift;
     return {
-        create => sub {
+        create_or_update => sub {
             my %values = shift->valid_values;
-            my %row_values;
+            my (%row_values, $row);
             for (qw/company title description salary phone email vacancies contract_type contract_hours contract_duration location status/) {
                 $row_values{$_} = $values{$_} if $values{$_};
             }
             $row_values{is_telecommute} = !$values{is_at_office};
 
-            my $row = $self->create(\%row_values);
-
-            for my $type (qw/required desired/) {
-                for my $attr (@{ $values{"${type}_attributes"} }) {
-                    $row->add_to_attributes({
-                        required_or_desired => $type,
-                        attribute           => $attr,
-                    });
-                }
+            if ( $row = $self->find($values{id}) ) {
+                $row->attributes->delete;
+                $row->update(\%row_values);
             }
-
-            return $row;
-        },
-        update => sub {
-            my %values = shift->valid_values;
-
-            my $row = $self->find($values{id});
-
-            $row->attributes->delete;
-
-            my %row_values;
-            for (qw/company title description salary phone email vacancies contract_type contract_hours contract_duration location status/) {
-                $row_values{$_} = $values{$_} if $values{$_};
+            else {
+                $row = $self->create(\%row_values);
             }
-            $row_values{is_telecommute} = !$values{is_at_office};
-
-            $row->update(\%row_values);
 
             for my $type (qw/required desired/) {
                 for my $attr (@{ $values{"${type}_attributes"} }) {
@@ -135,11 +93,11 @@ sub get_recent_jobs {
     for my $j ($jobs->all) {
         my $c = $j->company;
         push @result, {
-            title => $j->title,
-            company_url => $c->name_in_url,
+            title        => $j->title,
+            company_url  => $c->name_in_url,
             company_name => $c->name,
-            location => $j->location,
-            id => $j->id,
+            location     => $j->location,
+            id           => $j->id,
         };
     }
 
@@ -213,13 +171,55 @@ sub get_job_and_company_by_job_id {
     };
 }
 
-sub _real_to_float {
+sub get_to_update {
+    my ($self, $item_or_id) = @_;
+    my ($item, $id);
+
+    if (blessed $item_or_id) {
+        $item = $item_or_id;
+        $id = $item->id;
+    }
+    else {
+        $id = $item_or_id;
+        $item = $self->find($id);
+    }
+
+    my @required = $item->attributes->search({ required_or_desired => 'required' })->all;
+    my @desired  = $item->attributes->search({ required_or_desired => 'desired' })->all;
+
+    my %job = (
+        id                  => $id,
+        company             => $item->get_column('company'),
+        title               => $item->get_column('title'),
+        description         => $item->get_column('description'),
+        salary              => $item->get_column('salary'),
+        phone               => $item->get_column('phone'),
+        email               => $item->get_column('email'),
+        vacancies           => $item->get_column('vacancies'),
+        contract_type       => $item->get_column('contract_type'),
+        contract_hours      => $item->get_column('contract_hours'),
+        contract_duration   => $item->get_column('contract_duration'),
+        is_at_office        => !$item->get_column('is_telecommute'),
+        location            => $item->get_column('location'),
+        status              => $item->get_column('status'),
+        required_attributes => { map { $_->id, $_->attribute } @required },
+        desired_attributes  => { map { $_->id, $_->attribute } @desired },
+    );
+
+    return {
+        map { ( "job.create_or_update.$_" => $job{$_} ) } keys %job
+    };
+}
+
+sub _brl_to_float {
     my $value = shift;
+
     $value =~ s/R\$//;
     $value =~ s/\s*//g;
     $value =~ s/,/|COMMA|/;
     $value =~ s/\./,/g;
     $value =~ s/|COMMA|/\./;
+
     return 0 + sprintf("%.2f", $value);
 }
 

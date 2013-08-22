@@ -55,22 +55,24 @@ sub remove :Chained('item') PathPart('job') Args(1) DELETE {
     $ctx->res->body('OK');
 }
 
-sub add_job :Chained('base') Does('DisplayExecute') Args(0) {
+sub add_job :Chained('base') PathPart('job/new') Does('DisplayExecute') Args(0) {
     my ( $self, $ctx ) = @_;
 
     $ctx->stash(
-        template     => 'company/add_job.tx',
-        current_page => 'add_job',
+        template        => 'company/add_or_update_job.tx',
+        current_page    => 'add_job',
+        form_action_uri => $ctx->uri_for_action('/company/job/add_job'),
     );
 }
 
-sub update :Chained('item') PathPart('update') Does('DisplayExecute') Args(0) {
+sub update :Chained('item') PathPart('') Does('DisplayExecute') Args(0) {
     my ( $self, $ctx ) = @_;
 
     $ctx->stash(
-        template     => 'company/update_job.tx',
-        current_page => 'my_jobs', # just to color something in the menu
-        fields => {}, # TODO: deal with $ctx->stash->{item}
+        template        => 'company/add_or_update_job.tx',
+        current_page    => 'my_jobs', # just to color something in the menu
+        fields          => $ctx->model->get_to_update($ctx->stash->{item}),
+        form_action_uri => $ctx->uri_for_action('/company/job/update', [ $ctx->stash->{id} ]),
     );
 }
 
