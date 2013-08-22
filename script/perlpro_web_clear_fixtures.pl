@@ -1,7 +1,4 @@
 #!/usr/bin/env perl
-use warnings;
-use strict;
-
 use FindBin '$Bin';
 use lib "$Bin/../lib";
 use lib "$Bin/../t/lib";
