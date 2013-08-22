@@ -2,10 +2,12 @@ package PerlPro::TestTools;
 
 $ENV{PERLPRO_WEB_CONFIG_LOCAL_SUFFIX} = 'testing';
 
+use utf8;
 use Moose;
 use FindBin '$Bin';
 use PerlPro::TestTools::Mech;
 use PerlPro::TestTools::Auth;
+use Test::More ();
 use namespace::autoclean;
 
 has app => (
@@ -210,6 +212,36 @@ sub fixtures_in_db {
     my ($self) = @_;
 
     return -e $self->test_root_dir . "/.lock-fixtures";
+}
+
+sub import {
+    my $callpkg = caller(0);
+
+    {
+        no strict 'refs';
+        no warnings 'once';
+        for (@Test::More::EXPORT) {
+            if ($_ !~ /\W/) {
+                *{"$callpkg\::$_"} = \&{"Test::More::$_"};
+            }
+        }
+    }
+
+    # XXX: there's probably a better way to do this
+    require vars;
+    vars->import('$' . "${callpkg}::TODO", '$' . "${callpkg}::SKIP");
+
+    warnings->import;
+    strict->import;
+    utf8->import;
+
+    binmode STDOUT, ':encoding(UTF-8)';
+    binmode STDERR, ':encoding(UTF-8)';
+
+    my $builder = Test::More->builder;
+    binmode $builder->output,         ":encoding(UTF-8)";
+    binmode $builder->failure_output, ":encoding(UTF-8)";
+    binmode $builder->todo_output,    ":encoding(UTF-8)";
 }
 
 __PACKAGE__->meta->make_immutable;

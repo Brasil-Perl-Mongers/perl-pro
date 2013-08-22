@@ -1,8 +1,3 @@
-use utf8;
-use strict;
-use warnings;
-use Test::More;
-
 use FindBin '$Bin';
 use lib "$Bin/lib";
 

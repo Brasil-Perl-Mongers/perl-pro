@@ -1,8 +1,3 @@
-use utf8;
-use strict;
-use warnings;
-use Test::More;
-
 use FindBin '$Bin';
 use lib "$Bin/lib";
 
@@ -45,6 +40,9 @@ TODO: {
         like($content, qr{5678\-1234}, qq{user1-c2 - phone is there.});
         like($content, qr{http://company2\.com}, qq{user1-c2 - website is there.});
         like($content, qr{http://www.company2\.com}, qq{user1-c2 - website is there.});
+
+        no warnings qw/redefine once/;
+        local *Catalyst::Log::error = sub { 1 };
 
         $m->put_ok('/account/data/description', content => 'New desc of company two');
         $m->get_ok($page);
