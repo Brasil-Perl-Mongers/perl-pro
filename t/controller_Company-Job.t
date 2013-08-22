@@ -7,6 +7,7 @@ use PerlPro::Web::Controller::Company::Job;
 my $t = PerlPro::TestTools->new( current_page => '/account/my_jobs' );
 my $m = $t->mech;
 my $page = $t->current_page;
+my $job_to_be_updated = 0;
 
 # list my jobs
 for my $user ('user1-c1', 'user2-c1') {
@@ -26,10 +27,226 @@ for my $user ('user1-c1', 'user2-c1') {
 }
 
 # create job
+{
+    sub get_max_id {
+        return $t->db->resultset('Company')->find('company2')->jobs->search({}, { order_by => { -desc => 'id' } })->first->id;
+    }
+
+    my $max_id = get_max_id();
+
+    $t->auth->login_ok('user1-c2');
+    $m->get_ok('/account/job/new');
+
+    my $form = $m->form_id( 'jobs_form' );
+    ok(!$form->value('job.create_or_update.id'), 'id is set correctly in the form');
+    is($form->value('job.create_or_update.title'), '', 'title is set correctly in the form');
+    is($form->value('job.create_or_update.description'), '', 'description is set correctly in the form');
+    is($form->value('job.create_or_update.salary'), '', 'salary is set correctly in the form');
+    is($form->value('job.create_or_update.location'), '', 'location is set correctly in the form');
+    is($form->value('job.create_or_update.phone'), '', 'phone is set correctly in the form');
+    is($form->value('job.create_or_update.email'), '', 'email is set correctly in the form');
+    is($form->value('job.create_or_update.vacancies'), '1', 'vacancies is set correctly in the form');
+    ok(!$form->value('job.create_or_update.is_at_office'), '`is at office` is set correctly in the form');
+    is($form->value('job.create_or_update.status'), 'active', 'status is set correctly in the form');
+
+# TODO:
+#    is($form->value('job.create_or_update.contract_duration'), '', 'contract duration is set correctly in the form');
+#    is($form->value('job.create_or_update.contract_type'), 'other', 'contract type is set correctly in the form');
+
+    $m->submit_form_ok({
+        form_id => 'jobs_form',
+        fields => {
+            'job.create_or_update.title'         => 'Test job title 1',
+            'job.create_or_update.description'   => 'Test job desc 1',
+            'job.create_or_update.salary'        => 'R$ 1.000.000,56',  # 2 dots, 1 comma
+            'job.create_or_update.location'      => 'Test location 1',
+            'job.create_or_update.phone'         => '(11) 91234-5676',
+            'job.create_or_update.email'         => 'abcd',             # invalid
+            'job.create_or_update.vacancies'     => '1',
+            'job.create_or_update.contract_type' => 'clt',
+            'job.create_or_update.is_at_office'  => 1,
+            'job.create_or_update.status'        => 'active',
+        },
+    });
+
+    is(get_max_id(), $max_id, 'no job was inserted');
+
+    $form = $m->form_id( 'jobs_form' );
+    ok(!$form->value('job.create_or_update.id'), '(invalid e-mail) id is set correctly in the form');
+    is($form->value('job.create_or_update.title'), 'Test job title 1', '(invalid e-mail) title is set correctly in the form');
+    is($form->value('job.create_or_update.description'), 'Test job desc 1', '(invalid e-mail) description is set correctly in the form');
+    is($form->value('job.create_or_update.salary'), 'R$ 1.000.000,56', '(invalid e-mail) salary is set correctly in the form');
+    is($form->value('job.create_or_update.location'), 'Test location 1', '(invalid e-mail) location is set correctly in the form');
+    is($form->value('job.create_or_update.phone'), '(11) 91234-5676', '(invalid e-mail) phone is set correctly in the form');
+    is($form->value('job.create_or_update.email'), 'abcd', '(invalid e-mail) email is set correctly in the form');
+    is($form->value('job.create_or_update.vacancies'), '1', '(invalid e-mail) vacancies is set correctly in the form');
+    is($form->value('job.create_or_update.contract_type'), 'clt', '(invalid e-mail) contract type is set correctly in the form');
+    is($form->value('job.create_or_update.is_at_office'), 1, '(invalid e-mail) `is at office` is set correctly in the form');
+    is($form->value('job.create_or_update.status'), 'active', '(invalid e-mail) status is set correctly in the form');
+
+    $m->submit_form_ok({
+        form_id => 'jobs_form',
+        fields => {
+            'job.create_or_update.title'         => '',                 # required
+            'job.create_or_update.description'   => 'Test job desc 1',
+            'job.create_or_update.salary'        => 'R$ 1.000.000,56',  # 2 dots, 1 comma
+            'job.create_or_update.location'      => 'Test location 1',
+            'job.create_or_update.phone'         => '(11) 91234-5676',
+            'job.create_or_update.email'         => 'abcd@andre.com',
+            'job.create_or_update.vacancies'     => '1',
+            'job.create_or_update.contract_type' => 'clt',
+            'job.create_or_update.is_at_office'  => 1,
+            'job.create_or_update.status'        => 'active',
+        },
+    });
+
+    is(get_max_id(), $max_id, 'no job was inserted');
+
+    $form = $m->form_id( 'jobs_form' );
+    ok(!$form->value('job.create_or_update.id'), '(missing title) id is set correctly in the form');
+    is($form->value('job.create_or_update.title'), '', '(missing title) title is set correctly in the form');
+    is($form->value('job.create_or_update.description'), 'Test job desc 1', '(missing title) description is set correctly in the form');
+    is($form->value('job.create_or_update.salary'), 'R$ 1.000.000,56', '(missing title) salary is set correctly in the form');
+    is($form->value('job.create_or_update.location'), 'Test location 1', '(missing title) location is set correctly in the form');
+    is($form->value('job.create_or_update.phone'), '(11) 91234-5676', '(missing title) phone is set correctly in the form');
+    is($form->value('job.create_or_update.email'), 'abcd@andre.com', '(missing title) email is set correctly in the form');
+    is($form->value('job.create_or_update.vacancies'), '1', '(missing title) vacancies is set correctly in the form');
+    is($form->value('job.create_or_update.contract_type'), 'clt', '(missing title) contract type is set correctly in the form');
+    is($form->value('job.create_or_update.is_at_office'), 1, '(missing title) `is at office` is set correctly in the form');
+    is($form->value('job.create_or_update.status'), 'active', '(missing title) status is set correctly in the form');
+
+    $m->submit_form_ok({
+        form_id => 'jobs_form',
+        fields => {
+            'job.create_or_update.title'         => 'Test job title 1',
+            'job.create_or_update.description'   => 'Test job desc 1',
+            'job.create_or_update.salary'        => 'R$ 1.000.000,56',  # 2 dots, 1 comma
+            'job.create_or_update.location'      => 'Test location 1',
+            'job.create_or_update.phone'         => '(11) 91234-5676',
+            'job.create_or_update.email'         => 'abcd@andre.com',
+            'job.create_or_update.vacancies'     => '1',
+            'job.create_or_update.contract_type' => 'clt',
+            'job.create_or_update.is_at_office'  => 1,
+            'job.create_or_update.status'        => 'active',
+        },
+    });
+
+    my $new_max = get_max_id();
+    cmp_ok($new_max, '>', $max_id, 'a job was created in the db');
+
+    if ($new_max <= $max_id) {
+        BAIL_OUT('expected job to be inserted');
+    }
+
+    $job_to_be_updated = $new_max;
+
+    $t->auth->logout();
+}
+
+# update job
+{
+    sub get_job { $t->db->resultset('Job')->find($job_to_be_updated) };
+    $t->auth->login_ok('user1-c2');
+    $m->get_ok('/account/job/' . $job_to_be_updated);
+
+    my $form = $m->form_id( 'jobs_form' );
+    is($form->value('job.create_or_update.id'), $job_to_be_updated, 'id is set correctly in the form');
+    is($form->value('job.create_or_update.title'), 'Test job title 1', 'title is set correctly in the form');
+    is($form->value('job.create_or_update.description'), 'Test job desc 1', 'description is set correctly in the form');
+    is($form->value('job.create_or_update.salary'), 'R$ 1.000.000,56', 'salary is set correctly in the form');
+    is($form->value('job.create_or_update.location'), 'Test location 1', 'location is set correctly in the form');
+    is($form->value('job.create_or_update.phone'), '(11) 91234-5676', 'phone is set correctly in the form');
+    is($form->value('job.create_or_update.email'), 'abcd@andre.com', 'email is set correctly in the form');
+    is($form->value('job.create_or_update.vacancies'), '1', 'vacancies is set correctly in the form');
+    is($form->value('job.create_or_update.is_at_office'), 1, '`is at office` is set correctly in the form');
+    is($form->value('job.create_or_update.status'), 'active', 'status is set correctly in the form');
+
+    $m->submit_form(
+        form_id => 'jobs_form',
+        fields => {
+            'job.create_or_update.title'         => 'Test job title 1',
+            'job.create_or_update.description'   => 'Test job desc 1',
+            'job.create_or_update.salary'        => '',
+            'job.create_or_update.location'      => 'Test location 1',
+            'job.create_or_update.phone'         => '(11) 91234-5676',
+            'job.create_or_update.email'         => 'abcd@andre.com',
+            'job.create_or_update.vacancies'     => '1',
+            'job.create_or_update.contract_type' => 'clt',
+            'job.create_or_update.is_at_office'  => 1,
+            'job.create_or_update.status'        => 'active',
+        },
+    );
+
+    is(get_job()->salary, 'R$ 1.000.000,56', 'job was not updated');
+
+    $form = $m->form_id( 'jobs_form' );
+    is($form->value('job.create_or_update.id'), $job_to_be_updated, '(missing salary) id is set correctly in the form');
+    is($form->value('job.create_or_update.title'), 'Test job title 1', '(missing salary) title is set correctly in the form');
+    is($form->value('job.create_or_update.description'), 'Test job desc 1', '(missing salary) description is set correctly in the form');
+    is($form->value('job.create_or_update.salary'), '', '(missing salary) salary is set correctly in the form');
+    is($form->value('job.create_or_update.location'), 'Test location 1', '(missing salary) location is set correctly in the form');
+    is($form->value('job.create_or_update.phone'), '(11) 91234-5676', '(missing salary) phone is set correctly in the form');
+    is($form->value('job.create_or_update.email'), 'abcd@andre.com', '(missing salary) email is set correctly in the form');
+    is($form->value('job.create_or_update.vacancies'), '1', '(missing salary) vacancies is set correctly in the form');
+    is($form->value('job.create_or_update.contract_type'), 'clt', '(missing salary) contract type is set correctly in the form');
+    is($form->value('job.create_or_update.is_at_office'), 1, '(missing salary) `is at office` is set correctly in the form');
+    is($form->value('job.create_or_update.status'), 'active', '(missing salary) status is set correctly in the form');
+
+    $m->submit_form(
+        form_id => 'jobs_form',
+        fields => {
+            'job.create_or_update.title'         => 'Test job title 1',
+            'job.create_or_update.description'   => 'Test job desc 1',
+            'job.create_or_update.salary'        => 'invalid',              # invalid
+            'job.create_or_update.location'      => 'Test location 1',
+            'job.create_or_update.phone'         => '(11) 91234-5676',
+            'job.create_or_update.email'         => 'abcd@andre.com',
+            'job.create_or_update.vacancies'     => '1',
+            'job.create_or_update.contract_type' => 'clt',
+            'job.create_or_update.is_at_office'  => 1,
+            'job.create_or_update.status'        => 'active',
+        },
+    );
+
+    is(get_job()->salary, 'R$ 1.000.000,56', 'job was not updated');
+
+    $form = $m->form_id( 'jobs_form' );
+    is($form->value('job.create_or_update.id'), $job_to_be_updated, '(missing salary) id is set correctly in the form');
+    is($form->value('job.create_or_update.title'), 'Test job title 1', '(missing salary) title is set correctly in the form');
+    is($form->value('job.create_or_update.description'), 'Test job desc 1', '(missing salary) description is set correctly in the form');
+    is($form->value('job.create_or_update.salary'), 'invalid', '(missing salary) salary is set correctly in the form');
+    is($form->value('job.create_or_update.location'), 'Test location 1', '(missing salary) location is set correctly in the form');
+    is($form->value('job.create_or_update.phone'), '(11) 91234-5676', '(missing salary) phone is set correctly in the form');
+    is($form->value('job.create_or_update.email'), 'abcd@andre.com', '(missing salary) email is set correctly in the form');
+    is($form->value('job.create_or_update.vacancies'), '1', '(missing salary) vacancies is set correctly in the form');
+    is($form->value('job.create_or_update.contract_type'), 'clt', '(missing salary) contract type is set correctly in the form');
+    is($form->value('job.create_or_update.is_at_office'), 1, '(missing salary) `is at office` is set correctly in the form');
+    is($form->value('job.create_or_update.status'), 'active', '(missing salary) status is set correctly in the form');
+
+    $m->submit_form(
+        form_id => 'jobs_form',
+        fields => {
+            'job.create_or_update.title'         => 'Test job title 1',
+            'job.create_or_update.description'   => 'Test job desc 1',
+            'job.create_or_update.salary'        => 'R$ 1.321.456,56',
+            'job.create_or_update.location'      => 'Test location 1',
+            'job.create_or_update.phone'         => '(11) 91234-5676',
+            'job.create_or_update.email'         => 'abcd@andre.com',
+            'job.create_or_update.vacancies'     => '1',
+            'job.create_or_update.contract_type' => 'clt',
+            'job.create_or_update.is_at_office'  => 1,
+            'job.create_or_update.status'        => 'active',
+        },
+    );
+
+    is(get_job()->salary, 'R$ 1.321.456,56', 'job was updated');
+
+    $t->auth->logout();
+}
+
 TODO: {
     local $TODO = "not implemented yet";
-    fail('create job');
-    fail('update job');
+    $t->db->resultset('Job')->find($job_to_be_updated)->delete;
     fail('remove job');
 }
 

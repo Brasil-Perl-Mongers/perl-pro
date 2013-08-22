@@ -9,6 +9,7 @@ with 'PerlPro::Role::Verification';
 use MooseX::Types::Email qw/EmailAddress/;
 use MooseX::Types::Moose qw/Int Str Num ArrayRef Bool/;
 use PerlPro::Types::Contract qw/ContractType ContractHours/;
+use PerlPro::Types::Money qw/Money/;
 use Scalar::Util qw/blessed/;
 
 use Data::Verifier;
@@ -21,20 +22,16 @@ sub verifiers_specs {
     return {
         create_or_update => Data::Verifier->new(
             profile => {
-                id            => { required => 0, type => Int },
-                company       => { required => 1, type => Str },
-                title         => { required => 1, type => Str },
-                description   => { required => 1, type => Str },
-                salary        => {
-                    required => 1,
-                    type     => Num,
-                    coercion => \&_brl_to_float,
-                },
+                id                  => { required => 0, type => Int },
+                company             => { required => 1, type => Str },
+                title               => { required => 1, type => Str },
+                description         => { required => 1, type => Str },
+                salary              => { required => 1, type => Money },
                 phone               => { required => 0, type => Str },
                 email               => { required => 0, type => EmailAddress },
                 vacancies           => { required => 0, type => Int },
                 contract_type       => { required => 1, type => ContractType },
-                contract_hours      => { required => 1, type => ContractHours },
+                contract_hours      => { required => 0, type => ContractHours }, # TODO: this is required => 1, but not fully implemented yet
                 contract_duration   => { required => 0, type => Str }, # TODO: DateTime?
                 is_at_office        => { required => 0, type => Bool },
                 location            => { required => 1, type => Str },
@@ -55,9 +52,9 @@ sub action_specs {
             for (qw/company title description salary phone email vacancies contract_type contract_hours contract_duration location status/) {
                 $row_values{$_} = $values{$_} if $values{$_};
             }
-            $row_values{is_telecommute} = !$values{is_at_office};
+            $row_values{is_telecommute} = $values{is_at_office} ? 0 : 1;
 
-            if ( $row = $self->find($values{id}) ) {
+            if ( $values{id} && ( $row = $self->find($values{id}) ) ) {
                 $row->attributes->delete;
                 $row->update(\%row_values);
             }
@@ -209,18 +206,6 @@ sub get_to_update {
     return {
         map { ( "job.create_or_update.$_" => $job{$_} ) } keys %job
     };
-}
-
-sub _brl_to_float {
-    my $value = shift;
-
-    $value =~ s/R\$//;
-    $value =~ s/\s*//g;
-    $value =~ s/,/|COMMA|/;
-    $value =~ s/\./,/g;
-    $value =~ s/|COMMA|/\./;
-
-    return 0 + sprintf("%.2f", $value);
 }
 
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);
