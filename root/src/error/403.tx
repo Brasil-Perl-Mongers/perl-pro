@@ -1,0 +1,6 @@
+:cascade public::wrapper
+:block content -> {
+<h2 class="serif-underlined"><: $l('Acesso negado') :></h2>
+<p class="lead">Você não possui as permissões necessárias para acessar esta página.</p>
+<p><a href="<: $uri('/') :>">Retorne à página inicial</a></p>
+: }

@@ -1,0 +1,6 @@
+:cascade public::wrapper
+:block content -> {
+<h2 class="serif-underlined"><: $l('Erro') :></h2>
+<p class="lead">O servidor encontrou um erro ao processar esta página. Os administradores do site já foram notificados e em breve corrigirão o problema.</p>
+<p><a href="<: $uri('/') :>">Retorne à página inicial</a></p>
+: }

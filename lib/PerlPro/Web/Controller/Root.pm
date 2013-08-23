@@ -23,34 +23,35 @@ sub default :Path {
     $ctx->detach( 'not_found' );
 }
 
+sub bad_request :Private {
+    my ( $self, $ctx ) = @_;
+
+    $ctx->log->warn("400 on " . $ctx->req->path);
+
+    $ctx->res->status(400);
+    $ctx->stash( template => 'error/400.tx' );
+}
+
+sub forbidden :Private {
+    my ( $self, $ctx ) = @_;
+
+    $ctx->log->warn("403 on " . $ctx->req->path);
+
+    $ctx->res->status(403);
+    $ctx->stash( template => 'error/403.tx' );
+}
+
 sub not_found :Private {
     my ( $self, $ctx ) = @_;
 
     $ctx->log->warn("404 on " . $ctx->req->path);
 
-    # TODO: create a template
     $ctx->res->status(404);
-    $ctx->res->body( 'Page not found' );
+    $ctx->stash( template => 'error/404.tx' );
 }
 
-sub unauthorized :Private {
-    my ( $self, $ctx ) = @_;
-
-    $ctx->log->warn("403 on " . $ctx->req->path);
-
-    # TODO: create a template
-    $ctx->res->status(403);
-    $ctx->res->body( 'Forbidden' );
-}
-
-sub end : ActionClass('RenderView') {
-    my ($self, $ctx) = @_;
-
-    if ( scalar @{ $ctx->error } ) {
-        $self->internal_server_error($ctx);
-    }
-}
-
+# This is not :Private because there's no need to detach to it. All that is
+# needed to reach this method is to call $ctx->error() anywhere in the app.
 sub internal_server_error {
     my ($self, $ctx ) = @_;
 
@@ -63,8 +64,16 @@ sub internal_server_error {
     }
 
     $ctx->res->status(500);
-    $ctx->res->body( 'Internal server error' );
+    $ctx->stash( template => 'error/500.tx' );
     $ctx->clear_errors;
+}
+
+sub end : ActionClass('RenderView') {
+    my ($self, $ctx) = @_;
+
+    if ( scalar @{ $ctx->error } ) {
+        $self->internal_server_error($ctx);
+    }
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -101,13 +110,17 @@ of the default static folder (root/static).
 
 Alias for L</not_found>.
 
+=head2 bad_request
+
+Standard 400 page (Bad Request).
+
+=head2 forbidden
+
+Standard 403 page (Forbidden).
+
 =head2 not_found
 
 Standard 404 page (Not found).
-
-=head2 unauthorized
-
-Standard 403 page (Forbidden).
 
 =head2 internal_server_error
 

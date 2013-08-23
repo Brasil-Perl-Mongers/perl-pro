@@ -1,0 +1,6 @@
+:cascade public::wrapper
+:block content -> {
+<h2 class="serif-underlined"><: $l('Requisição inválida') :></h2>
+<p class="lead">Sua requisição HTTP não foi feita em um formato aceito por este servidor, ou foram fornecidos dados inválidos.</p>
+<p><a href="<: $uri('/') :>">Retorne à página inicial</a></p>
+: }

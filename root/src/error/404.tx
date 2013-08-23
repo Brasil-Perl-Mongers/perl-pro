@@ -1,0 +1,6 @@
+:cascade public::wrapper
+:block content -> {
+<h2 class="serif-underlined"><: $l('Não encontrado') :></h2>
+<p class="lead">A página requisitada não existe.</p>
+<p><a href="<: $uri('/') :>">Retorne à página inicial</a></p>
+: }
