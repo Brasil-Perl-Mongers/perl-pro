@@ -19,7 +19,7 @@
             <button class="btn-util btn-small"><: $l('Gerenciar anúncios') :></button>
         </div>
         <div class="span6">
-            <p class="lead"><: $l('Último acesso: ') :><: $user.last_login.strftime('%d/%m/%Y') :></p>
+            <p class="lead"><: $l('Último acesso: ') :><: $previous_login :></p>
             <button class="btn-large btn-save"><: $l('Alterar e-mail') :></button>
             <button class="btn-large btn-action"><: $l('Alterar senha') :></button>
         </div>

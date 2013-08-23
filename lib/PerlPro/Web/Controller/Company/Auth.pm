@@ -26,7 +26,6 @@ around get_auth_data => sub {
     my $obj = $ctx->user->get_object;
 
     $result{_perlpro_auth_data}{is_admin} = 0;
-    $result{_perlpro_auth_data}{user}     = $obj;
     $result{_perlpro_auth_data}{company}  = $obj->user_companies->first->get_column('company');
 
     return %result;

@@ -22,6 +22,7 @@ sub requires_login : Chained('base') PathPart('') CaptureArgs(0) {
     $ctx->stash(
         %{ $ctx->session->{_perlpro_auth_data} }
     );
+    $ctx->stash( user => $ctx->user->get_object );
 }
 
 sub send_to_login {
@@ -46,6 +47,7 @@ sub get_auth_data {
     return (
         _perlpro_auth_data => {
             is_logged_in             => 1,
+            previous_login           => delete($ctx->session->{previous_login}),
             # can_blah_blah          => $ctx->check_user_roles(...)
             # is_blah_blah           => $ctx->check_user_roles(...)
         }
@@ -87,6 +89,9 @@ sub login_execute {
         })
     ) {
         $ctx->log->info("AUTHENTICATED USER $params->{login}");
+        my $user = $ctx->user->get_object;
+        $ctx->session( previous_login => $user->last_login->strftime('%d/%m/%Y') );
+        $user->update({ last_login => \'NOW()' });
     }
     else {
         $ctx->log->info("COULD NOT AUTHENTICATE USER $params->{login}");
