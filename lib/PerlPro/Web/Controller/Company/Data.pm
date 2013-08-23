@@ -13,6 +13,7 @@ sub display :Chained('base') PathPart('home') Args(0) GET {
     $ctx->stash(
         template     => 'company/home.tx',
         current_page => 'home',
+        c            => $ctx->model('DB::Company')->get_to_edit($ctx->stash->{company}),
     );
 }
 

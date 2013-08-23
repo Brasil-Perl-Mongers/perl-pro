@@ -22,13 +22,13 @@ sub verifiers_specs {
     return {
         register => Data::Verifier->new(
             profile => {
-                name        => { required => 1, type => Str },
-                description => { required => 1, type => Str },
+                name        => { required => 1, type => Str          },
+                description => { required => 1, type => Str          },
                 email       => { required => 1, type => EmailAddress },
-                phone       => { required => 1, type => Str },
-                address     => { required => 1, type => Str },
-                city        => { required => 1, type => Str },
-                state       => { required => 1, type => Str },
+                phone       => { required => 1, type => Str          },
+                address     => { required => 1, type => Str          },
+                city        => { required => 1, type => Str          },
+                state       => { required => 1, type => Str          },
             },
             filters => [
                 sub { HTML::Entities::encode_entities( $_[0] ) }
@@ -36,29 +36,29 @@ sub verifiers_specs {
         ),
         add_email => Data::Verifier->new(
             profile => {
-                company => { required => 1, type => Str },
+                company => { required => 1, type => Str          },
                 email   => { required => 1, type => EmailAddress },
-                is_main => { required => 0, type => Bool },
+                is_main => { required => 0, type => Bool         },
             },
         ),
         add_phone => Data::Verifier->new(
             profile => {
-                company => { required => 1, type => Str },
-                phone   => { required => 1, type => Str },
+                company => { required => 1, type => Str  },
+                phone   => { required => 1, type => Str  },
                 is_main => { required => 0, type => Bool },
             },
         ),
         add_website => Data::Verifier->new(
             profile => {
-                company => { required => 1, type => Str },
-                url     => { required => 1, type => Uri },
+                company => { required => 1, type => Str  },
+                url     => { required => 1, type => Uri  },
                 is_main => { required => 0, type => Bool },
             },
         ),
         add_location => Data::Verifier->new(
             profile => {
-                company  => { required => 1, type => Str },
-                location => { required => 1, type => Str },
+                company  => { required => 1, type => Str  },
+                location => { required => 1, type => Str  },
                 is_main  => { required => 0, type => Bool },
             },
         ),
@@ -190,6 +190,41 @@ sub get_for_profile {
         formatted_address => $formatted_address,
         jobs_part_1       => $part_one,
         jobs_part_2       => $part_two,
+    }
+}
+
+sub get_to_edit {
+    my ($self, $id) = @_;
+
+    my $company = $self->find($id);
+
+    return unless $company;
+
+    my @websites = $company->company_websites->search({}, {
+        order_by => { -desc => 'is_main_website' }
+    })->all;
+    my @phones   = $company->company_phones->search({}, {
+        order_by => { -desc => 'is_main_phone' }
+    })->all;
+    my @emails   = $company->company_emails->search({}, {
+        order_by => { -desc => 'is_main_address' }
+    })->all;
+    my @locations = $company->company_locations->search({}, {
+        order_by => { -desc => 'is_main_address' }
+    })->all;
+
+    my $email = scalar @emails ? $emails[0]->email : '';
+
+    return {
+        name_in_url    => $company->name_in_url,
+        name           => $company->name,
+        description    => $company->description,
+        websites       => \@websites,
+        emails         => \@emails,
+        phones         => \@phones,
+        locations      => \@locations,
+        email          => $email,
+        open_positions => $company->jobs->search({ status => 'active' })->count,
     }
 }
 

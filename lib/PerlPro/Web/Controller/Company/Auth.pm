@@ -27,7 +27,7 @@ around get_auth_data => sub {
 
     $result{_perlpro_auth_data}{is_admin} = 0;
     $result{_perlpro_auth_data}{user}     = $obj;
-    $result{_perlpro_auth_data}{company}  = $obj->user_companies->first->company;
+    $result{_perlpro_auth_data}{company}  = $obj->user_companies->first->get_column('company');
 
     return %result;
 };
