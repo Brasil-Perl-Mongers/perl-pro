@@ -90,7 +90,8 @@ sub login_execute {
     ) {
         $ctx->log->info("AUTHENTICATED USER $params->{login}");
         my $user = $ctx->user->get_object;
-        $ctx->session( previous_login => $user->last_login->strftime('%d/%m/%Y') );
+        my $last = $user->last_login;
+        $ctx->session( previous_login => ($last ? $last->strftime('%d/%m/%Y') : '') );
         $user->update({ last_login => \'NOW()' });
     }
     else {
