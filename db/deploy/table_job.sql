@@ -21,8 +21,8 @@ BEGIN;
         description TEXT NOT NULL,
         salary MONEY NOT NULL,
         location TEXT NOT NULL, -- TODO: should I split this, and validate?
-        phone TEXT, -- is this really needed?
-        email TEXT, -- is this really needed?
+        phone TEXT,
+        email TEXT,
         vacancies INTEGER NOT NULL DEFAULT 1,
         contract_type job_contract_type NOT NULL DEFAULT 'other'::job_contract_type,
         contract_hours job_contract_hours NOT NULL DEFAULT 'freelance'::job_contract_hours,
