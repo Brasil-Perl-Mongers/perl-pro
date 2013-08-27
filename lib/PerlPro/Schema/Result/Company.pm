@@ -246,6 +246,40 @@ __PACKAGE__->many_to_many("users", "user_companies", "user");
 # Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-16 00:26:15
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bf54Th1fWaXrBfHRmWHXxA
 
+sub get_my_jobs {
+    my ($self, $data) = @_;
+
+    $data ||= {};
+
+    my $search = $self->jobs->search(
+        {},
+        {
+            order_by  => { -desc => 'created_at' },
+            columns   => [qw/id title status created_at/],
+            '+select' => [qw/promotions.status job_location.city/],
+            '+as'     => [qw/promotion city/],
+            join      => [qw/promotions job_location/],
+            rows      => int($data->{rows} || 10),
+            page      => int($data->{page} || 1),
+        }
+    );
+
+    return {
+        pager => $search->pager,
+        items => [
+            map {
+                +{
+                    id         => $_->get_column('id'),
+                    created_at => $_->created_at,
+                    title      => $_->get_column('title'),
+                    status     => $_->get_column('status'),
+                    promotion  => $_->get_column('promotion'),
+                    city       => $_->get_column('city'),
+                }
+            } $search->all
+        ],
+    }
+}
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 1;
