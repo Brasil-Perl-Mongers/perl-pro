@@ -52,7 +52,7 @@
 :           for $c.jobs_part_1 -> $j {
             <li class="company-color1">
                 <span class="position-name"><: $j.title :></span> @
-                <span class="city-name"><: $j.location :></span>
+                <span class="city-name"><: $j.city :></span>
             </li>
 :           }
         </ul>
@@ -62,7 +62,7 @@
 :           for $c.jobs_part_2 -> $j {
             <li class="company-color1">
                 <span class="position-name"><: $j.title :></span> @
-                <span class="city-name"><: $j.location :></span>
+                <span class="city-name"><: $j.city :></span>
             </li>
 :           }
         </ul>

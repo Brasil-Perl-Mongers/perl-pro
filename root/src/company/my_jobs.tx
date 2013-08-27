@@ -26,7 +26,7 @@
 :           } else {
             <td class="inactive">Inativo</td>
 :           }
-            <td class="description"><strong><: $j.title :></strong> @ <: $j.location :></td>
+            <td class="description"><strong><: $j.title :></strong> @ <: $j.city :></td>
             <td class="promote">Promover</td>
             <td class="edit"><i class="icon-pencil icon-white"></i></td> <:# use javascript to go to edit page :>
             <td class="remove"><i class="icon-trash icon-white"></i></td> <:# use javascript to delete :>

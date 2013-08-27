@@ -58,7 +58,7 @@ sub verifiers_specs {
         add_location => Data::Verifier->new(
             profile => {
                 company  => { required => 1, type => Str  },
-                location => { required => 1, type => Str  },
+                location => { required => 1, type => Str  }, # FIXME
                 is_main  => { required => 0, type => Bool },
             },
         ),
@@ -125,7 +125,7 @@ sub action_specs {
             my %values = shift->valid_values;
             my $row = $self->find($values{company});
             $row->add_to_locations({
-                location => $values{location},
+                location => $values{location},          # FIXME
                 is_main_address => $values{is_main},
             });
             return $row;
@@ -164,12 +164,24 @@ sub get_for_profile {
                           : ''
                           ;
 
-    my @jobs = $company->jobs->search({
-        status => 'active', # TODO: promoted first
+    my $search = $company->jobs->search({
+        'me.status' => 'active',
     }, {
-        order_by => { -desc => 'created_at' },
-        rows => 8,
-    })->all;
+        join     => [qw/promoted job_location/],
+        order_by => { -desc => [ 'promoted.status', 'created_at' ] }, # promoted first
+        rows     => 8,
+        select   => [ qw/promoted.status me.title job_location.city/ ],
+        as       => [ qw/promotion title city/ ],
+    });
+
+    my @jobs = map {
+        +{
+            title     => $_->get_column('title'),
+            promotion => $_->get_column('promotion'),
+            city      => $_->get_column('city'),
+        }
+    } $search->all;
+
     my $jc     = scalar @jobs;
     my $middle = int($jc/2);
     my $part_one = \@jobs;
@@ -244,11 +256,11 @@ sub get_for_catalog {
         })->first;
 
         push @result, {
-            name => $c->name,
-            name_in_url => $c->name_in_url,
+            name           => $c->name,
+            name_in_url    => $c->name_in_url,
             open_positions => $c->jobs->search({ status => 'active' })->count,
-            website => $website_obj ? $website_obj->url : '',
-            city => $location_obj ? $location_obj->city : '',
+            website        => $website_obj  ? $website_obj->url   : '',
+            city           => $location_obj ? $location_obj->city : '',
         };
     }
 

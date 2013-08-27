@@ -35,7 +35,7 @@ sub verifiers_specs {
                 contract_hours      => { required => 0, type => ContractHours }, # TODO: this is required => 1, but not fully implemented yet
                 contract_duration   => { required => 0, type => Str }, # TODO: DateTime?
                 is_at_office        => { required => 0, type => Bool },
-                location            => { required => 1, type => Str },
+                location            => { required => 1, type => Str }, # FIXME
                 status              => { required => 1, type => Str },
                 desired_attributes  => { required => 0, type => AttributeArray, coerce => 1 },
                 required_attributes => { required => 0, type => AttributeArray, coerce => 1 },
@@ -50,7 +50,7 @@ sub action_specs {
         create_or_update => sub {
             my %values = shift->valid_values;
             my (%row_values, $row);
-            for (qw/company title description salary phone email vacancies contract_type contract_hours contract_duration location status/) {
+            for (qw/company title description salary phone email vacancies contract_type contract_hours contract_duration status/) {
                 $row_values{$_} = $values{$_} if $values{$_};
             }
             $row_values{is_telecommute} = $values{is_at_office} ? 0 : 1;
@@ -81,21 +81,27 @@ sub get_recent_jobs {
     my $self = shift;
     my @result;
 
-    my $jobs = $self->search({
-        status => 'active',
-    }, {
-        order_by => { -desc => 'created_at' },
-        rows => 6,
-    });
+    my $jobs = $self->search(
+        {
+            status => 'active',
+        },
+        {
+            order_by  => { -desc => 'created_at' },
+            rows      => 6,
+            columns   => [qw/id title/],
+            '+select' => [qw/company.name_in_url company.name job_location.city/],
+            '+as'     => [qw/company_url company_name city/],
+            join      => [qw/company job_location/],
+        }
+    );
 
     for my $j ($jobs->all) {
-        my $c = $j->company;
         push @result, {
-            title        => $j->title,
-            company_url  => $c->name_in_url,
-            company_name => $c->name,
-            location     => $j->location,
-            id           => $j->id,
+            id           => $j->get_column('id'),
+            title        => $j->get_column('title'),
+            company_url  => $j->get_column('company_url'),
+            company_name => $j->get_column('company_name'),
+            city         => $j->get_column('city'),
         };
     }
 
@@ -111,6 +117,7 @@ sub get_job_and_company_by_job_id {
 
     my $company = $job->company;
 
+    # TODO: get them all, not only first
     my $website_obj = $company->company_websites->search({}, {
         order_by => { -desc => 'is_main_website' }
     })->first;
@@ -135,26 +142,31 @@ sub get_job_and_company_by_job_id {
                           : ''
                           ;
 
-    my @required = $job->attributes->search({ required_or_desired => 'required' })->all;
-    my @desired  = $job->attributes->search({ required_or_desired => 'desired' })->all;
-
     my $other_jobs = $company->jobs->search({
-        status => 'active', # TODO: promoted first
-        id => { '!=', $id },
+        'me.id'     => { '!=', $id },
+        'me.status' => 'active',
     }, {
-        order_by => { -desc => 'created_at' },
-        rows => 4,
+        join     => [qw/promoted job_location/],
+        order_by => { -desc => [ 'promoted.status', 'created_at' ] }, # promoted first
+        rows     => 4,
+        select   => [ qw/me.title job_location.city/ ],
+        as       => [ qw/title city/ ],
     });
+
+    my $l = $job->job_location;
+    if ($l) {
+        $l = $l->city;
+    }
 
     return {
         job => {
             id                  => $id,
             title               => $job->title,
             salary              => $job->salary,
-            location            => $job->location,
+            city                => $l,
             description         => $job->description,
-            required_attributes => { map { $_->id, $_->attribute } @required },
-            desired_attributes  => { map { $_->id, $_->attribute } @desired  },
+            required_attributes => $job->required_attributes,
+            desired_attributes  => $job->desired_attributes,
         },
         company => {
             name_in_url       => $company->name_in_url,
@@ -164,7 +176,14 @@ sub get_job_and_company_by_job_id {
             email             => $email,
             phone             => $phone,
             formatted_address => $formatted_address,
-            other_jobs        => [ $other_jobs->all ],
+            other_jobs        => [
+                map {
+                    +{
+                        title => $_->get_column('title'),
+                        city  => $_->get_column('city'),
+                    }
+                } $other_jobs->all
+            ],
         },
     };
 }
@@ -182,9 +201,6 @@ sub get_to_update {
         $item = $self->find($id);
     }
 
-    my @required = $item->attributes->search({ required_or_desired => 'required' })->all;
-    my @desired  = $item->attributes->search({ required_or_desired => 'desired' })->all;
-
     my %job = (
         id                  => $id,
         company             => $item->get_column('company'),
@@ -195,13 +211,13 @@ sub get_to_update {
         email               => $item->get_column('email'),
         vacancies           => $item->get_column('vacancies'),
         contract_type       => $item->get_column('contract_type'),
-        contract_hours      => $item->get_column('contract_hours'),
+        contract_hours      => '',                                      # TODO
         contract_duration   => $item->get_column('contract_duration'),
         is_at_office        => !$item->get_column('is_telecommute'),
-        location            => $item->get_column('location'),
+        location            => '',                                      # TODO
         status              => $item->get_column('status'),
-        required_attributes => [ map { $_->get_column('attribute') } @required ],
-        desired_attributes  => [ map { $_->get_column('attribute') } @desired ],
+        required_attributes => $item->required_attributes,
+        desired_attributes  => $item->desired_attributes,
     );
 
     return {

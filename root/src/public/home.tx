@@ -76,7 +76,7 @@
                 <li class="company-color1">
                     <span class="position-name"><: $j.title :></span> em
                     <a href="<: $uri('/company/' ~ $j.company_url) :>" class="company-name"><: $j.company_name :></a> @
-                    <span class="city-name"><: $j.location :></span>
+                    <span class="city-name"><: $j.city :></span>
                 </li>
 :           }
             </ul>

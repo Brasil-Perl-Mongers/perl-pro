@@ -9,7 +9,7 @@
     <: $l('na') :>
     <i class="icon-briefcase"></i> <a href="#" class="company-name"><: $c.name :></a>
     <: $l(' em ') :>
-    <i class="icon-map-marker"></i> <: $j.location :>
+    <i class="icon-map-marker"></i> <: $j.city :>
 </div>
 
 <div class="job-view-row">
@@ -20,16 +20,15 @@
             <h4 class="underlined"><: $l('Requisitos') :></h4>
             <h5><: $l('Necessário conhecimento em: ') :></h5>
             <ul class="requirements">
-:#          TODO: use id ($attr.key) for searching, or whatever
-:           for $j.required_attributes.kv() -> $attr {
-                <li><: $attr.value :></li>
+:           for $j.required_attributes -> $attr {
+                <li><: $attr :></li>
 :           }
             </ul>
             <br class="clearfix">
             <h5><: $l('Não necessário, mas desejável: ') :></h5>
             <ul class="requirements">
-:           for $j.desired_attributes.kv() -> $attr {
-                <li><: $attr.value :></li>
+:           for $j.desired_attributes -> $attr {
+                <li><: $attr :></li>
 :           }
             </ul>
         </div>
@@ -107,7 +106,7 @@
 :       for $c.other_jobs -> $oj {
             <li class="company-color4">
                 <span class="position-name"><: $oj.title :></span> @
-                <span class="city-name"><: $oj.location :></span>
+                <span class="city-name"><: $oj.city :></span>
             </li>
 :       }
         </ul>
