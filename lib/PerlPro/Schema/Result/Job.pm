@@ -85,11 +85,6 @@ __PACKAGE__->table("job");
   data_type: 'money'
   is_nullable: 0
 
-=head2 location
-
-  data_type: 'text'
-  is_nullable: 0
-
 =head2 phone
 
   data_type: 'text'
@@ -109,15 +104,19 @@ __PACKAGE__->table("job");
 =head2 contract_type
 
   data_type: 'perlpro.job_contract_type'
-  default_value: 'other'::perlpro.job_contract_type
+  default_value: 'no-contract'::perlpro.job_contract_type
   is_nullable: 0
   size: 4
 
-=head2 contract_hours
+=head2 contract_hour_count
 
-  data_type: 'perlpro.job_contract_hours'
-  default_value: 'freelance'::perlpro.job_contract_hours
-  is_nullable: 0
+  data_type: 'integer'
+  is_nullable: 1
+
+=head2 contract_hours_period
+
+  data_type: 'perlpro.job_contract_hours_period'
+  is_nullable: 1
   size: 4
 
 =head2 contract_duration
@@ -176,8 +175,6 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 0 },
   "salary",
   { data_type => "money", is_nullable => 0 },
-  "location",
-  { data_type => "text", is_nullable => 0 },
   "phone",
   { data_type => "text", is_nullable => 1 },
   "email",
@@ -187,15 +184,16 @@ __PACKAGE__->add_columns(
   "contract_type",
   {
     data_type => "perlpro.job_contract_type",
-    default_value => \"'other'::perlpro.job_contract_type",
+    default_value => \"'no-contract'::perlpro.job_contract_type",
     is_nullable => 0,
     size => 4,
   },
-  "contract_hours",
+  "contract_hour_count",
+  { data_type => "integer", is_nullable => 1 },
+  "contract_hours_period",
   {
-    data_type => "perlpro.job_contract_hours",
-    default_value => \"'freelance'::perlpro.job_contract_hours",
-    is_nullable => 0,
+    data_type => "perlpro.job_contract_hours_period",
+    is_nullable => 1,
     size => 4,
   },
   "contract_duration",
@@ -255,6 +253,21 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+=head2 job_location
+
+Type: might_have
+
+Related object: L<PerlPro::Schema::Result::JobLocation>
+
+=cut
+
+__PACKAGE__->might_have(
+  "job_location",
+  "PerlPro::Schema::Result::JobLocation",
+  { "foreign.job" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 promotions
 
 Type: has_many
@@ -271,8 +284,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-22 12:36:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+qN5b3t8++9PcVUQXfITnQ
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-27 15:17:47
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4uGz2SAs7NFLqUil1Oak6w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

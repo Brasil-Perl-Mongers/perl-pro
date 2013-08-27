@@ -17,3 +17,4 @@ table_company_email [schema_perlpro table_company] 2013-07-30T13:56:12Z André W
 table_company_phone [schema_perlpro table_company] 2013-07-30T13:59:58Z André Walker <andre@andrewalker.net> # List of company's phone numbers
 table_company_website [schema_perlpro table_company] 2013-07-30T14:02:11Z André Walker <andre@andrewalker.net> # List of company's websites
 table_company_location [schema_perlpro table_company] 2013-07-30T14:06:23Z André Walker <andre@andrewalker.net> # List of company's locations
+table_job_location [table_job] 2013-08-27T18:07:11Z André Walker <andre@andrewalker.net> # Job location

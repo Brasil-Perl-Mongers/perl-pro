@@ -1,12 +1,12 @@
 use utf8;
-package PerlPro::Schema::Result::CompanyLocation;
+package PerlPro::Schema::Result::JobLocation;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-PerlPro::Schema::Result::CompanyLocation
+PerlPro::Schema::Result::JobLocation
 
 =cut
 
@@ -29,24 +29,17 @@ use base 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
 
-=head1 TABLE: C<company_location>
+=head1 TABLE: C<job_location>
 
 =cut
 
-__PACKAGE__->table("company_location");
+__PACKAGE__->table("job_location");
 
 =head1 ACCESSORS
 
-=head2 id
+=head2 job
 
   data_type: 'integer'
-  is_auto_increment: 1
-  is_nullable: 0
-  sequence: 'perlpro.company_location_id_seq'
-
-=head2 company
-
-  data_type: 'text'
   is_foreign_key: 1
   is_nullable: 0
 
@@ -75,24 +68,11 @@ __PACKAGE__->table("company_location");
   data_type: 'text'
   is_nullable: 0
 
-=head2 is_main_address
-
-  data_type: 'boolean'
-  default_value: false
-  is_nullable: 0
-
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  {
-    data_type         => "integer",
-    is_auto_increment => 1,
-    is_nullable       => 0,
-    sequence          => "perlpro.company_location_id_seq",
-  },
-  "company",
-  { data_type => "text", is_foreign_key => 1, is_nullable => 0 },
+  "job",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "latlng",
   { data_type => "point", is_nullable => 1 },
   "address",
@@ -103,42 +83,40 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 0 },
   "country",
   { data_type => "text", is_nullable => 0 },
-  "is_main_address",
-  { data_type => "boolean", default_value => \"false", is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
 
 =over 4
 
-=item * L</id>
+=item * L</job>
 
 =back
 
 =cut
 
-__PACKAGE__->set_primary_key("id");
+__PACKAGE__->set_primary_key("job");
 
 =head1 RELATIONS
 
-=head2 company
+=head2 job
 
 Type: belongs_to
 
-Related object: L<PerlPro::Schema::Result::Company>
+Related object: L<PerlPro::Schema::Result::Job>
 
 =cut
 
 __PACKAGE__->belongs_to(
-  "company",
-  "PerlPro::Schema::Result::Company",
-  { name_in_url => "company" },
+  "job",
+  "PerlPro::Schema::Result::Job",
+  { id => "job" },
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
 # Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-27 15:17:47
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nuE9FrfLyiu6ZgHMMv6oEw
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:C5j3dlTb/EbX/eXIsbXVVA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
