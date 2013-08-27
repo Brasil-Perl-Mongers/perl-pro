@@ -209,6 +209,123 @@ sub get_to_update {
     };
 }
 
+sub grid_search {
+    my ($self, %data) = @_;
+
+    # TODO: implement sort
+    $data{sort} ||= [];
+
+    my $filters = $data{filters} || {};
+    my @conditions;
+
+    # TODO: fulltext search
+    if (my $t = $filters->{term}) {
+        push @conditions, {
+           -or => [
+                { 'me.title'             => { -ilike => "%$t%" } },
+                { 'me.description'       => { -ilike => "%$t%" } },
+                { 'attributes.attribute' => { -ilike => "%$t%" } },
+           ],
+        };
+    }
+
+    if ($filters->{companies}) {
+        push @conditions, { 'me.company' => { -in => $filters->{companies} } };
+    }
+
+    if ($filters->{attributes}) {
+        push @conditions, { 'attributes.attribute' => { -in => $filters->{attributes} } };
+    }
+
+    if ($filters->{salary_from}) {
+        push @conditions, { 'me.salary' => { '>=' => $filters->{salary_from} } };
+    }
+
+    if ($filters->{salary_to}) {
+        push @conditions, { 'me.salary' => { '<=' => $filters->{salary_to} } };
+    }
+
+    if ($filters->{contract_type}) {
+        push @conditions, { 'me.contract_type' => { -in => $filters->{contract_type} } };
+    }
+
+    if ($filters->{latlng}) {
+        $filters->{radius} ||= '50km';
+        # TODO: use postgis to search for radius
+    }
+
+    my $search = {
+        -and => \@conditions
+    };
+
+    my $options = {
+        order_by  => $data{sort},
+        join      => [ 'job_location', 'attributes', 'company' ],
+        '+select' => [ 'job_location.city', 'company.name' ],
+        '+as'     => [ 'city', 'company_name' ],
+        page      => int($data{page} || 1),
+        rows      => int($data{rows} || 10),
+    };
+    my $rs = $self->search($search, $options);
+
+    my @result;
+
+    for my $row ($rs->all) {
+        my $r = {
+            id                => $row->get_column('id'),
+            created_at        => $row->created_at->strftime('%d/%m/%Y'),
+            company           => $row->get_column('company'),
+            company_name      => $row->get_column('company_name'),
+            title             => $row->get_column('title'),
+            description       => $row->get_column('description'),
+            salary            => $row->get_column('salary'),
+            phone             => $row->get_column('phone'),
+            email             => $row->get_column('email'),
+            vacancies         => $row->get_column('vacancies'),
+            contract_type     => $row->get_column('contract_type'),
+            contract_duration => $row->get_column('contract_duration'), # TODO: correctly format this in pt_BR
+            is_telecommute    => $row->get_column('is_telecommute'),
+            city              => $row->get_column('city'),
+        };
+
+        # TODO: i18n
+        if (my $h = $row->get_column('contract_hour_count')) {
+            my $ch = "$h horas";
+
+            if (my $p = $row->get_column('contract_hours_period')) {
+                if ($p eq 'daily') {
+                    $ch .= " por dia";
+                }
+                elsif ($p eq 'weekly') {
+                    $ch .= " por semana";
+                }
+                elsif ($p eq 'monthly') {
+                    $ch .= " por mês";
+                }
+            }
+
+            $r->{contract_hours} = $ch;
+        }
+
+        push @result, $r;
+    }
+
+    my $pager = $rs->pager;
+
+    return {
+        items => \@result,
+        pager => {
+            current_page     => $pager->current_page,
+            entries_per_page => $pager->entries_per_page,
+            total_entries    => $pager->total_entries,
+            first_page       => $pager->first_page,
+            last_page        => $pager->last_page,
+            first_on_page    => $pager->first,
+            last_on_page     => $pager->last,
+        },
+    };
+}
+
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);
 
 1;
