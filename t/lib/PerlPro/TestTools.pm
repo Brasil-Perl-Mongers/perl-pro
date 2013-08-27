@@ -161,10 +161,10 @@ sub install_fixtures {
     ]);
 
     $db->resultset('Job')->populate([
-        [ 'company', 'title', 'description', 'salary', 'location' ],
-        ['company1', 'Catalyst Developer',  'We need a good Catalyst developer',  10000.00, 'Anywhere'],
-        ['company2', 'Database analyst',    'We need a good DB analyst',          5000.00, 'Anywhere'],
-        ['company3', 'Front-end Developer', 'We need a good front-end developer', 1000.00, 'Anywhere'],
+        [ 'company', 'title', 'description', 'salary' ],
+        [ 'company1', 'Catalyst Developer',  'We need a good Catalyst developer',  10000.00 ],
+        [ 'company2', 'Database analyst',    'We need a good DB analyst',          5000.00  ],
+        [ 'company3', 'Front-end Developer', 'We need a good front-end developer', 1000.00  ],
     ]);
 
     $self->create_lock;
