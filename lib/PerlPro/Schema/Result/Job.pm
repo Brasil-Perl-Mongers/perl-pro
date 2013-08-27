@@ -287,6 +287,49 @@ __PACKAGE__->has_many(
 # Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-27 15:17:47
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4uGz2SAs7NFLqUil1Oak6w
 
+__PACKAGE__->has_many(
+  "promoted",
+  "PerlPro::Schema::Result::Promotion",
+  sub {
+      my $args = shift;
+
+      return {
+        "$args->{foreign_alias}.job"    => { -ident => "$args->{self_alias}.id" },
+        "$args->{foreign_alias}.status" => 'active',
+      };
+  },
+  { cascade_copy => 0, cascade_delete => 0, join_type => 'LEFT' },
+);
+
+sub required_attributes {
+    my $self = shift;
+
+    return [
+        map { $_->attribute } $self->attributes->search(
+            {
+                required_or_desired => 'required'
+            },
+            {
+                columns => ['attribute']
+            }
+        )->all
+    ];
+}
+
+sub desired_attributes {
+    my $self = shift;
+
+    return [
+        map { $_->attribute } $self->attributes->search(
+            {
+                required_or_desired => 'desired'
+            },
+            {
+                columns => ['attribute']
+            }
+        )->all
+    ];
+}
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 1;
