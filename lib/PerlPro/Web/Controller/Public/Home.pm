@@ -5,13 +5,19 @@ use utf8;
 
 BEGIN { extends 'Catalyst::Controller' }
 
-sub home :Chained('/') Args(0) {
+sub home :Global Args(0) {
     my ( $self, $ctx ) = @_;
 
     $ctx->stash(
         recent_jobs => $ctx->model('DB::Job')->get_recent_jobs,
-        template => 'public/home.tx'
+        template    => 'public/home.tx',
     );
+}
+
+sub about :Global Args(0) {
+    my ( $self, $ctx ) = @_;
+
+    $ctx->stash( template => 'public/about.tx' );
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -26,13 +32,17 @@ PerlPro::Web::Controller::Public::Home - Homepage of the application
 
 =head1 DESCRIPTION
 
-[enter your description here]
+Controller to contain the home page.
 
 =head1 METHODS
 
 =head2 home
 
 The home page.
+
+=head2 about
+
+Displays page to explain how the website works.
 
 =head1 AUTHOR
 

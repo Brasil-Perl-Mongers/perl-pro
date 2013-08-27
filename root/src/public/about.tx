@@ -1,0 +1,5 @@
+: cascade public::wrapper
+: block content -> {
+<h2><: $l('Como funciona?') :></h2>
+<p>Lorem ipsum...</p>
+: }
