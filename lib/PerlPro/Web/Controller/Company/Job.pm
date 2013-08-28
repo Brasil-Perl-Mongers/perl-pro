@@ -34,7 +34,7 @@ sub index :Chained('base') PathPart('my_jobs') Args(0) GET {
     );
 }
 
-sub remove :Chained('item') PathPart('job') Args(1) DELETE {
+sub remove :Chained('item') PathPart('') Args(0) DELETE {
     my ( $self, $ctx ) = @_;
 
     my $item = $ctx->stash->{item};
@@ -49,8 +49,7 @@ sub remove :Chained('item') PathPart('job') Args(1) DELETE {
     # maybe even just set it as inactive
     $item->delete;
 
-    $ctx->res->status(200);
-    $ctx->res->body('OK');
+    $ctx->res->status(204);
 }
 
 sub add_job :Chained('base') PathPart('job/new') Does('DisplayExecute') Args(0) {

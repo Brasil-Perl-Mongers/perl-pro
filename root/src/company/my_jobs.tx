@@ -43,4 +43,18 @@
 
 <hr class="thick" />
 
+<div id="remove_job_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="remove_job_label" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="remove_job_label">Remover oferta de emprego</h3>
+    </div>
+    <div class="modal-body">
+        <p>Tem certeza que deseja remover esta vaga?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+        <button class="btn btn-primary" id="confirm_remove_button_trigger">Confirmar</button>
+    </div>
+</div>
+
 : }

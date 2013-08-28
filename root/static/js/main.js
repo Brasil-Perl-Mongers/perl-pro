@@ -62,4 +62,22 @@ jQuery(function ($) {
         }
     });
 
+    $('table.my_jobs td.remove a').click(function () {
+        window.about_to_be_removed = $(this).data('job-id');
+        $('#remove_job_modal').modal('show');
+        return false;
+    });
+    $('#confirm_remove_button_trigger').click(function () {
+        $.ajax({
+            type: 'DELETE',
+            url: '/account/job/' + window.about_to_be_removed,
+            success: function () {
+//              TODO: remove this alert and replace it with something decent
+                alert('Removido com sucesso.');
+                $('#remove_job_modal').modal('hide');
+                location.reload();
+            }
+        });
+    });
+
 });
