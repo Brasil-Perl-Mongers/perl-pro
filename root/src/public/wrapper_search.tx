@@ -188,3 +188,4 @@
 <div class="container main-content">
 :   content()
 </div>
+: }
