@@ -65,7 +65,7 @@
                             </div>
                             <h4><: $l('Cadastre sua empresa') :></h4>
                             <p><: $l('Encontre os melhores profissionais de Perl') :></p>
-                            <a href="<: $is_logged_in ? $uri('/account/new') : $uri('/account/add_job') :>" class="btn-small btn-important pull-left"><: $l('Anuncie') :></a>
+                            <a href="<: $is_logged_in ? $uri('/account/job/new') : $uri('/account/new') :>" class="btn-small btn-important pull-left"><: $l('Anuncie') :></a>
                             <p class="how-it-works pull-left"><a href="<: $uri('/about') :>"><: $l('Como funciona?') :></a></p>
                         </div>
                         <div class="span3">

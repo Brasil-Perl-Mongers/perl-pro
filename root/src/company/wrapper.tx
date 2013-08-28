@@ -37,7 +37,7 @@ my $promote_job_active  = $current_page == 'promote_job'
                         <a href="<: $uri('/account/my_jobs') :>"><: $l('Meus anúncios') :></a>
                     </li>
                     <li<: $add_job_active :>>
-                        <a href="<: $uri('/account/add_job') :>"><: $l('Adicionar anúncio') :></a>
+                        <a href="<: $uri('/account/job/new') :>"><: $l('Adicionar anúncio') :></a>
                     </li>
                     <li<: $promote_job_active :>>
                         <a href="#"><: $l('Promover anúncio') :></a>

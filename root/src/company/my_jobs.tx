@@ -2,8 +2,8 @@
 :block content -> {
 
 <h2 class="underlined">
+    <div class="pull-right"><a href="<: $uri('/account/job/new') :>" class="btn-util btn-large"><: $l('Adicionar novo') :></a></div>
     <: $l('Meus anúncios') :>
-    <div class="pull-right"><button class="btn-util btn-large"><: $l('Adicionar novo') :></button></div>
 </h2>
 
 <table class="table my_jobs">
@@ -22,14 +22,20 @@
         <tr>
             <td class="published_at"><: $j.created_at.strftime('%d.%m') :></td>
 :           if $j.status == 'active' {
-            <td class="active">Ativo</td>
+            <td class="active"><: $l('Ativo') :></td>
 :           } else {
-            <td class="inactive">Inativo</td>
+            <td class="inactive"><: $l('Inativo') :></td>
 :           }
             <td class="description"><strong><: $j.title :></strong> @ <: $j.city :></td>
-            <td class="promote">Promover</td>
-            <td class="edit"><i class="icon-pencil icon-white"></i></td> <:# use javascript to go to edit page :>
-            <td class="remove"><i class="icon-trash icon-white"></i></td> <:# use javascript to delete :>
+
+:           if $j.promoted {
+            <td class="promoted"><: $l('Já promovido') :></td>
+:           } else {
+            <td class="promote"><a href="<: $uri('/account/job/' ~ $j.id ~ '/promote') :>"><: $l('Promover') :></a></td>
+: }
+
+            <td class="edit"><a href="<: $uri('/account/job/' ~ $j.id) :>"><i class="icon-pencil icon-white"></i></a></td>
+            <td class="remove"><a href="#" data-job-id="<: $j.id :>"><i class="icon-trash icon-white"></i></a></td>
         </tr>
 :       }
     </tbody>

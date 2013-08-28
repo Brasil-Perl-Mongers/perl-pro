@@ -47,13 +47,15 @@ a.btn-large:hover,
 a.btn-large:active,
 button.btn-large,
 .btn-large {
-    border-radius: 3px;
-    width: 180px;
+    display: inline-block;
     font-size: 16px;
+    line-height: 20px;
+    width: 180px;
     padding: 7px 0;
     border: 0;
-    display: inline-block;
+    border-radius: 3px;
     text-align: center;
+    vertical-align: middle;
 }
 
 a.btn-small,
@@ -589,18 +591,28 @@ table.my_jobs td.description {
     background: #dddddd;
 }
 
-table.my_jobs td.promote {
+table.my_jobs td.promote a:link,
+table.my_jobs td.promote a:visited,
+table.my_jobs td.promote a:hover,
+table.my_jobs td.promote a:active {
     background: #4eabea;
     color: #ffffff;
     text-align: center;
     border-radius: 3px;
+    text-decoration: none;
+    display: block;
+    padding: 8px;
 }
 
-table.my_jobs td.already_promoted {
+table.my_jobs td.already_promoted a:link,
+table.my_jobs td.already_promoted a:visited,
+table.my_jobs td.already_promoted a:hover,
+table.my_jobs td.already_promoted a:active {
     background: #9eccec;
     color: #ffffff;
     text-align: center;
     border-radius: 3px;
+    text-decoration: none;
 }
 
 table.my_jobs td.active {
@@ -616,12 +628,25 @@ table.my_jobs td.inactive {
     text-align: center;
     border-radius: 3px;
 }
-
+table.my_jobs td.promote,
+table.my_jobs td.already_promoted,
 table.my_jobs td.edit,
 table.my_jobs td.remove {
+    padding: 0;
+}
+
+table.my_jobs td.edit a:link,
+table.my_jobs td.edit a:visited,
+table.my_jobs td.edit a:hover,
+table.my_jobs td.edit a:active,
+table.my_jobs td.remove a:link,
+table.my_jobs td.remove a:visited,
+table.my_jobs td.remove a:hover,
+table.my_jobs td.remove a:active {
     background: #e57e21;
     text-align: center;
-    cursor: pointer;
+    padding: 8px;
+    display: block;
 }
 
 h4.form-label {
