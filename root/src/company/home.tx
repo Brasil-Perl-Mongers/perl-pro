@@ -15,8 +15,17 @@
         <div class="span4">
             <h4><: $c.name :> <a href="#" class="update-data"><: $l('Alterar') :></a></h4>
             <p><: $c.email :> <a href="#" class="update-data"><: $l('Alterar') :></a></p>
-            <p><: $c.open_positions :> vagas cadastradas</p>
-            <button class="btn-util btn-small"><: $l('Gerenciar anúncios') :></button>
+
+:#          TODO: real i18n
+:           if $c.open_positions == 0 {
+            <p><: $l('Nenhuma vaga cadastrada') :></p>
+:           } elsif $c.open_positions == 1 {
+            <p><: $l('1 vaga cadastrada') :></p>
+:           } else {
+            <p><: $c.open_positions ~ $l(' vagas cadastradas') :></p>
+:           }
+
+            <a href="<: $uri('/account/my_jobs') :>" class="btn-util btn-small"><: $l('Gerenciar anúncios') :></a>
         </div>
         <div class="span6">
             <p class="lead"><: $l('Último acesso: ') :><: $previous_login :></p>
