@@ -66,18 +66,18 @@
                             <h4><: $l('Cadastre sua empresa') :></h4>
                             <p><: $l('Encontre os melhores profissionais de Perl') :></p>
                             <a href="<: $is_logged_in ? $uri('/account/new') : $uri('/account/add_job') :>" class="btn-small btn-important pull-left"><: $l('Anuncie') :></a>
-                            <p class="how-it-works pull-left"><a href="#"><: $l('Como funciona?') :></a></p>
+                            <p class="how-it-works pull-left"><a href="<: $uri('/about') :>"><: $l('Como funciona?') :></a></p>
                         </div>
                         <div class="span3">
                             <h4 class="underline-block"><: $l('Siga nas redes sociais') :></h4>
                             <ul class="social-icons">
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-facebook.png"  alt="Facebook" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-google.png"    alt="Google+" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-linkedin.png"  alt="LinkedIn" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-twitter.png"   alt="Twitter" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-rss.png"       alt="RSS/Atom Feeds" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-youtube.png"   alt="Youtube" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-wordpress.png" alt="Wordpress" /></a></li>
+                                <li><a href="<:# TODO :>" target="_blank"><img src="<: $static_uri :>/img/social-facebook.png"  alt="Facebook" /></a></li>
+                                <li><a href="<:# TODO :>" target="_blank"><img src="<: $static_uri :>/img/social-google.png"    alt="Google+" /></a></li>
+                                <li><a href="<:# TODO :>" target="_blank"><img src="<: $static_uri :>/img/social-linkedin.png"  alt="LinkedIn" /></a></li>
+                                <li><a href="<:# TODO :>" target="_blank"><img src="<: $static_uri :>/img/social-twitter.png"   alt="Twitter" /></a></li>
+                                <li><a href="<:# TODO :>" target="_blank"><img src="<: $static_uri :>/img/social-rss.png"       alt="RSS/Atom Feeds" /></a></li>
+                                <li><a href="<:# TODO :>" target="_blank"><img src="<: $static_uri :>/img/social-youtube.png"   alt="Youtube" /></a></li>
+                                <li><a href="<:# TODO :>" target="_blank"><img src="<: $static_uri :>/img/social-wordpress.png" alt="Wordpress" /></a></li>
                             </ul>
                         </div>
                         <div class="span4">
