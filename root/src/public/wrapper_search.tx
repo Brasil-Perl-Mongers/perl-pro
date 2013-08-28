@@ -1,310 +1,190 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <title>PerlPro</title>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.0/jquery.qtip.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-    <link href="<: $static_uri :>/css/style.css" rel="stylesheet">
-    <meta charset="utf-8">
-    <link href="<: $uri('/favicon.ico') :>" rel="shortcut icon">
-</head>
-<body>
-    <div id="wrapper">
-
-        <!-- top menu (with the gray background) -->
-        <header>
-            <div class="navbar navbar-static-top">
-                <div class="navbar-inner">
-                    <div class="container">
-                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        </button>
-                        <div class="nav-collapse collapse">
-                            <div class="company-access pull-right"><button class="btn-large btn-util"><: $l('ACESSO DA EMPRESA') :></button></div>
-                            <ul class="nav">
-                                <li><a href="<: $uri('/home') :>"><img src="<: $static_uri :>/img/home.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
-                                <li><a href="<: $uri('/search') :>"><: $l('Procurar Vagas') :></a></li>
-                                <li><a href="<: $uri('/companies') :>"><: $l('Catálogo de Empresas') :></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+: cascade base::wrapper;
+: block wrapper_content -> {
+<!-- top banner (logo + slogan) - with that big orange background on the top -->
+<div id="big-orange-background">
+    <div class="container">
+        <div class="banner-row row">
+            <div class="logo span4">
+                <img src="<: $static_uri :>/img/logo.png" alt="PerlPro" />
+                <span class="logo-helper"></span> <!-- cross-browser hack to make the logo vertically aligned in the middle -->
             </div>
-        </header>
-
-        <div id="push"><!-- make the footer stick to the bottom -->
-
-            <!-- top banner (logo + slogan) - with that big orange background on the top -->
-            <div id="big-orange-background">
-                <div class="container">
-                    <div class="banner-row row">
-                        <div class="logo span4">
-                            <img src="<: $static_uri :>/img/logo.png" alt="PerlPro" />
-                            <span class="logo-helper"></span> <!-- cross-browser hack to make the logo vertically aligned in the middle -->
-                        </div>
 :# TODO: i18n
 :# The slogan is not localized yet because it wouldn't make much sense, it seems,
 :# because markup would have to be included in the translation
-                        <div class="slogan span7">
-                            <hr/>
-                            <div class="slogan-line1"><strong>Empregos</strong> para programadores</div>
-                            <div class="slogan-line2"><strong>Perl</strong> <em>em todo o Brasil</em></div>
-                            <hr/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- search bar -->
-            <div id="searchbar-container">
-                <div class="container">
-                    <div class="searchbar row">
-                        <div class="span12">
-                            <form class="form-search pull-left" method="get" action="/search">
-                                <input type="text" class="input-xxlarge flat-input" placeholder="Encontre uma vaga" />
-                                <img src="<: $static_uri :>/img/search.png" />
-                                <button class="btn-action btn-small" type="submit"><: $l('Busca') :></button>
-                            </form>
-                            <p class="advanced-search"><: $l('Ou faça uma') :><br/><a href="<: $uri('/search') :>"><: $l('Busca Avançada') :></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="search-menu" class="context-menu">
-                <div class="container">
-                    <div class="row-fluid">
-
-                        <form id="form-search-menu">
-
-                            <div class="span1 info">
-                                <span>12 vagas<br />
-                                5 empresas</span>
-                            </div>
-
-                            <div id="search-filters" class="span10 filters">
-                                <ul>
-                                    <li>
-                                        <span>Filtros:</span>
-                                    </li>
-
-                                    <!-- job type -->
-                                    <li>
-                                        <div class="one-filter">
-                                            <a href="#" class="btn btn-primary">Tipo</a>
-                                            <div id="filter-tags-title" class="filter-title">Tipo de relacionamento</div>
-
-                                            <div class="filter-content">
-
-                                                <label class="checkbox"><input type="checkbox" id="" name="" value="1"> CLT</label>
-
-                                                <label class="checkbox"><input type="checkbox" id="" name="" value="1"> PJ</label>
-
-                                                <label class="checkbox"><input type="checkbox" id="" name="" value="1"> Est&aacute;gio</label>
-
-                                                <label class="checkbox"><input type="checkbox" id="" name="" value="1"> Freelance</label>
-
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <!-- job tags -->
-                                    <li>
-                                        <div class="one-filter">
-                                            <a href="#" class="btn btn-primary">Conhecimento</a>
-                                            <div id="filter-tags-title" class="filter-title">&Aacute;reas de conhecimento</div>
-
-                                            <div class="filter-content">
-
-                                                <div class="input-append">
-                                                    <input type="text" id="filter-tags" name="filter-tags" placeholder="Digite palavras-chave" />
-                                                    <button class="add-filter btn" type="button">Adicionar</button>
-                                                </div>
-
-                                                <ul class="requirements selected-filters">
-                                                    <li>Todas</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <!-- job company -->
-                                    <li>
-                                        <div class="one-filter">
-                                            <a href="#" class="btn btn-primary">Empresa</a>
-                                            <div id="filter-tags-title" class="filter-title">Empresas</div>
-
-                                            <div class="filter-content">
-
-                                                <div class="input-append">
-                                                    <input type="text" id="filter-company" name="filter-company" placeholder="Procure empresas" />
-                                                    <button class="add-filter btn" type="button">Adicionar</button>
-                                                </div>
-
-                                                <ul class="requirements selected-filters">
-                                                    <li>Todas</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <!-- job location -->
-                                    <li>
-                                        <div class="one-filter">
-                                            <a href="#" class="btn btn-primary">Localidade</a>
-                                            <div id="filter-tags-title" class="filter-title">Procure um endereço</div>
-
-                                            <div class="filter-content">
-                                                <label class="checkbox"><input type="checkbox" id="is_at_office" name="is_at_office" value="1"> Presencial</label>
-
-                                                <div class="input-append">
-                                                    <input type="text" id="filter-address" name="filter-address" placeholder="Digite a cidade ou endereço" />
-                                                    <button class="add-filter btn" type="button">Adicionar</button>
-                                                </div>
-
-                                                <label>Buscar em cidades vizinhas até:</label>
-                                                <select>
-                                                    <option>25km</option>
-                                                    <option>50km</option>
-                                                </select>
-
-                                                <strong class="selected-filters-title">Localidades escolhidas:</strong>
-                                                <ul class="requirements selected-filters">
-                                                    <li>Todas</li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                     <!-- job payment/value -->
-                                    <li>
-                                        <div class="one-filter">
-                                            <a href="#" class="btn btn-primary">Faixa de Sal&aacute;rio</a>
-                                            <div id="filter-tags-title" class="filter-title">Faixa de Sal&aacute;rio</div>
-
-                                            <div class="filter-content">
-                                                <label for="filter-salary-min">De:</label>
-                                                <input type="text" id="filter-salary-min" name="filter-salary-min" placeholder="Valor m&iacute;nimo (R$)" />
-
-                                                <label for="filter-salary-max">At&eacute;:</label>
-                                                <input type="text" id="filter-salary-max" name="filter-salary-max" placeholder="Valor m&aacute;ximo (R$)" /><br />
-
-                                                <button class="btn" type="button">Filtrar</button>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                            <div class="span1 order">
-                                <ul>
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                          Ordem <span class="caret"></span>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Nome da empresa</a></li>
-                                            <li><a href="#">Local mais pr&oacute;ximo</a></li>
-                                            <li><a href="#">Menor faixa de pre&ccedil;o</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </form>
-
-                    </div><!-- fim do row-fluid -->
-                </div><!-- fim do container -->
-            </div><!-- fim da navegacao -->
-
-            <!-- main content -->
-            <div class="container main-content">
-:               content()
+            <div class="slogan span7">
+                <hr/>
+                <div class="slogan-line1"><strong>Empregos</strong> para programadores</div>
+                <div class="slogan-line2"><strong>Perl</strong> <em>em todo o Brasil</em></div>
+                <hr/>
             </div>
         </div>
-
-        <!-- footer -->
-        <footer>
-            <div class="footer-inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="span5">
-                            <div class="footer-navbar navbar underline-block">
-                                <ul class="nav">
-                                    <li><a href="<: $uri('/home') :>"><img src="<: $static_uri :>/img/home-white.png" alt="Homepage icon" /> <: $l('Home') :></a></li>
-                                    <li><a href="<: $uri('/search') :>"><: $l('Empregos') :></a></li>
-                                    <li><a href="<: $uri('/account/login') :>"><: $l('Acesso da Empresa') :></a></li>
-                                </ul>
-                            </div>
-                            <h4><: $l('Cadastre sua empresa') :></h4>
-                            <p><: $l('Encontre os melhores profissionais de Perl') :></p>
-                            <a href="<: $uri('/account/new') :>" class="btn-small btn-important pull-left"><: $l('Anuncie') :></a>
-                            <p class="how-it-works pull-left"><a href="#"><: $l('Como funciona?') :></a></p>
-                        </div>
-                        <div class="span3">
-                            <h4 class="underline-block">Siga nas redes sociais</h4>
-                            <ul class="social-icons">
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-facebook.png"  alt="Facebook" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-google.png"    alt="Google+" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-linkedin.png"  alt="LinkedIn" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-twitter.png"   alt="Twitter" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-rss.png"       alt="RSS/Atom Feeds" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-youtube.png"   alt="Youtube" /></a></li>
-                                <li><a href="#" target="_blank"><img src="<: $static_uri :>/img/social-wordpress.png" alt="Wordpress" /></a></li>
-                            </ul>
-                        </div>
-                        <div class="span4">
-                            <h4 class="underline-block"><: $l('Receba nossas novidades') :></h4>
-                            <form>
-                                <input type="text" class="input-block-level flat-input" placeholder="<: $l('Digite seu e-mail') :>">
-                                <button class="input-block-level flat-input btn-action btn-small"><: $l('Cadastrar') :></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="credits">
-                <div class="container">
-                    <div class="row">
-                        <div class="span6">
-                            <p>2013 PerlPro &mdash; <: $l('Todos os direitos reservados.') :></p>
-                        </div>
-                        <div class="span6 text-right">
-                            <p><: $l('Desenvolvido por André Walker. Design por Nova1.') :></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <form id="login_form" class="hide container-fluid" action="<: $uri('/account/login') :>" method="post">
-            <div class="row-fluid">
-                <div class="span5">
-                    <h4 class="underline-block"><: $l('Já tenho uma conta') :></h4>
-                    <p>
-                        <input type="text" name="login" placeholder="login" class="input-block-level flat-input" />
-                    </p>
-                    <p>
-                        <input type="password" name="password" placeholder="senha" class="input-block-level flat-input" />
-                    </p>
-                    <p class="text-right">
-                        <button type="submit" class="btn-action flat-input btn-small"><: $l('Entrar') :></button>
-                    </p>
-                </div>
-                <div class="span6 offset1">
-                    <h4><: $l('Ainda não é cadastrado?') :></h4>
-                    <p><: $l('Crie uma conta gratuita e encontre os melhores profissionais em todo o Brasil') :></p>
-                    <a href="<: $uri('/account/new') :>" class="btn-important btn-large">Cadastre-se</a>
-                </div>
-            </div>
-        </form>
     </div>
-    <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.0/jquery.qtip.min.js"></script>
-    <script src="<: $static_uri :>/js/main.js"></script>
-</body>
-</html>
+</div>
+
+<!-- search bar -->
+<div id="searchbar-container">
+    <div class="container">
+        <div class="searchbar row">
+            <div class="span12">
+                <form class="form-search pull-left" method="get" action="/search">
+                    <input type="text" class="input-xxlarge flat-input" placeholder="Encontre uma vaga" />
+                    <img src="<: $static_uri :>/img/search.png" />
+                    <button class="btn-action btn-small" type="submit"><: $l('Busca') :></button>
+                </form>
+                <p class="advanced-search"><: $l('Ou faça uma') :><br/><a href="<: $uri('/search') :>"><: $l('Busca Avançada') :></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="search-menu" class="context-menu">
+    <div class="container">
+        <div class="row-fluid">
+
+            <form id="form-search-menu">
+
+                <div class="span1 info">
+                    <span>12 vagas<br />
+                    5 empresas</span>
+                </div>
+
+                <div id="search-filters" class="span10 filters">
+                    <ul>
+                        <li>
+                            <span>Filtros:</span>
+                        </li>
+
+                        <!-- job type -->
+                        <li>
+                            <div class="one-filter">
+                                <a href="#" class="btn btn-primary">Tipo</a>
+                                <div id="filter-tags-title" class="filter-title">Tipo de relacionamento</div>
+
+                                <div class="filter-content">
+
+                                    <label class="checkbox"><input type="checkbox" id="" name="" value="1"> CLT</label>
+
+                                    <label class="checkbox"><input type="checkbox" id="" name="" value="1"> PJ</label>
+
+                                    <label class="checkbox"><input type="checkbox" id="" name="" value="1"> Est&aacute;gio</label>
+
+                                    <label class="checkbox"><input type="checkbox" id="" name="" value="1"> Freelance</label>
+
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- job tags -->
+                        <li>
+                            <div class="one-filter">
+                                <a href="#" class="btn btn-primary">Conhecimento</a>
+                                <div id="filter-tags-title" class="filter-title">&Aacute;reas de conhecimento</div>
+
+                                <div class="filter-content">
+
+                                    <div class="input-append">
+                                        <input type="text" id="filter-tags" name="filter-tags" placeholder="Digite palavras-chave" />
+                                        <button class="add-filter btn" type="button">Adicionar</button>
+                                    </div>
+
+                                    <ul class="requirements selected-filters">
+                                        <li>Todas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- job company -->
+                        <li>
+                            <div class="one-filter">
+                                <a href="#" class="btn btn-primary">Empresa</a>
+                                <div id="filter-tags-title" class="filter-title">Empresas</div>
+
+                                <div class="filter-content">
+
+                                    <div class="input-append">
+                                        <input type="text" id="filter-company" name="filter-company" placeholder="Procure empresas" />
+                                        <button class="add-filter btn" type="button">Adicionar</button>
+                                    </div>
+
+                                    <ul class="requirements selected-filters">
+                                        <li>Todas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- job location -->
+                        <li>
+                            <div class="one-filter">
+                                <a href="#" class="btn btn-primary">Localidade</a>
+                                <div id="filter-tags-title" class="filter-title">Procure um endereço</div>
+
+                                <div class="filter-content">
+                                    <label class="checkbox"><input type="checkbox" id="is_at_office" name="is_at_office" value="1"> Presencial</label>
+
+                                    <div class="input-append">
+                                        <input type="text" id="filter-address" name="filter-address" placeholder="Digite a cidade ou endereço" />
+                                        <button class="add-filter btn" type="button">Adicionar</button>
+                                    </div>
+
+                                    <label>Buscar em cidades vizinhas até:</label>
+                                    <select>
+                                        <option>25km</option>
+                                        <option>50km</option>
+                                    </select>
+
+                                    <strong class="selected-filters-title">Localidades escolhidas:</strong>
+                                    <ul class="requirements selected-filters">
+                                        <li>Todas</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </li>
+
+                         <!-- job payment/value -->
+                        <li>
+                            <div class="one-filter">
+                                <a href="#" class="btn btn-primary">Faixa de Sal&aacute;rio</a>
+                                <div id="filter-tags-title" class="filter-title">Faixa de Sal&aacute;rio</div>
+
+                                <div class="filter-content">
+                                    <label for="filter-salary-min">De:</label>
+                                    <input type="text" id="filter-salary-min" name="filter-salary-min" placeholder="Valor m&iacute;nimo (R$)" />
+
+                                    <label for="filter-salary-max">At&eacute;:</label>
+                                    <input type="text" id="filter-salary-max" name="filter-salary-max" placeholder="Valor m&aacute;ximo (R$)" /><br />
+
+                                    <button class="btn" type="button">Filtrar</button>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="span1 order">
+                    <ul>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                              Ordem <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Nome da empresa</a></li>
+                                <li><a href="#">Local mais pr&oacute;ximo</a></li>
+                                <li><a href="#">Menor faixa de pre&ccedil;o</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+
+        </div><!-- fim do row-fluid -->
+    </div><!-- fim do container -->
+</div><!-- fim da navegacao -->
+
+<!-- main content -->
+<div class="container main-content">
+:   content()
+</div>
