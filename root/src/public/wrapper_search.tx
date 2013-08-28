@@ -66,7 +66,7 @@
 
                                     <label class="checkbox"><input type="checkbox" id="" name="" value="1"> PJ</label>
 
-                                    <label class="checkbox"><input type="checkbox" id="" name="" value="1"> Est&aacute;gio</label>
+                                    <label class="checkbox"><input type="checkbox" id="" name="" value="1"> Estágio</label>
 
                                     <label class="checkbox"><input type="checkbox" id="" name="" value="1"> Freelance</label>
 
@@ -78,7 +78,7 @@
                         <li>
                             <div class="one-filter">
                                 <a href="#" class="btn btn-primary">Conhecimento</a>
-                                <div id="filter-tags-title" class="filter-title">&Aacute;reas de conhecimento</div>
+                                <div id="filter-tags-title" class="filter-title">Áreas de conhecimento</div>
 
                                 <div class="filter-content">
 
@@ -146,15 +146,15 @@
                          <!-- job payment/value -->
                         <li>
                             <div class="one-filter">
-                                <a href="#" class="btn btn-primary">Faixa de Sal&aacute;rio</a>
-                                <div id="filter-tags-title" class="filter-title">Faixa de Sal&aacute;rio</div>
+                                <a href="#" class="btn btn-primary">Faixa de Salário</a>
+                                <div id="filter-tags-title" class="filter-title">Faixa de Salário</div>
 
                                 <div class="filter-content">
                                     <label for="filter-salary-min">De:</label>
-                                    <input type="text" id="filter-salary-min" name="filter-salary-min" placeholder="Valor m&iacute;nimo (R$)" />
+                                    <input type="text" id="filter-salary-min" name="filter-salary-min" placeholder="Valor mínimo (R$)" />
 
-                                    <label for="filter-salary-max">At&eacute;:</label>
-                                    <input type="text" id="filter-salary-max" name="filter-salary-max" placeholder="Valor m&aacute;ximo (R$)" /><br />
+                                    <label for="filter-salary-max">Até:</label>
+                                    <input type="text" id="filter-salary-max" name="filter-salary-max" placeholder="Valor máximo (R$)" /><br />
 
                                     <button class="btn" type="button">Filtrar</button>
                                 </div>
@@ -172,8 +172,8 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Nome da empresa</a></li>
-                                <li><a href="#">Local mais pr&oacute;ximo</a></li>
-                                <li><a href="#">Menor faixa de pre&ccedil;o</a></li>
+                                <li><a href="#">Local mais próximo</a></li>
+                                <li><a href="#">Menor faixa de preço</a></li>
                             </ul>
                         </li>
                     </ul>
