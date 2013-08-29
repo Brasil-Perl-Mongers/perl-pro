@@ -161,7 +161,7 @@ sub install_fixtures {
     ]);
 
     $db->resultset('Job')->populate([
-        [ 'company', 'title', 'description', 'salary' ],
+        [ 'company', 'title', 'description', 'wages' ],
         [ 'company1', 'Catalyst Developer',  'We need a good Catalyst developer',  10000.00 ],
         [ 'company2', 'Database analyst',    'We need a good DB analyst',          5000.00  ],
         [ 'company3', 'Front-end Developer', 'We need a good front-end developer', 1000.00  ],
