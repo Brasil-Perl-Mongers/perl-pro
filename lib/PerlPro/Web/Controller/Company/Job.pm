@@ -65,9 +65,6 @@ sub add_job :Chained('base') PathPart('job/new') Does('DisplayExecute') Args(0) 
         template        => 'company/add_or_update_job.tx',
         current_page    => 'add_job',
         form_action_uri => "$uri",
-        fields          => {
-            'job.create_or_update.vacancies' => 1,
-        },
     );
 }
 
@@ -85,13 +82,16 @@ sub update :Chained('item') PathPart('') Does('DisplayExecute') Args(0) GET POST
     }
 
     my $uri = $ctx->req->uri;
+    my $fields = $ctx->model->get_to_update($ctx->stash->{item});
 
     $ctx->stash(
-        template        => 'company/add_or_update_job.tx',
-        current_page    => 'my_jobs', # just to color something in the menu
-        fields          => $ctx->model->get_to_update($ctx->stash->{item}),
-        form_action_uri => "$uri",
-        uri_to_redirect => [ $self->action_for('update'), [ $ctx->stash->{id} ] ],
+        template            => 'company/add_or_update_job.tx',
+        current_page        => 'my_jobs', # just to color something in the menu
+        fields              => $fields,
+        required_attributes => $fields->{'job.create_or_update.required_attributes'},
+        desired_attributes  => $fields->{'job.create_or_update.desired_attributes'},
+        form_action_uri     => "$uri",
+        uri_to_redirect     => [ $self->action_for('update'), [ $ctx->stash->{id} ] ],
     );
 }
 

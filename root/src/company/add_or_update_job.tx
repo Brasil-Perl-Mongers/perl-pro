@@ -6,6 +6,7 @@
 <input type="hidden" name="job.create_or_update.id" />
 <input type="hidden" name="job.create_or_update.required_attributes" id="required_attributes_field" />
 <input type="hidden" name="job.create_or_update.desired_attributes" id="desired_attributes_field" />
+
 <h2 class="underlined">
     <: $l('Adicionar anúncio de vaga') # ou atualizar :>
     <div class="pull-right">
@@ -86,7 +87,7 @@
                         </div>
                         <div class="span2 between-inputs-label">por</div>
                         <select name="job.create_or_update.contract_hours_by" class="flat-input span5">
-                            <option>Período</option>
+                            <option value="">Período</option>
                             <option value="daily">Dia</option>
                             <option value="weekly">Semana</option>
                             <option value="monthly">Mês</option>
@@ -107,7 +108,7 @@
                     </div>
                     <div class="span1 between-inputs-label">por</div>
                     <select name="job.create_or_update.wages_for" class="flat-input span4">
-                        <option>Período</option>
+                        <option value="">Período</option>
                         <option value="hour">Hora</option>
                         <option value="month">Mês</option>
                         <option value="project">Projeto completo</option>
@@ -129,23 +130,21 @@
     <div class="row">
         <div class="span6">
             <form class="requirements">
-            <h4 class="form-label">Necessário conhecimento em:</h4>
+            <h4 class="form-label"><: $l('Necessário conhecimento em:') :></h4>
             <div class="row-fluid">
                 <div class="span12">
                     <div class="add_requirements">
-                        <button class="btn-small btn-action" type="submit">Adicionar</button>
+                        <button class="btn-small btn-action" type="submit"><: $l('Adicionar') :></button>
                         <input type="text" class="flat-input input-block-level" placeholder="Digite separado por vírgula" />
                     </div>
                 </div>
             </div>
             <div class="row-fluid">
                 <div class="span12">
-                    <ul class="requirements">
-                        <!-- load with javascript -->
-                        <li>Moose</li>
-                        <li>Catalyst</li>
-                        <li>PSGI</li>
-                        <li>Plack</li>
+                    <ul class="requirements required_attributes">
+:                     for $required_attributes -> $attr {
+                        <li><: $attr :> <a href="#" class="remove-requirement"><i class="icon-remove-sign"></i></a></li>
+:                     }
                     </ul>
                 </div>
             </div>
@@ -153,23 +152,21 @@
         </div>
         <div class="span6">
             <form class="requirements">
-            <h4 class="form-label">Não obrigatório, mas desejável:</h4>
+            <h4 class="form-label"><: $l('Não obrigatório, mas desejável:') :></h4>
             <div class="row-fluid">
                 <div class="span12">
                     <div class="add_requirements">
-                        <button class="btn-small btn-action" type="submit">Adicionar</button>
+                        <button class="btn-small btn-action" type="submit"><: $l('Adicionar') :></button>
                         <input type="text" class="flat-input input-block-level" placeholder="Digite separado por vírgula" />
                     </div>
                 </div>
             </div>
             <div class="row-fluid">
                 <div class="span12">
-                    <ul class="requirements">
-                        <!-- load with javascript -->
-                        <li>Moose</li>
-                        <li>Catalyst</li>
-                        <li>PSGI</li>
-                        <li>Plack</li>
+                    <ul class="requirements desirable_attributes">
+:                     for $desired_attributes -> $attr {
+                        <li><: $attr :> <a href="#" class="remove-requirement"><i class="icon-remove-sign"></i></a></li>
+:                     }
                     </ul>
                 </div>
             </div>

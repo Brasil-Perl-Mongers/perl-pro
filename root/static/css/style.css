@@ -718,13 +718,29 @@ ul.requirements li {
     list-style-type: none;
 }
 
+ul.requirements {
+    margin-left: -10px;
+}
+
 ul.requirements > li {
     border-radius: 3px;
-    margin: 5px;
+    margin: 5px 0 5px 10px;
     padding: 7px 15px;
     background: #ddd;
     display: block;
     float: left;
+}
+
+ul.requirements > li > a.remove-requirement:link,
+ul.requirements > li > a.remove-requirement:visited {
+    text-decoration: none;
+    color: #333333;
+}
+
+ul.requirements > li > a.remove-requirement:hover,
+ul.requirements > li > a.remove-requirement:active {
+    text-decoration: none;
+    color: #666666;
 }
 
 .box {
