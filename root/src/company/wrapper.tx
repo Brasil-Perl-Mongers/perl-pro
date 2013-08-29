@@ -57,3 +57,6 @@ my $promote_job_active  = $current_page == 'promote_job'
     </div>
 </div>
 : }
+: after load_javascripts -> {
+    <script src="<: $static_uri :>/js/company.js"></script>
+: }

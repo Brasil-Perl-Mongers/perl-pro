@@ -42,3 +42,6 @@
 :   content()
 </div>
 : }
+: after load_javascripts -> {
+    <script src="<: $static_uri :>/js/public.js"></script>
+: }
