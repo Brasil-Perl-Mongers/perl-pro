@@ -33,7 +33,7 @@ BEGIN;
         wages             MONEY             NOT NULL,
         wages_for         job_wages_for     NOT NULL DEFAULT 'month'::job_wages_for,
         hours             INTEGER           NOT NULL DEFAULT 40,
-        hours_by          job_hours_by      NOT NULL DEFAULT 'weekly',
+        hours_by          job_hours_by      NOT NULL DEFAULT 'week',
         is_telecommute    BOOLEAN           NOT NULL DEFAULT FALSE,
         contract_type     job_contract_type NOT NULL DEFAULT 'no-contract'::job_contract_type,
         contract_duration INTERVAL, -- TODO

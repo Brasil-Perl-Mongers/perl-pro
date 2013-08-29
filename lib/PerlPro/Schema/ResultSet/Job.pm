@@ -347,7 +347,7 @@ sub _l {
     my %l = {
         hour    => 'hora',
         month   => 'mês',
-        project => 'project',
+        project => 'projeto',
     };
     return $l{$_[0]};
 }
