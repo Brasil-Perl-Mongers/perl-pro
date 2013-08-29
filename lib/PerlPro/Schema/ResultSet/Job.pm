@@ -162,7 +162,7 @@ sub get_job_and_company_by_job_id {
         job => {
             id                  => $id,
             title               => $job->title,
-            salary              => $job->wages . '/' . _l($job->wages_for),
+            salary              => $job->wages . '/' . _l($job->get_column('wages_for')),
             city                => $l,
             description         => $job->description,
             required_attributes => $job->required_attributes,
@@ -344,11 +344,11 @@ sub grid_search {
 }
 
 sub _l {
-    my %l = {
+    my %l = (
         hour    => 'hora',
         month   => 'mês',
         project => 'projeto',
-    };
+    );
     return $l{$_[0]};
 }
 

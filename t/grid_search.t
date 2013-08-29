@@ -48,7 +48,7 @@ sub install_fixtures {
                 id            => $_,
                 title         => "Job $_",
                 description   => "Desc of job $_",
-                salary        => $salaries[$_ % 10],
+                wages         => $salaries[$_ % 10],
                 contract_type => $ctypes[$_ % 5],
             });
             $job->create_related('job_location', $address);
