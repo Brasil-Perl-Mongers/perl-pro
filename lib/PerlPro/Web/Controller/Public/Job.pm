@@ -33,6 +33,21 @@ sub view :Chained('base') PathPart('job') Args(1) GET {
     );
 }
 
+# TODO: move to it's own controller
+# This is for the typeahead at the /search page
+sub attributes_like :Chained('base') PathPart('attributes') Args(1) GET {
+    my ( $self, $ctx, $query ) = @_;
+
+    my $attrs = $ctx->model('DB::Attribute')->get_for_typeahead($query);
+
+    $ctx->stash(
+        current_view => 'JSON',
+        json_data    => {
+            attributes => $attrs
+        }
+    );
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;

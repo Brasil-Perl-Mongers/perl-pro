@@ -270,6 +270,27 @@ sub get_for_catalog {
     };
 }
 
+sub get_for_typeahead {
+    my ($self, $query) = @_;
+    my %result;
+
+    my $rs = $self->search(
+        {
+            name => { -ilike => "%$query%" }
+        },
+        {
+            columns => [ qw/name_in_url name/ ],
+            rows => 10,
+        }
+    );
+
+    for ($rs->all) {
+        $result{ $_->name_in_url } = $_->name;
+    }
+
+    return \%result;
+}
+
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);
 
 1;
