@@ -315,9 +315,11 @@ for my $user ('user1-c1', 'user2-c1') {
 }
 
 {
+    no warnings qw/once redefine/;
+    local *Catalyst::Log::warn = sub { 1 };
     is($t->db->resultset('Job')->count({ id => $job_to_be_updated }), 1, 'job exists');
     ok($m->delete("/account/job/$job_to_be_updated"), 'DELETE request');
-    is($m->status, 403, 'HTTP status code is correct');
+    is($m->status, 302, 'HTTP status code is correct');
     is($t->db->resultset('Job')->count({ id => $job_to_be_updated }), 1, 'job still exists');
 
     $t->auth->login_ok('user2-c1');

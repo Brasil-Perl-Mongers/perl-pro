@@ -8,15 +8,24 @@ BEGIN { extends 'Catalyst::Controller' }
 sub base :Chained('/company/auth/requires_login') PathPart('') CaptureArgs(0) {
     my ( $self, $ctx ) = @_;
 
-    $ctx->stash( current_model => 'DB::Job' );
+    $ctx->stash(
+        current_model => 'DB::Job',
+        company => $ctx->user->get_object->user_companies->first->get_column('company'),
+    );
 }
 
 sub item : Chained('base') PathPart('job') CaptureArgs(1) {
     my ( $self, $ctx, $id ) = @_;
 
+    my $item = $ctx->model->find($id);
+
+    if ($item->get_column('company') ne $ctx->stash->{company}) {
+        $ctx->detach('/forbidden');
+    }
+
     $ctx->stash(
         id   => $id,
-        item => $ctx->model->find($id),
+        item => $item,
     );
 }
 
@@ -56,7 +65,7 @@ sub add_job :Chained('base') PathPart('job/new') Does('DisplayExecute') Args(0) 
     my ( $self, $ctx ) = @_;
 
     if (ref $ctx->req->params->{job}) {
-        $ctx->req->params->{job}{create_or_update}{company} = $ctx->user->get_object->user_companies->first->get_column('company');
+        $ctx->req->params->{job}{create_or_update}{company} = $ctx->stash->{company};
     }
 
     my $uri = $ctx->req->uri;
@@ -78,7 +87,7 @@ sub update :Chained('item') PathPart('') Does('DisplayExecute') Args(0) GET POST
     my ( $self, $ctx ) = @_;
 
     if (ref $ctx->req->params->{job}) {
-        $ctx->req->params->{job}{create_or_update}{company} = $ctx->user->get_object->user_companies->first->get_column('company');
+        $ctx->req->params->{job}{create_or_update}{company} = $ctx->stash->{company};
     }
 
     my $uri = $ctx->req->uri;
