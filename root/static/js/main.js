@@ -62,6 +62,44 @@ jQuery(function ($) {
         }
     });
 
+    $( 'form.requirements' ).submit( function() {
+        var values = $(this).find( 'input[type="text"]' ).val().split(',');
+        var value;
+        var ul = $(this).find( 'ul.requirements' );
+        var found;
+
+        for (var i = 0; i < values.length; i++) {
+            value = values[i];
+
+            if ( value === '' ) {
+                continue;
+            }
+
+            found = false;
+
+            ul.find('li').each(function () {
+                if ($(this).text() === value) {
+                    found = true;
+                    return false;
+                }
+            });
+
+            if (found) {
+                continue;
+            }
+
+            ul.append( '<li>' + value + ' <a href="#" class="remove-requirement"><i class="icon-remove-sign"></i></a></li>' );
+        }
+
+        $(this).find('.remove-requirement').unbind('click');
+        $(this).find('.remove-requirement').click( function() {
+            $(this).parent('li').remove();
+            return false;
+        });
+
+        return false;
+    });
+
     $('table.my_jobs td.remove a').click(function () {
         window.about_to_be_removed = $(this).data('job-id');
         $('#remove_job_modal').modal('show');
