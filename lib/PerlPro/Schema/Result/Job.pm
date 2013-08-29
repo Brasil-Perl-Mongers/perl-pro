@@ -64,6 +64,13 @@ __PACKAGE__->table("job");
   default_value: (now() + '30 days'::interval)
   is_nullable: 0
 
+=head2 status
+
+  data_type: 'perlpro.job_status'
+  default_value: 'active'::perlpro.job_status
+  is_nullable: 0
+  size: 4
+
 =head2 company
 
   data_type: 'text'
@@ -80,9 +87,10 @@ __PACKAGE__->table("job");
   data_type: 'text'
   is_nullable: 0
 
-=head2 salary
+=head2 vacancies
 
-  data_type: 'money'
+  data_type: 'integer'
+  default_value: 1
   is_nullable: 0
 
 =head2 phone
@@ -95,10 +103,35 @@ __PACKAGE__->table("job");
   data_type: 'text'
   is_nullable: 1
 
-=head2 vacancies
+=head2 wages
+
+  data_type: 'money'
+  is_nullable: 0
+
+=head2 wages_for
+
+  data_type: 'perlpro.job_wages_for'
+  default_value: 'month'::perlpro.job_wages_for
+  is_nullable: 0
+  size: 4
+
+=head2 hours
 
   data_type: 'integer'
-  default_value: 1
+  default_value: 40
+  is_nullable: 0
+
+=head2 hours_by
+
+  data_type: 'perlpro.job_hours_by'
+  default_value: 'week'::perlpro.job_hours_by
+  is_nullable: 0
+  size: 4
+
+=head2 is_telecommute
+
+  data_type: 'boolean'
+  default_value: false
   is_nullable: 0
 
 =head2 contract_type
@@ -108,34 +141,10 @@ __PACKAGE__->table("job");
   is_nullable: 0
   size: 4
 
-=head2 contract_hour_count
-
-  data_type: 'integer'
-  is_nullable: 1
-
-=head2 contract_hours_period
-
-  data_type: 'perlpro.job_contract_hours_period'
-  is_nullable: 1
-  size: 4
-
 =head2 contract_duration
 
   data_type: 'interval'
   is_nullable: 1
-
-=head2 is_telecommute
-
-  data_type: 'boolean'
-  default_value: false
-  is_nullable: 0
-
-=head2 status
-
-  data_type: 'perlpro.job_status'
-  default_value: 'active'::perlpro.job_status
-  is_nullable: 0
-  size: 4
 
 =cut
 
@@ -167,39 +176,6 @@ __PACKAGE__->add_columns(
     default_value => \"(now() + '30 days'::interval)",
     is_nullable   => 0,
   },
-  "company",
-  { data_type => "text", is_foreign_key => 1, is_nullable => 0 },
-  "title",
-  { data_type => "text", is_nullable => 0 },
-  "description",
-  { data_type => "text", is_nullable => 0 },
-  "salary",
-  { data_type => "money", is_nullable => 0 },
-  "phone",
-  { data_type => "text", is_nullable => 1 },
-  "email",
-  { data_type => "text", is_nullable => 1 },
-  "vacancies",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
-  "contract_type",
-  {
-    data_type => "perlpro.job_contract_type",
-    default_value => \"'no-contract'::perlpro.job_contract_type",
-    is_nullable => 0,
-    size => 4,
-  },
-  "contract_hour_count",
-  { data_type => "integer", is_nullable => 1 },
-  "contract_hours_period",
-  {
-    data_type => "perlpro.job_contract_hours_period",
-    is_nullable => 1,
-    size => 4,
-  },
-  "contract_duration",
-  { data_type => "interval", is_nullable => 1 },
-  "is_telecommute",
-  { data_type => "boolean", default_value => \"false", is_nullable => 0 },
   "status",
   {
     data_type => "perlpro.job_status",
@@ -207,6 +183,47 @@ __PACKAGE__->add_columns(
     is_nullable => 0,
     size => 4,
   },
+  "company",
+  { data_type => "text", is_foreign_key => 1, is_nullable => 0 },
+  "title",
+  { data_type => "text", is_nullable => 0 },
+  "description",
+  { data_type => "text", is_nullable => 0 },
+  "vacancies",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "phone",
+  { data_type => "text", is_nullable => 1 },
+  "email",
+  { data_type => "text", is_nullable => 1 },
+  "wages",
+  { data_type => "money", is_nullable => 0 },
+  "wages_for",
+  {
+    data_type => "perlpro.job_wages_for",
+    default_value => \"'month'::perlpro.job_wages_for",
+    is_nullable => 0,
+    size => 4,
+  },
+  "hours",
+  { data_type => "integer", default_value => 40, is_nullable => 0 },
+  "hours_by",
+  {
+    data_type => "perlpro.job_hours_by",
+    default_value => \"'week'::perlpro.job_hours_by",
+    is_nullable => 0,
+    size => 4,
+  },
+  "is_telecommute",
+  { data_type => "boolean", default_value => \"false", is_nullable => 0 },
+  "contract_type",
+  {
+    data_type => "perlpro.job_contract_type",
+    default_value => \"'no-contract'::perlpro.job_contract_type",
+    is_nullable => 0,
+    size => 4,
+  },
+  "contract_duration",
+  { data_type => "interval", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -284,8 +301,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-27 15:17:47
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4uGz2SAs7NFLqUil1Oak6w
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-29 15:33:56
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IP6/M/mHLcAM3Do9tUKr0Q
 
 __PACKAGE__->has_many(
   "promoted",
