@@ -83,10 +83,10 @@
                     <div class="span9">
                         <div class="input-container span5">
                             <div class="icon-placeholder"><i class="icon-time"></i></div>
-                            <input type="text" class="flat-input span12" placeholder="Horas" name="job.create_or_update.contract_hour_count" />
+                            <input type="text" class="flat-input span12" placeholder="Horas" name="job.create_or_update.hours" />
                         </div>
                         <div class="span2 between-inputs-label">por</div>
-                        <select name="job.create_or_update.contract_hours_by" class="flat-input span5">
+                        <select name="job.create_or_update.hours_by" class="flat-input span5">
                             <option value="">Período</option>
                             <option value="daily">Dia</option>
                             <option value="weekly">Semana</option>

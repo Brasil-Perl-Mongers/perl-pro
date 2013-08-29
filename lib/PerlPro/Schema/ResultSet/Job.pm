@@ -8,7 +8,7 @@ with 'PerlPro::Role::Verification';
 
 use MooseX::Types::Email qw/EmailAddress/;
 use MooseX::Types::Moose qw/Int Str Bool/;
-use PerlPro::Types::Contract qw/ContractType ContractHours/;
+use PerlPro::Types::Contract qw/ContractType WagesFor HoursBy/;
 use PerlPro::Types::Money qw/Money/;
 use PerlPro::Types::AttributeArray qw/AttributeArray/;
 use Scalar::Util qw/blessed/;
@@ -24,19 +24,19 @@ sub verifiers_specs {
         create_or_update => Data::Verifier->new(
             profile => {
                 id                  => { required => 0, type => Int },
+                status              => { required => 1, type => Str },
                 company             => { required => 1, type => Str },
                 title               => { required => 1, type => Str },
                 description         => { required => 1, type => Str },
-                salary              => { required => 1, type => Money },
+                vacancies           => { required => 0, type => Int },
                 phone               => { required => 0, type => Str },
                 email               => { required => 0, type => EmailAddress },
-                vacancies           => { required => 0, type => Int },
-                contract_type       => { required => 1, type => ContractType },
-                contract_hours      => { required => 0, type => ContractHours }, # TODO: this is required => 1, but not fully implemented yet
-                contract_duration   => { required => 0, type => Str }, # TODO: DateTime?
+                wages               => { required => 1, type => Money },
+                wages_for           => { required => 1, type => WagesFor },
+                hours               => { required => 1, type => Int },
+                hours_by            => { required => 1, type => HoursBy },
                 is_at_office        => { required => 0, type => Bool },
-                location            => { required => 1, type => Str }, # FIXME
-                status              => { required => 1, type => Str },
+                contract_type       => { required => 0, type => ContractType }, # if it's not set, it's "no-contract"
                 desired_attributes  => { required => 0, type => AttributeArray, coerce => 1 },
                 required_attributes => { required => 0, type => AttributeArray, coerce => 1 },
             }
@@ -50,7 +50,7 @@ sub action_specs {
         create_or_update => sub {
             my %values = shift->valid_values;
             my (%row_values, $row);
-            for (qw/company title description salary phone email vacancies contract_type contract_hours contract_duration status/) {
+            for (qw/status company title description vacancies phone email wages wages_for hours hours_by contract_type/) {
                 $row_values{$_} = $values{$_} if $values{$_};
             }
             $row_values{is_telecommute} = $values{is_at_office} ? 0 : 1;
@@ -162,7 +162,7 @@ sub get_job_and_company_by_job_id {
         job => {
             id                  => $id,
             title               => $job->title,
-            salary              => $job->salary,
+            salary              => $job->wages . '/' . _l($job->wages_for),
             city                => $l,
             description         => $job->description,
             required_attributes => $job->required_attributes,
@@ -203,19 +203,19 @@ sub get_to_update {
 
     my %job = (
         id                  => $id,
+        status              => $item->get_column('status'),
         company             => $item->get_column('company'),
         title               => $item->get_column('title'),
         description         => $item->get_column('description'),
-        salary              => $item->get_column('salary'),
+        vacancies           => $item->get_column('vacancies'),
         phone               => $item->get_column('phone'),
         email               => $item->get_column('email'),
-        vacancies           => $item->get_column('vacancies'),
-        contract_type       => $item->get_column('contract_type'),
-        contract_hours      => '',                                      # TODO
-        contract_duration   => $item->get_column('contract_duration'),
+        wages               => $item->get_column('wages'),
+        wages_for           => $item->get_column('wages_for'),
+        hours               => $item->get_column('hours'),
+        hours_by            => $item->get_column('hours_by'),
         is_at_office        => !$item->get_column('is_telecommute'),
-        location            => '',                                      # TODO
-        status              => $item->get_column('status'),
+        contract_type       => $item->get_column('contract_type'),
         required_attributes => $item->required_attributes,
         desired_attributes  => $item->desired_attributes,
     );
@@ -253,12 +253,13 @@ sub grid_search {
         push @conditions, { 'attributes.attribute' => { -in => $filters->{attributes} } };
     }
 
+    # TODO: deal with wages_for, hours and hours_by
     if ($filters->{salary_from}) {
-        push @conditions, { 'me.salary' => { '>=' => $filters->{salary_from} } };
+        push @conditions, { 'me.wages' => { '>=' => $filters->{salary_from} } };
     }
 
     if ($filters->{salary_to}) {
-        push @conditions, { 'me.salary' => { '<=' => $filters->{salary_to} } };
+        push @conditions, { 'me.wages' => { '<=' => $filters->{salary_to} } };
     }
 
     if ($filters->{contract_type}) {
@@ -294,7 +295,7 @@ sub grid_search {
             company_name      => $row->get_column('company_name'),
             title             => $row->get_column('title'),
             description       => $row->get_column('description'),
-            salary            => $row->get_column('salary'),
+            salary            => $row->get_column('wages') . '/' . _l($row->get_column('wages_for')),
             phone             => $row->get_column('phone'),
             email             => $row->get_column('email'),
             vacancies         => $row->get_column('vacancies'),
@@ -305,17 +306,17 @@ sub grid_search {
         };
 
         # TODO: i18n
-        if (my $h = $row->get_column('contract_hour_count')) {
+        if (my $h = $row->get_column('hours')) {
             my $ch = "$h horas";
 
-            if (my $p = $row->get_column('contract_hours_period')) {
-                if ($p eq 'daily') {
+            if (my $p = $row->get_column('hours_by')) {
+                if ($p eq 'day') {
                     $ch .= " por dia";
                 }
-                elsif ($p eq 'weekly') {
+                elsif ($p eq 'week') {
                     $ch .= " por semana";
                 }
-                elsif ($p eq 'monthly') {
+                elsif ($p eq 'month') {
                     $ch .= " por mês";
                 }
             }
@@ -340,6 +341,15 @@ sub grid_search {
             last_on_page     => $pager->last,
         },
     };
+}
+
+sub _l {
+    my %l = {
+        hour    => 'hora',
+        month   => 'mês',
+        project => 'project',
+    };
+    return $l{$_[0]};
 }
 
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);
