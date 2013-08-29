@@ -6,12 +6,12 @@ jQuery(function ($) {
         $( 'ul.desired_attributes > li' ).each(function () {
             var element = $(this).clone();
             element.find('a').remove();
-            desired.push(element.text());
+            desired.push(element.text().replace(/^\s+/,'').replace(/\s+$/,''));
         });
         $( 'ul.required_attributes > li' ).each(function () {
             var element = $(this).clone();
             element.find('a').remove();
-            required.push(element.text());
+            required.push(element.text().replace(/^\s+/,'').replace(/\s+$/,''));
         });
 
         $( '#required_attributes_field' ).val( required.join(',') );
@@ -54,6 +54,8 @@ jQuery(function ($) {
             $(this).parent('li').remove();
             return false;
         });
+
+        $(this)[0].reset();
 
         return false;
     });

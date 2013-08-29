@@ -5,7 +5,7 @@
 <form action="<: $form_action_uri :>" method="post" id="jobs_form">
 <input type="hidden" name="job.create_or_update.id" />
 <input type="hidden" name="job.create_or_update.required_attributes" id="required_attributes_field" />
-<input type="hidden" name="job.create_or_update.desired_attributes" id="desired_attributes_field" />
+<input type="hidden" name="job.create_or_update.desired_attributes"  id="desired_attributes_field" />
 <input type="hidden" name="job.create_or_update.contract_type" />
 
 <h2 class="underlined">
@@ -164,7 +164,7 @@
             </div>
             <div class="row-fluid">
                 <div class="span12">
-                    <ul class="requirements desirable_attributes">
+                    <ul class="requirements desired_attributes">
 :                     for $desired_attributes -> $attr {
                         <li><: $attr :> <a href="#" class="remove-requirement"><i class="icon-remove-sign"></i></a></li>
 :                     }

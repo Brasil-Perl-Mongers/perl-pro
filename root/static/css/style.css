@@ -585,9 +585,13 @@ hr.thick {
     text-align: center;
 }
 
+.relationship-buttons {
+    margin-left: -10px;
+}
+
 .relationship-buttons button.btn {
     width: 120px;
-    margin: 0 8px;
+    margin: 10px 0 10px 10px;
 }
 
 
