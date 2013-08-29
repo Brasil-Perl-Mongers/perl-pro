@@ -170,4 +170,36 @@ jQuery(function ($) {
     $('ul.requirements').each(function () {
         update_empty($(this));
     });
+
+    $("#company_search").typeahead({
+        source: function (query, process) {
+            var companies = [];
+
+            return $.get('/companies/' + query, function (data) {
+                $.each(data.companies, function (key, value) {
+                    // TODO: save the key, because that's what we'll actually
+                    // use to search
+                    companies.push(value);
+                });
+
+                process(companies);
+            });
+        },
+        updater: function (item) {
+            // TODO
+            return item;
+        }
+    });
+
+    $("#attribute_search").typeahead({
+        source: function (query, process) {
+            return $.get('/attributes/' + query, function (data) {
+                process(data.attributes);
+            });
+        },
+        updater: function (item) {
+            // TODO
+            return item;
+        }
+    });
 });

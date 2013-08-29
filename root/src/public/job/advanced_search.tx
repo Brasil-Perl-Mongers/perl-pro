@@ -86,7 +86,7 @@
                     <button class="btn-small btn-action" type="submit"><: $l('Adicionar') :></button>
                     <div class="input-container">
                         <div class="icon-placeholder"><i class="icon-book"></i></div>
-                        <input type="text" class="flat-input input-block-level" placeholder="Procure uma área de conhecimento" />
+                        <input type="text" class="flat-input input-block-level" placeholder="Procure uma área de conhecimento" id="attribute_search" autocomplete="off" />
                     </div>
                 </div>
                 <ul class="requirements">
@@ -101,7 +101,7 @@
                     <button class="btn-small btn-action" type="submit"><: $l('Adicionar') :></button>
                     <div class="input-container">
                         <div class="icon-placeholder"><i class="icon-building"></i></div>
-                        <input type="text" class="flat-input input-block-level" placeholder="Procure uma empresa" />
+                        <input type="text" class="flat-input input-block-level" placeholder="Procure uma empresa" id="company_search" autocomplete="off" />
                     </div>
                 </div>
                 <ul class="requirements">
