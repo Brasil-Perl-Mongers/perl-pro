@@ -80,7 +80,7 @@ jQuery(function ($) {
     });
 
     $('ul.requirements > li > a.remove-requirement').click( function() {
-        $(this).parent('li').remove();
+        $(this).parent().remove();
         return false;
     });
 

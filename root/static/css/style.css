@@ -141,12 +141,16 @@ button.btn.btn-important.active,
     font-weight: normal;
 }
 
-.btn-radio .btn-flat {
+.btn-radio .btn-flat,
+.btn-checkbox .btn-flat {
     opacity: 0.3;
 }
 .btn-radio .btn-flat:hover,
 .btn-radio .btn-flat:active,
-.btn-radio .btn-flat.active {
+.btn-radio .btn-flat.active,
+.btn-checkbox .btn-flat:hover,
+.btn-checkbox .btn-flat:active,
+.btn-checkbox .btn-flat.active {
     opacity: 1;
 }
 
@@ -585,6 +589,13 @@ hr.thick {
     text-align: center;
 }
 
+.nearby-cities {
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+    color: #333333;
+}
+
 .relationship-buttons {
     margin-left: -10px;
 }
@@ -955,7 +966,7 @@ h4.underlined{
     color: #333;
 }
 
-.job-description, .job-title, .job-util, .job-date{
+.job-description, .job-title, .job-util, .job-date {
     color: #333 !important;
 }
 
