@@ -81,4 +81,22 @@ jQuery(function ($) {
         $(this).parent('li').remove();
         return false;
     });
+
+    $('div.btn-radio').each(function () {
+        var data_for = $(this).data('radio-for');
+        var real_el  = $('[name="'+data_for+'"]');
+        var value    = real_el.val();
+
+        $(this).find('button.active').removeClass('active');
+
+        $(this).find('button').each(function () {
+            if ($(this).val() == value) {
+                $(this).addClass('active');
+            }
+        });
+
+        $(this).find('button').click(function () {
+            real_el.val($(this).val());
+        });
+    });
 });

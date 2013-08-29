@@ -6,6 +6,7 @@
 <input type="hidden" name="job.create_or_update.id" />
 <input type="hidden" name="job.create_or_update.required_attributes" id="required_attributes_field" />
 <input type="hidden" name="job.create_or_update.desired_attributes" id="desired_attributes_field" />
+<input type="hidden" name="job.create_or_update.contract_type" />
 
 <h2 class="underlined">
     <: $l('Adicionar anúncio de vaga') # ou atualizar :>
@@ -69,11 +70,11 @@
     </div>
     <div class="row">
         <div class="span6">
-            <div data-toggle="buttons-radio" class="btn-radio relationship-buttons">
-                <button class="btn btn-flat btn-small btn-red" type="button">CLT</button>
-                <button class="btn btn-flat btn-small btn-green" type="button">PJ</button>
-                <button class="btn btn-flat btn-small btn-blue" type="button">Estágio</button>
-                <button class="btn btn-flat btn-small btn-purple" type="button">Freelance</button>
+            <div data-toggle="buttons-radio" class="btn-radio relationship-buttons" data-radio-for="job.create_or_update.contract_type">
+                <button class="btn btn-flat btn-small btn-red"    type="button" value="clt">CLT</button>
+                <button class="btn btn-flat btn-small btn-green"  type="button" value="pj">PJ</button>
+                <button class="btn btn-flat btn-small btn-blue"   type="button" value="internship">Estágio</button>
+                <button class="btn btn-flat btn-small btn-purple" type="button" value="freelance">Freelance</button>
             </div>
         </div>
         <div class="span6">
@@ -88,9 +89,9 @@
                         <div class="span2 between-inputs-label">por</div>
                         <select name="job.create_or_update.hours_by" class="flat-input span5">
                             <option value="">Período</option>
-                            <option value="daily">Dia</option>
-                            <option value="weekly">Semana</option>
-                            <option value="monthly">Mês</option>
+                            <option value="day">Dia</option>
+                            <option value="week">Semana</option>
+                            <option value="month">Mês</option>
                             <option value="project">Projeto completo</option>
                         </select>
                     </div>
