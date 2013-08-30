@@ -24,7 +24,7 @@
             <h4 class="serif-underlined"><: $l('Em local ou proximidades') :></h4>
             <div class="controls-row input-container">
                 <div class="icon-placeholder"><i class="icon-map-marker"></i></div>
-                <input type="text" class="flat-input input-block-level" placeholder="Procurar em uma cidade" />
+                <input type="text" class="flat-input input-block-level" placeholder="Procurar em uma cidade" id="city_search" autocomplete="off" />
             </div>
             <br>
             <div class="row-fluid">

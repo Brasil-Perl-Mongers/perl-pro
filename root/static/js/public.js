@@ -202,4 +202,27 @@ jQuery(function ($) {
             return item;
         }
     });
+
+    $("#city_search").typeahead({
+        source: function (query, process) {
+            $.getJSON('http://dev.virtualearth.net/REST/v1/Locations?countryRegion=BR&locality=' + encodeURIComponent(query) + '&c=pt-br&output=json&maxResults=30&jsonp=?&key=Ak3hUY8K4w522FcOQlCwpN7Nt6iZCgNbjZYyIePw2UI-pPzltCRbqO3-dfJT2pds').done(function (data) {
+                var results = [];
+                if (data.resourceSets && data.resourceSets.length > 0) {
+                    $.each(data.resourceSets[0].resources, function (i, item) {
+                        if (results.length > 10) {
+                            return false;
+                        }
+                        if (item.entityType === "PopulatedPlace" && in_array(item.address.locality, results) < 0) {
+                            results.push(item.address.locality);
+                        }
+                    });
+                    process(results);
+                }
+            });
+        },
+        updater: function (item) {
+            // TODO
+            return item;
+        }
+    });
 });
