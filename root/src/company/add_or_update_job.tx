@@ -8,6 +8,13 @@
 <input type="hidden" name="job.create_or_update.desired_attributes"  id="desired_attributes_field" />
 <input type="hidden" name="job.create_or_update.contract_type" />
 
+<input type="hidden" name="job.create_or_update.location.lat" />
+<input type="hidden" name="job.create_or_update.location.lng" />
+<input type="hidden" name="job.create_or_update.location.address" />
+<input type="hidden" name="job.create_or_update.location.city" />
+<input type="hidden" name="job.create_or_update.location.state" />
+<input type="hidden" name="job.create_or_update.location.country" />
+
 <h2 class="underlined">
     <: $l('Adicionar anúncio de vaga') # ou atualizar :>
     <div class="pull-right">
@@ -33,7 +40,7 @@
                 </div>
                 <div class="controls-row input-container">
                     <div class="icon-placeholder"><i class="icon-map-marker"></i></div>
-                    <input type="text" class="flat-input span12" placeholder="Local / Endereço" name="job.create_or_update.location" />
+                    <input type="text" class="flat-input span12" placeholder="Local / Endereço" name="job.create_or_update.location.formatted_address" id="job_location_search" autocomplete="off" />
                 </div>
                 <div class="controls-row">
                     <div class="input-container span6">

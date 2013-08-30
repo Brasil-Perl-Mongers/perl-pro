@@ -101,4 +101,54 @@ jQuery(function ($) {
             real_el.val($(this).val());
         });
     });
+
+    var map = {};
+    var timeout;
+    var last;
+
+    $("#job_location_search").typeahead({
+        source: function (query, process) {
+            if (query === last) {
+                return;
+            }
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+
+            last = query;
+
+            timeout = setTimeout(function () {
+                $.getJSON('http://dev.virtualearth.net/REST/v1/Locations/' + encodeURIComponent(query.trim()) + '?c=pt-br&output=json&maxResults=10&jsonp=?&key=Ak3hUY8K4w522FcOQlCwpN7Nt6iZCgNbjZYyIePw2UI-pPzltCRbqO3-dfJT2pds').done(function (data) {
+                    map = {};
+                    var locations = [];
+                    if (data.resourceSets && data.resourceSets.length > 0) {
+                        $.each(data.resourceSets[0].resources, function (i, item) {
+                            if (!map[item.address.formattedAddress]) {
+                                locations.push(item.address.formattedAddress);
+                                item.address.lat = item.point.coordinates[0];
+                                item.address.lng = item.point.coordinates[1];
+                                map[item.address.formattedAddress] = item.address;
+                            }
+                        });
+                        process(locations);
+                    }
+                });
+            }, 300);
+        },
+        matcher: function () {
+            return true;
+        },
+        sorter: function (items) {
+            return items;
+        },
+        updater: function (item) {
+            $('[name="job.create_or_update.location.address"]').val(map[item].addressLine);
+            $('[name="job.create_or_update.location.city"]').val(map[item].locality);
+            $('[name="job.create_or_update.location.state"]').val(map[item].adminDistrict);
+            $('[name="job.create_or_update.location.country"]').val(map[item].countryRegion);
+            $('[name="job.create_or_update.location.lat"]').val(map[item].lat);
+            $('[name="job.create_or_update.location.lng"]').val(map[item].lng);
+            return item;
+        }
+    });
 });
