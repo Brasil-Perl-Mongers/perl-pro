@@ -57,7 +57,7 @@ jQuery(function ($) {
             $( this ).parent().parent().find( '.selected-filters' ).append( html );
 
             $( '.icon-remove-sign' ).click( function() {
-                $( this ).parent( 'li' ).remove();
+                $( this ).parent().remove();
             });
         }
     });
