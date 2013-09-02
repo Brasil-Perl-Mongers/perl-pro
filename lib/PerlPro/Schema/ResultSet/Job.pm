@@ -300,7 +300,6 @@ sub grid_search {
             email             => $row->get_column('email'),
             vacancies         => $row->get_column('vacancies'),
             contract_type     => $row->get_column('contract_type'),
-            contract_duration => $row->get_column('contract_duration'), # TODO: correctly format this in pt_BR
             is_telecommute    => $row->get_column('is_telecommute'),
             city              => $row->get_column('city'),
         };

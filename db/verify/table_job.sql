@@ -7,7 +7,7 @@ BEGIN;
     SELECT
         id, created_at, last_modified, expires_at, status, company, title,
         description, vacancies, phone, email, wages, wages_for, hours,
-        hours_by, is_telecommute, contract_type, contract_duration
+        hours_by, is_telecommute, contract_type
     FROM
         job
     WHERE FALSE;

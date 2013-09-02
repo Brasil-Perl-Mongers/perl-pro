@@ -252,7 +252,7 @@ install_fixtures();
 # TODO: test grid sorting
 # TODO: test search by location
 # TODO: test fixtures with attributes
-# TODO: test fixtures with contract_hours and contract_duration
+# TODO: test fixtures with hours, hours_by
 
 uninstall_fixtures();
 done_testing();

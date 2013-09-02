@@ -141,11 +141,6 @@ __PACKAGE__->table("job");
   is_nullable: 0
   size: 4
 
-=head2 contract_duration
-
-  data_type: 'interval'
-  is_nullable: 1
-
 =cut
 
 __PACKAGE__->add_columns(
@@ -222,8 +217,6 @@ __PACKAGE__->add_columns(
     is_nullable => 0,
     size => 4,
   },
-  "contract_duration",
-  { data_type => "interval", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -301,8 +294,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-29 15:33:56
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IP6/M/mHLcAM3Do9tUKr0Q
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-09-02 20:20:32
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bGavc+dLg7BVHc/xvMZJfg
 
 __PACKAGE__->has_many(
   "promoted",

@@ -36,7 +36,6 @@ BEGIN;
         hours_by          job_hours_by      NOT NULL DEFAULT 'week',
         is_telecommute    BOOLEAN           NOT NULL DEFAULT FALSE,
         contract_type     job_contract_type NOT NULL DEFAULT 'no-contract'::job_contract_type,
-        contract_duration INTERVAL, -- TODO
 
         FOREIGN KEY (company) REFERENCES company(name_in_url) ON DELETE CASCADE ON UPDATE CASCADE
     );
