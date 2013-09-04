@@ -105,7 +105,7 @@
 :#      TODO: fix colors
 :       for $c.other_jobs -> $oj {
             <li class="company-color4">
-                <span class="position-name"><: $oj.title :></span> @
+                <a href="<: $uri('/job/' ~ $oj.id) :>" class="position-name"><: $oj.title :></a> @
                 <span class="city-name"><: $oj.city :></span>
             </li>
 :       }

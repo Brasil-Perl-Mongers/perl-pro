@@ -51,7 +51,7 @@
         <ul class="job-list">
 :           for $c.jobs_part_1 -> $j {
             <li class="company-color1">
-                <span class="position-name"><: $j.title :></span> @
+                <a href="<: $uri('/job/' ~ $j.id) :>" class="position-name"><: $j.title :></a> @
                 <span class="city-name"><: $j.city :></span>
             </li>
 :           }
@@ -61,7 +61,7 @@
         <ul class="job-list">
 :           for $c.jobs_part_2 -> $j {
             <li class="company-color1">
-                <span class="position-name"><: $j.title :></span> @
+                <a href="<: $uri('/job/' ~ $j.id) :>" class="position-name"><: $j.title :></a> @
                 <span class="city-name"><: $j.city :></span>
             </li>
 :           }

@@ -149,8 +149,8 @@ sub get_job_and_company_by_job_id {
         join     => [qw/promoted job_location/],
         order_by => { -desc => [ 'promoted.status', 'created_at' ] }, # promoted first
         rows     => 4,
-        select   => [ qw/me.title job_location.city/ ],
-        as       => [ qw/title city/ ],
+        select   => [ qw/me.id me.title job_location.city/ ],
+        as       => [ qw/id title city/ ],
     });
 
     my $l = $job->job_location;
@@ -179,6 +179,7 @@ sub get_job_and_company_by_job_id {
             other_jobs        => [
                 map {
                     +{
+                        id    => $_->get_column('id'),
                         title => $_->get_column('title'),
                         city  => $_->get_column('city'),
                     }

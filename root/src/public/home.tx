@@ -74,7 +74,7 @@
             <ul class="recent-jobs job-list">
 :           for $recent_jobs -> $j {
                 <li class="company-color1">
-                    <span class="position-name"><: $j.title :></span> em
+                    <a href="<: $uri('/job/' ~ $j.id) :>" class="position-name"><: $j.title :></a> em
                     <a href="<: $uri('/company/' ~ $j.company_url) :>" class="company-name"><: $j.company_name :></a> @
                     <span class="city-name"><: $j.city :></span>
                 </li>
@@ -118,21 +118,24 @@
             <h4><: $l('Catálogo de Empresas') :></h4>
             <hr/>
             <ul class="company-catalog">
+:           for $companies -> $c {
                 <li>
-                    <img src="http://lorempixel.com/60/38" alt="Logotipo da Estante Virtual">
-                    <span class="company-name">Estante Virtual</span><br/>
-                    <span class="open-positions">10 vagas abertas</span>
+                    <img src="http://lorempixel.com/60/38" alt="Logotipo da <: $c.name :>">
+                    <a href="<: $uri('/company/' ~ $c.name_in_url ) :>" class="company-name"><: $c.name :></a><br/>
+                    <span class="open-positions"><:
+#                       TODO: real i18n
+
+                        if $c.open_positions == 0 {
+                            $l('Nenhuma vaga cadastrada');
+                        } elsif $c.open_positions == 1 {
+                            $l('1 vaga cadastrada');
+                        } else {
+                            $c.open_positions ~ $l(' vagas cadastradas');
+                        }
+
+                    :></span>
                 </li>
-                <li>
-                    <img src="http://lorempixel.com/60/38" alt="Logotipo da perldelux">
-                    <span class="company-name">perldelux</span><br/>
-                    <span class="open-positions">10 vagas abertas</span>
-                </li>
-                <li>
-                    <img src="http://lorempixel.com/60/38" alt="Logotipo da b-datum">
-                    <span class="company-name">b-datum</span><br/>
-                    <span class="open-positions">10 vagas abertas</span>
-                </li>
+:           }
             </ul>
             <hr/>
             <div class="text-center">

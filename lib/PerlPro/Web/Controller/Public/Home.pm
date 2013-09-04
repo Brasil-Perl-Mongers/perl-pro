@@ -10,6 +10,7 @@ sub home :Global Args(0) {
 
     $ctx->stash(
         recent_jobs => $ctx->model('DB::Job')->get_recent_jobs,
+        companies   => $ctx->model('DB::Company')->get_featured_companies,
         template    => 'public/home.tx',
     );
 }

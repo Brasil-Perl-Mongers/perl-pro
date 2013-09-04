@@ -240,6 +240,37 @@ sub get_to_edit {
     }
 }
 
+sub get_featured_companies {
+    my $self = shift;
+    my @result;
+
+    my $rs = $self->search( {}, {
+        distinct  => 1,
+        rows      => 3,
+        order_by  => { -desc => [ 'active_jobs', 'me.mtime' ] },
+        '+select' => [
+            {
+                count => 'jobs.id',
+                -as   => 'active_jobs'
+            }
+        ],
+        '+as'    => ['open_positions'],
+        '+where' => { 'jobs.status' => 'active' },
+        columns  => [qw/name_in_url name/],
+        join     => 'jobs',
+    } );
+
+    for ( $rs->all ) {
+        push @result, {
+            name_in_url    => $_->name_in_url,
+            name           => $_->name,
+            open_positions => $_->get_column('open_positions'),
+        };
+    }
+
+    return \@result;
+}
+
 sub get_for_catalog {
     my ($self, $page) = @_;
 

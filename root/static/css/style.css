@@ -820,6 +820,7 @@ ul.job-list li.company-color7 {
 
 ul.job-list li .position-name {
     font-weight: bold;
+    color: #333333;
 }
 
 a.company-name:link,
@@ -866,10 +867,6 @@ ul.company-catalog > li > img {
     height: 38px;
     float: left;
     margin: 0 7px 0 0;
-}
-
-ul.company-catalog > li .company-name {
-    font-weight: bold;
 }
 
 ol.companies,
