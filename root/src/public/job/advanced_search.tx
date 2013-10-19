@@ -1,121 +1,131 @@
 :cascade public::wrapper
 :block content -> {
 
-<h2 class="light serif-underlined"><: $l('Busca Avançada') :></h2>
+<!-- page title -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
 
-<form action="<: $uri('/jobs') :>" method="get" id="job_search_form">
-<input type="hidden" name="attributes"  id="attributes_field" />
-<input type="hidden" name="contract_type" />
-<input type="hidden" name="lat" />
-<input type="hidden" name="lng" />
-<input type="hidden" name="companies" />
-<input type="hidden" name="attributes" />
+            <h1 class="underlined"><: $l('Busca Avançada') :></h1>
 
-<div class="job-search-row">
+        </div><!-- end .page-title -->
+    </div><!-- end .col-md-12 -->
+</div><!-- end .row -->
+
+<div class="content" id="search">
     <div class="row">
-        <div class="span6">
-            <h4 class="serif-underlined"><: $l('Buscar pelo termo') :></h4>
-            <div class="input-container">
-                <div class="icon-placeholder"><i class="icon-search"></i></div>
-                <input type="text" class="flat-input input-block-level" placeholder="Com os termos" name="term" />
-            </div>
-        </div>
-        <div class="span6">
-            <h4 class="serif-underlined"><: $l('Em local ou proximidades') :></h4>
-            <div class="controls-row input-container">
-                <div class="icon-placeholder"><i class="icon-map-marker"></i></div>
-                <input type="text" class="flat-input input-block-level" placeholder="Procurar em uma cidade" id="city_search" autocomplete="off" />
-            </div>
-            <br>
-            <div class="row-fluid">
-                <div class="controls-row">
-                    <div class="span3 nearby-cities">
-                        ou cidades<br/>
-                        vizinhas até
-                    </div>
-                    <input type="text" class="flat-input span4" value="25km" placeholder="Distância em km" name="radius" />
-                    <div class="span4">
-                        <label class="checkbox">
-                            <input type="checkbox" /> Presencial
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        <div class="col-md-12">
+            <div class="content-block">
+                <form action="<: $uri('/jobs') :>" method="get" id="job_search_form">
 
-<div class="job-search-row">
-    <div class="row">
-        <div class="span6">
-            <div class="row-fluid">
-                <h4 class="serif-underlined"><: $l('Contrato & Salário') :></h4>
-                <div class="controls-row">
-                    <div class="span1 between-inputs-label">De</div>
-                    <div class="input-container span4">
-                        <div class="icon-placeholder"><i class="icon-dollar"></i></div>
-                        <input type="text" class="flat-input span12" name="salary_from" />
+                    <div class="col-md-6">
+                        <p class="lead">Com os termos</p>
+                        <div class="input-group">
+                            <label class="sr-only" for="categories">Palavras chave</label>
+                            <input type="text" placeholder="Digite separado por virgula" name="tags" class="form-control"/>
+                            <span class="input-group-btn">
+                                <input type="button" class="btn btn-warning" id="add_tags" value="Adicionar"/>
+                            </span>
+                        </div><!-- end .input-group -->
                     </div>
-                    <div class="span1 between-inputs-label">Até</div>
-                    <div class="input-container span4">
-                        <div class="icon-placeholder"><i class="icon-dollar"></i></div>
-                        <input type="text" class="flat-input span12" name="salary_to" />
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="span6">
-            <h4 class="serif-underlined"><: $l('Período & Relacionamento') :></h4>
-            <div data-toggle="buttons-checkbox" class="btn-checkbox relationship-buttons" data-input-for="contract_type">
-                <button class="btn btn-flat btn-small btn-red"    type="button" value="clt">CLT</button>
-                <button class="btn btn-flat btn-small btn-green"  type="button" value="pj">PJ</button>
-                <button class="btn btn-flat btn-small btn-blue"   type="button" value="internship">Estágio</button>
-                <button class="btn btn-flat btn-small btn-purple" type="button" value="freelance">Freelance</button>
-            </div>
-        </div>
-    </div>
-</div>
-</form>
 
-<div class="job-search-row">
-    <div class="row">
-        <div class="span6">
-            <form class="requirements">
-                <h4 class="serif-underlined"><: $l('Conhecimentos e/ou áreas') :></h4>
-                <div class="add_requirements">
-                    <button class="btn-small btn-action" type="submit"><: $l('Adicionar') :></button>
-                    <div class="input-container">
-                        <div class="icon-placeholder"><i class="icon-book"></i></div>
-                        <input type="text" class="flat-input input-block-level" placeholder="Procure uma área de conhecimento" id="attribute_search" autocomplete="off" />
-                    </div>
-                </div>
-                <ul class="requirements">
-                    <li class="zero"><: $l('Qualquer área') :></li>
-                </ul>
-            </form>
-        </div>
-        <div class="span6">
-            <form class="requirements">
-                <h4 class="serif-underlined"><: $l('Nas empresas') :></h4>
-                <div class="add_requirements">
-                    <button class="btn-small btn-action" type="submit"><: $l('Adicionar') :></button>
-                    <div class="input-container">
-                        <div class="icon-placeholder"><i class="icon-building"></i></div>
-                        <input type="text" class="flat-input input-block-level" placeholder="Procure uma empresa" id="company_search" autocomplete="off" />
-                    </div>
-                </div>
-                <ul class="requirements">
-                    <li class="zero"><: $l('Qualquer empresa') :></li>
-                </ul>
-            </form>
-        </div>
-    </div>
-</div>
+                    <div class="col-md-6">
+                        <p class="lead">Faixa salarial</p>
+                        <div class="form-inline">
 
-<hr>
+                            <div class="form-group">De </div>
 
-<div class="text-right">
-    <button type="reset" class="btn-small btn-important" form="job_search_form"><: $l('Cancelar') :></button>
-    <button type="submit" class="btn-small btn-util" form="job_search_form"><: $l('Pesquisar') :></button>
-</div>
+                            <div class="form-group">
+                                <label class="sr-only" for="salary.min">Valor mínimo</label>
+                                <input type="text" class="form-control" name="salary.min" placeholder="Valor mínimo">
+                            </div>
+
+                            <div class="form-group">até </div>
+
+                            <div class="form-group">
+                                <label class="sr-only" for="salary.max">Valor máximo</label>
+                                <input type="text" class="form-control" name="salary.max" placeholder="Valor máximo">
+                            </div>
+                        </div><!-- end .form-inline -->
+                    </div><!-- end .col-md-6 -->
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-6">
+                        <p class="lead">Em um local</p>
+
+                        <div class="form-group">
+                            <label for="location" class="sr-only">Em um local</label>
+                            <input type="text" class="form-control" name="location" placeholder="Procurar por cidade ou endereço">
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="presence" />
+                                 Presença não obrigatória
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <p class="lead">Relacionamento</p>
+
+                        <div data-toggle="buttons">
+                            <label class="btn btn-danger">
+                                <input type="radio" name="relationship" value="clt">CLT
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="relationship" value="pj">PJ
+                            </label>
+                            <label class="btn btn-success">
+                                <input type="radio" name="relationship" value="intern">Estágio
+                            </label>
+                            <label class="btn btn-warning">
+                                <input type="radio" name="relationship" value="freelance">Freelance
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-6">
+                        <p class="lead">Conhecimentos e/ou áreas</p>
+                        <div class="input-group">
+                            <label class="sr-only" for="categories">Conhecimentos</label>
+                            <input type="text" placeholder="Digite uma linguagem ou tecnologia" name="tags" class="form-control"/>
+                            <span class="input-group-btn">
+                                <input type="button" class="btn btn-warning" id="add_tags" value="Adicionar"/>
+                            </span>
+                        </div><!-- end .input-group -->
+                    </div>
+                    <div class="col-md-6">
+                        <p class="lead">Em uma empresa</p>
+                        <div class="input-group">
+                            <label class="sr-only" for="companies">Em uma empresa</label>
+                            <input type="text" placeholder="Procure empresas" name="companies" class="form-control"/>
+                            <span class="input-group-btn">
+                                <input type="button" class="btn btn-warning" id="add_tags" value="Adicionar"/>
+                            </span>
+                        </div><!-- end .input-group -->
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <hr>
+
+                    <div class="pull-right">
+                        <button type="reset" class="btn btn-danger" form="job_search_form"><: $l('Cancelar') :></button>
+
+                        <button type="submit" class="btn btn-success" form="job_search_form"><: $l('Pesquisar') :></button>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                </form>
+            </div><!-- end .content-block -->
+        </div><!-- end .col-md-12 -->
+    </div><!-- end .row -->
+</div><!-- end #search.content -->
+
 : }

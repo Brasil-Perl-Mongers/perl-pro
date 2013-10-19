@@ -1,62 +1,132 @@
 : cascade public::wrapper
 : block content {
-<h2><: $l('Criar conta') :></h2>
-<hr class="thick" />
-<p><: $l('Preencha os campos abaixo para criar a sua conta. Após finalizar o cadastro, você poderá adicionar mais informações e cadastrar ofertas de vagas.') :></p>
-: block main_form | fif($fields) -> {
-<form action="" method="post" class="container">
+
+<!-- page title -->
 <div class="row">
-    <div class="span6">
-        <fieldset>
-            <legend>Dados do usuário</legend>
-            <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="nome (administrador)" name="user.register.name" />
-            </div>
-            <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="e-mail (administrador)" name="user.register.email" />
-            </div>
-            <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="nome de usuário para login" name="user.register.login" />
-            </div>
-            <div class="controls controls-row">
-                <input type="password" class="span3 flat-input" placeholder="senha" name="user.register.password" />
-                <input type="password" class="span3 flat-input" placeholder="confirme sua senha" name="user.register.confirm_password" />
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Contato &amp; Localização</legend>
-            <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="endereço da empresa" name="company.register.address" />
-            </div>
-            <div class="controls controls-row">
-                <input type="text" class="span4 flat-input" placeholder="cidade" name="company.register.city" />
-                <input type="text" class="span2 flat-input" placeholder="estado" name="company.register.state" />
-            </div>
-            <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="e-mail da empresa para contato (público)" name="company.register.email" />
-            </div>
-            <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="telefone da empresa para contato (público)" name="company.register.phone" />
-            </div>
-        </fieldset>
-    </div>
-    <div class="span6">
-        <fieldset>
-            <legend>Dados da empresa</legend>
-            <div class="controls controls-row">
-                <input type="text" class="span6 flat-input" placeholder="nome da empresa" name="company.register.name" />
-            </div>
-            <div class="controls controls-row">
-                <textarea class="span6 flat-input" rows="16" placeholder="escreva algumas linhas descrevendo sua empresa, e como ela utiliza Perl em seu dia-a-dia" name="company.register.description"></textarea>
-            </div>
-        </fieldset>
-    </div>
-</div>
-<hr class="thick" />
-<div class="text-right">
-    <button class="btn-small btn-important"><: $l('Cancelar') :></button>
-    <button type="submit" class="btn-small btn-save"><: $l('Criar Conta') :></button>
-</div>
-</form>
-: }
+    <div class="col-md-12">
+        <div class="page-title">
+
+            <h1 class="underlined"><: $l('Cadastre sua empresa') :></h1>
+
+        </div><!-- end .page-title -->
+    </div><!-- end .col-md-12 -->
+</div><!-- end .row -->
+
+<div class="content" id="company-signup">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="content-block">
+                <form id="form-company-signup">
+
+                    <div class="col-md-12">
+                        <p class="lead"><strong>Informações basicas</strong></p>
+                        <p><: $l('Preencha os campos abaixo para criar a sua conta. Após finalizar o cadastro, você poderá adicionar mais informações e cadastrar ofertas de vagas.') :></p>
+                    </div><!-- end .col-md-12 -->
+
+                    <div class="col-md-6">
+
+                        <p class="lead">Informações da empresa</p>
+
+                        <div class="form-group">
+                            <label class="sr-only" for="name">Nome da empresa</label>
+                            <input type="text" placeholder="Nome da empresa" name="name" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="login">E-mail</label>
+                                        <input type="email" placeholder="E-mail" name="login" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="phone">Telefone</label>
+                                        <input type="tel" placeholder="Telefone" name="phone" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="sr-only" for="address">Endereço</label>
+                            <input type="text" placeholder="Endereço" name="address" class="form-control"  />
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="city">Cidade</label>
+                                        <input type="text" placeholder="Cidade" name="city" class="form-control"  />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="state">Estado</label>
+                                        <select name="state" class="form-control">
+                                            <option value="">Estado</option>
+                                            <option value="sp">São Paulo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- end .col-md-6 -->
+
+                    <div class="col-md-6">
+
+                        <p class="lead">Dados de acesso</p>
+
+                        <div class="form-group">
+                            <label class="sr-only" for="login">Login</label>
+                            <input type="text" placeholder="Login" name="user.register.login" class="form-control"  />
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="sr-only" for="password">Senha</label>
+                                    <input type="password" class="form-control" placeholder="Senha" name="user.register.password" />
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="sr-only" for="confirm_password">Confirme</label>
+                                    <input type="password" class="form-control" placeholder="Confirme sua senha" name="user.register.confirm_password" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- end col-md-6 -->
+
+                    <div class="clearfix"></div>
+
+                    <hr />
+
+                    <div class="col-md-12">
+                        <div class="form-group form-inline">
+                            <input class="btn btn-success" type="submit" value="Criar Conta" />
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name-"terms" />
+                                     Li e concordo com os <a href="#modal-company-terms" data-toggle="modal">termos de uso.</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </form><!-- end #form-company-signup -->
+            </div><!-- end .content-block -->
+
+        </div><!-- end .col-md-12 -->
+    </div><!-- end .row -->
+</div><!-- end #company-signup.content -->
+
 : }

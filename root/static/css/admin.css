@@ -1,0 +1,93 @@
+/* main menu */
+
+#main-menu .dropdown-menu a {
+	color: #333;
+}
+
+#main-menu .nav .open>a,
+#main-menu .nav .open>a:hover,
+#main-menu .nav .open>a:focus {
+	background-color: #333;
+	border-color: #333;
+}
+
+#main-menu .nav>li>a:hover {
+background: #333;
+}
+
+#main-menu .menu {
+	margin: 7px 0 0 15px;
+}
+
+#main-menu .nav-pills>li.active>a,
+#main-menu .nav-pills>li.active>a:hover,
+#main-menu .nav-pills>li.active>a:focus {
+	background-color: #E57E21;
+}
+
+#main-menu .col-md-4 .pull-right {
+text-align: right;
+}
+
+/* forms */
+
+.form-group .col-lg-6>span {
+	line-height: 34px;
+	padding: 5px;
+}
+
+.content-block .form-horizontal label{
+	font-weight: 300;
+}
+
+.content-block .form-horizontal .secundary-label {
+	font-size: 14px;
+	color: #3498DB;
+	cursor: pointer;
+}
+
+.content-block .form-inline input[type="date"] {
+	width: 150px;
+}
+
+#account_contacts, #access_info {
+	height: 440px;
+}
+
+#profile_data { height: 600px; }
+#company_keywords { height: 220px; }
+
+/* account home */
+#account-home input.form-control,
+#public_contacts input.form-control{
+	border: 0;
+	outline: 0;
+	box-shadow: none;
+	font-size: 16px;
+}
+
+#account-home input[type="date"] {
+	outline: 1px solid #eee;
+}
+
+#account-home input.form-control:focus,
+#public_contacts input.form-control:focus {
+	outline: 1px solid #eee;
+}
+
+.add-link {
+	margin-left: 12px;
+	font-size: 13px;
+}
+
+
+/* my jobs */
+
+.table.my_jobs .active { color: #27AE60; }
+.table.my_jobs .inactive { color: #EB6F63; }
+
+/* add_job */
+
+#account-add_job .content-block {
+	min-height: 240px;
+}

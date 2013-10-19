@@ -1,47 +1,170 @@
-: cascade base::wrapper
-: block wrapper_content -> {
-<!-- top banner (logo + slogan) - with that big orange background on the top -->
-<div id="big-orange-background">
-    <div class="container">
-        <div class="banner-row row">
-            <div class="logo span4">
-                <img src="<: $static_uri :>/img/logo.png" alt="PerlPro" />
-                <span class="logo-helper"></span> <!-- cross-browser hack to make the logo vertically aligned in the middle -->
-            </div>
-:# TODO: i18n
-:# The slogan is not localized yet because it wouldn't make much sense, it seems,
-:# because markup would have to be included in the translation
-            <div class="slogan span7">
-                <hr/>
-                <div class="slogan-line1"><strong>Empregos</strong> para programadores</div>
-                <div class="slogan-line2"><strong>Perl</strong> <em>em todo o Brasil</em></div>
-                <hr/>
-            </div>
-        </div>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-<!-- search bar -->
-<div id="searchbar-container">
-    <div class="container">
-        <div class="searchbar row">
-            <div class="span12">
-                <form class="form-search pull-left" method="get" action="/search">
-                    <input type="text" class="input-xxlarge flat-input" placeholder="Encontre uma vaga" />
-                    <img src="<: $static_uri :>/img/search.png" />
-                    <button class="btn-action btn-small" type="submit"><: $l('Busca') :></button>
-                </form>
-                <p class="advanced-search"><: $l('Ou faça uma') :><br/><a href="<: $uri('/search') :>"><: $l('Busca Avançada') :></a></p>
-            </div>
-        </div>
-    </div>
-</div>
+    <head>
+        <title>PerlPro</title>
+        <link href="//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.0/jquery.qtip.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+        <link href="<: $static_uri :>/css/style.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <link href="<: $uri('/favicon.ico') :>" rel="shortcut icon">
+    </head>
 
-<!-- main content -->
-<div class="container main-content">
-:   content()
-</div>
-: }
-: after load_javascripts -> {
-    <script src="<: $static_uri :>/js/public.js"></script>
-: }
+    <body>
+        <div id="wrapper">
+
+            <div id="header">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <div class="pull-left">
+                                <img src="<: $static_uri :>img/logo.png" alt="PerlPro" width="90" height="90" />
+                            </div>
+
+                            <div class="pull-left">
+                                <p class="lead slogan">Empregos para programadores<br />
+                                <strong>Perl</strong> em todo o <strong>Brasil</strong></p>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div><!-- end .col-md-6 -->
+
+                        <div class="col-md-5 col-md-offset-1">
+                            <div class="social-icons pull-right">
+                                <a href="http://www.facebook.com"><img src="<: $static_uri :>img/social-facebook.png" /></a>
+                                <a href="http://www.twitter.com"><img src="<: $static_uri :>img/social-twitter.png" /></a>
+                                <a href="#"><img src="<: $static_uri :>img/social-rss.png" /></a>
+                            </div><!-- end .pull-right -->
+
+                            <div class="clearfix"></div>
+
+                            <div id="info-links" class="pull-right">
+                                <a href="<: $uri( '/about' ) :>">Sobre</a>
+                                <a href="<: $uri( '/about' ) :>">Como funciona</a>
+                                <a href="<: $uri('/account/login') :>">Acesso da empresa</a>
+                            </div>
+                        </div><!-- end .col-md-5 -->
+
+                    </div><!-- end .row -->
+                </div><!-- end .container -->
+            </div><!-- end #header -->
+
+            <div id="main-menu">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <ul class="nav nav-pills">
+                                <li><a href="<: $uri( '/home' ) :>"><span class="glyphicon glyphicon-home"></span> <: $l('Home') :></a></li>
+                                <li><a href="<: $uri( '/search' ) :>"><: $l('Procurar Vagas') :></a></li>
+                                <li><a href="<: $uri( '/companies' ) :>"><: $l('Catálogo de Empresas') :></a></li>
+                            </ul>
+                        </div><!-- end .col-md-6 -->
+
+                        <div class="col-md-6">
+                            <div class="pullright">
+                                <form method="get" action="/search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Encontre uma vaga">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-warning" type="submit"><: $l('Buscar') :></button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div><!-- end .pull-right -->
+                        </div><!-- end .col-md-6 -->
+
+                    </div><!-- end .row -->
+                </div><!-- end .container -->
+            </div><!-- end #main-menu -->
+
+
+            <!-- main content -->
+            <div class="container main-content">
+:           content()
+            </div><!-- end .container.main-content -->
+
+
+            <div id="footer">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <ul class="nav nav-pills">
+                                <li>
+                                    <a href="<: $uri('/home') :>">
+                                    <span class="glyphicon glyphicon-home"></span> <: $l('Home') :></a>
+                                </li>
+                                <li><a href="<: $uri('/search') :>"><: $l('Busca') :></a></li>
+                                <li><a href="<: $uri('/account/login') :>"><: $l('Acesso da Empresa') :></a></li>
+                            </ul>
+
+                            <hr>
+
+                            <h3>Cadastre a sua empresa</h3>
+
+                            <p>Encontre os melhores<br>
+                            profissionais em todo Brasil</p>
+
+                            <a href="<: $uri('/account/new') :>" class="btn btn-danger"><: $l('Anuncie') :></a>
+                            <a href="<: $uri('/about') :>"><: $l('Como funciona?') :></a>
+                        </div><!-- end .col-md-4 -->
+
+                        <div class="col-md-4 social-icons">
+                            <h3>Siga nas Redes Sociais</h3>
+
+                            <hr>
+
+                            <a href="http://www.facebook.com"><img src="<: $static_uri :>img/social-facebook.png" /></a>
+                            <a href="http://www.twitter.com"><img src="<: $static_uri :>img/social-twitter.png" /></a>
+                            <a href="#"><img src="<: $static_uri :>img/social-rss.png" /></a>
+                        </div><!-- end .col-md-4 -->
+
+                        <div class="col-md-4">
+                            <h3>Receba nossas novidades</h3>
+
+                            <hr>
+
+                            <form method="get" action="">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Digite seu e-mail">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" type="submit"><: $l('Cadastrar') :></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div><!-- end .col-md-4 -->
+
+                    </div><!-- end .row -->
+                </div><!-- end .container -->
+
+                <div id="credits">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <p>2013 PerlPro &mdash; <: $l('Todos os direitos reservados.') :></p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pull-right">
+                                    <p><: $l('Desenvolvido por André Walker. Design por Nova1.') :></p>
+                                </div>
+                            </div>
+
+                        </div><!-- end .row -->
+                    </div><!-- end .container -->
+                </div><!-- end #credits -->
+
+            </div><!-- end footer -->
+        </div><!-- end #wrapper -->
+
+        <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.0/jquery.qtip.min.js"></script>
+        <script src="<: $static_uri :>/js/main.js"></script>
+
+    </body>
+</html>

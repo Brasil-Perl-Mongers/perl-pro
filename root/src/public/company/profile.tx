@@ -1,71 +1,104 @@
 : cascade public::wrapper
 : block content -> {
-<h2 class="underlined">
-    <span class="light"><: $l('Empresa:') :></span> <: $c.name :>
 
-    <div class="pull-right">
-        <a href="#" class="btn btn-flat btn-util btn-small"><i class="icon-white icon-share"></i> Compartilhar</a>
-    </div>
-</h2>
+<!-- page title -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
 
-<div class="clearfix"></div>
+            <h1 class="underlined"><: $l('Empresa:') :> <: $c.name :></h1>
 
-<div class="job-view-row">
+            <div class="pull-right">
+                <a href="#" class="btn btn-primary">
+                    <span class=".glyphicon .glyphicon-share"></span> Compartilhar
+                </a>
+            </div><!-- end .pull-right -->
+
+            <div class="clearfix"></div>
+
+        </div><!-- end .page-title -->
+    </div><!-- end .col-md-12 -->
+</div><!-- end .row -->
+
+<div class="content" id="single-company">
+    <!-- company info -->
     <div class="row">
-        <div class="span6">
 
-            <div class="row-fluid">
-                <div id="company-logo rightlined" class="span5">
-                    <img class="img-rounded" alt="140x140" src="http://lorempixel.com/140/140/abstract">
+        <div class="col-md-6">
+            <div class="content-block">
+
+                <h2>A Empresa</h2>
+                <hr>
+
+                <div id="company-logo" class="pull-left">
+                    logo
                 </div>
-                <div class="span7">
-                    <ul id="company-info">
-:#                      TODO: list all websites, emails, etc
-                        <li><i class="icon-globe"></i><: $c.website :></li>
-                        <li><i class="icon-envelope"></i><: $c.email :></li>
-                        <li><i class="icon-search"></i><: $c.phone :></li>
-                        <li id="company-address"><i class="icon-map-marker"></i><: $c.formatted_address :></li>
+
+                <div id="company-info" class="pull-left">
+                    <ul>
+                        <li><span class="glyphicon glyphicon-globe"></span> <: $c.website :></li>
+                        <li><span class="glyphicon glyphicon-envelope"></span> <: $c.email :></li>
                     </ul>
                 </div>
-            </div>
 
-            <div id="company-description">
-:#              TODO: allow html in description?
+                <div class="clearfix"></div>
                 <p><: $c.description :></p>
+
+                <p class="lead">Redes Sociais: </p>
+
+            </div><!-- end .content-block -->
+        </div><!-- end .col-md-6 -->
+
+        <div class="col-md-6">
+            <div class="content-block">
+
+                <h2>Localização</h2>
+
+                <hr>
+
+                <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=CZmK8f958A74FQBZKAIdv17U-ik_ePT84GdkiDH0UAfsfeodrg&amp;q=2511+Gallatin+Ave,+Nashville&amp;aq=&amp;sll=36.195542,-86.742978&amp;sspn=0.009386,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=2511+Gallatin+Ave,+Nashville,+Davidson,+Tennessee+37206&amp;ll=36.195542,-86.742983&amp;spn=0.150156,0.338173&amp;t=m&amp;z=12&amp;output=embed"></iframe>
+
+                <p><span class="glyphicon glyphicon-map-marker"></span> <: $c.formatted_address :></p>
+
+            </div><!-- end .content-block -->
+        </div><!-- end .col-md-6 -->
+
+    </div><!-- end .row -->
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h2>Vagas nessa empresa:</h2>
+        </div>
+
+        <!-- one-job start -->
+        <div class="col-md-4">
+            <div class="one-job">
+
+                <div class="job-title">
+                    <h2>Programador Front-End</h2>
+                </div>
+                em <strong>Amazon do Brasil</strong>
+
+                <div class="job-description">
+                    <p>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</p>
+                </div>
+
+                <div class="job-meta">
+                    <div class="job-date">
+                        <span>Publicado em 04 de junho de 2013</span>
+                    </div>
+                    <ul class="job-meta-info">
+                        <li><span class="glyphicon glyphicon-map-marker"></span> São Paulo</li>
+                        <li><strong>$</strong> 2.500,00</li>
+                        <li><a href="#" class="btn btn-danger">Ver vaga</a></li>
+                    </ul>
+                </div>
+
             </div>
+        </div><!-- end one-job -->
 
-        </div>
-        <div class="span6">
-            <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=CZmK8f958A74FQBZKAIdv17U-ik_ePT84GdkiDH0UAfsfeodrg&amp;q=2511+Gallatin+Ave,+Nashville&amp;aq=&amp;sll=36.195542,-86.742978&amp;sspn=0.009386,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=2511+Gallatin+Ave,+Nashville,+Davidson,+Tennessee+37206&amp;ll=36.195542,-86.742983&amp;spn=0.150156,0.338173&amp;t=m&amp;z=12&amp;output=embed"></iframe>
-        </div>
-    </div>
-</div>
 
-<div class="row">
-    <div class="span12">
-        <h4 class="serif-underlined"><: $l('Vagas em') :> <a href="<: $uri('/jobs/company/' ~ $c.name_in_url) :>" class="company-name"><: $c.name :></a></h4>
-    </div>
-</div>
-<div class="row">
-    <div class="span6">
-        <ul class="job-list">
-:           for $c.jobs_part_1 -> $j {
-            <li class="company-color1">
-                <a href="<: $uri('/job/' ~ $j.id) :>" class="position-name"><: $j.title :></a> @
-                <span class="city-name"><: $j.city :></span>
-            </li>
-:           }
-        </ul>
-    </div>
-    <div class="span6">
-        <ul class="job-list">
-:           for $c.jobs_part_2 -> $j {
-            <li class="company-color1">
-                <a href="<: $uri('/job/' ~ $j.id) :>" class="position-name"><: $j.title :></a> @
-                <span class="city-name"><: $j.city :></span>
-            </li>
-:           }
-        </ul>
-    </div>
-</div>
+    </div><!-- end .row -->
+</div><!-- end #single-company.content -->
 : }

@@ -1,60 +1,63 @@
 :cascade company::wrapper
 :block content -> {
 
-<h2 class="underlined">
-    <div class="pull-right"><a href="<: $uri('/account/job/new') :>" class="btn-util btn-large"><: $l('Adicionar novo') :></a></div>
-    <: $l('Meus anúncios') :>
-</h2>
+<!-- page title -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
 
-<table class="table my_jobs">
-    <thead>
-        <tr>
-            <th width="10%"><: $l('Publicado em') :></th>
-            <th width="10%"><: $l('Status') :></th>
-            <th><: $l('Vaga') :></th>
-            <th width="15%"><: $l('Ações') :></th>
-            <th width="40px">&nbsp;</th>
-            <th width="40px">&nbsp;</th>
-        </tr>
-    </thead>
-    <tbody>
-:       for $jobs -> $j {
-        <tr>
-            <td class="published_at"><: $j.created_at.strftime('%d.%m') :></td>
-:           if $j.status == 'active' {
-            <td class="active"><: $l('Ativo') :></td>
-:           } else {
-            <td class="inactive"><: $l('Inativo') :></td>
-:           }
-            <td class="description"><strong><: $j.title :></strong> @ <: $j.city :></td>
+            <div class="pull-right">
+                <a class="btn btn-warning" href="<: $uri('/account/job/new') :>"><: $l('Adicionar novo') :></a>
+            </div>
 
-:           if $j.promoted {
-            <td class="promoted"><: $l('Já promovido') :></td>
-:           } else {
-            <td class="promote"><a href="<: $uri('/account/job/' ~ $j.id ~ '/promote') :>"><: $l('Promover') :></a></td>
-: }
+            <h1 class="underlined"><: $l('Meus anúncios') :></h1>
 
-            <td class="edit"><a href="<: $uri('/account/job/' ~ $j.id) :>"><i class="icon-pencil icon-white"></i></a></td>
-            <td class="remove"><a href="#" data-job-id="<: $j.id :>"><i class="icon-trash icon-white"></i></a></td>
-        </tr>
-:       }
-    </tbody>
-</table>
+            <div class="clearfix"></div>
+        </div><!-- end .page-title -->
+    </div><!-- end .col-md-12 -->
+</div><!-- end .row -->
 
-<hr class="thick" />
+<div id="account-my_jobs" class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content-block">
 
-<div id="remove_job_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="remove_job_label" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="remove_job_label">Remover oferta de emprego</h3>
-    </div>
-    <div class="modal-body">
-        <p>Tem certeza que deseja remover esta vaga?</p>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-        <button class="btn btn-primary" id="confirm_remove_button_trigger">Confirmar</button>
-    </div>
-</div>
+                <h2>Todos os anúncios</h2>
+                <hr>
+
+                <table class="table my_jobs">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" name="select_all" /></th>
+                            <th width="60%">Anúncio</th>
+                            <th>Status</th>
+                            <th>Data de publicação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                :       for $jobs -> $j {
+                        <tr>
+                            <td><input type="checkbox" name=""/></td>
+                            <td><strong><: $j.title :></strong> @ <: $j.location :></td>
+                :           if $j.status == 'active' {
+                            <td class="active">Ativo</td>
+                :           } else {
+                            <td class="inactive">Inativo</td>
+                :           }
+                            <td><: $j.created_at.strftime('%d.%m') :></td>
+                            <td>
+                                <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
+                                <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                            </td>
+                        </tr>
+                :       }
+                    </tbody>
+                </table>
+
+            </div><!-- end .content-block -->
+        </div><!-- end col-md-12 -->
+    </div><!-- end .row -->
+</div><!-- end #account-my_jobs.content -->
 
 : }

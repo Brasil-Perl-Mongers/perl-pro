@@ -1,0 +1,140 @@
+:cascade company::wrapper
+:block content -> {
+
+<!-- page title -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+
+            <div class="pull-right">
+                <a class="btn btn-warning" href="#">Ver página</a>
+            </div>
+
+            <h1 class="underlined"><: $l('Perfil Público') :></h1>
+
+            <div class="clearfix"></div>
+        </div><!-- end .page-title -->
+    </div><!-- end .col-md-12 -->
+</div><!-- end .row -->
+
+<div id="account-profile" class="content">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div id="profile_data" class="content-block">
+
+                <h2>Informações Básicas</h2>
+                <hr>
+
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label for="corporate_name" class="col-lg-3 control-label">Logotipo</label>
+                        <div class="col-lg-4">
+                            <img src="http://lorempixel.com/180/160/abstract/" alt="Logo <: $c.name :>" width="100%" />
+                        </div>
+
+                        <div class="col-lg-4">
+                            <a href="#" class="btn btn-warning">Trocar</a><br>
+                            <a href="#" class="">Remover</a>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trading_name" class="col-lg-3 control-label">Nome</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" id="trading_name" placeholder="Nome da empresa">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="col-lg-3 control-label">Descrição</label>
+                        <div class="col-lg-9">
+                            <textarea class="form-control" name="description" placeholder="Digite uma breve descrição da empresa" rows="10"></textarea>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div><!-- end .content-block -->
+        </div><!-- end .col-md-6 -->
+
+        <div class="col-md-6">
+            <div id="public_contacts" class="content-block">
+
+                <h2>Contatos públicos</h2>
+                <hr>
+
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label for="website" class="col-lg-2 control-label"><span class="glyphicon glyphicon-globe"></span></label>
+                        <div class="col-lg-6">
+                            <input type="url" class="form-control" id="website" placeholder="Website">
+                            <small><a class="add-link" href="#">Adicionar site</a></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="col-lg-2 control-label"><span class="glyphicon glyphicon-envelope"></span></label>
+                        <div class="col-lg-6">
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                            <small><a class="add-link" href="#">Adicionar email</a></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="col-lg-2 control-label"><span class="glyphicon glyphicon-earphone"></span></label>
+                        <div class="col-lg-6">
+                            <input type="tel" class="form-control" id="phone" placeholder="Telefone">
+                            <small><a class="add-link" href="#">Adicionar telefone</a></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address" class="col-lg-2 control-label"><span class="glyphicon glyphicon-map-marker"></span></label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="address" placeholder="Endereço">
+                            <small><a class="add-link" href="#">Adicionar endereço</a></small>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div><!-- end .content-block -->
+
+            <div id="company_keywords" class="content-block">
+
+                <h2>Palavras-chave</h2>
+                <hr>
+
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Digite separado por vírgula">
+                    <span class="input-group-btn">
+                        <button class="btn btn-warning" type="button">Adicionar</button>
+                    </span>
+                </div>
+
+                <div id="company_tags"></div>
+
+            </div><!-- end .content-block -->
+        </div><!-- end .col-md-6 -->
+
+    </div><!-- end .row -->
+
+     <div class="row">
+
+        <div class="col-md-12">
+            <div id="company_photos" class="content-block">
+
+                <h2>Fotos da empresa</h2>
+                <hr>
+
+            </div><!-- end .content-block -->
+        </div><!-- end .col-md-6 -->
+
+    </div><!-- end .row -->
+</div><!-- end #account-home.content -->
+: }

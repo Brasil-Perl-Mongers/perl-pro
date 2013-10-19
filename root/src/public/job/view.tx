@@ -1,116 +1,174 @@
 : cascade public::wrapper
 : block content -> {
-<h2 class="underlined"><span class="light"><: $l('Vaga:') :></span> <: $j.title :></h2>
-<div class="pull-right">
-    <a href="#<:# TODO :>" class="btn btn-flat btn-util btn-small"><i class="icon-white icon-share"></i> Compartilhar</a>
-    <a href="#<:# TODO :>" class="btn btn-flat btn-action btn-small"><i class="icon-white icon-envelope"></i> Indique esta vaga</a>
-</div>
-<div class="subtitle">
-    <: $l('na') :>
-    <i class="icon-briefcase"></i> <a href="#" class="company-name"><: $c.name :></a>
-    <: $l(' em ') :>
-    <i class="icon-map-marker"></i> <: $j.city :>
-</div>
 
-<div class="job-view-row">
-    <div class="row">
-        <div class="span6">
-            <h4 class="underlined"><: $l('Descrição da Vaga') :></h4>
-            <p><: $j.description :></p>
-            <h4 class="underlined"><: $l('Requisitos') :></h4>
-            <h5><: $l('Necessário conhecimento em: ') :></h5>
-            <ul class="requirements">
-:           for $j.required_attributes -> $attr {
-                <li><: $attr :></li>
-:           }
-            </ul>
-            <br class="clearfix">
-            <h5><: $l('Não necessário, mas desejável: ') :></h5>
-            <ul class="requirements">
-:           for $j.desired_attributes -> $attr {
-                <li><: $attr :></li>
-:           }
-            </ul>
-        </div>
-        <div class="span6">
-            <h4 class="underlined"><: $l('Contrato & Salário') :></h4>
-            <div class="row-fluid">
-                <div class="span5 rightlined">
-                    <strong><: $l('Salário:') :> </strong><: $j.salary :><br>
-                    <strong><: $l('Contrato:') :> </strong>CLT, 6 meses<br>
-                    Vaga Presencial
-                </div>
 
-                <div class="span7">
-                    <p>Integral</p>
-                </div>
-            </div>
-
-            <h4 class="underlined"><: $l('A Empresa') :></h4>
-
-            <div class="row-fluid">
-                <div id="company-logo" class="span5 rightlined">
-                    <img data-src="holder.js/140x140" class="img-rounded" alt="140x140" style="width: 140px; height: 140px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAAErUlEQVR4Xu3YwStscRjG8d8QQnZEFkqyY6NE/n0rlOxkS1ZqrCiFe/udOtPcue6YJ889Gc93Vtz7eo/3eT/9zjl6/X7/V+FDAhMm0APMhElR1iQAGCBICQBGiotiwGBASgAwUlwUAwYDUgKAkeKiGDAYkBIAjBQXxYDBgJQAYKS4KAYMBqQEACPFRTFgMCAlABgpLooBgwEpAcBIcVEMGAxICQBGiotiwGBASgAwUlwUAwYDUgKAkeKiGDAYkBIAjBQXxYDBgJQAYKS4KAYMBqQEACPFRTFgMCAlABgpLooBgwEpAcBIcVEMGAxICQBGiotiwGBASgAwUlwUAwYDUgKAkeKiGDAYkBIAjBQXxYDBgJQAYKS4KAYMBqQEACPFRTFgMCAlABgpLooBgwEpAcBIcVEMGAxICQBGiotiwGBASgAwUlwUAwYDUgKAkeKiGDAYkBIAjBQXxYDBgJQAYKS4KAYMBqQEACPFRTFgMCAlABgpLooBgwEpgakH8/7+Xs7Ozsrz83M5OTkpi4uLfwRwd3dXbm5uyvr6etnf32/+r9/vl6urq1J/tn729vbKxsbGRMF1fb2JfqkOi6YazOvrazk9PS1vb2+l1+v9BaZd7tPT0wBM+zNLS0vl6OioXF5eNtjq13Nzc2Oj7/p6HTqY+FJTC2Z4eXXaj8BcX1+Xh4eHUmvX1taaE6Y9cba3t8vOzs7g+3rKzM/PNyfP8vJyA6j+/P39fXMCra6uDnC6rjfpqTbxNjsonGowFxcX5eDgYHBKDN+S2tvO1tZWub29/RRMC6ieOI+Pj+X4+Licn5+X9iSq6P7H9TrYsfUSUwumTeGjZ4r232ZmZsru7m5zarQnTHtqjJ4w7feT3naGn5m+cj3rNjto9iPBDN9K2tvMZ7ekFkzNvJ4y9YQaflAeB/Sr1+tgz7ZL/DgwCwsLzVtTfdAd/aysrJTNzc3mremjZ5j6TNHeyuoD8MvLy19vUKMn2levZ9tkR41+HJjR1+oWQHvCjHtLmp2dbbDVt67Dw8PmpKlfD79BffZarVzvs7eyjgxIl4kDM+7vMP96vhm+Nalgxl1P2tQ3KZ56MN8kx5hfAzAxq/YMChhPjjFdABOzas+ggPHkGNMFMDGr9gwKGE+OMV0AE7Nqz6CA8eQY0wUwMav2DAoYT44xXQATs2rPoIDx5BjTBTAxq/YMChhPjjFdABOzas+ggPHkGNMFMDGr9gwKGE+OMV0AE7Nqz6CA8eQY0wUwMav2DAoYT44xXQATs2rPoIDx5BjTBTAxq/YMChhPjjFdABOzas+ggPHkGNMFMDGr9gwKGE+OMV0AE7Nqz6CA8eQY0wUwMav2DAoYT44xXQATs2rPoIDx5BjTBTAxq/YMChhPjjFdABOzas+ggPHkGNMFMDGr9gwKGE+OMV0AE7Nqz6CA8eQY0wUwMav2DAoYT44xXQATs2rPoIDx5BjTBTAxq/YMChhPjjFdABOzas+ggPHkGNMFMDGr9gwKGE+OMV0AE7Nqz6CA8eQY0wUwMav2DAoYT44xXQATs2rPoIDx5BjTBTAxq/YMChhPjjFdABOzas+ggPHkGNMFMDGr9gz6G1HzSbXtC7t7AAAAAElFTkSuQmCC">
-                </div>
-                <div class="span7">
-
-                    <ul id="company-info">
-                        <li><i class="icon-globe"></i><: $c.website :></li>
-                        <li><i class="icon-envelope"></i><: $c.email :></li>
-                        <li><i class="icon-search"></i><: $c.phone :></li>
-                        <li id="company-address"><i class="icon-map-marker"></i><: $c.formatted_address :></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="company-description">
-                <p><: $c.description :></p>
-            </div>
-
-            <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=CZmK8f958A74FQBZKAIdv17U-ik_ePT84GdkiDH0UAfsfeodrg&amp;q=2511+Gallatin+Ave,+Nashville&amp;aq=&amp;sll=36.195542,-86.742978&amp;sspn=0.009386,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=2511+Gallatin+Ave,+Nashville,+Davidson,+Tennessee+37206&amp;ll=36.195542,-86.742983&amp;spn=0.150156,0.338173&amp;t=m&amp;z=12&amp;output=embed"></iframe>
-        </div>
-    </div>
-</div>
-
+<!-- page title -->
 <div class="row">
-:#  TODO
-:   if 0 {
-    <div class="span6">
-        <h4 class="serif-underlined"><: $l('Vagas similares') :></h4>
-        <ul class="job-list">
-            <li class="company-color1">
-                <span class="position-name">Programador Front-End</span> @
-                <span class="city-name">São Paulo</span>
-            </li>
-            <li class="company-color2">
-                <span class="position-name">Analista de Banco de Dados</span> @
-                <span class="city-name">São Paulo</span>
-            </li>
-            <li class="company-color2">
-                <span class="position-name">Programador Back-End</span> @
-                <span class="city-name">São Paulo</span>
-            </li>
-            <li class="company-color3">
-                <span class="position-name">Programador Mojolicious</span> @
-                <span class="city-name">Campinas</span>
-            </li>
-        </ul>
-    </div>
-:   }
-:   if $c.other_jobs.size() {
-    <div class="span6">
-        <h4 class="serif-underlined"><: $l('Mais vagas em ') :> <a href="#" class="company-name"><: $c.name :></a></h4>
-        <ul class="job-list">
-:#      TODO: add link for jobs
-:#      TODO: fix colors
-:       for $c.other_jobs -> $oj {
-            <li class="company-color4">
-                <a href="<: $uri('/job/' ~ $oj.id) :>" class="position-name"><: $oj.title :></a> @
-                <span class="city-name"><: $oj.city :></span>
-            </li>
-:       }
-        </ul>
-    </div>
-:   }
-</div>
+    <div class="col-md-12">
+        <div class="page-title">
+
+            <h1 class="underlined"><: $l('Vaga:') :> <: $j.title :></h1>
+
+            <div class="pull-left">
+                <p class="lead">
+                    <: $l('na') :> <a href="#"><: $c.name :></a> <: $l(' em ') :> <: $j.location :>
+                </p>
+            </div><!-- end .pull-left -->
+
+             <div class="pull-right">
+                <a href="#" class="btn btn-primary">
+                    <span class=".glyphicon .glyphicon-share"></span> Compartilhar
+                </a>
+
+                <a href="#" class="btn btn-warning">
+                    <span class=".glyphicon .glyphicon-envelope"></span> Indique esta vaga
+                </a>
+            </div><!-- end .pull-right -->
+
+            <div class="clearfix"></div>
+
+        </div><!-- end .page-title -->
+    </div><!-- end .col-md-12 -->
+</div><!-- end .row -->
+
+<div class="content" id="single-job">
+
+    <!-- job info -->
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="content-block">
+                <h2>Descrição da Vaga</h2>
+                <hr>
+                <p><: $j.description :></p>
+            </div><!-- end .content-block -->
+
+            <div class="content-block">
+                <h2>Requisitos</h2>
+                <hr>
+
+                <p class="lead"><: $l('Necessário conhecimento em: ') :></p>
+                <ul class="requirements">
+    :           for $j.required_attributes.kv() -> $attr {
+                    <li><: $attr.value :></li>
+    :           }
+                </ul>
+                <br class="clearfix">
+
+                <p class="lead"><: $l('Não necessário, mas desejável: ') :></p>
+                <ul class="requirements">
+    :           for $j.desired_attributes.kv() -> $attr {
+                    <li><: $attr.value :></li>
+    :           }
+                </ul>
+            </div><!-- end .content-block -->
+
+            <div class="content-block">
+                <h2>A Empresa</h2>
+                <hr>
+
+                <div id="company-logo" class="pull-left">
+                    logo
+                </div>
+
+                <div id="company-info" class="pull-left">
+                    <ul>
+                        <li><span class="glyphicon glyphicon-globe"></span> <: $c.website :></li>
+                        <li><span class="glyphicon glyphicon-envelope"></span> <: $c.email :></li>
+                    </ul>
+
+                    <a href="#" class="btn btn-danger">Ver mais</a>
+                </div>
+
+                <div class="clearfix"></div>
+                <p><: $c.description :></p>
+            </div><!-- end .content-block -->
+
+        </div><!-- end .col-md-6 -->
+
+        <div class="col-md-6">
+
+            <div class="content-block">
+                <h2>Contrato, Salário & Local</h2>
+
+                <hr>
+
+                <div id="contract-type" class="pull-left">
+                    clt
+                </div>
+
+                <div class="pull-left">
+                    <strong># de vagas:</strong> 4<br>
+                    <strong>Pagamento:</strong> <: $j.salary :><br>
+                    <strong>Horário:</strong> 44h semanais<br>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <p class="lead">Local de Trabalho:</p>
+
+                <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=CZmK8f958A74FQBZKAIdv17U-ik_ePT84GdkiDH0UAfsfeodrg&amp;q=2511+Gallatin+Ave,+Nashville&amp;aq=&amp;sll=36.195542,-86.742978&amp;sspn=0.009386,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=2511+Gallatin+Ave,+Nashville,+Davidson,+Tennessee+37206&amp;ll=36.195542,-86.742983&amp;spn=0.150156,0.338173&amp;t=m&amp;z=12&amp;output=embed"></iframe>
+
+                <p><span class="glyphicon glyphicon-map-marker"></span> <: $c.formatted_address :></p>
+            </div>
+
+            <div class="content-block">
+                <h2>Candidate-se</h2>
+                <hr>
+
+                <span class="glyphicon glyphicon-earphone"></span> (11) 1234-5678   <span class="glyphicon glyphicon-envelope"></span> abc@empresa.com
+
+                <p>&nbsp;</p>
+
+                <p>Ou envie a sua inscrição aqui:</p>
+                <a href="#" class="btn btn-danger">Inscreva-se</a>
+
+            </div><!-- end .content-block -->
+
+        </div><!-- end .col-md-6 -->
+    </div><!-- end .row -->
+
+    <!-- related jobs -->
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="underlined"><: $l('Vagas similares') :></h3>
+            <ul class="job-list">
+                <li>
+                    <span class="position-name">Programador Front-End</span> @
+                    <span class="city-name">São Paulo</span>
+                </li>
+                <li>
+                    <span class="position-name">Analista de Banco de Dados</span> @
+                    <span class="city-name">São Paulo</span>
+                </li>
+                <li>
+                    <span class="position-name">Programador Back-End</span> @
+                    <span class="city-name">São Paulo</span>
+                </li>
+                <li>
+                    <span class="position-name">Programador Mojolicious</span> @
+                    <span class="city-name">Campinas</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+        :   if $c.other_jobs.size() {
+
+            <h3 class="underlined"><: $l('Mais vagas em ') :> <a href="#"><: $c.name :></a></h3>
+            <ul class="job-list">
+        :#      TODO: add link for jobs
+        :#      TODO: fix colors
+        :       for $c.other_jobs -> $oj {
+                <li>
+                    <span class="position-name"><: $oj.title :></span> @
+                    <span class="city-name"><: $oj.location :></span>
+                </li>
+        :       }
+            </ul>
+        :   }
+        </div><!-- end .col-md-6 -->
+    </div><!-- end .row -->
+
+</div><!-- end #single-job.content -->
 : }

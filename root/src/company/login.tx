@@ -1,24 +1,122 @@
 : cascade public::wrapper
 : block content {
-<form class="container-fluid" action="<: $uri('/account/login') :>" method="post">
-    <div class="row-fluid">
-        <div class="span5">
-            <h4 class="underline-block"><: $l('Já tenho uma conta') :></h4>
-            <p>
-                <input type="text" name="login" placeholder="login" class="input-block-level flat-input" />
-            </p>
-            <p>
-                <input type="password" name="password" placeholder="senha" class="input-block-level flat-input" />
-            </p>
-            <p class="text-right">
-                <button type="submit" class="btn-action flat-input btn-small"><: $l('Entrar') :></button>
-            </p>
-        </div>
-        <div class="span6 offset1">
-            <h4><: $l('Ainda não é cadastrado?') :></h4>
-            <p><: $l('Crie uma conta gratuita e encontre os melhores profissionais em todo o Brasil') :></p>
-            <a class="btn-important btn-large" href="<: $uri('/account/new') :>">Cadastre-se</a>
-        </div>
-    </div>
-</form>
+
+<!-- page title -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+
+            <h1 class="underlined"><: $l('Fazer Login:') :></h1>
+
+        </div><!-- end .page-title -->
+    </div><!-- end .col-md-12 -->
+</div><!-- end .row -->
+
+<div class="content" id="company-login">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="content-block">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <form id="form-company-login" action="<: $uri('/account/login') :>" method="post">
+                            <p class="lead">Fazer login</p>
+
+                            <div class="form-group">
+                                <label class="sr-only" for="login">E-mail</label>
+                                <input type="text" name="login" class="form-control" placeholder="E-mail" />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="sr-only" for="password">Senha</label>
+                                <input type="password" name="password" class="form-control" placeholder="Senha" />
+                            </div>
+
+                            <div class="form-group form-inline">
+                                <input class="btn btn-success" type="submit" value="Entrar" />
+                                <a href="#">Esqueceu sua senha?</a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-md-6">
+                        <form id="form-company-signup" action="<: $uri('/account/login') :>" method="post">
+
+                            <p class="lead">Ou cadastre sua empresa:</p>
+
+                            <div class="form-group">
+                                <label class="sr-only" for="name">Nome da empresa</label>
+                                <input type="text" placeholder="Nome da empresa" name="name" class="form-control"  />
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="login">E-mail</label>
+                                            <input type="email" placeholder="E-mail" name="login" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="phone">Telefone</label>
+                                            <input type="tel" placeholder="Telefone" name="phone" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="sr-only" for="address">Endereço</label>
+                                <input type="text" placeholder="Endereço" name="address" class="form-control"  />
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="city">Cidade</label>
+                                            <input type="text" placeholder="Cidade" name="city" class="form-control"  />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="state">Estado</label>
+                                            <select name="state" class="form-control">
+                                                <option value="">Estado</option>
+                                                <option value="sp">São Paulo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group form-inline">
+                                <input class="btn btn-success" type="submit" value="Criar Conta" />
+
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="terms" />
+                                        Li e concordo com os <a href="#modal-company-terms" data-toggle="modal">termos de uso.</a>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div><!-- end .content-block -->
+        </div><!-- end .col-md-12 -->
+
+    </div><!-- end .row -->
+</div><!-- end #company-login.content -->
 : }

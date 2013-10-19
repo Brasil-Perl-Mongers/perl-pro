@@ -1,82 +1,117 @@
 : cascade public::wrapper
 : block content {
-<div class="row">
-    <div class="span8">
-        <div class="hot-jobs-row">
-            <h3><: $l('Vagas em Destaque') :></h3>
-            <div class="hot-jobs">
 
-                <div id="myCarousel" class="carousel slide">
 
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="http://getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
-                            <div class="carousel-caption">
-                                <h4 class="job-title underlined">Programador Catalyst</h4>
-                                <p class="job-description">Vaga para programador web para atuar em seu departamento de criação e desenvolvimento.</p>
-                                <p class="job-date">Publicado em 04 de junho de 2013</p>
+<div id="home" class="content">
+    <div class="row">
 
-                                <ul class="job-util">
-                                    <li><i class="icon-map-marker"></i>São Paulo</li>
-                                    <li>R$ 1.500,00</li>
-                                    <li><a href="" class="btn btn-flat btn-important">Ver vaga</a></li>
-                                </ul>
+        <div class="col-md-9">
+
+            <div id="hot-jobs" class="carousel slide">
+
+                <div class="carousel-inner">
+
+                    <div class="item active">
+                        <div class="one-job">
+                            <h3>Programador Front-End</h3>
+
+                            <hr>
+
+                            <div class="job-description">
+                                <span>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</span>
                             </div>
-                        </div>
 
-                        <div class="item">
-                            <img src="http://getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
-                            <div class="carousel-caption">
-                                <h4 class="job-title underlined">Vaga 2</h4>
-                                <p class="job-description">Vaga para programador web para atuar em seu departamento de criação e desenvolvimento.</p>
-                                <p class="job-date">Publicado em 04 de junho de 2013</p>
+                            <img src="http://lorempixel.com/800/300/abstract/" alt="Logo <: $c.name :>" width="100%" /><br />
+                            em <strong>Amazon do Brasil</strong>
 
-                                <ul class="job-util">
-                                    <li><i class="icon-map-marker"></i>São Paulo</li>
-                                    <li>R$ 1.500,00</li>
-                                    <li><a href="" class="btn btn-flat btn-important">Ver vaga</a></li>
-                                </ul>
+                            <hr>
+
+                            <div class="job-meta">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="job-date">
+                                            <span>Publicado em:<br> 04 de junho de 2013</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 job-location">
+                                        <span class="glyphicon glyphicon-map-marker"></span>São Paulo
+                                    </div>
+
+                                    <div class="col-md-2 job-payment">
+                                        <strong>$</strong> 2.500,00
+                                    </div>
+
+                                    <div class="col-md-2 col-md-offset-4">
+                                        <a href="#" class="btn btn-danger pull-right">Ver vaga</a>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="item">
-                            <img src="http://getbootstrap.com/2.3.2/assets/img/bootstrap-mdo-sfmoma-03.jpg" alt="">
-                            <div class="carousel-caption">
-                                <h4 class="job-title underlined">Vaga 3</h4>
-                                <p class="job-description">Vaga para programador web para atuar em seu departamento de criação e desenvolvimento.</p>
-                                <p class="job-date">Publicado em 04 de junho de 2013</p>
+                        </div><!-- end .one-job -->
+                    </div><!-- end .item -->
 
-                                <ul class="job-util">
-                                    <li><i class="icon-map-marker"></i>São Paulo</li>
-                                    <li>R$ 1.500,00</li>
-                                    <li><a href="" class="btn btn-flat btn-important">Ver vaga</a></li>
-                                </ul>
+                    <div class="item">
+                        <div class="one-job">
+                            <h3>Programador Front-End</h3>
+
+                            <hr>
+
+                            <div class="job-description">
+                                <span>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</span>
                             </div>
-                        </div>
-                    </div>
 
-                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                            <img src="http://lorempixel.com/800/300/abstract/" alt="Logo <: $c.name :>" width="100%" /><br />
+                            em <strong>Amazon do Brasil</strong>
 
-                    <div id="indicators">
-                        <ol class="carousel-indicators">
-                          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                          <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-                          <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-                        </ol>
+                            <hr>
+
+                            <div class="job-meta">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="job-date">
+                                            <span>Publicado em:<br> 04 de junho de 2013</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 job-location">
+                                        <span class="glyphicon glyphicon-map-marker"></span>São Paulo
+                                    </div>
+
+                                    <div class="col-md-2 job-payment">
+                                        <strong>$</strong> 2.500,00
+                                    </div>
+
+                                    <div class="col-md-2 col-md-offset-4">
+                                        <a href="#" class="btn btn-danger pull-right">Ver vaga</a>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- end .one-job -->
                     </div>
                 </div>
 
-            </div>
-        </div>
-        <div class="recent-jobs-row">
-            <h3><: $l('Vagas Recentes') :></h3>
+                <a class="left carousel-control" href="#hot-jobs" data-slide="prev"><span class="icon-prev"></span></a>
+                <a class="right carousel-control" href="#hot-jobs" data-slide="next"><span class="icon-next"></span></a>
+
+                <ol class="carousel-indicators">
+                    <li data-target="#hot-jobs" data-slide-to="0" class="active"></li>
+                    <li data-target="#hot-jobs" data-slide-to="1"></li>
+                </ol>
+
+            </div><!-- end #hot-jobs -->
+
+            <h3><: $l('Vagas Próximas a você') :></h3>
+            <hr>
             <ul class="recent-jobs job-list">
 :           for $recent_jobs -> $j {
                 <li class="company-color1">
-                    <a href="<: $uri('/job/' ~ $j.id) :>" class="position-name"><: $j.title :></a> em
+                    <span class="position-name"><: $j.title :></span> em
                     <a href="<: $uri('/company/' ~ $j.company_url) :>" class="company-name"><: $j.company_name :></a> @
-                    <span class="city-name"><: $j.city :></span>
+                    <span class="city-name"><: $j.location :></span>
                 </li>
 :           }
             </ul>
@@ -84,70 +119,57 @@
                 <a href="<: $uri('/jobs') :>"><: $l('Veja todas as vagas') :></a> |
                 <a href="<: $uri('/companies') :>"><: $l('Catálogo de empresas') :></a>
             </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="span4">
-                    <div class="box home-box">
-                        <h4><: $l('Acesso da empresa') :></h4>
-                        <hr/>
-                        <form action="<: $uri('/account/login') :>" method="post">
-                            <input type="text" name="login" placeholder="Digite seu login" class="input-block-level flat-input" />
-                            <input type="password" name="password" placeholder="Digite sua senha" class="input-block-level flat-input" />
-                            <p class="text-right">
-                                <button type="submit" class="btn-important flat-input btn-small"><: $l('Login') :></button>
-                            </p>
-                        </form>
-                    </div>
-                </div>
-                <div class="span4">
-                    <div class="box home-box">
-                        <h4><: $l('Cadastre uma vaga') :></h4>
-                        <hr/>
-                        <p><: $l('Crie uma conta gratuita e encontre os melhores profissionais do Brasil') :></p>
-                        <p><a href="<: $uri('/account/new') :>" class="btn-small btn-important"><: $l('Cadastre-se') :></a></p>
-                    </div>
-                </div>
+        </div><!-- end .col-md-9 -->
+
+
+        <div class="col-md-3">
+
+            <div class="content-block">
+                <h2><: $l('Catálogo de Empresas') :></h2>
+                <hr/>
+                <ul class="company-catalog">
+                    <li>
+                        <strong>
+                            <a href="<: $uri('/company/company1') :>">
+                                <span class="company-name">Estante Virtual</span>
+                            </a>
+                        </strong><br/>
+                        <span class="open-positions">10 vagas</span>
+                    </li>
+                    <li>
+                        <strong>
+                            <a href="<: $uri('/company/company1') :>">
+                                <span class="company-name">Estante Virtual</span>
+                            </a>
+                        </strong><br/>
+                        <span class="open-positions">10 vagas</span>
+                    </li>
+                    <li>
+                        <strong>
+                            <a href="<: $uri('/company/company1') :>">
+                                <span class="company-name">Estante Virtual</span>
+                            </a>
+                        </strong><br/>
+                        <span class="open-positions">10 vagas</span>
+                    </li>
+                </ul>
+                <hr/>
+                <a href="<: $uri('/companies') :>" class="btn btn-warning pull-right"><: $l('Ver catálogo') :></a>
+                <div class="clearfix"></div>
             </div>
-        </div>
-    </div>
 
-    <div class="span3 offset1">
-        <div class="box">
-            <h4><: $l('Catálogo de Empresas') :></h4>
-            <hr/>
-            <ul class="company-catalog">
-:           for $companies -> $c {
-                <li>
-                    <img src="http://lorempixel.com/60/38" alt="Logotipo da <: $c.name :>">
-                    <a href="<: $uri('/company/' ~ $c.name_in_url ) :>" class="company-name"><: $c.name :></a><br/>
-                    <span class="open-positions"><:
-#                       TODO: real i18n
-
-                        if $c.open_positions == 0 {
-                            $l('Nenhuma vaga cadastrada');
-                        } elsif $c.open_positions == 1 {
-                            $l('1 vaga cadastrada');
-                        } else {
-                            $c.open_positions ~ $l(' vagas cadastradas');
-                        }
-
-                    :></span>
-                </li>
-:           }
-            </ul>
-            <hr/>
-            <div class="text-center">
-                <a href="<: $uri('/companies') :>" class="btn-action btn-large"><: $l('Ver catálogo') :></a>
+            <div class="content-block">
+                <h2>Anuncie uma vaga</h2>
+                <hr>
+                <p>Crie uma conta gratuita e encontre os melhores profissionais em todo Brasil!</p>
+                <a href="<: $uri('/account/new') :>" class="btn btn-danger">Cadastrar</a>
             </div>
-        </div>
-        <div class="box">
-            <h4><: $l('Últimas atualizações') :></h4>
-            <hr/>
-        </div>
-    </div>
 
-</div>
+        </div><!-- end .col-md-3 -->
+
+
+    </div><!-- end. row -->
+</div><!-- end #home.content -->
 
 : }

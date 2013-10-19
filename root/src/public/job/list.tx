@@ -1,50 +1,29 @@
 : cascade public::wrapper_search
 : block content -> {
 
-<h2 class="underlined"><span class="light"><: $l('Resultados da busca:') :></span> <: $j.title :></h2>
+<!-- page title -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
 
-<div class="subtitle">
-</div>
+            <h1 class="underlined"><: $l('Resultados da busca:') :></h1>
 
-<div class="job-search-row">
-    <div class="row-fluid">
+        </div><!-- end .page-title -->
+    </div><!-- end .col-md-12 -->
+</div><!-- end .row -->
 
-        <!-- one-job start -->
-        <div class="span4">
-            <div class="one-job job-small job-green">
-
-                <div class="job-title">
-                    <h3>Programador Front-End</h3>
-                </div>
-
-                <div class="job-description">
-                    <p>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</p>
-                </div>
-
-                <div class="job-thumb">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAACgUlEQVR4nO3YsW7iWhRA0fn/T3FB4yKFizRINBQUtCncUPILfpV5UUJGs0fJTMysYknAjXwi7s4F58f1el3gV/34278A2yIYEsGQCIZEMCSCIREMiWBIBEMiGBLBkAiGRDAkgiERDIlgSARDIhgSwZAIhkQwJIIhEQyJYEgEQyIYEsGQCIZEMCSCIREMiWBIBEMiGBLBkAiGRDAkgiERDIlgSARDIhgSwZAIhkQwJIIhEQyJYEgEQyIYEsGQCIZEMCSCIREMiWBIBEMiGBLBkAiGRDAkgiERDMlDBPP8/LwMw3B3bbfbvVvb7/fLMAzLMAzLfr//9vO+k00HM8/zMk3TbTPerh+Px3dr6+adz+flfD6nTfzT876jTQczDMPy9PR0dwMvl8syjuO7tfW119cYx3GZ5/l2vXVtvfY8z58+72+/d/9kMNM03Tbh3sfA+hf9dsM+er6eEKfT6fb4eDx+2bwt2nQwH23CPM+3k6Ju4DiOy263W3a73YcnwWfO25qHDGaapuXl5eW3NvB0Ot1eOxwOXz5vax4ymPX5W9fr/99LXv/s65NkPVnWU+ZyuXzpvK15yGB+tnY4HD68a3m9tp409+5oPmveFv1zwVyv9/8v8rO7pPXj5jPnbdVDBMOfIxgSwZAIhkQwJIIhEQyJYEgEQyIYEsGQCIZEMCSCIREMiWBIBEMiGBLBkAiGRDAkgiERDIlgSARDIhgSwZAIhkQwJIIhEQyJYEgEQyIYEsGQCIZEMCSCIREMiWBIBEMiGBLBkAiGRDAkgiERDIlgSARDIhgSwZAIhkQwJIIhEQyJYEgEQyIYEsGQCIZEMCSCIREMiWBIBEMiGBLBkPwHMlRHGXwWLnIAAAAASUVORK5CYII=" style="width: 272px; height: 99px;" alt="272x99" data-src="holder.js/272x99" class="img-rounded">
-                </div>
-
-                <div class="job-meta">
-                    <div class="job-date">
-                        <span>Publicado em 04 de junho de 2013</span>
-                    </div>
-                    <ul class="job-meta-info">
-                        <li><i class="icon-map-marker"></i> São Paulo</li>
-                        <li><strong>$</strong> 2.500,00</li>
-                        <li><a href="#" class="btn btn-danger">Ver vaga</a></li>
-                </div>
-
-            </div>
-        </div><!-- end one-job -->
+<div class="content" id="job-list">
+    <!-- company info -->
+    <div class="row">
 
         <!-- one-job start -->
-        <div class="span4">
-            <div class="one-job job-small job-red">
+        <div class="col-md-4">
+            <div class="one-job">
 
                 <div class="job-title">
-                    <h3>Programador Front-End</h3>
+                    <h2>Programador Front-End</h2>
                 </div>
+                em <strong>Amazon do Brasil</strong>
 
                 <div class="job-description">
                     <p>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</p>
@@ -55,7 +34,7 @@
                         <span>Publicado em 04 de junho de 2013</span>
                     </div>
                     <ul class="job-meta-info">
-                        <li><i class="icon-map-marker"></i> São Paulo</li>
+                        <li><span class="glyphicon glyphicon-map-marker"></span> São Paulo</li>
                         <li><strong>$</strong> 2.500,00</li>
                         <li><a href="#" class="btn btn-danger">Ver vaga</a></li>
                 </div>
@@ -63,13 +42,14 @@
             </div>
         </div><!-- end one-job -->
 
-         <!-- one-job start -->
-        <div class="span4">
-            <div class="one-job job-small job-magenta">
+        <!-- one-job start -->
+        <div class="col-md-4">
+            <div class="one-job">
 
                 <div class="job-title">
-                    <h3>Programador Front-End</h3>
+                    <h2>Programador Front-End</h2>
                 </div>
+                em <strong>Amazon do Brasil</strong>
 
                 <div class="job-description">
                     <p>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</p>
@@ -80,7 +60,7 @@
                         <span>Publicado em 04 de junho de 2013</span>
                     </div>
                     <ul class="job-meta-info">
-                        <li><i class="icon-map-marker"></i> São Paulo</li>
+                        <li><span class="glyphicon glyphicon-map-marker"></span> São Paulo</li>
                         <li><strong>$</strong> 2.500,00</li>
                         <li><a href="#" class="btn btn-danger">Ver vaga</a></li>
                 </div>
@@ -88,7 +68,33 @@
             </div>
         </div><!-- end one-job -->
 
-    </div>
-</div>
+        <!-- one-job start -->
+        <div class="col-md-4">
+            <div class="one-job">
+
+                <div class="job-title">
+                    <h2>Programador Front-End</h2>
+                </div>
+                em <strong>Amazon do Brasil</strong>
+
+                <div class="job-description">
+                    <p>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</p>
+                </div>
+
+                <div class="job-meta">
+                    <div class="job-date">
+                        <span>Publicado em 04 de junho de 2013</span>
+                    </div>
+                    <ul class="job-meta-info">
+                        <li><span class="glyphicon glyphicon-map-marker"></span> São Paulo</li>
+                        <li><strong>$</strong> 2.500,00</li>
+                        <li><a href="#" class="btn btn-danger">Ver vaga</a></li>
+                </div>
+
+            </div>
+        </div><!-- end one-job -->
+
+    </div><!-- end .row -->
+</div><!-- end #job-list.content -->
 
 : }

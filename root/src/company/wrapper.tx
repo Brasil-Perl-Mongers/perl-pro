@@ -1,62 +1,117 @@
 <:
-cascade base::wrapper;
-block wrapper_content -> {
+    my $company_data_active = $current_page == 'home'
+                            ? raw(' class="active"')
+                            : ''
+                            ;
 
-my $company_data_active = $current_page == 'home'
-                        ? raw(' class="active"')
-                        : ''
-                        ;
+    my $my_jobs_active      = $current_page == 'my_jobs'
+                            ? raw(' class="active"')
+                            : ''
+                            ;
 
-my $my_jobs_active      = $current_page == 'my_jobs'
-                        ? raw(' class="active"')
-                        : ''
-                        ;
+    my $add_job_active      = $current_page == 'add_job'
+                            ? raw(' class="active"')
+                            : ''
+                            ;
 
-my $add_job_active      = $current_page == 'add_job'
-                        ? raw(' class="active"')
-                        : ''
-                        ;
-
-my $promote_job_active  = $current_page == 'promote_job'
-                        ? raw(' class="active"')
-                        : ''
-                        ;
+    my $promote_job_active  = $current_page == 'promote_job'
+                            ? raw(' class="active"')
+                            : ''
+                            ;
 :>
-<div id="small-black-background">
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <div class="logo pull-left">
-                    <img src="<: $static_uri :>/img/logo_small.png" alt="PerlPro logo" />
-                </div>
-                <ul class="nav nav-pills">
-                    <li<: $company_data_active :>>
-                        <a href="<: $uri('/account/home') :>"><: $l('Dados da Empresa') :></a>
-                    </li>
-                    <li<: $my_jobs_active :>>
-                        <a href="<: $uri('/account/my_jobs') :>"><: $l('Meus anúncios') :></a>
-                    </li>
-                    <li<: $add_job_active :>>
-                        <a href="<: $uri('/account/job/new') :>"><: $l('Adicionar anúncio') :></a>
-                    </li>
-                    <li<: $promote_job_active :>>
-                        <a href="#"><: $l('Promover anúncio') :></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-<!-- main content -->
-<div class="container main-content">
-    <div class="row">
-        <div class="span12">
+    <head>
+
+        <title>PerlPro</title>
+        <meta charset="utf-8">
+        <link href="<: $uri('/favicon.ico') :>" rel="shortcut icon">
+
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+        <link href="<: $static_uri :>/css/style.css" rel="stylesheet">
+        <link href="<: $static_uri :>/css/admin.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <div id="wrapper" class="admin">
+
+            <div id="main-menu">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-8">
+                            <div class="pull-left">
+                                <img src="<: $static_uri :>img/logo.png" alt="PerlPro" width="45" height="45" />
+                            </div>
+
+                            <div class="pull-left menu">
+                                <ul class="nav nav-pills">
+                                    <li<: $company_data_active :>>
+                                        <a href="<: $uri('/account/home') :>"><: $l('Cadastro') :></a>
+                                    </li>
+                                    <li>
+                                        <a href="<: $uri('/account/profile') :>"><: $l('Perfil Público') :></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><: $l('Anúncios') :> <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                            <li role="presentation">
+                                                <a role="menuitem" tabindex="-1" href="<: $uri('/account/my_jobs') :>">
+                                                    <: $l('Meus anúncios') :></a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a role="menuitem" tabindex="-1" href="<: $uri('/account/job/new') :>">
+                                                    <: $l('Adicionar anúncio') :></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul><!-- end nav -->
+                            </div>
+                        </div><!-- end .col-md-8 -->
+
+                        <div class="col-md-4">
+                            <div class="pull-right">
+                                Seja bem vindo,<br>
+                                <strong>contato@empresa.com</strong>
+                            </div><!-- end .pull-right -->
+                            <div class="clearfix"></div>
+                        </div><!-- end .col-md-4 -->
+
+                    </div><!-- end .row -->
+                </div><!-- end .container -->
+            </div><!-- end #main-menu -->
+
+            <!-- main content -->
+            <div class="container main-content">
 :           content()
+            </div>
+
+
+            <div id="credits">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <p>2013 PerlPro &mdash; <: $l('Todos os direitos reservados.') :></p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pull-right">
+                                <p><: $l('Desenvolvido por André Walker. Design por Nova1.') :></p>
+                            </div>
+                        </div>
+
+                    </div><!-- end .row -->
+                </div><!-- end .container -->
+            </div><!-- end #credits -->
+
         </div>
-    </div>
-</div>
-: }
-: after load_javascripts -> {
-    <script src="<: $static_uri :>/js/company.js"></script>
-: }
+
+        <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="<: $static_uri :>/js/main.js"></script>
+
+    </body>
+</html>

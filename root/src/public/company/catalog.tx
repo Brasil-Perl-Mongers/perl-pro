@@ -1,29 +1,51 @@
 : cascade public::wrapper
 : block content {
+
+<!-- page title -->
 <div class="row">
-    <div class="span12">
-        <div class="company-catalog-row">
-            <h2 class="light"><: $l('Catálogo de Empresas') :></h2>
-            <hr />
-        </div>
-        <ol class="companies">
-:       for $companies -> $c {
-            <li>
-                <img src="http://lorempixel.com/200/170/abstract" alt="Logo <: $c.name :>" />
-                <div class="data">
-                    <h4><: $c.name :></h4>
-                    <span class="website"><: $c.website :></span><br><br>
-                    <span class="city"><i class="icon-map-marker"></i> <: $c.city :></span><br>
-                    <span class="open-positions"><: $c.open_positions :> ofertas disponíveis</span><br>
-                    <hr>
-                    <div class="text-center">
-                        <a href="<: $uri('/company/' ~ $c.name_in_url) :>" class="btn-small btn-util"><: $l('Ver empresa') :></a>
-                        <a href="<: $uri('/jobs/company/' ~ $c.name_in_url) :>" class="btn-small btn-important"><: $l('Ver vagas') :></a>
-                    </div>
-                </div>
-            </li>
-:       }
-        </ol>
-    </div>
-</div>
+    <div class="col-md-12">
+        <div class="page-title">
+
+            <h1 class="underlined"><: $l('Catálogo de Empresas') :></h1>
+
+        </div><!-- end .page-title -->
+    </div><!-- end .col-md-12 -->
+</div><!-- end .row -->
+
+<div id="company-catalog" class="content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="row">
+    :       for $companies -> $c {
+                <div class="col-md-3">
+                    <div class="content-block">
+                        <div class="data">
+                            <h2><: $c.name :></h2>
+                            <hr>
+
+                            <p><img src="http://lorempixel.com/200/170/abstract" alt="Logo <: $c.name :>" width="100%" /></p>
+
+                            <p>
+                               <span class="glyphicon glyphicon-map-marker"></span> <: $c.city :><br>
+                               <small><a href="<: $c.website :>" target="_blank"><: $c.website :></a>&nbsp;</small>
+                            </p>
+
+                            <hr>
+
+                            <small><: $c.open_positions :> vaga</small>
+                            <a href="<: $uri('/company/' ~ $c.name_in_url) :>" class="btn btn-primary pull-right">
+                                <: $l('Ver empresa') :>
+                            </a>
+
+                            <div class="clearfix"></div>
+                        </div><!-- end .data -->
+                    </div><!-- end .content-block -->
+                </div><!-- end .col-md-3 -->
+    :       }
+            </div>
+
+        </div><!-- end .col-md-12 -->
+    </div><!-- end .row -->
+</div><!-- end #company-catalog.content -->
 : }

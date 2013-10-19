@@ -1,95 +1,208 @@
 :cascade company::wrapper
 :block content -> {
-<h2 class="underlined"><: $l('Minha conta') :></h2>
 
-<div class="company-data-basic-info-row">
-    <div class="row">
-        <div class="span12">
-            <h3 class="underlined"><: $l('Informações básicas') :></h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span2">
-            <h4>Avatar</h4>
-        </div>
-        <div class="span4">
-            <h4><: $c.name :> <a href="#" class="update-data"><: $l('Alterar') :></a></h4>
-            <p><: $c.email :> <a href="#" class="update-data"><: $l('Alterar') :></a></p>
-
-:#          TODO: real i18n
-:           if $c.open_positions == 0 {
-            <p><: $l('Nenhuma vaga cadastrada') :></p>
-:           } elsif $c.open_positions == 1 {
-            <p><: $l('1 vaga cadastrada') :></p>
-:           } else {
-            <p><: $c.open_positions ~ $l(' vagas cadastradas') :></p>
-:           }
-
-            <a href="<: $uri('/account/my_jobs') :>" class="btn-util btn-small"><: $l('Gerenciar anúncios') :></a>
-        </div>
-        <div class="span6">
-            <p class="lead"><: $l('Último acesso: ') :><: $previous_login :></p>
-            <button class="btn-large btn-save"><: $l('Alterar e-mail') :></button>
-            <button class="btn-large btn-action"><: $l('Alterar senha') :></button>
-        </div>
-    </div>
-</div>
-
+<!-- page title -->
 <div class="row">
-    <div class="span6">
-        <h3 class="underlined"><: $l('Contato & Localização') :></h3>
-        <div class="row">
-            <div class="span2 label-company-data">Site <img src="<: $static_uri :>/img/icon.world.png" alt="world icon" /></div>
-            <div class="span4 value-company-data">
-                <ul>
-:               for $c.websites -> $w {
-                    <li><: $w.url :></li>
-:               }
-                    <li><a href="" class="update-data"><: $l('Adicionar site') :></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="span2 label-company-data">E-mail <img src="<: $static_uri :>/img/icon.letter.png" alt="letter icon" /></div>
-            <div class="span4 value-company-data">
-                <ul>
-:               for $c.emails -> $e {
-                    <li><: $e.email :></li>
-:               }
-                    <li><a href="" class="update-data"><: $l('Adicionar e-mail') :></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="span2 label-company-data">Fone <img src="<: $static_uri :>/img/icon.phone.png" alt="phone icon" /></div>
-            <div class="span4 value-company-data">
-                <ul>
-:               for $c.phones -> $p {
-                    <li><: $p.phone :></li>
-:               }
-                    <li><a href="" class="update-data"><: $l('Adicionar telefone') :></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="span2 label-company-data">Endereço <img src="<: $static_uri :>/img/icon.address.png" alt="address icon" /></div>
-            <div class="span4 value-company-data">
-                <ul>
-:               for $c.locations -> $l {
-                    <li><: $l.address :>, <: $l.city :> - <: $l.state :></li>
-:               }
-                    <li><a href="" class="update-data"><: $l('Adicionar endereço') :></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="span6">
-        <h3 class="underlined">Descrição da empresa</h3>
-        <p><: $c.description :></p>
-        <p><a href="#" class="update-data"><: $l('Alterar') :></a></p>
-    </div>
-</div>
+    <div class="col-md-12">
+        <div class="page-title">
 
-<hr class="thick" />
+            <h1 class="underlined"><: $l('Cadastro') :></h1>
 
+        </div><!-- end .page-title -->
+    </div><!-- end .col-md-12 -->
+</div><!-- end .row -->
+
+<div id="account-home" class="content">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div id="account_data" class="content-block">
+
+                <h2>Dados Cadastrais</h2>
+                <hr>
+
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="corporate_name" class="col-lg-3 control-label">Razão Social</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="corporate_name" placeholder="Razão Social">
+                        </div>
+                        <label for="corporate_name" class="col-lg-2 control-label secundary-label">Alterar</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="cnpj" class="col-lg-3 control-label">CNPJ</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="cnpj" placeholder="CNPJ">
+                        </div>
+                        <label for="cnpj" class="col-lg-2 control-label secundary-label">Alterar</label>
+                    </div>
+
+                    <p>&nbsp;</p>
+
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-lg-3 control-label">Anúncios</label>
+                        <div class="col-lg-6">
+                            <span>
+                                5 anúncios cadastrados &nbsp;
+                                <small><a href="<: $uri('/account/my_jobs') :>">Gerenciar</a></small>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+
+            </div><!-- end .content-block -->
+        </div><!-- end .col-md-6 -->
+
+        <div class="col-md-6">
+            <div id="user_data" class="content-block">
+
+                <h2>Login & Senha</h2>
+                <hr>
+
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="login" class="col-lg-3 control-label">Login</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="login" placeholder="Digite o usuário">
+                        </div>
+                        <label for="login" class="col-lg-2 control-label secundary-label">Alterar</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Senha</label>
+                        <div class="col-lg-6">
+                            <span>
+                                <em>A sua senha cadastrada</em>
+                            </span>
+                        </div>
+                        <label class="col-lg-2 control-label secundary-label"><a href="#">Alterar</a></label>
+                    </div>
+
+                    <p>&nbsp;</p>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Último Acesso</label>
+                        <div class="col-lg-6">
+                            <span>03/09/2013, às 14h42</span>
+                        </div>
+                    </div>
+                </form>
+
+            </div><!-- end .content-block -->
+        </div><!-- end .col-md-6 -->
+
+    </div><!-- end .row -->
+
+     <div class="row">
+
+        <div class="col-md-6">
+            <div id="account_contacts" class="content-block">
+
+                <h2>Contatos Administrativos</h2>
+                <hr>
+
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label for="website" class="col-lg-2 control-label"><span class="glyphicon glyphicon-globe"></span></label>
+                        <div class="col-lg-6">
+                            <input type="url" class="form-control" id="website" placeholder="Website">
+                            <small><a class="add-link" href="#">Adicionar site</a></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="col-lg-2 control-label"><span class="glyphicon glyphicon-envelope"></span></label>
+                        <div class="col-lg-6">
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                            <small><a class="add-link" href="#">Adicionar email</a></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="col-lg-2 control-label"><span class="glyphicon glyphicon-earphone"></span></label>
+                        <div class="col-lg-6">
+                            <input type="tel" class="form-control" id="phone" placeholder="Telefone">
+                            <small><a class="add-link" href="#">Adicionar telefone</a></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address" class="col-lg-2 control-label"><span class="glyphicon glyphicon-map-marker"></span></label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="address" placeholder="Endereço">
+                            <small><a class="add-link" href="#">Adicionar endereço</a></small>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div><!-- end .content-block -->
+        </div><!-- end .col-md-6 -->
+
+        <div class="col-md-6">
+            <div id="access_info" class="content-block">
+
+                <h2>Informações</h2>
+                <hr>
+
+                <span>Filtre por período: </span><br>
+                <div class="form-inline">
+
+                    <div class="form-group">
+                        <label class="sr-only" for="start_date">Data inicial</label>
+                        <input type="date" class="form-control" name="start_date" value="Data inicial">
+                    </div>
+
+                    <div class="form-group">&nbsp;até&nbsp; </div>
+
+                    <div class="form-group">
+                        <label class="sr-only" for="end_date">Data final</label>
+                        <input type="date" class="form-control" name="end_date" value="Data final">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="button" class="btn btn-primary" value="OK" />
+                    </div>
+
+                </div><!-- end .form-inline -->
+
+                <hr>
+
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Visitas</label>
+                        <div class="col-lg-6">
+                            <span>15</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Visitantes únicos</label>
+                        <div class="col-lg-6">
+                            <span>4</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Duração média da visita</label>
+                        <div class="col-lg-6">
+                            <span>00:02:23</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Anúncio mais acessado</label>
+                        <div class="col-lg-6">
+                            <span>Prgramador Catalyst @ São Paulo</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- end .content-block -->
+        </div><!-- end .col-md-6 -->
+
+    </div><!-- end .row -->
+</div><!-- end #account-home.content -->
 : }
