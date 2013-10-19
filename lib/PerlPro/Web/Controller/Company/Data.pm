@@ -7,12 +7,22 @@ BEGIN { extends 'Catalyst::Controller' }
 
 sub base :Chained('/company/auth/requires_login') PathPart('') CaptureArgs(0) {}
 
-sub display :Chained('base') PathPart('home') Args(0) GET {
+sub home :Chained('base') Args(0) GET {
     my ( $self, $ctx ) = @_;
 
     $ctx->stash(
         template     => 'company/home.tx',
         current_page => 'home',
+        c            => $ctx->model('DB::Company')->get_to_edit($ctx->stash->{company}),
+    );
+}
+
+sub profile :Chained('base') Args(0) GET {
+    my ( $self, $ctx ) = @_;
+
+    $ctx->stash(
+        template     => 'company/profile.tx',
+        current_page => 'profile',
         c            => $ctx->model('DB::Company')->get_to_edit($ctx->stash->{company}),
     );
 }
