@@ -243,8 +243,8 @@ Composing rels: L</user_companies> -> user
 __PACKAGE__->many_to_many("users", "user_companies", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-16 00:26:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bf54Th1fWaXrBfHRmWHXxA
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-10-19 18:37:04
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7Xq+N5fq1r2kuiXkQFdqnA
 
 sub get_my_jobs {
     my ($self, $data) = @_;

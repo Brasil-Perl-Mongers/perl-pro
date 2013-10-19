@@ -4,6 +4,6 @@ BEGIN;
 
     SET search_path = 'perlpro';
 
-    SELECT company, email, is_main_address FROM company_email WHERE FALSE;
+    SELECT company, email, is_main_address, is_public FROM company_email WHERE FALSE;
 
 ROLLBACK;

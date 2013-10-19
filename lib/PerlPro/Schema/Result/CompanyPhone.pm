@@ -54,6 +54,12 @@ __PACKAGE__->table("company_phone");
   default_value: false
   is_nullable: 0
 
+=head2 is_public
+
+  data_type: 'boolean'
+  default_value: false
+  is_nullable: 0
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -62,6 +68,8 @@ __PACKAGE__->add_columns(
   "phone",
   { data_type => "text", is_nullable => 0 },
   "is_main_phone",
+  { data_type => "boolean", default_value => \"false", is_nullable => 0 },
+  "is_public",
   { data_type => "boolean", default_value => \"false", is_nullable => 0 },
 );
 
@@ -97,8 +105,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-15 14:19:37
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bNiHueALzP/Qhq6PcAaiIA
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-10-19 18:32:13
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4g1+0c0vfBnA9n1pnJbAhQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
