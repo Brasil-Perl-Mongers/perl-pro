@@ -96,7 +96,7 @@
 
         <div class="col-md-6">
             <div class="content-block">
-                <h2>Contrato & Relacionamento</h2>
+                <h2>Contrato &amp; Relacionamento</h2>
                 <hr>
 
                 <p>Tipo de Relacionamento</p>
@@ -121,7 +121,7 @@
 
          <div class="col-md-6">
             <div class="content-block">
-                <h2>Local & Horário</h2>
+                <h2>Local &amp; Horário</h2>
                 <hr>
 
                 <span>Horário de trabalho:</span>

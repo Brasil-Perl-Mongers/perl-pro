@@ -56,7 +56,7 @@
         <div class="col-md-6">
             <div id="user_data" class="content-block">
 
-                <h2>Login & Senha</h2>
+                <h2>Login &amp; Senha</h2>
                 <hr>
 
                 <form class="form-horizontal" role="form">
