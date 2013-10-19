@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="page-title">
 
-            <h1 class="underlined"><: $l('Fazer Login:') :></h1>
+            <h1 class="underlined"><: $l('Fazer Login') :></h1>
 
         </div><!-- end .page-title -->
     </div><!-- end .col-md-12 -->
@@ -21,11 +21,11 @@
 
                     <div class="col-md-6">
                         <form id="form-company-login" action="<: $uri('/account/login') :>" method="post">
-                            <p class="lead">Fazer login</p>
+                            <p class="lead">Faça login</p>
 
                             <div class="form-group">
                                 <label class="sr-only" for="login">E-mail</label>
-                                <input type="text" name="login" class="form-control" placeholder="E-mail" />
+                                <input type="text" name="login" class="form-control" placeholder="E-mail/Login" />
                             </div>
 
                             <div class="form-group">
@@ -35,7 +35,7 @@
 
                             <div class="form-group form-inline">
                                 <input class="btn btn-success" type="submit" value="Entrar" />
-                                <a href="#">Esqueceu sua senha?</a>
+:# TODO                         <a href="#">Esqueceu sua senha?</a>
                             </div>
                         </form>
                     </div>
@@ -63,7 +63,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="sr-only" for="phone">Telefone</label>
-                                            <input type="tel" placeholder="Telefone" name="phone" class="form-control" />
+                                            <input type="tel" placeholder="Telefone (opcional)" name="phone" class="form-control" />
                                         </div>
                                     </div>
 
@@ -72,7 +72,7 @@
 
                             <div class="form-group">
                                 <label class="sr-only" for="address">Endereço</label>
-                                <input type="text" placeholder="Endereço" name="address" class="form-control"  />
+                                <input type="text" placeholder="Endereço (opcional)" name="address" class="form-control"  />
                             </div>
 
 
@@ -91,7 +91,33 @@
                                             <label class="sr-only" for="state">Estado</label>
                                             <select name="state" class="form-control">
                                                 <option value="">Estado</option>
+                                                <option value="ac">Acre</option>
+                                                <option value="al">Alagoas</option>
+                                                <option value="ap">Amapá</option>
+                                                <option value="am">Amazonas</option>
+                                                <option value="ba">Bahia</option>
+                                                <option value="ce">Ceará</option>
+                                                <option value="df">Distrito Federal</option>
+                                                <option value="es">Espírito Santo</option>
+                                                <option value="go">Goiás</option>
+                                                <option value="ma">Maranhão</option>
+                                                <option value="mt">Mato Grosso</option>
+                                                <option value="ms">Mato Grosso do Sul</option>
+                                                <option value="mg">Minas Gerais</option>
+                                                <option value="pa">Pará</option>
+                                                <option value="pb">Paraíba</option>
+                                                <option value="pr">Paraná</option>
+                                                <option value="pe">Pernambuco</option>
+                                                <option value="pi">Piauí</option>
+                                                <option value="rj">Rio de Janeiro</option>
+                                                <option value="rn">Rio Grande do Norte</option>
+                                                <option value="rs">Rio Grande do Sul</option>
+                                                <option value="ro">Rondônia</option>
+                                                <option value="rr">Roraima</option>
+                                                <option value="sc">Santa Catarina</option>
                                                 <option value="sp">São Paulo</option>
+                                                <option value="se">Sergipe</option>
+                                                <option value="to">Tocantins</option>
                                             </select>
                                         </div>
                                     </div>
@@ -101,13 +127,6 @@
 
                             <div class="form-group form-inline">
                                 <input class="btn btn-success" type="submit" value="Criar Conta" />
-
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="terms" />
-                                        Li e concordo com os <a href="#modal-company-terms" data-toggle="modal">termos de uso.</a>
-                                    </label>
-                                </div>
                             </div>
 
                         </form>
@@ -119,4 +138,5 @@
 
     </div><!-- end .row -->
 </div><!-- end #company-login.content -->
+
 : }

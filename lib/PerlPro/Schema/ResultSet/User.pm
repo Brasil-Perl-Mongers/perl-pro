@@ -52,7 +52,7 @@ sub verifiers_specs {
                         my $p2 = $s->get_value('confirm_password');
 
                         if ( $p1 ne $p2 ) {
-                            die 'passwords are not equal';
+                            die 'confirm-not-equal';
                         }
 
                         return 1;
@@ -60,7 +60,7 @@ sub verifiers_specs {
                 },
             },
             filters => [
-                sub { HTML::Entities::encode_entities( $_[0] ) }
+                sub { HTML::Entities::encode_entities( $_[0], qr{<>&"'} ) }
             ],
         ),
     };

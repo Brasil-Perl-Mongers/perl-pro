@@ -1,6 +1,7 @@
 package PerlPro::Web::Controller::Company::Register;
 use Moose;
 use namespace::autoclean;
+use DDP;
 use utf8;
 
 BEGIN { extends 'Catalyst::Controller' }
@@ -25,22 +26,33 @@ sub register_execute {
 
     $ctx->stash->{DO_NOT_APPLY_DM} = 1;
 
-    my $dm = $ctx->model('DataManager');
-    my $params = $ctx->req->params;
-    my $user = $params->{user}{register};
+    my $dm      = $ctx->model('DataManager');
+    my $params  = $ctx->req->params;
+    my $user    = $params->{user}{register};
     my $company = $params->{company}{register};
 
-    $dm->apply_one('company.register', $company);
+    $dm->apply_one( 'company.register', $company );
 
     my $company_obj = $dm->get_outcome_for('company.register');
 
     if ($company_obj) {
         $user->{company} = $company_obj->name_in_url;
+        $user->{name}    = $company_obj->name;
+        $user->{email}   = $dm->results->{'company.register'}->get_value('email');
     }
 
-    $dm->apply_one('user.register', $user);
+    $dm->apply_one( 'user.register', $user );
 
-    if (!$dm->success) {
+    if ( !$dm->success ) {
+        my $messages = $dm->messages->search(sub {
+            return (
+                $_->scope ne 'user.register' ||
+                $_->subject !~ /^(company|name|email)$/
+            );
+        });
+
+        $ctx->stash(dm_messages => $messages);
+
         $ctx->log->warn('registration form invalid');
         $company_obj->delete if $company_obj;
     }

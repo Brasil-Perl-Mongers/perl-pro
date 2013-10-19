@@ -3,6 +3,7 @@ use utf8;
 use Moose;
 use Text::Xslate qw/html_builder/;
 use HTML::FillInForm;
+use PerlPro::Messages;
 use namespace::autoclean;
 
 extends 'Catalyst::View::Xslate';
@@ -10,6 +11,7 @@ extends 'Catalyst::View::Xslate';
 has '+expose_methods' => (
     default => sub { {
         l   => 'localize',
+        lm  => 'localize_error_message',
         uri => 'view_uri_for',
     } },
 );
@@ -40,6 +42,19 @@ sub localize {
     return $text;
 
     return $c->loc($text, @args) || $text;
+}
+
+sub localize_error_message {
+    my ( $self, $c, $m ) = @_;
+    my $messages = \%PerlPro::Messages::pt_BR;
+
+    my $key = $m->scope . '.' . $m->msgid;
+
+    if (exists $messages->{$key}) {
+        return $messages->{$key};
+    }
+
+    return $m->text;
 }
 
 sub fillinform {

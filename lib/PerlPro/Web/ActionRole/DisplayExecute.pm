@@ -40,7 +40,7 @@ after execute => sub {
                 }
             }
             push @data_for_session, (
-                messages   => $dm->messages,
+                messages   => ($ctx->stash->{dm_messages} || $dm->messages),
                 results    => $results,
                 fields     => $fields,
             );

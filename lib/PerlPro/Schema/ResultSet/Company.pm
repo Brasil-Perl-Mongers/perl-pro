@@ -22,16 +22,15 @@ sub verifiers_specs {
     return {
         register => Data::Verifier->new(
             profile => {
-                name        => { required => 1, type => Str          },
-                description => { required => 1, type => Str          },
+                name        => { required => 1, type => Str },
                 email       => { required => 1, type => EmailAddress },
-                phone       => { required => 1, type => Str          },
-                address     => { required => 1, type => Str          },
-                city        => { required => 1, type => Str          },
-                state       => { required => 1, type => Str          },
+                phone       => { required => 0, type => Str },
+                address     => { required => 0, type => Str },
+                city        => { required => 0, type => Str },
+                state       => { required => 0, type => Str },
             },
             filters => [
-                sub { HTML::Entities::encode_entities( $_[0] ) }
+                sub { HTML::Entities::encode_entities( $_[0], qr{<>&"'} ) }
             ],
         ),
         add_email => Data::Verifier->new(
@@ -82,7 +81,12 @@ sub action_specs {
             });
 
             $row->add_to_company_emails({ email => $values{email}, is_main_address => 1 });
-            $row->add_to_company_phones({ phone => $values{phone}, is_main_phone   => 1 });
+            if ($values{phone}) {
+                $row->add_to_company_phones({
+                    phone         => $values{phone},
+                    is_main_phone => 1,
+                });
+            }
 
             $row->add_to_company_locations({
                 address         => $values{address},

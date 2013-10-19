@@ -17,43 +17,57 @@
         <div class="col-md-12">
 
             <div class="content-block">
-                <form id="form-company-signup">
+
+:               if ($messages && $messages.count()) {
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><: $l('Erro ao cadastrar') :></h4>
+                        <ul>
+:                       for $messages.messages -> $message {
+                            <li><: $lm($message); :></li>
+:                       }
+                        </ul>
+                    </div>
+:               }
+
+:               block main_form | fif($fields) -> {
+                <form id="form-company-signup" method="post">
 
                     <div class="col-md-12">
-                        <p class="lead"><strong>Informações basicas</strong></p>
+                        <p class="lead"><strong><: $l('Informações básicas') :></strong></p>
                         <p><: $l('Preencha os campos abaixo para criar a sua conta. Após finalizar o cadastro, você poderá adicionar mais informações e cadastrar ofertas de vagas.') :></p>
                     </div><!-- end .col-md-12 -->
 
                     <div class="col-md-6">
 
-                        <p class="lead">Informações da empresa</p>
+                        <p class="lead"><: $l('Informações da empresa') :></p>
 
                         <div class="form-group">
-                            <label class="sr-only" for="name">Nome da empresa</label>
-                            <input type="text" placeholder="Nome da empresa" name="name" class="form-control" />
+                            <label class="sr-only" for="company.register.name"><: $l('Nome da empresa') :></label>
+                            <input type="text" placeholder="Nome da empresa" name="company.register.name" class="form-control" />
                         </div>
 
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="sr-only" for="login">E-mail</label>
-                                        <input type="email" placeholder="E-mail" name="login" class="form-control" />
+                                        <label class="sr-only" for="company.register.email"><: $l('E-mail') :></label>
+                                        <input type="email" placeholder="E-mail" name="company.register.email" class="form-control" />
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="sr-only" for="phone">Telefone</label>
-                                        <input type="tel" placeholder="Telefone" name="phone" class="form-control" />
+                                        <label class="sr-only" for="company.register.phone"><: $l('Telefone') :></label>
+                                        <input type="tel" placeholder="Telefone (opcional)" name="company.register.phone" class="form-control" />
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="sr-only" for="address">Endereço</label>
-                            <input type="text" placeholder="Endereço" name="address" class="form-control"  />
+                            <label class="sr-only" for="company.register.address"><: $l('Endereço') :></label>
+                            <input type="text" placeholder="Endereço (opcional)" name="company.register.address" class="form-control"  />
                         </div>
 
 
@@ -61,17 +75,43 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="sr-only" for="city">Cidade</label>
-                                        <input type="text" placeholder="Cidade" name="city" class="form-control"  />
+                                        <label class="sr-only" for="company.register.city"><: $l('Cidade') :></label>
+                                        <input type="text" placeholder="Cidade" name="company.register.city" class="form-control"  />
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="sr-only" for="state">Estado</label>
-                                        <select name="state" class="form-control">
+                                        <label class="sr-only" for="company.register.state"><: $l('Estado') :></label>
+                                        <select name="company.register.state" class="form-control">
                                             <option value="">Estado</option>
+                                            <option value="ac">Acre</option>
+                                            <option value="al">Alagoas</option>
+                                            <option value="ap">Amapá</option>
+                                            <option value="am">Amazonas</option>
+                                            <option value="ba">Bahia</option>
+                                            <option value="ce">Ceará</option>
+                                            <option value="df">Distrito Federal</option>
+                                            <option value="es">Espírito Santo</option>
+                                            <option value="go">Goiás</option>
+                                            <option value="ma">Maranhão</option>
+                                            <option value="mt">Mato Grosso</option>
+                                            <option value="ms">Mato Grosso do Sul</option>
+                                            <option value="mg">Minas Gerais</option>
+                                            <option value="pa">Pará</option>
+                                            <option value="pb">Paraíba</option>
+                                            <option value="pr">Paraná</option>
+                                            <option value="pe">Pernambuco</option>
+                                            <option value="pi">Piauí</option>
+                                            <option value="rj">Rio de Janeiro</option>
+                                            <option value="rn">Rio Grande do Norte</option>
+                                            <option value="rs">Rio Grande do Sul</option>
+                                            <option value="ro">Rondônia</option>
+                                            <option value="rr">Roraima</option>
+                                            <option value="sc">Santa Catarina</option>
                                             <option value="sp">São Paulo</option>
+                                            <option value="se">Sergipe</option>
+                                            <option value="to">Tocantins</option>
                                         </select>
                                     </div>
                                 </div>
@@ -85,19 +125,19 @@
                         <p class="lead">Dados de acesso</p>
 
                         <div class="form-group">
-                            <label class="sr-only" for="login">Login</label>
+                            <label class="sr-only" for="login"><: $l('Login') :></label>
                             <input type="text" placeholder="Login" name="user.register.login" class="form-control"  />
                         </div>
 
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label class="sr-only" for="password">Senha</label>
+                                    <label class="sr-only" for="password"><: $l('Senha') :></label>
                                     <input type="password" class="form-control" placeholder="Senha" name="user.register.password" />
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="sr-only" for="confirm_password">Confirme</label>
+                                    <label class="sr-only" for="confirm_password"><: $l('Confirme') :></label>
                                     <input type="password" class="form-control" placeholder="Confirme sua senha" name="user.register.confirm_password" />
                                 </div>
                             </div>
@@ -111,18 +151,13 @@
 
                     <div class="col-md-12">
                         <div class="form-group form-inline">
-                            <input class="btn btn-success" type="submit" value="Criar Conta" />
-
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name-"terms" />
-                                     Li e concordo com os <a href="#modal-company-terms" data-toggle="modal">termos de uso.</a>
-                                </label>
-                            </div>
+                            <button class="btn btn-success" type="submit">Criar Conta</button>
                         </div>
                     </div>
 
                 </form><!-- end #form-company-signup -->
+:               }
+
             </div><!-- end .content-block -->
 
         </div><!-- end .col-md-12 -->
