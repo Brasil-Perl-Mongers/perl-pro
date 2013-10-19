@@ -9,9 +9,10 @@ sub home :Global Args(0) {
     my ( $self, $ctx ) = @_;
 
     $ctx->stash(
-        recent_jobs => $ctx->model('DB::Job')->get_recent_jobs,
-        companies   => $ctx->model('DB::Company')->get_featured_companies,
-        template    => 'public/home.tx',
+        recent_jobs        => $ctx->model('DB::Job')->get_recent_jobs,
+        featured_companies => $ctx->model('DB::Company')->get_featured_companies,
+        featured_jobs      => $ctx->model('DB::Job')->get_featured_jobs(5),
+        template           => 'public/home.tx',
     );
 }
 

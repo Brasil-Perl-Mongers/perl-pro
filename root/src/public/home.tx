@@ -1,7 +1,6 @@
 : cascade public::wrapper
 : block content {
 
-
 <div id="home" class="content">
     <div class="row">
 
@@ -11,18 +10,19 @@
 
                 <div class="carousel-inner">
 
-                    <div class="item active">
+:                   for $featured_jobs -> $job {
+                    <div class="item<: if $~job.is_first { :> active<: } :>">
                         <div class="one-job">
-                            <h3>Programador Front-End</h3>
+                            <h3><: $job.title :></h3>
 
                             <hr>
 
                             <div class="job-description">
-                                <span>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</span>
+                                <span><: $job.description :></span>
                             </div>
 
-                            <img src="http://lorempixel.com/800/300/abstract/" alt="Logo <: $c.name :>" width="100%" /><br />
-                            em <strong>Amazon do Brasil</strong>
+                            <img src="http://lorempixel.com/800/300/abstract/" alt="Logo <: $job.company_name :>" width="100%" /><br />
+                            em <strong><: $job.company_name :></strong>
 
                             <hr>
 
@@ -30,61 +30,20 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="job-date">
-                                            <span>Publicado em:<br> 04 de junho de 2013</span>
+                                            <span>Publicado em:<br> <: $job.created_at.strftime('%d de %B de %Y') :></span>
                                         </div>
                                     </div>
 
                                     <div class="col-md-2 job-location">
-                                        <span class="glyphicon glyphicon-map-marker"></span>São Paulo
+                                        <span class="glyphicon glyphicon-map-marker"></span><: $job.city :>
                                     </div>
 
                                     <div class="col-md-2 job-payment">
-                                        <strong>$</strong> 2.500,00
+                                        <strong>$</strong> <: $job.salary :>
                                     </div>
 
-                                    <div class="col-md-2 col-md-offset-4">
-                                        <a href="#" class="btn btn-danger pull-right">Ver vaga</a>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div><!-- end .one-job -->
-                    </div><!-- end .item -->
-
-                    <div class="item">
-                        <div class="one-job">
-                            <h3>Programador Front-End</h3>
-
-                            <hr>
-
-                            <div class="job-description">
-                                <span>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</span>
-                            </div>
-
-                            <img src="http://lorempixel.com/800/300/abstract/" alt="Logo <: $c.name :>" width="100%" /><br />
-                            em <strong>Amazon do Brasil</strong>
-
-                            <hr>
-
-                            <div class="job-meta">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="job-date">
-                                            <span>Publicado em:<br> 04 de junho de 2013</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-2 job-location">
-                                        <span class="glyphicon glyphicon-map-marker"></span>São Paulo
-                                    </div>
-
-                                    <div class="col-md-2 job-payment">
-                                        <strong>$</strong> 2.500,00
-                                    </div>
-
-                                    <div class="col-md-2 col-md-offset-4">
-                                        <a href="#" class="btn btn-danger pull-right">Ver vaga</a>
+                                    <div class="col-md-2 col-md-offset-4 above-carousel">
+                                        <a href="<: $uri('/job/' ~ $job.id) :>" class="btn btn-danger pull-right">Ver vaga</a>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
@@ -92,26 +51,31 @@
 
                         </div><!-- end .one-job -->
                     </div>
+:                   }
+
                 </div>
 
                 <a class="left carousel-control" href="#hot-jobs" data-slide="prev"><span class="icon-prev"></span></a>
                 <a class="right carousel-control" href="#hot-jobs" data-slide="next"><span class="icon-next"></span></a>
 
                 <ol class="carousel-indicators">
-                    <li data-target="#hot-jobs" data-slide-to="0" class="active"></li>
-                    <li data-target="#hot-jobs" data-slide-to="1"></li>
+:                   for $featured_jobs -> $i {
+                    <li data-target="#hot-jobs" data-slide-to="<: $~i :>" <: if $~i.is_first { :>class="active"<: } :>></li>
+:                   }
                 </ol>
 
             </div><!-- end #hot-jobs -->
 
-            <h3><: $l('Vagas Próximas a você') :></h3>
+            <h3><: $l('Vagas recentes') :></h3>
             <hr>
             <ul class="recent-jobs job-list">
 :           for $recent_jobs -> $j {
                 <li class="company-color1">
                     <span class="position-name"><: $j.title :></span> em
-                    <a href="<: $uri('/company/' ~ $j.company_url) :>" class="company-name"><: $j.company_name :></a> @
-                    <span class="city-name"><: $j.location :></span>
+                    <a href="<: $uri('/company/' ~ $j.company_url) :>" class="company-name"><: $j.company_name :></a>
+:                   if $j.location {
+                        @ <span class="city-name"><: $j.location :></span>
+:                   }
                 </li>
 :           }
             </ul>
@@ -129,30 +93,24 @@
                 <h2><: $l('Catálogo de Empresas') :></h2>
                 <hr/>
                 <ul class="company-catalog">
+:                   for $featured_companies -> $company {
                     <li>
                         <strong>
-                            <a href="<: $uri('/company/company1') :>">
-                                <span class="company-name">Estante Virtual</span>
+                            <a href="<: $uri('/company/' ~ $company.name_in_url) :>">
+                                <span class="company-name"><: $company.name :></span>
                             </a>
                         </strong><br/>
-                        <span class="open-positions">10 vagas</span>
+                        <span class="open-positions"><:
+                            $company.open_positions;
+                            if $company.open_positions == 1 {
+                                " vaga";
+                            }
+                            else {
+                                " vagas";
+                            }
+                        :></span>
                     </li>
-                    <li>
-                        <strong>
-                            <a href="<: $uri('/company/company1') :>">
-                                <span class="company-name">Estante Virtual</span>
-                            </a>
-                        </strong><br/>
-                        <span class="open-positions">10 vagas</span>
-                    </li>
-                    <li>
-                        <strong>
-                            <a href="<: $uri('/company/company1') :>">
-                                <span class="company-name">Estante Virtual</span>
-                            </a>
-                        </strong><br/>
-                        <span class="open-positions">10 vagas</span>
-                    </li>
+:                   }
                 </ul>
                 <hr/>
                 <a href="<: $uri('/companies') :>" class="btn btn-warning pull-right"><: $l('Ver catálogo') :></a>
@@ -162,7 +120,7 @@
             <div class="content-block">
                 <h2>Anuncie uma vaga</h2>
                 <hr>
-                <p>Crie uma conta gratuita e encontre os melhores profissionais em todo Brasil!</p>
+                <p><: $l('Crie uma conta gratuita e encontre os melhores profissionais em todo Brasil!') :></p>
                 <a href="<: $uri('/account/new') :>" class="btn btn-danger">Cadastrar</a>
             </div>
 

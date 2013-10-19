@@ -153,6 +153,8 @@ body{
 #home .carousel-indicators li { border: 1px solid #aaa; }
 #home .carousel-indicators li.active { background: #aaa; }
 
+#home .above-carousel { position: relative; z-index: 5; }
+
 #home ul {
     list-style-type: none;
     padding: 0;

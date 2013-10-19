@@ -77,6 +77,40 @@ sub action_specs {
     };
 }
 
+sub get_featured_jobs {
+    my ($self, $rows) = @_;
+    my @result;
+
+    my $jobs = $self->search(
+        {
+            status => 'active',
+        },
+        {
+            order_by  => \'RANDOM()',
+            rows      => ($rows || 5),
+            columns   => [qw/id title wages wages_for description created_at/],
+            '+select' => [qw/company.name_in_url company.name job_location.city/],
+            '+as'     => [qw/company_url company_name city/],
+            join      => [qw/company job_location/],
+        }
+    );
+
+    for my $j ($jobs->all) {
+        push @result, {
+            id           => $j->get_column('id'),
+            title        => $j->get_column('title'),
+            company_url  => $j->get_column('company_url'),
+            company_name => $j->get_column('company_name'),
+            description  => $j->get_column('description'),
+            city         => $j->get_column('city'),
+            created_at   => $j->created_at->set_locale('pt_BR'),
+            salary       => $j->wages . ' por ' . _l($j->wages_for),
+        };
+    }
+
+    return \@result;
+}
+
 sub get_recent_jobs {
     my $self = shift;
     my @result;
