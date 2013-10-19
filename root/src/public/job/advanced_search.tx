@@ -72,16 +72,16 @@
 
                         <div data-toggle="buttons">
                             <label class="btn btn-danger">
-                                <input type="radio" name="relationship" value="clt">CLT
+                                <input type="checkbox" name="relationship" value="clt">CLT
                             </label>
                             <label class="btn btn-primary">
-                                <input type="radio" name="relationship" value="pj">PJ
+                                <input type="checkbox" name="relationship" value="pj">PJ
                             </label>
                             <label class="btn btn-success">
-                                <input type="radio" name="relationship" value="intern">Estágio
+                                <input type="checkbox" name="relationship" value="intern">Estágio
                             </label>
                             <label class="btn btn-warning">
-                                <input type="radio" name="relationship" value="freelance">Freelance
+                                <input type="checkbox" name="relationship" value="freelance">Freelance
                             </label>
                         </div>
 
