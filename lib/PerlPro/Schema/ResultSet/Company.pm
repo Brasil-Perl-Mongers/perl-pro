@@ -140,68 +140,39 @@ sub get_for_profile {
 
     return unless $company;
 
-    my $website_obj = $company->company_websites->search({}, {
+    my @websites = map {
+        $_->url
+    } $company->company_websites->search({}, {
         order_by => { -desc => 'is_main_website' }
-    })->first;
-    my $phone_obj = $company->company_phones->search({}, {
+    })->all;
+
+    my @phones = map {
+        $_->phone
+    } $company->company_phones->search({}, {
         order_by => { -desc => 'is_main_phone' }
-    })->first;
-    my $email_obj = $company->company_emails->search({}, {
+    })->all;
+
+    my @emails = map {
+        $_->email
+    } $company->company_emails->search({}, {
         order_by => { -desc => 'is_main_address' }
-    })->first;
-    my $location_obj = $company->company_locations->search({}, {
+    })->all;
+
+    my @locations = map {
+        $_->address . ", " . $_->city  . " - " . $_->state
+    } $company->company_locations->search({}, {
         order_by => { -desc => 'is_main_address' }
-    })->first;
-
-    my $url   = $website_obj ? $website_obj->url : '';
-    my $email = $email_obj   ? $email_obj->email : '';
-    my $phone = $phone_obj   ? $phone_obj->phone : '';
-
-    my $formatted_address = $location_obj
-                          ? ( $location_obj->address . ", "
-                            . $location_obj->city    . " - "
-                            . $location_obj->state )
-                          : ''
-                          ;
-
-    my $search = $company->jobs->search({
-        'me.status' => 'active',
-    }, {
-        join     => [qw/promoted job_location/],
-        order_by => { -desc => [ 'promoted.status', 'created_at' ] }, # promoted first
-        rows     => 8,
-        select   => [ qw/promoted.status me.title job_location.city/ ],
-        as       => [ qw/promotion title city/ ],
-    });
-
-    my @jobs = map {
-        +{
-            title     => $_->get_column('title'),
-            promotion => $_->get_column('promotion'),
-            city      => $_->get_column('city'),
-        }
-    } $search->all;
-
-    my $jc     = scalar @jobs;
-    my $middle = int($jc/2);
-    my $part_one = \@jobs;
-    my $part_two = [];
-
-    if ($middle > 0) {
-        $part_one = [ @jobs[0..$middle] ];
-        $part_two = [ @jobs[($middle+1)..$jc] ];
-    }
+    })->all;
 
     return {
-        name_in_url       => $company->name_in_url,
-        name              => $company->name,
-        description       => $company->description,
-        website           => $url,
-        email             => $email,
-        phone             => $phone,
-        formatted_address => $formatted_address,
-        jobs_part_1       => $part_one,
-        jobs_part_2       => $part_two,
+        name_in_url => $company->name_in_url,
+        name        => $company->name,
+        description => $company->description,
+        websites    => \@websites,
+        emails      => \@emails,
+        phones      => \@phones,
+        addresses   => \@locations,
+        jobs        => $company->jobs->for_company_profile,
     }
 }
 

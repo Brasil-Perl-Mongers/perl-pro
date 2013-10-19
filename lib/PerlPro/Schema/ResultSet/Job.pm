@@ -111,6 +111,34 @@ sub get_featured_jobs {
     return \@result;
 }
 
+sub for_company_profile {
+    my $self = shift;
+
+    my $search = $self->search({
+        'me.status' => 'active',
+    }, {
+        join      => [qw/promoted job_location/],
+        order_by  => { -desc => [ 'promoted.status', 'created_at' ] }, # promoted first
+        columns   => [qw/id title created_at description wages wages_for /],
+        '+select' => [qw/promoted.status job_location.city/],
+        '+as'     => [qw/promotion city/],
+    });
+
+    my @jobs = map {
+        +{
+            id          => $_->get_column('id'),
+            title       => $_->get_column('title'),
+            description => $_->get_column('description'),
+            promotion   => $_->get_column('promotion'),
+            city        => $_->get_column('city'),
+            created_at  => $_->created_at->set_locale('pt_BR'),
+            salary      => $_->wages . ' por ' . _l($_->wages_for),
+        }
+    } $search->all;
+
+    return \@jobs;
+}
+
 sub get_recent_jobs {
     my $self = shift;
     my @result;

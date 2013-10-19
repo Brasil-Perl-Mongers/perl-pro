@@ -10,7 +10,7 @@
 
             <div class="pull-right">
                 <a href="#" class="btn btn-primary">
-                    <span class=".glyphicon .glyphicon-share"></span> Compartilhar
+                    <span class="glyphicon glyphicon-share"></span> <: $l('Compartilhar') :>
                 </a>
             </div><!-- end .pull-right -->
 
@@ -27,7 +27,7 @@
         <div class="col-md-6">
             <div class="content-block">
 
-                <h2>A Empresa</h2>
+                <h2><: $l('A Empresa') :></h2>
                 <hr>
 
                 <div id="company-logo" class="pull-left">
@@ -36,15 +36,19 @@
 
                 <div id="company-info" class="pull-left">
                     <ul>
-                        <li><span class="glyphicon glyphicon-globe"></span> <: $c.website :></li>
-                        <li><span class="glyphicon glyphicon-envelope"></span> <: $c.email :></li>
+:                       for $c.websites -> $website {
+                        <li><span class="glyphicon glyphicon-globe"></span> <: $website :></li>
+:                       }
+:                       for $c.emails -> $email {
+                        <li><span class="glyphicon glyphicon-envelope"></span> <: $email :></li>
+:                       }
                     </ul>
                 </div>
 
                 <div class="clearfix"></div>
                 <p><: $c.description :></p>
 
-                <p class="lead">Redes Sociais: </p>
+:#              <p class="lead">Redes Sociais: </p>
 
             </div><!-- end .content-block -->
         </div><!-- end .col-md-6 -->
@@ -52,13 +56,14 @@
         <div class="col-md-6">
             <div class="content-block">
 
-                <h2>Localização</h2>
+                <h2><: $l('Localização') :></h2>
 
                 <hr>
 
-                <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=CZmK8f958A74FQBZKAIdv17U-ik_ePT84GdkiDH0UAfsfeodrg&amp;q=2511+Gallatin+Ave,+Nashville&amp;aq=&amp;sll=36.195542,-86.742978&amp;sspn=0.009386,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=2511+Gallatin+Ave,+Nashville,+Davidson,+Tennessee+37206&amp;ll=36.195542,-86.742983&amp;spn=0.150156,0.338173&amp;t=m&amp;z=12&amp;output=embed"></iframe>
-
-                <p><span class="glyphicon glyphicon-map-marker"></span> <: $c.formatted_address :></p>
+                <!--iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=CZmK8f958A74FQBZKAIdv17U-ik_ePT84GdkiDH0UAfsfeodrg&amp;q=2511+Gallatin+Ave,+Nashville&amp;aq=&amp;sll=36.195542,-86.742978&amp;sspn=0.009386,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=2511+Gallatin+Ave,+Nashville,+Davidson,+Tennessee+37206&amp;ll=36.195542,-86.742983&amp;spn=0.150156,0.338173&amp;t=m&amp;z=12&amp;output=embed"></iframe-->
+:               for $c.addresses -> $formatted_address {
+                <p><span class="glyphicon glyphicon-map-marker"></span> <: $formatted_address :></p>
+:               }
 
             </div><!-- end .content-block -->
         </div><!-- end .col-md-6 -->
@@ -68,37 +73,40 @@
     <div class="row">
 
         <div class="col-md-12">
-            <h2>Vagas nessa empresa:</h2>
+            <h2><: $l('Vagas nessa empresa:') :></h2>
         </div>
 
+:       for $c.jobs -> $j {
         <!-- one-job start -->
         <div class="col-md-4">
             <div class="one-job">
-
                 <div class="job-title">
-                    <h2>Programador Front-End</h2>
+                    <h2><: $j.title :></h2>
                 </div>
-                em <strong>Amazon do Brasil</strong>
+                em <strong><: $c.name :></strong>
 
                 <div class="job-description">
-                    <p>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</p>
+                    <p><: $j.description :></p>
                 </div>
 
                 <div class="job-meta">
                     <div class="job-date">
-                        <span>Publicado em 04 de junho de 2013</span>
+                        <span>Publicado em <: $j.created_at.strftime('%d de %B de %Y') :></span>
                     </div>
                     <ul class="job-meta-info">
-                        <li><span class="glyphicon glyphicon-map-marker"></span> São Paulo</li>
-                        <li><strong>$</strong> 2.500,00</li>
-                        <li><a href="#" class="btn btn-danger">Ver vaga</a></li>
+:                       if $j.city {
+                        <li><span class="glyphicon glyphicon-map-marker"></span> <: $j.city :></li>
+:                       }
+                        <li><strong>$</strong> <: $j.salary :></li>
+                        <li><a href="<: $uri('/job/' ~ $j.id) :>" class="btn btn-danger"><: $l('Ver vaga') :></a></li>
                     </ul>
                 </div>
 
             </div>
         </div><!-- end one-job -->
-
+:       }
 
     </div><!-- end .row -->
 </div><!-- end #single-company.content -->
+
 : }
