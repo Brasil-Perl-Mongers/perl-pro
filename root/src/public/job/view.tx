@@ -1,7 +1,6 @@
 : cascade public::wrapper
 : block content -> {
 
-
 <!-- page title -->
 <div class="row">
     <div class="col-md-12">
@@ -11,17 +10,23 @@
 
             <div class="pull-left">
                 <p class="lead">
-                    <: $l('na') :> <a href="#"><: $c.name :></a> <: $l(' em ') :> <: $j.location :>
+                    na <a href="#"><: $c.name :></a>
+<:
+                    if $j.location {
+                        ' em ';
+                        $j.location;
+                    }
+:>
                 </p>
             </div><!-- end .pull-left -->
 
              <div class="pull-right">
                 <a href="#" class="btn btn-primary">
-                    <span class=".glyphicon .glyphicon-share"></span> Compartilhar
+                    <span class="glyphicon glyphicon-share"></span> <: $l('Compartilhar') :>
                 </a>
 
                 <a href="#" class="btn btn-warning">
-                    <span class=".glyphicon .glyphicon-envelope"></span> Indique esta vaga
+                    <span class="glyphicon glyphicon-envelope"></span> <: $l('Indique esta vaga') :>
                 </a>
             </div><!-- end .pull-right -->
 
@@ -38,33 +43,35 @@
         <div class="col-md-6">
 
             <div class="content-block">
-                <h2>Descrição da Vaga</h2>
+                <h2><: $l('Descrição da Vaga') :></h2>
                 <hr>
                 <p><: $j.description :></p>
             </div><!-- end .content-block -->
 
+:           if $j.required_attributes.size() || $j.desired_attributes.size() {
             <div class="content-block">
-                <h2>Requisitos</h2>
+                <h2><: $l('Requisitos') :></h2>
                 <hr>
 
                 <p class="lead"><: $l('Necessário conhecimento em: ') :></p>
                 <ul class="requirements">
-    :           for $j.required_attributes.kv() -> $attr {
-                    <li><: $attr.value :></li>
-    :           }
+:               for $j.required_attributes -> $attr {
+                    <li><: $attr :></li>
+:               }
                 </ul>
                 <br class="clearfix">
 
                 <p class="lead"><: $l('Não necessário, mas desejável: ') :></p>
                 <ul class="requirements">
-    :           for $j.desired_attributes.kv() -> $attr {
-                    <li><: $attr.value :></li>
-    :           }
+:               for $j.desired_attributes -> $attr {
+                    <li><: $attr :></li>
+:               }
                 </ul>
             </div><!-- end .content-block -->
+:           }
 
             <div class="content-block">
-                <h2>A Empresa</h2>
+                <h2><: $l('A Empresa') :></h2>
                 <hr>
 
                 <div id="company-logo" class="pull-left">
@@ -73,11 +80,15 @@
 
                 <div id="company-info" class="pull-left">
                     <ul>
-                        <li><span class="glyphicon glyphicon-globe"></span> <: $c.website :></li>
-                        <li><span class="glyphicon glyphicon-envelope"></span> <: $c.email :></li>
+:                       for $c.websites -> $website {
+                            <li><span class="glyphicon glyphicon-globe"></span> <: $website :></li>
+:                       }
+:                       for $c.emails -> $email {
+                            <li><span class="glyphicon glyphicon-envelope"></span> <: $email :></li>
+:                       }
                     </ul>
 
-                    <a href="#" class="btn btn-danger">Ver mais</a>
+                    <a href="#" class="btn btn-danger"><: $l('Ver mais') :></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -89,39 +100,56 @@
         <div class="col-md-6">
 
             <div class="content-block">
-                <h2>Contrato, Salário &amp; Local</h2>
+                <h2><: $l('Contrato, Salário & Local') :></h2>
 
                 <hr>
 
-                <div id="contract-type" class="pull-left">
-                    clt
-                </div>
+                <div id="contract-type" class="pull-left"><:
+                    if $j.contract_type == 'no-contract' {
+                        raw("sem<br>contrato")
+                    }
+                    else {
+                        $j.contract_type
+                    }
+                :></div>
 
                 <div class="pull-left">
-                    <strong># de vagas:</strong> 4<br>
-                    <strong>Pagamento:</strong> <: $j.salary :><br>
-                    <strong>Horário:</strong> 44h semanais<br>
+                    <strong><: $l('Pagamento:') :></strong> <: $j.salary :><br>
+                    <strong><: $l('Horário:') :></strong> <: $j.hours :><br>
                 </div>
 
                 <div class="clearfix"></div>
 
-                <p class="lead">Local de Trabalho:</p>
+                <p class="lead"><: $l('Local de Trabalho:') :></p>
 
-                <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=CZmK8f958A74FQBZKAIdv17U-ik_ePT84GdkiDH0UAfsfeodrg&amp;q=2511+Gallatin+Ave,+Nashville&amp;aq=&amp;sll=36.195542,-86.742978&amp;sspn=0.009386,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=2511+Gallatin+Ave,+Nashville,+Davidson,+Tennessee+37206&amp;ll=36.195542,-86.742983&amp;spn=0.150156,0.338173&amp;t=m&amp;z=12&amp;output=embed"></iframe>
+                <!--iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=CZmK8f958A74FQBZKAIdv17U-ik_ePT84GdkiDH0UAfsfeodrg&amp;q=2511+Gallatin+Ave,+Nashville&amp;aq=&amp;sll=36.195542,-86.742978&amp;sspn=0.009386,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=2511+Gallatin+Ave,+Nashville,+Davidson,+Tennessee+37206&amp;ll=36.195542,-86.742983&amp;spn=0.150156,0.338173&amp;t=m&amp;z=12&amp;output=embed"></iframe-->
 
+:               if $c.formatted_address {
                 <p><span class="glyphicon glyphicon-map-marker"></span> <: $c.formatted_address :></p>
+:               } else {
+                <p><: $l('Não especificado.') :></p>
+:               }
             </div>
 
             <div class="content-block">
                 <h2>Candidate-se</h2>
                 <hr>
+:               if !$j.phone && !$j.email {
+                    <p>A empresa não especificou nem telefone, nem e-mail para contato.</p>
+:               } else {
 
-                <span class="glyphicon glyphicon-earphone"></span> (11) 1234-5678   <span class="glyphicon glyphicon-envelope"></span> abc@empresa.com
+:                   if $j.phone {
+                        <span class="glyphicon glyphicon-earphone"></span> <: $j.phone :>
+:                   }
+:                   if $j.email {
+                        <span class="glyphicon glyphicon-envelope"></span> <: $j.email :>
+:                   }
 
-                <p>&nbsp;</p>
+                    <br/>
 
-                <p>Ou envie a sua inscrição aqui:</p>
-                <a href="#" class="btn btn-danger">Inscreva-se</a>
+                    <p>Ou envie a sua inscrição aqui:</p>
+                    <a href="#" class="btn btn-danger">Inscreva-se</a>
+:               }
 
             </div><!-- end .content-block -->
 
@@ -153,22 +181,20 @@
         </div>
 
         <div class="col-md-6">
-        :   if $c.other_jobs.size() {
-
+:           if $c.other_jobs.size() {
             <h3 class="underlined"><: $l('Mais vagas em ') :> <a href="#"><: $c.name :></a></h3>
             <ul class="job-list">
-        :#      TODO: add link for jobs
-        :#      TODO: fix colors
-        :       for $c.other_jobs -> $oj {
+:               for $c.other_jobs -> $oj {
                 <li>
                     <span class="position-name"><: $oj.title :></span> @
                     <span class="city-name"><: $oj.location :></span>
                 </li>
-        :       }
+:               }
             </ul>
-        :   }
+:           }
         </div><!-- end .col-md-6 -->
     </div><!-- end .row -->
 
 </div><!-- end #single-job.content -->
+
 : }

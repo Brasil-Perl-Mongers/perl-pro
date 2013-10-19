@@ -173,59 +173,45 @@ sub get_recent_jobs {
 sub get_job_and_company_by_job_id {
     my ( $self, $id ) = @_;
 
-    my $job = $self->find($id);
+    my $job = $self->find($id, {
+        join => 'job_location',
+        '+select' => ['job_location.city'],
+        '+as' => ['city'],
+    });
 
     return unless $job;
 
     my $company = $job->company;
 
-    # TODO: get them all, not only first
-    my $website_obj = $company->company_websites->search({}, {
+    my @websites = map { $_->url } $company->company_websites->search({}, {
         order_by => { -desc => 'is_main_website' }
-    })->first;
-    my $phone_obj = $company->company_phones->search({}, {
+    })->all;
+    my @phones = map { $_->phone } $company->company_phones->search({}, {
         order_by => { -desc => 'is_main_phone' }
-    })->first;
-    my $email_obj = $company->company_emails->search({}, {
+    })->all;
+    my @emails = map { $_->email } $company->company_emails->search({}, {
         order_by => { -desc => 'is_main_address' }
-    })->first;
-    my $location_obj = $company->company_locations->search({}, {
+    })->all;
+    my @locations = map {
+        $_->address . ", "  .
+        $_->city    . " - " .
+        $_->state
+    } $company->company_locations->search({}, {
         order_by => { -desc => 'is_main_address' }
-    })->first;
-
-    my $url   = $website_obj ? $website_obj->url : '';
-    my $email = $email_obj   ? $email_obj->email : '';
-    my $phone = $phone_obj   ? $phone_obj->phone : '';
-
-    my $formatted_address = $location_obj
-                          ? ( $location_obj->address . ", "
-                            . $location_obj->city    . " - "
-                            . $location_obj->state )
-                          : ''
-                          ;
+    })->all;
 
     my $other_jobs = $company->jobs->search({
         'me.id'     => { '!=', $id },
-        'me.status' => 'active',
-    }, {
-        join     => [qw/promoted job_location/],
-        order_by => { -desc => [ 'promoted.status', 'created_at' ] }, # promoted first
-        rows     => 4,
-        select   => [ qw/me.id me.title job_location.city/ ],
-        as       => [ qw/id title city/ ],
-    });
-
-    my $l = $job->job_location;
-    if ($l) {
-        $l = $l->city;
-    }
+    })->for_company_profile;
 
     return {
         job => {
             id                  => $id,
             title               => $job->title,
-            salary              => $job->wages . '/' . _l($job->get_column('wages_for')),
-            city                => $l,
+            salary              => $job->wages . '/' . _l($job->wages_for),
+            hours               => $job->hours . 'h ' . _lh($job->hours_by),
+            contract_type       => $job->contract_type,
+            city                => $job->get_column('city'),
             description         => $job->description,
             required_attributes => $job->required_attributes,
             desired_attributes  => $job->desired_attributes,
@@ -234,19 +220,11 @@ sub get_job_and_company_by_job_id {
             name_in_url       => $company->name_in_url,
             name              => $company->name,
             description       => $company->description,
-            website           => $url,
-            email             => $email,
-            phone             => $phone,
-            formatted_address => $formatted_address,
-            other_jobs        => [
-                map {
-                    +{
-                        id    => $_->get_column('id'),
-                        title => $_->get_column('title'),
-                        city  => $_->get_column('city'),
-                    }
-                } $other_jobs->all
-            ],
+            websites          => \@websites,
+            emails            => \@emails,
+            phones            => \@phones,
+            addresses         => \@locations,
+            other_jobs        => $other_jobs,
         },
     };
 }
@@ -371,16 +349,8 @@ sub grid_search {
         if (my $h = $row->get_column('hours')) {
             my $ch = "$h horas";
 
-            if (my $p = $row->get_column('hours_by')) {
-                if ($p eq 'day') {
-                    $ch .= " por dia";
-                }
-                elsif ($p eq 'week') {
-                    $ch .= " por semana";
-                }
-                elsif ($p eq 'month') {
-                    $ch .= " por mês";
-                }
+            if (my $p = _lh($row->get_column('hours_by'))) {
+                $ch .= ' ' . $p;
             }
 
             $r->{contract_hours} = $ch;
@@ -406,10 +376,21 @@ sub grid_search {
 }
 
 sub _l {
+    return unless $_[0];
     my %l = (
         hour    => 'hora',
         month   => 'mês',
         project => 'projeto',
+    );
+    return $l{$_[0]};
+}
+
+sub _lh {
+    return unless $_[0];
+    my %l = (
+        day     => 'por dia',
+        week    => 'semanais',
+        month   => 'mensais',
     );
     return $l{$_[0]};
 }
