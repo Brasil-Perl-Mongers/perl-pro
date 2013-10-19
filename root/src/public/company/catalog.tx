@@ -17,7 +17,7 @@
         <div class="col-md-12">
 
             <div class="row">
-    :       for $companies -> $c {
+:           for $companies -> $c {
                 <div class="col-md-3">
                     <div class="content-block">
                         <div class="data">
@@ -27,15 +27,27 @@
                             <p><img src="http://lorempixel.com/200/170/abstract" alt="Logo <: $c.name :>" width="100%" /></p>
 
                             <p>
-                               <span class="glyphicon glyphicon-map-marker"></span> <: $c.city :><br>
-                               <small><a href="<: $c.website :>" target="_blank"><: $c.website :></a>&nbsp;</small>
+:                               if $c.city {
+                                <span class="glyphicon glyphicon-map-marker"></span> <: $c.city :><br>
+:                               }
+:                               if $c.website {
+                                <small><a href="<: $c.website :>" target="_blank"><: $c.website :></a></small>
+:                               }
                             </p>
 
                             <hr>
 
-                            <small><: $c.open_positions :> vaga</small>
+                            <small><:
+                                $c.open_positions;
+                                if $c.open_positions == 1 {
+                                    " vaga";
+                                }
+                                else {
+                                    " vagas";
+                                }
+                            :></small>
                             <a href="<: $uri('/company/' ~ $c.name_in_url) :>" class="btn btn-primary pull-right">
-                                <: $l('Ver empresa') :>
+:                               $l('Ver empresa')
                             </a>
 
                             <div class="clearfix"></div>
