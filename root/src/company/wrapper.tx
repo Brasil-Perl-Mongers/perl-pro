@@ -74,8 +74,8 @@
 
                         <div class="col-md-4">
                             <div class="pull-right">
-                                Seja bem vindo,<br>
-                                <strong>contato@empresa.com</strong>
+                                Seja bem-vindo,<br>
+                                <strong><: $user.login :></strong>
                             </div><!-- end .pull-right -->
                             <div class="clearfix"></div>
                         </div><!-- end .col-md-4 -->

@@ -105,34 +105,6 @@
 
             </div><!-- end .content-block -->
 
-            <div id="company_keywords" class="content-block">
-
-                <h2>Palavras-chave</h2>
-                <hr>
-
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Digite separado por vírgula">
-                    <span class="input-group-btn">
-                        <button class="btn btn-warning" type="button">Adicionar</button>
-                    </span>
-                </div>
-
-                <div id="company_tags"></div>
-
-            </div><!-- end .content-block -->
-        </div><!-- end .col-md-6 -->
-
-    </div><!-- end .row -->
-
-     <div class="row">
-
-        <div class="col-md-12">
-            <div id="company_photos" class="content-block">
-
-                <h2>Fotos da empresa</h2>
-                <hr>
-
-            </div><!-- end .content-block -->
         </div><!-- end .col-md-6 -->
 
     </div><!-- end .row -->

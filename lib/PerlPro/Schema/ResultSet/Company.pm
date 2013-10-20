@@ -211,6 +211,7 @@ sub get_to_edit {
         phones         => \@phones,
         locations      => \@locations,
         email          => $email,
+        login          => $company->users->first->login,
         open_positions => $company->jobs->search({ status => 'active' })->count,
     }
 }

@@ -18,52 +18,13 @@
         <div class="col-md-6">
             <div id="account_data" class="content-block">
 
-                <h2>Dados Cadastrais</h2>
+                <h2><: $l('Dados Cadastrais') :></h2>
                 <hr>
-
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label for="corporate_name" class="col-lg-3 control-label">Razão Social</label>
-                        <div class="col-lg-6">
-                            <input type="text" class="form-control" id="corporate_name" placeholder="Razão Social">
-                        </div>
-                        <label for="corporate_name" class="col-lg-2 control-label secundary-label">Alterar</label>
-                    </div>
-                    <div class="form-group">
-                        <label for="cnpj" class="col-lg-3 control-label">CNPJ</label>
-                        <div class="col-lg-6">
-                            <input type="text" class="form-control" id="cnpj" placeholder="CNPJ">
-                        </div>
-                        <label for="cnpj" class="col-lg-2 control-label secundary-label">Alterar</label>
-                    </div>
-
-                    <p>&nbsp;</p>
-
-                    <div class="form-group">
-                        <label for="inputPassword1" class="col-lg-3 control-label">Anúncios</label>
-                        <div class="col-lg-6">
-                            <span>
-                                5 anúncios cadastrados &nbsp;
-                                <small><a href="<: $uri('/account/my_jobs') :>">Gerenciar</a></small>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-
-            </div><!-- end .content-block -->
-        </div><!-- end .col-md-6 -->
-
-        <div class="col-md-6">
-            <div id="user_data" class="content-block">
-
-                <h2>Login &amp; Senha</h2>
-                <hr>
-
-                <form class="form-horizontal" role="form">
+                <div class="form-horizontal" role="form">
                     <div class="form-group">
                         <label for="login" class="col-lg-3 control-label">Login</label>
                         <div class="col-lg-6">
-                            <input type="text" class="form-control" id="login" placeholder="Digite o usuário">
+                            <input type="text" class="form-control" id="login" placeholder="Digite o usuário" value="<: $c.login :>">
                         </div>
                         <label for="login" class="col-lg-2 control-label secundary-label">Alterar</label>
                     </div>
@@ -76,28 +37,45 @@
                         </div>
                         <label class="col-lg-2 control-label secundary-label"><a href="#">Alterar</a></label>
                     </div>
-
-                    <p>&nbsp;</p>
-
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">Último Acesso</label>
+                        <label class="col-lg-3 control-label"><: $l('Último Acesso') :></label>
                         <div class="col-lg-6">
-                            <span>03/09/2013, às 14h42</span>
+:                           if $previous_login {
+                            <span><: $previous_login :></span>
+:                           } else {
+                            <span><: $l('Este é seu primeiro login.'); :></span>
+:                           }
                         </div>
                     </div>
-                </form>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"><: $l('Anúncios') :></label>
+                        <div class="col-lg-6">
+                            <span><:
+                                if $c.open_positions == 0 {
+                                    "Nenhum anúncio cadastrado.";
+                                }
+                                elsif $c.open_positions == 1 {
+                                    "1 anúncio cadastrado.";
+                                }
+                                else {
+                                    $c.open_positions;
+                                    " anúncios cadastrados.";
+                                }
+
+:>
+                                <small><a href="<: $uri('/account/my_jobs') :>"><: $l('Gerenciar') :></a></small>
+                            </span>
+                        </div>
+                    </div>
+                </div>
 
             </div><!-- end .content-block -->
         </div><!-- end .col-md-6 -->
 
-    </div><!-- end .row -->
-
-     <div class="row">
-
         <div class="col-md-6">
             <div id="account_contacts" class="content-block">
 
-                <h2>Contatos Administrativos</h2>
+                <h2><: $l('Contatos Administrativos') :></h2>
                 <hr>
 
                 <form class="form-horizontal" role="form">
@@ -140,69 +118,7 @@
             </div><!-- end .content-block -->
         </div><!-- end .col-md-6 -->
 
-        <div class="col-md-6">
-            <div id="access_info" class="content-block">
-
-                <h2>Informações</h2>
-                <hr>
-
-                <span>Filtre por período: </span><br>
-                <div class="form-inline">
-
-                    <div class="form-group">
-                        <label class="sr-only" for="start_date">Data inicial</label>
-                        <input type="date" class="form-control" name="start_date" value="Data inicial">
-                    </div>
-
-                    <div class="form-group">&nbsp;até&nbsp; </div>
-
-                    <div class="form-group">
-                        <label class="sr-only" for="end_date">Data final</label>
-                        <input type="date" class="form-control" name="end_date" value="Data final">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="button" class="btn btn-primary" value="OK" />
-                    </div>
-
-                </div><!-- end .form-inline -->
-
-                <hr>
-
-                <div class="form-horizontal">
-
-                    <div class="form-group">
-                        <label class="col-lg-4 control-label">Visitas</label>
-                        <div class="col-lg-6">
-                            <span>15</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-lg-4 control-label">Visitantes únicos</label>
-                        <div class="col-lg-6">
-                            <span>4</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-lg-4 control-label">Duração média da visita</label>
-                        <div class="col-lg-6">
-                            <span>00:02:23</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-lg-4 control-label">Anúncio mais acessado</label>
-                        <div class="col-lg-6">
-                            <span>Prgramador Catalyst @ São Paulo</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div><!-- end .content-block -->
-        </div><!-- end .col-md-6 -->
-
     </div><!-- end .row -->
+
 </div><!-- end #account-home.content -->
 : }
