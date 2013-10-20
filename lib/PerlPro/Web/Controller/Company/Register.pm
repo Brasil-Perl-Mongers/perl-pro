@@ -1,7 +1,6 @@
 package PerlPro::Web::Controller::Company::Register;
 use Moose;
 use namespace::autoclean;
-use DDP;
 use utf8;
 
 BEGIN { extends 'Catalyst::Controller' }
