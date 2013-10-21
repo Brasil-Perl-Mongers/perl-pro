@@ -9,7 +9,7 @@ BEGIN;
     CREATE TABLE job_location (
         job INTEGER NOT NULL,
         latlng POINT,               -- retrieve from some geolocation service
-        address TEXT NOT NULL,
+        address TEXT,
         city TEXT NOT NULL,         -- not checked in DB because it's retrieve from some geolocation service
         state TEXT NOT NULL,        -- ^^
         country TEXT NOT NULL,      -- ^^

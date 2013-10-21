@@ -51,7 +51,7 @@ __PACKAGE__->table("job_location");
 =head2 address
 
   data_type: 'text'
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 city
 
@@ -76,7 +76,7 @@ __PACKAGE__->add_columns(
   "latlng",
   { data_type => "point", is_nullable => 1 },
   "address",
-  { data_type => "text", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
   "city",
   { data_type => "text", is_nullable => 0 },
   "state",
@@ -115,8 +115,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2013-08-27 15:17:47
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:C5j3dlTb/EbX/eXIsbXVVA
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-10-21 04:15:27
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ShGARABzdCX5A/sKab8Ntg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
