@@ -64,23 +64,44 @@ sub remove :Chained('item') PathPart('') Args(0) DELETE {
 sub add_job :Chained('base') PathPart('job/new') Does('DisplayExecute') Args(0) {
     my ( $self, $ctx ) = @_;
 
-    if (ref $ctx->req->params->{job}) {
-        $ctx->req->params->{job}{create_or_update}{company} = $ctx->stash->{company};
-    }
-
     my $uri = $ctx->req->uri;
 
     $ctx->stash(
         template        => 'company/add_or_update_job.tx',
         current_page    => 'add_job',
         form_action_uri => "$uri",
+        is_update       => 0,
     );
 }
 
 sub add_job_display {
     my ( $self, $ctx ) = @_;
 
-    _flatten_attributes($ctx->stash->{fields});
+    my $fields = $ctx->stash->{fields} ||= {};
+
+    my $company         = $ctx->model('DB::Company')->find($ctx->stash->{company});
+    my $public_phone    = $company->company_phones->search({ is_public => 1 })->first;
+    my $public_email    = $company->company_emails->search({ is_public => 1 })->first;
+    my $public_location = $company->company_locations->search({ is_public => 1 })->first;
+
+    $fields->{'job.create_or_update.address'} = $public_location ? $public_location->address : '';
+    $fields->{'job.create_or_update.city'}    = $public_location ? $public_location->city : '';
+    $fields->{'job.create_or_update.state'}   = $public_location ? $public_location->state : '';
+
+    $fields->{'job.create_or_update.email'} = $public_email ? $public_email->email : '';
+    $fields->{'job.create_or_update.phone'} = $public_phone ? $public_phone->phone : '';
+
+    _flatten_attributes($fields);
+}
+
+sub add_job_execute {
+    my ( $self, $ctx ) = @_;
+
+    if (ref $ctx->req->params->{job}) {
+        my $p = $ctx->req->params->{job}{create_or_update};
+        $p->{company} = $ctx->stash->{company};
+        $p->{status}  = 'active';
+    }
 }
 
 sub update :Chained('item') PathPart('') Does('DisplayExecute') Args(0) GET POST {
@@ -101,6 +122,7 @@ sub update :Chained('item') PathPart('') Does('DisplayExecute') Args(0) GET POST
         desired_attributes  => $fields->{'job.create_or_update.desired_attributes'},
         form_action_uri     => "$uri",
         uri_to_redirect     => [ $self->action_for('update'), [ $ctx->stash->{id} ] ],
+        is_update           => 1,
     );
 }
 

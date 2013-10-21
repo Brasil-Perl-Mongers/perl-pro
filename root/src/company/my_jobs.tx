@@ -36,22 +36,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                :       for $jobs -> $j {
+:                       for $jobs -> $j {
                         <tr>
                             <td><input type="checkbox" name=""/></td>
-                            <td><strong><: $j.title :></strong> @ <: $j.location :></td>
-                :           if $j.status == 'active' {
+                            <td><strong><: $j.title :></strong><: if $j.location { ' @ '; $j.location; } :></td>
+:                           if $j.status == 'active' {
                             <td class="active">Ativo</td>
-                :           } else {
+:                           } else {
                             <td class="inactive">Inativo</td>
-                :           }
+:                           }
                             <td><: $j.created_at.strftime('%d.%m') :></td>
                             <td>
-                                <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
-                                <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="<: $uri('/account/job/' ~ $j.id) :>"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
+                                <a href="#" class="remove" data-job-id="<: $j.id :>"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>
-                :       }
+:                       }
                     </tbody>
                 </table>
 

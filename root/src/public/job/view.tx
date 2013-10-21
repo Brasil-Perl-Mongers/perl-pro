@@ -83,12 +83,15 @@
 :                       for $c.websites -> $website {
                             <li><span class="glyphicon glyphicon-globe"></span> <: $website :></li>
 :                       }
+:                       for $c.phones -> $phone {
+                            <li><span class="glyphicon glyphicon-earphone"></span> <: $phone :></li>
+:                       }
 :                       for $c.emails -> $email {
                             <li><span class="glyphicon glyphicon-envelope"></span> <: $email :></li>
 :                       }
                     </ul>
 
-                    <a href="#" class="btn btn-danger"><: $l('Ver mais') :></a>
+                    <a href="<: $uri('/company/' ~ $c.name_in_url) :>" class="btn btn-danger"><: $l('Ver mais') :></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -124,8 +127,8 @@
 
                 <!--iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=CZmK8f958A74FQBZKAIdv17U-ik_ePT84GdkiDH0UAfsfeodrg&amp;q=2511+Gallatin+Ave,+Nashville&amp;aq=&amp;sll=36.195542,-86.742978&amp;sspn=0.009386,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=2511+Gallatin+Ave,+Nashville,+Davidson,+Tennessee+37206&amp;ll=36.195542,-86.742983&amp;spn=0.150156,0.338173&amp;t=m&amp;z=12&amp;output=embed"></iframe-->
 
-:               if $c.formatted_address {
-                <p><span class="glyphicon glyphicon-map-marker"></span> <: $c.formatted_address :></p>
+:               if $j.city || $j.state || $j.address {
+                <p><span class="glyphicon glyphicon-map-marker"></span> <: if $j.address { $j.address; ', '; } $j.city ~ ' - ' ~ $j.state :></p>
 :               } else {
                 <p><: $l('Não especificado.') :></p>
 :               }
@@ -158,7 +161,7 @@
 
     <!-- related jobs -->
     <div class="row">
-        <div class="col-md-6">
+        <!--div class="col-md-6">
             <h3 class="underlined"><: $l('Vagas similares') :></h3>
             <ul class="job-list">
                 <li>
@@ -178,11 +181,11 @@
                     <span class="city-name">Campinas</span>
                 </li>
             </ul>
-        </div>
+        </div-->
 
         <div class="col-md-6">
 :           if $c.other_jobs.size() {
-            <h3 class="underlined"><: $l('Mais vagas em ') :> <a href="#"><: $c.name :></a></h3>
+            <h3 class="underlined"><: $l('Mais vagas em ') :> <a href="<: $uri('/company/' ~ $c.name_in_url) :>"><: $c.name :></a></h3>
             <ul class="job-list">
 :               for $c.other_jobs -> $oj {
                 <li>

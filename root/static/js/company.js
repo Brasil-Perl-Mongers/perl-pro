@@ -60,7 +60,7 @@ jQuery(function ($) {
         return false;
     });
 
-    $('table.my_jobs td.remove a').click(function () {
+    $('table.my_jobs td a.remove').click(function () {
         window.about_to_be_removed = $(this).data('job-id');
         $('#remove_job_modal').modal('show');
         return false;
@@ -106,6 +106,7 @@ jQuery(function ($) {
     var timeout;
     var last;
 
+    /*
     $("#job_location_search").typeahead({
         source: function (query, process) {
             if (query === last) {
@@ -151,4 +152,5 @@ jQuery(function ($) {
             return item;
         }
     });
+    */
 });

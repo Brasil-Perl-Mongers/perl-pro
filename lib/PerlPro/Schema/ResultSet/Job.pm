@@ -28,7 +28,6 @@ sub verifiers_specs {
                 company             => { required => 1, type => Str },
                 title               => { required => 1, type => Str },
                 description         => { required => 1, type => Str },
-                vacancies           => { required => 0, type => Int },
                 phone               => { required => 0, type => Str },
                 email               => { required => 0, type => EmailAddress },
                 wages               => { required => 1, type => Money },
@@ -36,6 +35,9 @@ sub verifiers_specs {
                 hours               => { required => 1, type => Int },
                 hours_by            => { required => 1, type => HoursBy },
                 is_at_office        => { required => 0, type => Bool },
+                address             => { required => 0, type => Str },
+                city                => { required => 0, type => Str },
+                state               => { required => 0, type => Str },
                 contract_type       => { required => 0, type => ContractType }, # if it's not set, it's "no-contract"
                 desired_attributes  => { required => 0, type => AttributeArray, coerce => 1 },
                 required_attributes => { required => 0, type => AttributeArray, coerce => 1 },
@@ -50,7 +52,7 @@ sub action_specs {
         create_or_update => sub {
             my %values = shift->valid_values;
             my (%row_values, $row);
-            for (qw/status company title description vacancies phone email wages wages_for hours hours_by contract_type/) {
+            for (qw/status company title description phone email wages wages_for hours hours_by contract_type/) {
                 $row_values{$_} = $values{$_} if $values{$_};
             }
             $row_values{is_telecommute} = $values{is_at_office} ? 0 : 1;
@@ -61,6 +63,24 @@ sub action_specs {
             }
             else {
                 $row = $self->create(\%row_values);
+            }
+
+            if ($values{state} && $values{city}) {
+                if ($row->job_location) {
+                    $row->job_location->update({
+                        address => $values{address},
+                        city    => $values{city},
+                        state   => $values{state},
+                    });
+                }
+                else {
+                    $row->create_related('job_location', {
+                        address => $values{address},
+                        city    => $values{city},
+                        state   => $values{state},
+                        country => 'Brazil',
+                    });
+                }
             }
 
             for my $type (qw/required desired/) {
@@ -175,28 +195,29 @@ sub get_job_and_company_by_job_id {
 
     my $job = $self->find($id, {
         join => 'job_location',
-        '+select' => ['job_location.city'],
-        '+as' => ['city'],
+        '+select' => ['job_location.address', 'job_location.city', 'job_location.state'],
+        '+as' => ['address', 'city', 'state'],
     });
 
     return unless $job;
 
     my $company = $job->company;
 
-    my @websites = map { $_->url } $company->company_websites->search({}, {
+    my @websites = map {
+        $_->url
+    } $company->company_websites->search({}, {
         order_by => { -desc => 'is_main_website' }
     })->all;
-    my @phones = map { $_->phone } $company->company_phones->search({}, {
+
+    my @phones = map {
+        $_->phone
+    } $company->company_phones->search({ is_public => 1 }, {
         order_by => { -desc => 'is_main_phone' }
     })->all;
-    my @emails = map { $_->email } $company->company_emails->search({}, {
-        order_by => { -desc => 'is_main_address' }
-    })->all;
-    my @locations = map {
-        $_->address . ", "  .
-        $_->city    . " - " .
-        $_->state
-    } $company->company_locations->search({}, {
+
+    my @emails = map {
+        $_->email
+    } $company->company_emails->search({ is_public => 1 }, {
         order_by => { -desc => 'is_main_address' }
     })->all;
 
@@ -208,10 +229,14 @@ sub get_job_and_company_by_job_id {
         job => {
             id                  => $id,
             title               => $job->title,
+            phone               => $job->phone,
+            email               => $job->email,
             salary              => $job->wages . '/' . _l($job->wages_for),
             hours               => $job->hours . 'h ' . _lh($job->hours_by),
             contract_type       => $job->contract_type,
+            address             => $job->get_column('address'),
             city                => $job->get_column('city'),
+            state               => $job->get_column('state'),
             description         => $job->description,
             required_attributes => $job->required_attributes,
             desired_attributes  => $job->desired_attributes,
@@ -223,7 +248,6 @@ sub get_job_and_company_by_job_id {
             websites          => \@websites,
             emails            => \@emails,
             phones            => \@phones,
-            addresses         => \@locations,
             other_jobs        => $other_jobs,
         },
     };
@@ -242,6 +266,15 @@ sub get_to_update {
         $item = $self->find($id);
     }
 
+    my $location = $item->job_location;
+    my %l;
+
+    %l = (
+        address => $location->address,
+        city    => $location->city,
+        state   => $location->state,
+    ) if $location;
+
     my %job = (
         id                  => $id,
         status              => $item->get_column('status'),
@@ -257,6 +290,9 @@ sub get_to_update {
         hours_by            => $item->get_column('hours_by'),
         is_at_office        => !$item->get_column('is_telecommute'),
         contract_type       => $item->get_column('contract_type'),
+        address             => $l{address},
+        city                => $l{city},
+        state               => $l{state},
         required_attributes => $item->required_attributes,
         desired_attributes  => $item->desired_attributes,
     );
