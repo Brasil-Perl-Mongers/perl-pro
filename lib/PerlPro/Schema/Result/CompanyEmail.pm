@@ -81,11 +81,13 @@ __PACKAGE__->add_columns(
 
 =item * L</email>
 
+=item * L</is_public>
+
 =back
 
 =cut
 
-__PACKAGE__->set_primary_key("company", "email");
+__PACKAGE__->set_primary_key("company", "email", "is_public");
 
 =head1 RELATIONS
 
@@ -105,8 +107,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-10-19 18:32:13
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:D4y4sh/sU3Dzlr2HMgFCWg
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-10-21 02:36:25
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:u4rau/KOM1ZPyL/48RI4uA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
