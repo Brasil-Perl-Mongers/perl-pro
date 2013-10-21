@@ -5,41 +5,66 @@ use utf8;
 
 BEGIN { extends 'Catalyst::Controller' }
 
-sub base :Chained('/company/auth/requires_login') PathPart('') CaptureArgs(0) {}
+sub base :Chained('/company/auth/requires_login') PathPart('') CaptureArgs(0) {
+    my ( $self, $ctx ) = @_;
 
-sub home :Chained('base') Args(0) GET {
+    $ctx->stash(current_model => 'DB::Company');
+}
+
+sub home :Chained('base') Does('DisplayExecute') Args(0) {
     my ( $self, $ctx ) = @_;
 
     $ctx->stash(
         template     => 'company/home.tx',
         current_page => 'home',
-        c            => $ctx->model('DB::Company')->get_to_edit($ctx->stash->{company}),
+        fields       => $ctx->model->get_to_update_account(
+            $ctx->user->get_object->login,
+            $ctx->stash->{company}
+        ),
     );
 }
 
-sub profile :Chained('base') Args(0) GET {
+sub home_execute {
+    my ( $self, $ctx ) = @_;
+
+    $ctx->stash->{DO_NOT_APPLY_DM} = 1;
+
+    my $dm      = $ctx->model('DataManager');
+    my $params  = $ctx->req->params;
+    my $company = $params->{company}{account};
+    $company->{name_in_url} = $ctx->stash->{company};
+
+    $dm->apply_one( 'company.account', $company );
+
+    if (my $obj = $dm->get_outcome_for('company.account')) {
+        $ctx->set_authenticated($ctx->find_user({ login => $obj->users->first->login }));
+    }
+}
+
+
+sub profile :Chained('base') Does('DisplayExecute') Args(0) {
     my ( $self, $ctx ) = @_;
 
     $ctx->stash(
         template     => 'company/profile.tx',
         current_page => 'profile',
-        c            => $ctx->model('DB::Company')->get_to_edit($ctx->stash->{company}),
+        fields       => $ctx->model->get_to_update_public_profile(
+            $ctx->stash->{company}
+        ),
     );
 }
 
-sub update : Chained('base') PathPart('data') Args(1) PUT {
-    my ( $self, $ctx, $field ) = @_;
-    # update a given field (by AJAX)
-}
-
-sub add_data : Chained('base') PathPart('add_data') Args(0) POST {
+sub profile_execute {
     my ( $self, $ctx ) = @_;
-    # add a new item of the given field (by AJAX), e.g., add new phone
-}
 
-sub remove_data : Chained('base') PathPart('remove') Args(2) DELETE {
-    my ( $self, $ctx, $field, $item ) = @_;
-    # remove item of the given field (by AJAX), e.g., delete phone
+    $ctx->stash->{DO_NOT_APPLY_DM} = 1;
+
+    my $dm      = $ctx->model('DataManager');
+    my $params  = $ctx->req->params;
+    my $company = $params->{company}{public_profile};
+    $company->{name_in_url} = $ctx->stash->{company};
+
+    $dm->apply_one( 'company.public_profile', $company );
 }
 
 __PACKAGE__->meta->make_immutable;

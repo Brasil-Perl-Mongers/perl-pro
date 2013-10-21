@@ -22,16 +22,40 @@ sub verifiers_specs {
     return {
         register => Data::Verifier->new(
             profile => {
-                name        => { required => 1, type => Str },
+                name    => { required => 1, type => Str },
+                email   => { required => 1, type => EmailAddress },
+                phone   => { required => 0, type => Str },
+                address => { required => 0, type => Str },
+                city    => { required => 0, type => Str },
+                state   => { required => 0, type => Str },
+            },
+            filters => [
+                sub { HTML::Entities::encode_entities( $_[0], qr{<>&"'} ) }
+            ],
+        ),
+        account => Data::Verifier->new(
+            profile => {
+                name_in_url => { required => 1, type => Str },
+                login       => { required => 1, type => Str },
                 email       => { required => 1, type => EmailAddress },
                 phone       => { required => 0, type => Str },
                 address     => { required => 0, type => Str },
                 city        => { required => 0, type => Str },
                 state       => { required => 0, type => Str },
             },
-            filters => [
-                sub { HTML::Entities::encode_entities( $_[0], qr{<>&"'} ) }
-            ],
+        ),
+        public_profile => Data::Verifier->new(
+            profile => {
+                name_in_url => { required => 1, type => Str },
+                name        => { required => 1, type => Str },
+                description => { required => 0, type => Str },
+                website     => { required => 0, type => Uri, coerce => 1 },
+                email       => { required => 0, type => EmailAddress },
+                phone       => { required => 0, type => Str },
+                address     => { required => 0, type => Str },
+                city        => { required => 0, type => Str },
+                state       => { required => 0, type => Str },
+            },
         ),
         add_email => Data::Verifier->new(
             profile => {
@@ -80,21 +104,98 @@ sub action_specs {
                 description => $values{description},
             });
 
-            $row->add_to_company_emails({ email => $values{email}, is_main_address => 1 });
+            $row->add_to_company_emails({
+                email           => $values{email},
+                is_main_address => 1,
+                is_public       => 0
+            });
             if ($values{phone}) {
                 $row->add_to_company_phones({
                     phone         => $values{phone},
                     is_main_phone => 1,
+                    is_public     => 0,
                 });
             }
 
-            $row->add_to_company_locations({
-                address         => $values{address},
-                city            => $values{city},
-                state           => $values{state},
-                country         => 'Brazil', # later on, it won't be hardcoded
-                is_main_address => 1,
+            if ($values{city} && $values{state}) {
+                $row->add_to_company_locations({
+                    address         => $values{address},
+                    city            => $values{city},
+                    state           => $values{state},
+                    country         => 'Brazil', # later on, it won't be hardcoded
+                    is_main_address => 1,
+                    is_public       => 0,
+                });
+            }
+
+            return $row;
+        },
+        account => sub {
+            my %values = shift->valid_values;
+
+            my $row = $self->find($values{name_in_url});
+
+            $row->company_emails->search({ is_public => 0 })->delete;
+            $row->company_phones->search({ is_public => 0 })->delete;
+            $row->company_locations->search({ is_public => 0 })->delete;
+
+            $row->add_to_company_emails({ is_public => 0, email => $values{email} });
+            if ($values{phone}) {
+                $row->add_to_company_phones({ is_public => 0, phone => $values{phone} });
+            }
+            if ($values{city} && $values{state}) {
+                $row->add_to_company_locations({
+                    is_public => 0,
+                    address   => $values{address},
+                    city      => $values{city},
+                    state     => $values{state},
+                    country   => 'Brazil',
+                });
+            }
+
+            my $user = $row->users->first;
+            $user->update({ login => $values{login} });
+            $user->user_emails->search({ is_main_address => 1 })->first->update({
+                email => $values{email}
             });
+
+            return $row;
+        },
+        public_profile => sub {
+            my %values = shift->valid_values;
+
+            my $row = $self->find($values{name_in_url});
+            $row->update({
+                name        => $values{name},
+                description => $values{description},
+            });
+
+            $row->company_websites->delete;
+            $row->company_emails->search({ is_public => 1 })->delete;
+            $row->company_phones->search({ is_public => 1 })->delete;
+            $row->company_locations->search({ is_public => 1 })->delete;
+
+            if ($values{website}) {
+                $row->add_to_company_websites({ url => $values{website} });
+            }
+
+            if ($values{email}) {
+                $row->add_to_company_emails({ is_public => 1, email => $values{email} });
+            }
+
+            if ($values{phone}) {
+                $row->add_to_company_phones({ is_public => 1, phone => $values{phone} });
+            }
+
+            if ($values{city} && $values{state}) {
+                $row->add_to_company_locations({
+                    is_public => 1,
+                    address   => $values{address},
+                    city      => $values{city},
+                    state     => $values{state},
+                    country   => 'Brazil',
+                });
+            }
 
             return $row;
         },
@@ -152,19 +253,19 @@ sub get_for_profile {
 
     my @phones = map {
         $_->phone
-    } $company->company_phones->search({}, {
+    } $company->company_phones->search({ is_public => 1 }, {
         order_by => { -desc => 'is_main_phone' }
     })->all;
 
     my @emails = map {
         $_->email
-    } $company->company_emails->search({}, {
+    } $company->company_emails->search({ is_public => 1 }, {
         order_by => { -desc => 'is_main_address' }
     })->all;
 
     my @locations = map {
         $_->address . ", " . $_->city  . " - " . $_->state
-    } $company->company_locations->search({}, {
+    } $company->company_locations->search({ is_public => 1 }, {
         order_by => { -desc => 'is_main_address' }
     })->all;
 
@@ -180,7 +281,49 @@ sub get_for_profile {
     }
 }
 
-sub get_to_edit {
+sub get_to_update_account {
+    my ($self, $login, $id) = @_;
+
+    my $company = $self->find($id);
+
+    return unless $company;
+
+    my @phones = $company->company_phones->search(
+        { is_public => 0 },
+        { rows => 1 }
+    )->all;
+    my @emails = $company->users->find($login)->user_emails->search(
+        {},
+        {
+            order_by => { -desc => 'is_main_address' },
+            rows     => 1,
+        }
+    )->all;
+    my @locations = $company->company_locations->search(
+        { is_public => 0 },
+        { rows => 1 }
+    )->all;
+
+    my ($phone) = map { $_->phone } @phones;
+    my ($email) = map { $_->email } @emails;
+    my ($address, $city, $state) = map { ($_->address, $_->city, $_->state) } @locations;
+
+    my %account = (
+        email          => $email,
+        phone          => $phone,
+        address        => $address,
+        city           => $city,
+        state          => $state,
+        login          => $login,
+        open_positions => $company->jobs->search({ status => 'active' })->count,
+    );
+
+    return {
+        map { ( "company.account.$_" => $account{$_} ) } keys %account
+    };
+}
+
+sub get_to_update_public_profile {
     my ($self, $id) = @_;
 
     my $company = $self->find($id);
@@ -188,32 +331,42 @@ sub get_to_edit {
     return unless $company;
 
     my @websites = $company->company_websites->search({}, {
-        order_by => { -desc => 'is_main_website' }
+        order_by => { -desc => 'is_main_website' },
+        rows => 1,
     })->all;
-    my @phones   = $company->company_phones->search({}, {
-        order_by => { -desc => 'is_main_phone' }
+    my @phones   = $company->company_phones->search({ is_public => 1 }, {
+        order_by => { -desc => 'is_main_phone' },
+        rows => 1,
     })->all;
-    my @emails   = $company->company_emails->search({}, {
-        order_by => { -desc => 'is_main_address' }
+    my @emails   = $company->company_emails->search({ is_public => 1 }, {
+        order_by => { -desc => 'is_main_address' },
+        rows => 1,
     })->all;
-    my @locations = $company->company_locations->search({}, {
-        order_by => { -desc => 'is_main_address' }
+    my @locations = $company->company_locations->search({ is_public => 1 }, {
+        order_by => { -desc => 'is_main_address' },
+        rows => 1,
     })->all;
 
-    my $email = scalar @emails ? $emails[0]->email : '';
+    my ($website) = map { $_->url } @websites;
+    my ($phone) = map { $_->phone } @phones;
+    my ($email) = map { $_->email } @emails;
+    my ($address, $city, $state) = map { ($_->address, $_->city, $_->state) } @locations;
 
-    return {
-        name_in_url    => $company->name_in_url,
+    my %profile = (
+        name_in_url    => $id,
         name           => $company->name,
         description    => $company->description,
-        websites       => \@websites,
-        emails         => \@emails,
-        phones         => \@phones,
-        locations      => \@locations,
+        website        => $website,
         email          => $email,
-        login          => $company->users->first->login,
-        open_positions => $company->jobs->search({ status => 'active' })->count,
-    }
+        phone          => $phone,
+        address        => $address,
+        city           => $city,
+        state          => $state,
+    );
+
+    return {
+        map { ( "company.public_profile.$_" => $profile{$_} ) } keys %profile
+    };
 }
 
 sub get_featured_companies {

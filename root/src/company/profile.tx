@@ -7,7 +7,7 @@
         <div class="page-title">
 
             <div class="pull-right">
-                <a class="btn btn-warning" href="#">Ver página</a>
+                <a class="btn btn-warning" href="<: $uri('/company/' ~ $fields['company.public_profile.name_in_url']) :>">Ver página</a>
             </div>
 
             <h1 class="underlined"><: $l('Perfil Público') :></h1>
@@ -18,18 +18,38 @@
 </div><!-- end .row -->
 
 <div id="account-profile" class="content">
+:   if ($messages && $messages.count()) {
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><: $l('Erro ao salvar') :></h4>
+            <ul>
+:           for $messages.messages -> $message {
+                <li><: $lm($message); :></li>
+:           }
+            </ul>
+        </div>
+:   }
+:   if ($is_success) {
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><: $l('Dados salvos com sucesso') :></h4>
+        </div>
+:   }
+
+:   block main_form | fif($fields) {
+    <form action="<: $uri('/account/profile') :>" method="post">
     <div class="row">
 
         <div class="col-md-6">
             <div id="profile_data" class="content-block">
 
-                <h2>Informações Básicas</h2>
+                <h2><: $l('Informações Básicas') :></h2>
                 <hr>
 
-                <form class="form-horizontal" role="form">
+                <div class="form-horizontal" role="form">
 
                     <div class="form-group">
-                        <label for="corporate_name" class="col-lg-3 control-label">Logotipo</label>
+                        <label for="corporate_name" class="col-lg-3 control-label"><: $l('Logotipo') :></label>
                         <div class="col-lg-4">
                             <img src="http://lorempixel.com/180/160/abstract/" alt="Logo <: $c.name :>" width="100%" />
                         </div>
@@ -42,20 +62,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="trading_name" class="col-lg-3 control-label">Nome</label>
+                        <label for="company_name" class="col-lg-3 control-label"><: $l('Nome') :></label>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" id="trading_name" placeholder="Nome da empresa">
+                            <input type="text" class="form-control" id="company_name" placeholder="Nome da empresa" name="company.public_profile.name">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="description" class="col-lg-3 control-label">Descrição</label>
                         <div class="col-lg-9">
-                            <textarea class="form-control" name="description" placeholder="Digite uma breve descrição da empresa" rows="10"></textarea>
+                            <textarea class="form-control" id="description" name="company.public_profile.description" placeholder="Digite uma breve descrição da empresa" rows="10"></textarea>
                         </div>
                     </div>
 
-                </form>
+                </div>
 
             </div><!-- end .content-block -->
         </div><!-- end .col-md-6 -->
@@ -63,44 +83,77 @@
         <div class="col-md-6">
             <div id="public_contacts" class="content-block">
 
-                <h2>Contatos públicos</h2>
+                <h2><: $l('Contatos públicos') :></h2>
                 <hr>
 
-                <form class="form-horizontal" role="form">
+                <div class="form-horizontal" role="form">
 
                     <div class="form-group">
                         <label for="website" class="col-lg-2 control-label"><span class="glyphicon glyphicon-globe"></span></label>
                         <div class="col-lg-6">
-                            <input type="url" class="form-control" id="website" placeholder="Website">
-                            <small><a class="add-link" href="#">Adicionar site</a></small>
+                            <input type="url" class="form-control" id="website" placeholder="Website" name="company.public_profile.website">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="email" class="col-lg-2 control-label"><span class="glyphicon glyphicon-envelope"></span></label>
                         <div class="col-lg-6">
-                            <input type="email" class="form-control" id="email" placeholder="Email">
-                            <small><a class="add-link" href="#">Adicionar email</a></small>
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="company.public_profile.email">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="phone" class="col-lg-2 control-label"><span class="glyphicon glyphicon-earphone"></span></label>
                         <div class="col-lg-6">
-                            <input type="tel" class="form-control" id="phone" placeholder="Telefone">
-                            <small><a class="add-link" href="#">Adicionar telefone</a></small>
+                            <input type="tel" class="form-control" id="phone" placeholder="Telefone" name="company.public_profile.phone">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="address" class="col-lg-2 control-label"><span class="glyphicon glyphicon-map-marker"></span></label>
                         <div class="col-lg-6">
-                            <input type="text" class="form-control" id="address" placeholder="Endereço">
-                            <small><a class="add-link" href="#">Adicionar endereço</a></small>
+                            <input type="text" class="form-control" id="address" placeholder="Endereço" name="company.public_profile.address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-lg-offset-2">
+                            <input type="text" class="form-control" id="city" name="company.public_profile.city" placeholder="Cidade">
+                        </div>
+                        <div class="col-lg-4">
+                            <select name="company.public_profile.state" class="form-control">
+                                <option value="">Estado</option>
+                                <option value="ac">Acre</option>
+                                <option value="al">Alagoas</option>
+                                <option value="ap">Amapá</option>
+                                <option value="am">Amazonas</option>
+                                <option value="ba">Bahia</option>
+                                <option value="ce">Ceará</option>
+                                <option value="df">Distrito Federal</option>
+                                <option value="es">Espírito Santo</option>
+                                <option value="go">Goiás</option>
+                                <option value="ma">Maranhão</option>
+                                <option value="mt">Mato Grosso</option>
+                                <option value="ms">Mato Grosso do Sul</option>
+                                <option value="mg">Minas Gerais</option>
+                                <option value="pa">Pará</option>
+                                <option value="pb">Paraíba</option>
+                                <option value="pr">Paraná</option>
+                                <option value="pe">Pernambuco</option>
+                                <option value="pi">Piauí</option>
+                                <option value="rj">Rio de Janeiro</option>
+                                <option value="rn">Rio Grande do Norte</option>
+                                <option value="rs">Rio Grande do Sul</option>
+                                <option value="ro">Rondônia</option>
+                                <option value="rr">Roraima</option>
+                                <option value="sc">Santa Catarina</option>
+                                <option value="sp">São Paulo</option>
+                                <option value="se">Sergipe</option>
+                                <option value="to">Tocantins</option>
+                            </select>
                         </div>
                     </div>
 
-                </form>
+                </div>
 
 
             </div><!-- end .content-block -->
@@ -108,5 +161,16 @@
         </div><!-- end .col-md-6 -->
 
     </div><!-- end .row -->
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="pull-right">
+                <button type="submit" class="btn btn-success"><: $l('Salvar') :></button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div><!-- end .row -->
+:   }
 </div><!-- end #account-home.content -->
 : }
