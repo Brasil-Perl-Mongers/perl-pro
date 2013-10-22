@@ -25,6 +25,8 @@ body{
     border: 0;
 }
 
+.main-content { min-height: 550px; }
+
 .btn {
     height: 34px;
 }
@@ -72,6 +74,11 @@ body{
 .btn-warning { background: #E57E21; }
 .btn-primary { background: #4EABEA; }
 .btn-danger { background: #E74C3C; }
+
+.btn-default {
+    outline: 1px solid #eee;
+    color: #aaa;
+}
 
 .form-control {
     border: 1px solid #DDD;
@@ -152,8 +159,6 @@ body{
 #home .carousel-indicators { bottom: 0; }
 #home .carousel-indicators li { border: 1px solid #aaa; }
 #home .carousel-indicators li.active { background: #aaa; }
-
-#home .above-carousel { position: relative; z-index: 5; }
 
 #home ul {
     list-style-type: none;

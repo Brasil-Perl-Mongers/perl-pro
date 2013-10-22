@@ -101,107 +101,35 @@
                                         <!-- job type -->
                                         <li>
                                             <div class="one-filter">
-                                                <a href="#" class="btn btn-primary">Tipo</a>
-                                                <div id="filter-tags-title" class="filter-title">Tipo de relacionamento</div>
-
-                                                <div class="filter-content">
-
-                                                    <label class="checkbox"><input type="checkbox" id="" name="" value="1"> CLT</label>
-
-                                                    <label class="checkbox"><input type="checkbox" id="" name="" value="1"> PJ</label>
-
-                                                    <label class="checkbox"><input type="checkbox" id="" name="" value="1"> Est&aacute;gio</label>
-
-                                                    <label class="checkbox"><input type="checkbox" id="" name="" value="1"> Freelance</label>
-
-                                                </div>
+                                                <a href="#modal-job-type" data-toggle="modal" class="btn btn-primary">Tipo</a>
                                             </div>
                                         </li>
 
                                         <!-- job tags -->
                                         <li>
                                             <div class="one-filter">
-                                                <a href="#" class="btn btn-primary">Conhecimento</a>
-                                                <div id="filter-tags-title" class="filter-title">&Aacute;reas de conhecimento</div>
-
-                                                <div class="filter-content">
-
-                                                    <div class="input-append">
-                                                        <input type="text" id="filter-tags" name="filter-tags" placeholder="Digite palavras-chave" />
-                                                        <button class="add-filter btn" type="button">Adicionar</button>
-                                                    </div>
-
-                                                    <ul class="requirements selected-filters">
-                                                        <li>Todas</li>
-                                                    </ul>
-                                                </div>
+                                                <a href="#modal-tags" data-toggle="modal" class="btn btn-primary">Conhecimento</a>
                                             </div>
                                         </li>
 
                                         <!-- job company -->
                                         <li>
                                             <div class="one-filter">
-                                                <a href="#" class="btn btn-primary">Empresa</a>
-                                                <div id="filter-tags-title" class="filter-title">Empresas</div>
-
-                                                <div class="filter-content">
-
-                                                    <div class="input-append">
-                                                        <input type="text" id="filter-company" name="filter-company" placeholder="Procure empresas" />
-                                                        <button class="add-filter btn" type="button">Adicionar</button>
-                                                    </div>
-
-                                                    <ul class="requirements selected-filters">
-                                                        <li>Todas</li>
-                                                    </ul>
-                                                </div>
+                                                <a href="#modal-companies" data-toggle="modal" class="btn btn-primary">Empresa</a>
                                             </div>
                                         </li>
 
                                         <!-- job location -->
                                         <li>
                                             <div class="one-filter">
-                                                <a href="#" class="btn btn-primary">Localidade</a>
-                                                <div id="filter-tags-title" class="filter-title">Procure um endereço</div>
-
-                                                <div class="filter-content">
-                                                    <label class="checkbox"><input type="checkbox" id="is_at_office" name="is_at_office" value="1"> Presencial</label>
-
-                                                    <div class="input-append">
-                                                        <input type="text" id="filter-address" name="filter-address" placeholder="Digite a cidade ou endereço" />
-                                                        <button class="add-filter btn" type="button">Adicionar</button>
-                                                    </div>
-
-                                                    <label>Buscar em cidades vizinhas até:</label>
-                                                    <select>
-                                                        <option>25km</option>
-                                                        <option>50km</option>
-                                                    </select>
-
-                                                    <strong class="selected-filters-title">Localidades escolhidas:</strong>
-                                                    <ul class="requirements selected-filters">
-                                                        <li>Todas</li>
-                                                    </ul>
-
-                                                </div>
+                                                <a href="#modal-location" data-toggle="modal" class="btn btn-primary">Localidade</a>
                                             </div>
                                         </li>
 
                                         <!-- job payment/value -->
                                         <li>
                                             <div class="one-filter">
-                                                <a href="#" class="btn btn-primary">Faixa de Sal&aacute;rio</a>
-                                                <div id="filter-tags-title" class="filter-title">Faixa de Sal&aacute;rio</div>
-
-                                                <div class="filter-content">
-                                                    <label for="filter-salary-min">De:</label>
-                                                    <input type="text" id="filter-salary-min" name="filter-salary-min" placeholder="Valor m&iacute;nimo (R$)" />
-
-                                                    <label for="filter-salary-max">At&eacute;:</label>
-                                                    <input type="text" id="filter-salary-max" name="filter-salary-max" placeholder="Valor m&aacute;ximo (R$)" /><br />
-
-                                                    <button class="btn" type="button">Filtrar</button>
-                                                </div>
+                                                <a href="#modal-payment" data-toggle="modal" class="btn btn-primary">Faixa de Sal&aacute;rio</a>
                                             </div>
                                         </li>
 
@@ -214,15 +142,212 @@
                                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                               Ordem <span class="caret"></span>
                                           </a>
-                                          <ul class="dropdown-menu">
+                                          <ul class="dropdown-menu pull-right">
                                             <li><a href="#">Nome da empresa</a></li>
                                             <li><a href="#">Local mais pr&oacute;ximo</a></li>
-                                            <li><a href="#">Menor faixa de pre&ccedil;o</a></li>
+                                            <li><a href="#">Salário</a></li>
                                         </ul>
                                     </li>
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
+
+                            <!-- job type modal -->
+                            <div class="modal fade" id="modal-job-type" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Filtrar tipo de contrato</h4>
+                                        </div><!-- end .modal-header -->
+
+                                        <div class="modal-body">
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="clt">CLT
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="PJ">Pessoa Jurídica
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="internship">Estágio
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="freelance">Freelance
+                                                </label>
+                                            </div>
+
+                                        </div><!-- end .modal-body -->
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Filtrar</button>
+                                        </div><!-- end .modal-footer -->
+
+                                    </div><!-- end .modal-content -->
+                                </div><!-- end .modal-dialog -->
+                            </div><!-- end .modal -->
+
+                            <!-- requirements modal -->
+                            <div class="modal fade" id="modal-tags" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Filtrar por áreas de conhecimento</h4>
+                                        </div><!-- end .modal-header -->
+
+                                        <div class="modal-body">
+
+                                            <div id="requirements-filter" class="requirements">
+                                                <div class="input-group add_requirements">
+                                                    <label class="sr-only" for="required_attributes">Requisitos obrigatórios</label>
+                                                    <input type="text" placeholder="Digite separado por vírgula" id="required_attributes" class="form-control"/>
+                                                    <span class="input-group-btn">
+                                                        <button type="button" form="requirements-filter" class="btn btn-warning">Adicionar</button>
+                                                    </span>
+                                                </div><!-- end .input-group -->
+
+                                                <ul class="requirements"><ul>
+                                            </div>
+
+                                        </div><!-- end .modal-body -->
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Filtrar</button>
+                                        </div><!-- end .modal-footer -->
+
+                                    </div><!-- end .modal-content -->
+                                </div><!-- end .modal-dialog -->
+                            </div><!-- end .modal -->
+
+                            <!-- company modal -->
+                            <div class="modal fade" id="modal-companies" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Filtrar por empresas</h4>
+                                        </div><!-- end .modal-header -->
+
+                                        <div class="modal-body">
+
+                                            <div class="requirements">
+
+                                                <p>Filtre por uma ou mais empresas: </p>
+                                                <div class="input-group add_requirements">
+                                                    <label class="sr-only" for="required_attributes">Procure uma empresa</label>
+                                                    <input type="text" placeholder="Procure uma empresa" id="required_attributes" class="form-control"/>
+                                                    <span class="input-group-btn">
+                                                        <button type="button" form="company-filter" class="btn btn-warning">Adicionar</button>
+                                                    </span>
+                                                </div><!-- end .input-group -->
+
+                                                <ul class="requirements"><ul>
+                                            </div>
+
+                                        </div><!-- end .modal-body -->
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Filtrar</button>
+                                        </div><!-- end .modal-footer -->
+
+                                    </div><!-- end .modal-content -->
+                                </div><!-- end .modal-dialog -->
+                            </div><!-- end .modal -->
+
+                            <!-- location modal -->
+                            <div class="modal fade" id="modal-location" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Filtrar por localidade</h4>
+                                        </div><!-- end .modal-header -->
+
+                                        <div class="modal-body">
+
+                                            <p class="lead">Em um local específico</p>
+
+                                            <div class="form-group">
+                                                <label for="location" class="sr-only">Em um local</label>
+                                                <input type="text" class="form-control" name="location" placeholder="Procurar por cidade ou endereço">
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="presence" />
+                                                    Presença não obrigatória
+                                                </label>
+                                            </div>
+
+                                        </div><!-- end .modal-body -->
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Filtrar</button>
+                                        </div><!-- end .modal-footer -->
+
+                                    </div><!-- end .modal-content -->
+                                </div><!-- end .modal-dialog -->
+                            </div><!-- end .modal -->
+
+                            <!-- payment modal -->
+                            <div class="modal fade" id="modal-payment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Filtrar por faixa salarial</h4>
+                                        </div><!-- end .modal-header -->
+
+                                        <div class="modal-body">
+
+                                            <div class="form-inline">
+
+                                                <div class="form-group">De </div>
+
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="salary.min">Valor mínimo</label>
+                                                    <input type="text" class="form-control" name="salary.min" placeholder="Valor mínimo">
+                                                </div>
+
+                                                <div class="form-group">até </div>
+
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="salary.max">Valor máximo</label>
+                                                    <input type="text" class="form-control" name="salary.max" placeholder="Valor máximo">
+                                                </div>
+                                            </div><!-- end .form-inline -->
+
+                                        </div><!-- end .modal-body -->
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Filtrar</button>
+                                        </div><!-- end .modal-footer -->
+
+                                    </div><!-- end .modal-content -->
+                                </div><!-- end .modal-dialog -->
+                            </div><!-- end .modal -->
+
                         </form>
 
                     </div><!-- fim do row -->

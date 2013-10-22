@@ -42,7 +42,7 @@
                 <div class="container">
                     <div class="row">
 
-                        <div class="col-md-7">
+                        <div class="col-md-8">
                             <div class="pull-left">
                                 <a href="<: $uri('/') :>">
                                     <img src="<: $static_uri :>img/logo.png" alt="PerlPro" width="45" height="45" />
@@ -74,16 +74,17 @@
                             </div>
                         </div><!-- end .col-md-8 -->
 
-                        <div class="col-md-4">
+                        <div id="utility-menu" class="col-md-4">
+
+                            <div class="pull-right">
+                                <a href="<: $uri('/account/logout') :>" class="btn btn-danger"><: $l('Sair') :></a>
+                            </div><!-- end .pull-right -->
+
                             <div class="pull-right">
                                 Seja bem-vindo,<br>
                                 <strong><: $user.login :></strong>
                             </div><!-- end .pull-right -->
-                        </div><!-- end .col-md-4 -->
-                        <div class="col-md-1">
-                            <div class="pull-right">
-                                <a href="<: $uri('/account/logout') :>"><: $l('Sair') :></a>
-                            </div><!-- end .pull-right -->
+
                             <div class="clearfix"></div>
                         </div><!-- end .col-md-4 -->
 

@@ -90,12 +90,11 @@
                             <li><span class="glyphicon glyphicon-envelope"></span> <: $email :></li>
 :                       }
                     </ul>
-
-                    <a href="<: $uri('/company/' ~ $c.name_in_url) :>" class="btn btn-danger"><: $l('Ver mais') :></a>
                 </div>
 
                 <div class="clearfix"></div>
                 <p><: $c.description :></p>
+                <a href="<: $uri('/company/' ~ $c.name_in_url) :>" class="btn btn-warning"><: $l('Ver perfil da empresa') :></a>
             </div><!-- end .content-block -->
 
         </div><!-- end .col-md-6 -->
@@ -142,13 +141,13 @@
 :               } else {
 
 :                   if $j.phone {
-                        <span class="glyphicon glyphicon-earphone"></span> <: $j.phone :>
+                        <span class="glyphicon glyphicon-earphone"></span> <: $j.phone :><br />
 :                   }
 :                   if $j.email {
                         <span class="glyphicon glyphicon-envelope"></span> <: $j.email :>
 :                   }
 
-                    <br/>
+                    <p>&nbsp;</p>
 
                     <p>Ou envie a sua inscrição aqui:</p>
                     <a href="#" class="btn btn-danger">Inscreva-se</a>

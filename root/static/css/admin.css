@@ -1,3 +1,20 @@
+.admin .main-content {
+	margin-top: 50px;
+	margin-bottom: 60px;
+}
+
+.admin #main-menu {
+	position: fixed;
+	top: 0;
+	z-index: 100;
+}
+
+.admin #credits {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
 /* main menu */
 
 #main-menu .dropdown-menu a {
@@ -26,10 +43,19 @@ background: #333;
 }
 
 #main-menu .col-md-4 .pull-right {
-text-align: right;
+	text-align: right;
+	margin-left: 15px;
+}
+
+#utility-menu a.btn {
+	margin-top: 6px;
 }
 
 /* forms */
+
+.form-address .form-group {
+	margin-bottom: 5px;
+}
 
 .form-group .col-lg-6>span {
 	line-height: 34px;
@@ -50,20 +76,31 @@ text-align: right;
 	width: 150px;
 }
 
-#account_contacts, #access_info {
-	height: 440px;
+#account_data, #account_contacts {
+	height: 300px;
 }
 
-#profile_data { height: 600px; }
+#profile_data,
+#public_contacts {
+	height: 450px;
+}
+
 #company_keywords { height: 220px; }
 
 /* account home */
 #account-home input.form-control,
-#public_contacts input.form-control{
+#account-home select.form-control,
+#public_contacts input.form-control,
+#public_contacts select.form-control {
 	border: 0;
 	outline: 0;
 	box-shadow: none;
 	font-size: 16px;
+}
+
+#account-home select.form-control,
+#public_contacts select.form-control {
+	padding: 5px 5px 5px 7px;
 }
 
 #account-home input[type="date"] {
@@ -71,7 +108,9 @@ text-align: right;
 }
 
 #account-home input.form-control:focus,
-#public_contacts input.form-control:focus {
+#account-home select.form-control:focus,
+#public_contacts input.form-control:focus,
+#public_contacts select.form-control:focus {
 	outline: 1px solid #eee;
 }
 
@@ -83,11 +122,51 @@ text-align: right;
 
 /* my jobs */
 
+#account-my_jobs .content-block {
+	min-height: 400px;
+}
+
 .table.my_jobs .active { color: #27AE60; }
 .table.my_jobs .inactive { color: #EB6F63; }
 
+
 /* add_job */
 
-#account-add_job .content-block {
-	min-height: 240px;
+#account-add_job .content-block { min-height: 240px; }
+.job-time-location, .job-contract { height: 280px; }
+
+#account-add_job .job-contract .btn {
+	opacity: 0.6;
+	width: 90px;
+	margin-right: 10px;
+}
+
+#account-add_job .job-contract .btn.active { opacity: 1; }
+
+form.requirements { min-height: 150px; }
+
+ul.requirements {
+	list-style-type: none;
+	list-style-position: inside;
+	margin: 20px 0;
+	padding: 0;
+}
+
+ul.requirements li {
+	display: inline-block;
+	background: #eee;
+	padding: 5px;
+	margin: 0 10px 10px 0;
+	position: relative;
+}
+
+.remove-requirement {
+	color: #666;
+	position: absolute;
+	top: -10px;
+	right: -6px;
+}
+
+.remove-requirement:hover {
+	text-decoration: none;
 }

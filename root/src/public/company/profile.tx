@@ -100,10 +100,7 @@
                         <span>Publicado em <: $j.created_at.strftime('%d de %B de %Y') :></span>
                     </div>
                     <ul class="job-meta-info">
-:                       if $j.city {
-                        <li><span class="glyphicon glyphicon-map-marker"></span> <: $j.city :></li>
-:                       }
-                        <li><strong>$</strong> <: $j.salary :></li>
+                        <li><: $j.salary :></li>
                         <li><a href="<: $uri('/job/' ~ $j.id) :>" class="btn btn-danger"><: $l('Ver vaga') :></a></li>
                     </ul>
                 </div>

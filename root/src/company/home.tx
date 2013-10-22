@@ -55,7 +55,7 @@
                                 <em>A sua senha cadastrada</em>
                             </span>
                         </div>
-                        <label class="col-lg-2 control-label secundary-label"><a href="#">Alterar</a></label>
+                        <label class="col-lg-2 control-label secundary-label"><a href="#modal-change-password" data-toggle="modal">Alterar</a></label>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label"><: $l('Último Acesso') :></label>
@@ -83,9 +83,11 @@
                                 }
 
 :>
-                                <small><a href="<: $uri('/account/my_jobs') :>"><: $l('Gerenciar') :></a></small>
                             </span>
                         </div>
+                        <label class="col-lg-2 control-label secundary-label">
+                            <a href="<: $uri('/account/my_jobs') :>"><: $l('Gerenciar') :></a>
+                        </label>
                     </div>
                 </div>
 
@@ -93,7 +95,7 @@
         </div><!-- end .col-md-6 -->
 
         <div class="col-md-6">
-            <div class="content-block">
+            <div id="account_contacts" class="content-block">
 
                 <h2><: $l('Contatos Administrativos') :></h2>
                 <hr>
@@ -114,52 +116,61 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="address" class="col-lg-2 control-label"><span class="glyphicon glyphicon-map-marker"></span></label>
-                        <div class="col-lg-6">
-                            <input type="text" class="form-control" id="address" name="company.account.address" placeholder="Endereço">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-6 col-lg-offset-2">
-                            <input type="text" class="form-control" id="city" name="company.account.city" placeholder="Cidade">
-                        </div>
-                        <div class="col-lg-4">
-                            <select name="company.account.state" class="form-control">
-                                <option value="">Estado</option>
-                                <option value="ac">Acre</option>
-                                <option value="al">Alagoas</option>
-                                <option value="ap">Amapá</option>
-                                <option value="am">Amazonas</option>
-                                <option value="ba">Bahia</option>
-                                <option value="ce">Ceará</option>
-                                <option value="df">Distrito Federal</option>
-                                <option value="es">Espírito Santo</option>
-                                <option value="go">Goiás</option>
-                                <option value="ma">Maranhão</option>
-                                <option value="mt">Mato Grosso</option>
-                                <option value="ms">Mato Grosso do Sul</option>
-                                <option value="mg">Minas Gerais</option>
-                                <option value="pa">Pará</option>
-                                <option value="pb">Paraíba</option>
-                                <option value="pr">Paraná</option>
-                                <option value="pe">Pernambuco</option>
-                                <option value="pi">Piauí</option>
-                                <option value="rj">Rio de Janeiro</option>
-                                <option value="rn">Rio Grande do Norte</option>
-                                <option value="rs">Rio Grande do Sul</option>
-                                <option value="ro">Rondônia</option>
-                                <option value="rr">Roraima</option>
-                                <option value="sc">Santa Catarina</option>
-                                <option value="sp">São Paulo</option>
-                                <option value="se">Sergipe</option>
-                                <option value="to">Tocantins</option>
-                            </select>
-                        </div>
-                    </div>
+                    <div class="form-address">
 
-                </div>
+                        <div class="form-group">
+                            <label for="address" class="col-lg-2 control-label"><span class="glyphicon glyphicon-map-marker"></span></label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="address" name="company.account.address" placeholder="Endereço">
+                            </div>
+                        </div><!-- end .form-group -->
 
+                        <div class="form-group">
+                            <div class="col-lg-6 col-lg-offset-2">
+                                <label for="company.account.city" class="sr-only">Cidade</label>
+                                <input type="text" class="form-control" id="city" name="company.account.city" placeholder="Cidade">
+                            </div>
+                        </div><!-- end .form-group -->
+
+                        <div class="form-group">
+                            <div class="col-lg-6 col-lg-offset-2">
+                                <label for="company.account.state" class="sr-only">Estado</label>
+                                <select name="company.account.state" class="form-control">
+                                    <option value="">Estado</option>
+                                    <option value="ac">Acre</option>
+                                    <option value="al">Alagoas</option>
+                                    <option value="ap">Amapá</option>
+                                    <option value="am">Amazonas</option>
+                                    <option value="ba">Bahia</option>
+                                    <option value="ce">Ceará</option>
+                                    <option value="df">Distrito Federal</option>
+                                    <option value="es">Espírito Santo</option>
+                                    <option value="go">Goiás</option>
+                                    <option value="ma">Maranhão</option>
+                                    <option value="mt">Mato Grosso</option>
+                                    <option value="ms">Mato Grosso do Sul</option>
+                                    <option value="mg">Minas Gerais</option>
+                                    <option value="pa">Pará</option>
+                                    <option value="pb">Paraíba</option>
+                                    <option value="pr">Paraná</option>
+                                    <option value="pe">Pernambuco</option>
+                                    <option value="pi">Piauí</option>
+                                    <option value="rj">Rio de Janeiro</option>
+                                    <option value="rn">Rio Grande do Norte</option>
+                                    <option value="rs">Rio Grande do Sul</option>
+                                    <option value="ro">Rondônia</option>
+                                    <option value="rr">Roraima</option>
+                                    <option value="sc">Santa Catarina</option>
+                                    <option value="sp">São Paulo</option>
+                                    <option value="se">Sergipe</option>
+                                    <option value="to">Tocantins</option>
+                                </select>
+
+                            </div>
+                        </div><!-- end .form-group -->
+
+                    </div><!-- end .form-address -->
+                </div><!-- end .form-horizontal -->
 
             </div><!-- end .content-block -->
         </div><!-- end .col-md-6 -->
@@ -180,4 +191,48 @@
 :   }
 
 </div><!-- end #account-home.content -->
+
+<!-- Category Selection modal -->
+<div class="modal fade" id="modal-change-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Alterar senha</h4>
+                </div><!-- end .modal-header -->
+
+                <div class="modal-body">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <label for="password">Senha atual:</label>
+                            <input type="password" name="password" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="new_password">Nova Senha:</label>
+                            <input type="password" name="new_password" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm_password">Confirme a nova senha:</label>
+                            <input type="password" name="confirm_password" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                </div><!-- end .modal-body -->
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Alterar</button>
+                </div><!-- end .modal-footer -->
+
+            </form>
+        </div><!-- end .modal-content -->
+    </div><!-- end .modal-dialog -->
+</div><!-- end .modal -->
 : }
