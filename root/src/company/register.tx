@@ -29,6 +29,12 @@
                         </ul>
                     </div>
 :               }
+:               if ($is_success) {
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><: $l('Conta criada com sucesso') :></h4>
+                    </div>
+:               }
 
 :               block main_form | fif($fields) -> {
                 <form id="form-company-signup" method="post">
