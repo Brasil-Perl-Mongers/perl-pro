@@ -12,10 +12,28 @@ sub base :Chained('/') PathPart('account') CaptureArgs(0) {
     );
 }
 
+sub pre_register :Chained('base') PathPart('pre_register') Args(0) POST {
+    my ( $self, $ctx ) = @_;
+
+    my $fields = $ctx->req->params->{company}{pre_register};
+
+    for ( keys %$fields ) {
+        $fields->{"company.register.$_"} = delete $fields->{$_};
+    }
+
+    $ctx->flash( pre_register_fields => $fields );
+
+    $ctx->res->redirect( $ctx->uri_for( $self->action_for('register') ) );
+}
+
 sub register :Chained('base') PathPart('new') Does('DisplayExecute') Args(0) {}
 
 sub register_display {
     my ( $self, $ctx ) = @_;
+
+    if (my $fields = $ctx->flash->{pre_register_fields}) {
+        $ctx->stash(fields => $fields);
+    }
 
     $ctx->stash( template => 'company/register.tx' );
 }
