@@ -264,7 +264,7 @@ sub get_for_profile {
     })->all;
 
     my @locations = map {
-        $_->address . ", " . $_->city  . " - " . $_->state
+        $_->address . ", " . $_->city  . " - " . uc($_->state)
     } $company->company_locations->search({ is_public => 1 }, {
         order_by => { -desc => 'is_main_address' }
     })->all;

@@ -236,7 +236,7 @@ sub get_job_and_company_by_job_id {
             contract_type       => $job->contract_type,
             address             => $job->get_column('address'),
             city                => $job->get_column('city'),
-            state               => $job->get_column('state'),
+            state               => uc($job->get_column('state')),
             description         => $job->description,
             required_attributes => $job->required_attributes,
             desired_attributes  => $job->desired_attributes,
