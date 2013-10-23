@@ -62,9 +62,10 @@ sub register_execute {
 
     if ( !$dm->success ) {
         my $messages = $dm->messages->search(sub {
-            return (
-                $_->scope ne 'user.register' ||
-                $_->subject !~ /^(company|name|email)$/
+            return !(
+                $_->scope eq 'user.register' &&
+                $_->subject =~ /^(company|name|email)$/ &&
+                $_->params->[1] !~ /existing-email/
             );
         });
 

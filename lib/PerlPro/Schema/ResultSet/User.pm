@@ -29,7 +29,12 @@ sub verifiers_specs {
                         my $s = shift;
                         my $email_rs = $self->result_source->related_source('user_emails')->resultset;
                         my $count = $email_rs->count({ email => $s->get_value('email') });
-                        return $count == 0;
+
+                        if ( $count != 0) {
+                            die 'existing-email';
+                        }
+
+                        return 1;
                     }
                 },
                 login => {
