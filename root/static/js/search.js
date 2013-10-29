@@ -15,6 +15,7 @@ function JobListController($scope, $http, $location) {
         "wages_for":      '',
         "terms":          ''
     };
+
     $scope.server_error = false;
     $scope.jobs = [];
 
@@ -207,4 +208,73 @@ function AttributesFilterController($scope, $rootScope) {
             $scope.add_attribute();
         });
     });
+}
+
+function AdvancedSearchController($scope, $window, $rootScope) {
+    $scope.filters = {
+        "contract_types": {
+            "clt":        false,
+            "pj":         false,
+            "internship": false,
+            "freelance":  false
+        },
+        "is_telecommute": false,
+        "attributes":     [],
+        "companies":      [],
+        "location":       '',
+        "salary_from":    '',
+        "salary_to":      '',
+        "wages_for":      '',
+        "terms":          ''
+    };
+
+    $scope.redirect2search = function () {
+        var p = [];
+
+        // XXX
+        // wouldn't work any other way :(
+        // this is just a quick fix, later on we can (should) improve it
+        $scope.filters.contract_types.clt        = $('#contract_types_clt').is(':checked');
+        $scope.filters.contract_types.pj         = $('#contract_types_pj').is(':checked');
+        $scope.filters.contract_types.internship = $('#contract_types_internship').is(':checked');
+        $scope.filters.contract_types.freelance  = $('#contract_types_freelance').is(':checked');
+
+        var ct = [];
+
+        angular.forEach($scope.filters.contract_types, function (value, key) {
+            if (value) {
+                ct.push(key);
+            }
+        });
+
+        if (ct.length) {
+            p.push({ name: "contract_types", value: ct.join(',') });
+        }
+        if ($scope.filters.attributes.length) {
+            p.push({ name: "attributes", value: $scope.filters.attributes.join(',') });
+        }
+        if ($scope.filters.companies.length) {
+            p.push({ name: "companies", value: $scope.filters.companies.map(function (item) { return item.name_in_url; }).join(',') });
+        }
+        if ($scope.filters.location) {
+            p.push({ name: "location",  value: $scope.filters.location });
+        }
+        if ($scope.filters.is_telecommute) {
+            p.push({ name: "is_telecommute", value:  1 });
+        }
+        if ($scope.filters.salary_from) {
+            p.push({ name: "salary_from", value: $scope.filters.salary_from });
+        }
+        if ($scope.filters.salary_to) {
+            p.push({ name: "salary_to", value: $scope.filters.salary_to });
+        }
+        if ($scope.filters.wages_for) {
+            p.push({ name: "wages_for", value: $scope.filters.wages_for });
+        }
+        if ($scope.filters.terms) {
+            p.push({ name: "terms", value: $scope.filters.terms });
+        }
+
+        $window.location = '/jobs#/?' + jQuery.param(p);
+    };
 }

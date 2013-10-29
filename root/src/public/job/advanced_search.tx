@@ -1,5 +1,5 @@
-:cascade public::wrapper
-:block content -> {
+: cascade public::wrapper
+: block content -> {
 
 <!-- page title -->
 <div class="row">
@@ -12,21 +12,18 @@
     </div><!-- end .col-md-12 -->
 </div><!-- end .row -->
 
-<div class="content" id="search">
-    <div class="row">
+<div class="content" id="search" ng-app>
+    <div class="row" ng-controller="AdvancedSearchController">
         <div class="col-md-12">
             <div class="content-block">
-                <form action="<: $uri('/jobs') :>" method="get" id="job_search_form">
+                <form id="advanced_search_form" ng-submit="redirect2search()">
 
                     <div class="col-md-6">
                         <p class="lead">Com os termos</p>
-                        <div class="input-group">
-                            <label class="sr-only" for="categories">Palavras chave</label>
-                            <input type="text" placeholder="Digite separado por virgula" name="tags" class="form-control"/>
-                            <span class="input-group-btn">
-                                <input type="button" class="btn btn-warning" id="add_tags" value="Adicionar"/>
-                            </span>
-                        </div><!-- end .input-group -->
+                        <div class="form-group">
+                            <label class="sr-only" for="terms">Palavras chave</label>
+                            <input type="text" placeholder="Palavras-chave" ng-model="filters.terms" class="form-control" id="terms" />
+                        </div><!-- end .form-group -->
                     </div>
 
                     <div class="col-md-6">
@@ -36,15 +33,15 @@
                             <div class="form-group">De </div>
 
                             <div class="form-group">
-                                <label class="sr-only" for="salary.min">Valor mínimo</label>
-                                <input type="text" class="form-control" name="salary.min" placeholder="Valor mínimo">
+                                <label class="sr-only" for="salary_min">Valor mínimo</label>
+                                <input type="text" class="form-control" ng-model="filters.salary_min" placeholder="Valor mínimo" id="salary_min">
                             </div>
 
                             <div class="form-group">até </div>
 
                             <div class="form-group">
-                                <label class="sr-only" for="salary.max">Valor máximo</label>
-                                <input type="text" class="form-control" name="salary.max" placeholder="Valor máximo">
+                                <label class="sr-only" for="salary_max">Valor máximo</label>
+                                <input type="text" class="form-control" ng-model="filters.salary_max" placeholder="Valor máximo" id="salary_max">
                             </div>
                         </div><!-- end .form-inline -->
                     </div><!-- end .col-md-6 -->
@@ -56,12 +53,12 @@
 
                         <div class="form-group">
                             <label for="location" class="sr-only">Em um local</label>
-                            <input type="text" class="form-control" name="location" placeholder="Procurar por cidade ou endereço">
+                            <input type="text" class="form-control" ng-model="filters.location" placeholder="Procurar por cidade ou endereço" id="location">
                         </div>
 
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="presence" />
+                                <input type="checkbox" ng-model="filters.is_telecommute" value="1" />
                                  Presença não obrigatória
                             </label>
                         </div>
@@ -70,62 +67,87 @@
                     <div class="col-md-6">
                         <p class="lead">Relacionamento</p>
 
-                        <div data-toggle="buttons">
+                        <div data-toggle="buttons" class="force-check-buttons">
                             <label class="btn btn-danger">
-                                <input type="checkbox" name="relationship" value="clt">CLT
+                                <input type="checkbox" id="contract_types_clt">CLT
                             </label>
                             <label class="btn btn-primary">
-                                <input type="checkbox" name="relationship" value="pj">PJ
+                                <input type="checkbox" id="contract_types_pj">PJ
                             </label>
                             <label class="btn btn-success">
-                                <input type="checkbox" name="relationship" value="intern">Estágio
+                                <input type="checkbox" id="contract_types_internship">Estágio
                             </label>
                             <label class="btn btn-warning">
-                                <input type="checkbox" name="relationship" value="freelance">Freelance
+                                <input type="checkbox" id="contract_types_freelance">Freelance
                             </label>
                         </div>
 
                     </div>
 
-                    <div class="clearfix"></div>
+                </form>
 
-                    <div class="col-md-6">
-                        <p class="lead">Conhecimentos e/ou áreas</p>
+                <div class="clearfix"></div>
+
+                <div class="col-md-6" ng-controller="AttributesFilterController">
+                    <p class="lead">Conhecimentos e/ou áreas</p>
+
+                    <form ng-submit="add_attribute()" id="form_attributes">
                         <div class="input-group">
-                            <label class="sr-only" for="categories">Conhecimentos</label>
-                            <input type="text" placeholder="Digite uma linguagem ou tecnologia" name="tags" class="form-control"/>
+                            <label class="sr-only" for="attributes">Conhecimentos</label>
+                            <input type="text" placeholder="Digite uma linguagem ou tecnologia" class="form-control" id="attributes" />
                             <span class="input-group-btn">
-                                <input type="button" class="btn btn-warning" id="add_tags" value="Adicionar"/>
+                                <button type="submit" class="btn btn-warning" form="form_attributes">Adicionar</button>
                             </span>
+                            <ul>
+                                <li ng-repeat="attr in filters.attributes">
+                                    {{ attr }}
+                                    <a href class="remove-requirement" ng-click="remove_attribute($index)"><i class="icon-remove-sign"></i></a>
+                                </li>
+                            <ul>
                         </div><!-- end .input-group -->
-                    </div>
-                    <div class="col-md-6">
-                        <p class="lead">Em uma empresa</p>
+                    </form>
+                </div>
+
+                <div class="col-md-6" ng-controller="CompanyFilterController">
+                    <p class="lead">Em uma empresa</p>
+
+                    <form ng-submit="add_company()" id="form_companies">
                         <div class="input-group">
                             <label class="sr-only" for="companies">Em uma empresa</label>
-                            <input type="text" placeholder="Procure empresas" name="companies" class="form-control"/>
+                            <input type="text" placeholder="Procure empresas" id="companies" class="form-control"/>
                             <span class="input-group-btn">
-                                <input type="button" class="btn btn-warning" id="add_tags" value="Adicionar"/>
+                                <button type="submit" class="btn btn-warning" form="form_companies">Adicionar</button>
                             </span>
                         </div><!-- end .input-group -->
-                    </div>
+                        <ul>
+                            <li ng-repeat="comp in filters.companies">
+                                {{ comp.name }}
+                                <a href class="remove-requirement" ng-click="remove_company($index)"><i class="icon-remove-sign"></i></a>
+                            </li>
+                        <ul>
+                    </form>
+                </div>
 
-                    <div class="clearfix"></div>
+                <div class="clearfix"></div>
 
-                    <hr>
+                <hr>
 
-                    <div class="pull-right">
-                        <button type="reset" class="btn btn-danger" form="job_search_form"><: $l('Cancelar') :></button>
+                <div class="pull-right">
+                    <button type="reset" class="btn btn-danger" form="advanced_search_form"><: $l('Cancelar') :></button>
 
-                        <button type="submit" class="btn btn-success" form="job_search_form"><: $l('Pesquisar') :></button>
-                    </div>
+                    <button type="submit" class="btn btn-success" form="advanced_search_form"><: $l('Pesquisar') :></button>
+                </div>
 
-                    <div class="clearfix"></div>
+                <div class="clearfix"></div>
 
-                </form>
             </div><!-- end .content-block -->
         </div><!-- end .col-md-12 -->
     </div><!-- end .row -->
 </div><!-- end #search.content -->
 
+: }
+: after include_scripts -> {
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.min.js"></script>
+    <script src="//raw.github.com/twitter/typeahead.js/master/dist/typeahead.min.js"></script>
+    <script src="<: $static_uri :>/js/search.js"></script>
 : }
