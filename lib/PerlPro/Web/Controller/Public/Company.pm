@@ -12,11 +12,30 @@ sub base :Chained('/') PathPart('') CaptureArgs(0) {
     );
 }
 
-sub profile :Chained('base') PathPart('company') Args(1) GET {
+sub item :Chained('base') PathPart('company') CaptureArgs(1) {
     my ( $self, $ctx, $id ) = @_;
 
+    $ctx->stash( id => $id );
+}
+
+sub avatar :Chained('item') PathPart('avatar') Args(1) GET {
+    my ( $self, $ctx, $f ) = @_;
+
+    my $file = $ctx->config->{root} . '/static/data/uploads/' . $ctx->stash->{id} . '-' . $f;
+
+    if (-e $file) {
+        $ctx->serve_static_file($file);
+    }
+    else {
+        $ctx->serve_static_file($ctx->config->{root} . '/static/img/avatar-' . $f);
+    }
+}
+
+sub profile :Chained('item') PathPart('') Args(0) GET {
+    my ( $self, $ctx ) = @_;
+
     $ctx->stash(
-        c => $ctx->model->get_for_profile($id)
+        c => $ctx->model->get_for_profile($ctx->stash->{id})
     );
 }
 

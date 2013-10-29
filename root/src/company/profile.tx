@@ -37,7 +37,7 @@
 :   }
 
 :   block main_form | fif($fields) {
-    <form action="<: $uri('/account/profile') :>" method="post">
+    <form action="<: $uri('/account/profile') :>" method="post" enctype="multipart/form-data">
     <div class="row">
 
         <div class="col-md-6">
@@ -51,12 +51,11 @@
                     <div class="form-group">
                         <label for="corporate_name" class="col-lg-3 control-label"><: $l('Logotipo') :></label>
                         <div class="col-lg-4">
-                            <img src="http://lorempixel.com/180/160/abstract/" alt="Logo <: $c.name :>" width="100%" />
+                            <img src="<: $uri('/company/' ~ $fields['company.public_profile.name_in_url'] ~ '/avatar/update_profile.png') :>" alt="Logo <: $c.name :>" width="100%" />
                         </div>
 
                         <div class="col-lg-4">
-                            <a href="#" class="btn btn-warning">Trocar</a><br>
-                            <a href="#" class="">Remover</a>
+                            <input type="file" name="logo" />
                         </div>
 
                     </div>

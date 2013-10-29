@@ -24,7 +24,7 @@
                             <h2><: $c.name :></h2>
                             <hr>
 
-                            <p><img src="http://lorempixel.com/200/170/abstract" alt="Logo <: $c.name :>" width="100%" /></p>
+                            <p><img src="<: $uri('/company/' ~ $c.name_in_url ~ '/avatar/catalog.png') :>" alt="Logo <: $c.name :>" width="100%" /></p>
 
                             <p>
 :                               if $c.city {

@@ -40,6 +40,7 @@ requires 'Text::Xslate';
 requires 'HTML::FillInForm';
 requires 'Catalyst::View::Xslate';
 requires 'Catalyst::View::JSON';
+requires 'Imager';
 test_requires 'Test::More' => '0.88';
 test_requires 'pQuery';
 test_requires 'Test::WWW::Mechanize::Catalyst';

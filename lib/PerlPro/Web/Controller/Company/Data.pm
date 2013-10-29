@@ -1,6 +1,7 @@
 package PerlPro::Web::Controller::Company::Data;
 use Moose;
 use namespace::autoclean;
+use Imager;
 use utf8;
 
 BEGIN { extends 'Catalyst::Controller' }
@@ -65,6 +66,32 @@ sub profile_execute {
     $company->{name_in_url} = $ctx->stash->{company};
 
     $dm->apply_one( 'company.public_profile', $company );
+
+    for ($ctx->req->upload) {
+        my $file = $ctx->req->upload($_);
+
+        my $img = Imager->new(file => $file->tempname);
+
+        my $prefix = $ctx->config->{root} . '/static/data/uploads/' . $ctx->stash->{company};
+
+        my %sizes = (
+            update_profile => [ 180, 160 ],
+            public_profile => [ 130,  80 ],
+            catalog        => [ 200, 170 ],
+            home           => [ 800, 300 ],
+        );
+
+        for (keys %sizes) {
+            my $t = $img->scale( xpixels => $sizes{$_}[0], ypixels => $sizes{$_}[1] )
+                        ->crop( width => $sizes{$_}[0], height => $sizes{$_}[1]);
+
+            $t->write(file => $prefix . "-$_.png");
+
+            if ($t->errstr) {
+                die $t->errstr;
+            }
+        }
+    }
 }
 
 __PACKAGE__->meta->make_immutable;

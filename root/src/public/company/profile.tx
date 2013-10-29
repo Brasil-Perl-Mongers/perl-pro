@@ -31,7 +31,7 @@
                 <hr>
 
                 <div id="company-logo" class="pull-left">
-                    logo
+                    <img src="<: $uri('/company/' ~ $c.name_in_url ~ '/avatar/public_profile.png') :>" alt="logo">
                 </div>
 
                 <div id="company-info" class="pull-left">

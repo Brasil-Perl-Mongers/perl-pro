@@ -21,7 +21,7 @@
                                 <span><: $job.description :></span>
                             </div>
 
-                            <img src="http://lorempixel.com/800/300/abstract/" alt="Logo <: $job.company_name :>" width="100%" /><br />
+                            <img src="<: $uri('/company/' ~ $job.company_url ~ '/avatar/home.png') :>" alt="Logo <: $job.company_name :>" /><br />
                             em <strong><: $job.company_name :></strong>
 
                             <hr>
