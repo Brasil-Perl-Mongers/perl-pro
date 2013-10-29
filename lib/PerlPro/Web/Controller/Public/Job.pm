@@ -36,6 +36,7 @@ sub ajax_search :Chained('base') Args(0) GET {
         filters => {},
         page    => 1, # $q->{page},
         rows    => 100, # $q->{rows},
+
     );
 
     if (my $ct = $q->{contract_types}) {
@@ -52,7 +53,6 @@ sub ajax_search :Chained('base') Args(0) GET {
 
     if (my $l = $q->{location}) {
         $params{filters}{location} = $l;
-        $params{filters}{is_telecommute} = $q->{is_telecommute};
     }
 
     if (my $s = $q->{salary_from}) {
@@ -63,8 +63,16 @@ sub ajax_search :Chained('base') Args(0) GET {
         $params{filters}{salary_to} = $s;
     }
 
+    if (my $w = $q->{wages_for}) {
+        $params{filters}{wages_for} = $w;
+    }
+
     if (my $s = $q->{terms}) {
         $params{filters}{term} = $s;
+    }
+
+    if (defined $q->{is_telecommute}) {
+        $params{filters}{is_telecommute} = 1;
     }
 
     $ctx->stash(

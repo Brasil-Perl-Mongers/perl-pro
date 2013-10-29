@@ -9,6 +9,9 @@
         <link href="<: $static_uri :>/css/style.css" rel="stylesheet">
         <meta charset="utf-8">
         <link href="<: $uri('/favicon.ico') :>" rel="shortcut icon">
+        <style type="text/css">
+            .ng-cloak { display: none; }
+        </style>
     </head>
 
     <body ng-controller="JobListController">
@@ -290,6 +293,7 @@
                             </div><!-- end .modal -->
 
                             <!-- location modal -->
+                            <form ng-submit="close_and_reload()">
                             <div class="modal fade" id="modal-location" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -319,14 +323,16 @@
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary" ng-click="close_and_reload()">Filtrar</button>
+                                            <button type="submit" class="btn btn-primary" ng-click="close_and_reload()">Filtrar</button>
                                         </div><!-- end .modal-footer -->
 
                                     </div><!-- end .modal-content -->
                                 </div><!-- end .modal-dialog -->
                             </div><!-- end .modal -->
+                            </form>
 
                             <!-- payment modal -->
+                            <form ng-submit="close_and_reload()">
                             <div class="modal fade" id="modal-payment" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -354,10 +360,14 @@
                                                     <input type="text" class="form-control" id="salary_to" ng-model="filters.salary_to" placeholder="Valor máximo">
                                                 </div>
 
+                                                <p>&nbsp;</p>
+
+                                                <div class="form-group">por</div>
+
                                                 <div class="form-group">
                                                     <label class="sr-only" for="wages_for">Período</label>
                                                     <select class="form-control" id="wages_for" ng-model="filters.wages_for">
-                                                        <option>Período</option>
+                                                        <option value="" selected>Período</option>
                                                         <option value="month">Mês</option>
                                                         <option value="hour">Hora</option>
                                                         <option value="project">Projeto</option>
@@ -369,12 +379,13 @@
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary" ng-click="close_and_reload()">Filtrar</button>
+                                            <button type="submit" class="btn btn-primary" ng-click="close_and_reload()">Filtrar</button>
                                         </div><!-- end .modal-footer -->
 
                                     </div><!-- end .modal-content -->
                                 </div><!-- end .modal-dialog -->
                             </div><!-- end .modal -->
+                            </form>
 
                         </div>
 

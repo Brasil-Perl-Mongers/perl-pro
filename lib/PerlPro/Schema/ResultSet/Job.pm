@@ -331,7 +331,7 @@ sub grid_search {
         push @conditions, { 'attributes.attribute' => { -in => $filters->{attributes} } };
     }
 
-    # TODO: deal with wages_for, hours and hours_by
+    # TODO: deal with hours and hours_by
     if ($filters->{salary_from}) {
         push @conditions, { 'me.wages' => { '>=' => $filters->{salary_from} } };
     }
@@ -340,18 +340,25 @@ sub grid_search {
         push @conditions, { 'me.wages' => { '<=' => $filters->{salary_to} } };
     }
 
+    if ($filters->{wages_for}) {
+        push @conditions, { 'me.wages_for' => $filters->{wages_for} };
+    }
+
     if ($filters->{contract_types}) {
         push @conditions, { 'me.contract_type' => { -in => $filters->{contract_types} } };
     }
 
     if (my $l = $filters->{location}) {
-        push @conditions, { 'me.is_telecommute' => !!$filters->{is_telecommute} };
         push @conditions, {
            -or => [
                 { 'job_location.city' => { -ilike => "%$l%" } },
                 { 'job_location.address' => { -ilike => "%$l%" } },
             ],
         };
+    }
+
+    if ($filters->{is_telecommute}) {
+        push @conditions, { 'me.is_telecommute' => 1 };
     }
 
     my $search = {

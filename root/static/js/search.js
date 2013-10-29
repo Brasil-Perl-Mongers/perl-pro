@@ -1,19 +1,22 @@
 function JobListController($scope, $http, $location) {
     $scope.filters = {
-        "is_telecommute": false,
         "contract_types": {
-            "clt": false,
-            "pj": false,
+            "clt":        false,
+            "pj":         false,
             "internship": false,
-            "freelance": false
+            "freelance":  false
         },
-        "attributes":      [],
-        "companies":       [],
-        "location":        '',
-        "salary_from":     null,
-        "salary_to":       null,
-        "terms":           ''
+        "is_telecommute": false,
+        "attributes":     [],
+        "companies":      [],
+        "location":       '',
+        "salary_from":    '',
+        "salary_to":      '',
+        "wages_for":      '',
+        "terms":          ''
     };
+    $scope.server_error = false;
+    $scope.jobs = [];
 
     $scope.close_and_reload = function () {
         $scope.fetch_results();
@@ -24,11 +27,12 @@ function JobListController($scope, $http, $location) {
         var p = serialize_params();
         $http.get('/ajax_search', { params: p }).
             success(function (data) {
+                $scope.server_error = false;
                 $scope.jobs  = data.items;
                 $scope.pager = data.pager;
             }).
             error(function () {
-                alert('Houve um erro na requisição da pesquisa.');
+                $scope.server_error = true;
             });
     };
 
@@ -59,7 +63,7 @@ function JobListController($scope, $http, $location) {
             $scope.filters.is_telecommute = !!s.is_telecommute;
         }
 
-        angular.forEach([ "location", "salary_from", "salary_to", "terms" ], function (item) {
+        angular.forEach([ "location", "salary_from", "salary_to", "wages_for", "terms" ], function (item) {
             if (s.hasOwnProperty(item)) {
                 $scope.filters[item] = s[item];
             }
@@ -88,13 +92,18 @@ function JobListController($scope, $http, $location) {
         }
         if ($scope.filters.location) {
             p.location = $scope.filters.location;
-            p.is_telecommute = $scope.filters.is_telecommute;
+        }
+        if ($scope.filters.is_telecommute) {
+            p.is_telecommute = 1;
         }
         if ($scope.filters.salary_from) {
             p.salary_from = $scope.filters.salary_from;
         }
         if ($scope.filters.salary_to) {
             p.salary_to = $scope.filters.salary_to;
+        }
+        if ($scope.filters.wages_for) {
+            p.wages_for = $scope.filters.wages_for;
         }
         if ($scope.filters.terms) {
             p.terms = $scope.filters.terms;
