@@ -432,7 +432,7 @@ sub get_for_catalog {
 
 sub get_for_typeahead {
     my ($self, $query) = @_;
-    my %result;
+    my @result;
 
     my $rs = $self->search(
         {
@@ -445,10 +445,10 @@ sub get_for_typeahead {
     );
 
     for ($rs->all) {
-        $result{ $_->name_in_url } = $_->name;
+        push @result, { name_in_url => $_->name_in_url, name => $_->name };
     }
 
-    return \%result;
+    return \@result;
 }
 
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);

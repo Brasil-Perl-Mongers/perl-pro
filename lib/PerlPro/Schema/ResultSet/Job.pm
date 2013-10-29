@@ -1,5 +1,6 @@
 package PerlPro::Schema::ResultSet::Job;
 
+use utf8;
 use Moose;
 use namespace::autoclean;
 
@@ -339,13 +340,18 @@ sub grid_search {
         push @conditions, { 'me.wages' => { '<=' => $filters->{salary_to} } };
     }
 
-    if ($filters->{contract_type}) {
-        push @conditions, { 'me.contract_type' => { -in => $filters->{contract_type} } };
+    if ($filters->{contract_types}) {
+        push @conditions, { 'me.contract_type' => { -in => $filters->{contract_types} } };
     }
 
-    if ($filters->{latlng}) {
-        $filters->{radius} ||= '50km';
-        # TODO: use postgis to search for radius
+    if (my $l = $filters->{location}) {
+        push @conditions, { 'me.is_telecommute' => !!$filters->{is_telecommute} };
+        push @conditions, {
+           -or => [
+                { 'job_location.city' => { -ilike => "%$l%" } },
+                { 'job_location.address' => { -ilike => "%$l%" } },
+            ],
+        };
     }
 
     my $search = {
@@ -353,6 +359,7 @@ sub grid_search {
     };
 
     my $options = {
+        distinct  => 1,
         order_by  => $data{sort},
         join      => [ 'job_location', 'attributes', 'company' ],
         '+select' => [ 'job_location.city', 'company.name' ],
@@ -367,7 +374,7 @@ sub grid_search {
     for my $row ($rs->all) {
         my $r = {
             id                => $row->get_column('id'),
-            created_at        => $row->created_at->strftime('%d/%m/%Y'),
+            created_at        => $row->created_at->set_locale('pt_BR')->strftime('%d de %B de %Y'),
             company           => $row->get_column('company'),
             company_name      => $row->get_column('company_name'),
             title             => $row->get_column('title'),
@@ -375,7 +382,6 @@ sub grid_search {
             salary            => $row->get_column('wages') . '/' . _l($row->get_column('wages_for')),
             phone             => $row->get_column('phone'),
             email             => $row->get_column('email'),
-            vacancies         => $row->get_column('vacancies'),
             contract_type     => $row->get_column('contract_type'),
             is_telecommute    => $row->get_column('is_telecommute'),
             city              => $row->get_column('city'),

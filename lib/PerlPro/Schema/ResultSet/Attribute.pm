@@ -19,7 +19,7 @@ sub get_for_typeahead {
         }
     );
 
-    return [ map { $_->attribute } $rs->all ];
+    return [ map { { value => $_->attribute } } $rs->all ];
 }
 
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);

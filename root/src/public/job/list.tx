@@ -17,78 +17,27 @@
     <div class="row">
 
         <!-- one-job start -->
-        <div class="col-md-4">
+        <div class="col-md-4" ng-repeat="job in jobs">
             <div class="one-job">
 
                 <div class="job-title">
-                    <h2>Programador Front-End</h2>
+                    <h2>{{ job.title }}</h2>
                 </div>
-                em <strong>Amazon do Brasil</strong>
+                em <a href="<: $uri('/company') :>/{{ job.company }}"><strong>{{ job.company_name }}</strong></a>
 
                 <div class="job-description">
-                    <p>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</p>
+                    <p>{{ job.description }}</p>
                 </div>
 
                 <div class="job-meta">
                     <div class="job-date">
-                        <span>Publicado em 04 de junho de 2013</span>
+                        <span>Publicado em {{ job.created_at }}</span>
                     </div>
                     <ul class="job-meta-info">
-                        <li><span class="glyphicon glyphicon-map-marker"></span> São Paulo</li>
-                        <li><strong>$</strong> 2.500,00</li>
-                        <li><a href="#" class="btn btn-danger">Ver vaga</a></li>
-                </div>
-
-            </div>
-        </div><!-- end one-job -->
-
-        <!-- one-job start -->
-        <div class="col-md-4">
-            <div class="one-job">
-
-                <div class="job-title">
-                    <h2>Programador Front-End</h2>
-                </div>
-                em <strong>Amazon do Brasil</strong>
-
-                <div class="job-description">
-                    <p>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</p>
-                </div>
-
-                <div class="job-meta">
-                    <div class="job-date">
-                        <span>Publicado em 04 de junho de 2013</span>
-                    </div>
-                    <ul class="job-meta-info">
-                        <li><span class="glyphicon glyphicon-map-marker"></span> São Paulo</li>
-                        <li><strong>$</strong> 2.500,00</li>
-                        <li><a href="#" class="btn btn-danger">Ver vaga</a></li>
-                </div>
-
-            </div>
-        </div><!-- end one-job -->
-
-        <!-- one-job start -->
-        <div class="col-md-4">
-            <div class="one-job">
-
-                <div class="job-title">
-                    <h2>Programador Front-End</h2>
-                </div>
-                em <strong>Amazon do Brasil</strong>
-
-                <div class="job-description">
-                    <p>A Amazon do Brasil seleciona Desenvolvedor Web para atuar no departamento de criação e web development.</p>
-                </div>
-
-                <div class="job-meta">
-                    <div class="job-date">
-                        <span>Publicado em 04 de junho de 2013</span>
-                    </div>
-                    <ul class="job-meta-info">
-                        <li><span class="glyphicon glyphicon-map-marker"></span> São Paulo</li>
-                        <li><strong>$</strong> 2.500,00</li>
-                        <li><a href="#" class="btn btn-danger">Ver vaga</a></li>
+                        <li><span class="glyphicon glyphicon-map-marker"></span> {{ job.city }}</li>
+                        <li><strong>$</strong> {{ job.salary }}</li>
+                        <li><a href="<: $uri('/job') :>/{{ job.id }}" class="btn btn-danger"><: $l('Ver vaga') :></a></li>
+                    </ul>
                 </div>
 
             </div>

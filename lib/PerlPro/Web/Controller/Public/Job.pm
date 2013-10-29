@@ -13,13 +13,7 @@ sub base :Chained('/') PathPart('') CaptureArgs(0) {
 
 sub advanced_search :Chained('base') PathPart('search') Args(0) GET {}
 
-sub list :Chained('base') PathPart('jobs') Args(0) GET {
-    my ( $self, $ctx ) = @_;
-
-    my $params = {}; # TODO: deal with $ctx->req->query_params
-
-    $ctx->stash( jobs => [ $ctx->model->search($params)->all ] );
-}
+sub list :Chained('base') PathPart('jobs') Args(0) GET {}
 
 sub view :Chained('base') PathPart('job') Args(1) GET {
     my ( $self, $ctx, $job_id ) = @_;
@@ -33,6 +27,52 @@ sub view :Chained('base') PathPart('job') Args(1) GET {
     );
 }
 
+sub ajax_search :Chained('base') Args(0) GET {
+    my ( $self, $ctx ) = @_;
+
+    my $q = $ctx->req->query_params;
+
+    my %params = (
+        filters => {},
+        page    => 1, # $q->{page},
+        rows    => 100, # $q->{rows},
+    );
+
+    if (my $ct = $q->{contract_types}) {
+        $params{filters}{contract_types} = [ split /,/, $ct ];
+    }
+
+    if (my $c = $q->{companies}) {
+        $params{filters}{companies} = [ split /,/, $c ];
+    }
+
+    if (my $a = $q->{attributes}) {
+        $params{filters}{attributes} = [ split /,/, $a ];
+    }
+
+    if (my $l = $q->{location}) {
+        $params{filters}{location} = $l;
+        $params{filters}{is_telecommute} = $q->{is_telecommute};
+    }
+
+    if (my $s = $q->{salary_from}) {
+        $params{filters}{salary_from} = $s;
+    }
+
+    if (my $s = $q->{salary_to}) {
+        $params{filters}{salary_to} = $s;
+    }
+
+    if (my $s = $q->{terms}) {
+        $params{filters}{term} = $s;
+    }
+
+    $ctx->stash(
+        current_view => 'JSON',
+        json_data    => $ctx->model->grid_search(%params),
+    );
+}
+
 # TODO: move to it's own controller
 # This is for the typeahead at the /search page
 sub attributes_like :Chained('base') PathPart('attributes') Args(1) GET {
@@ -42,9 +82,7 @@ sub attributes_like :Chained('base') PathPart('attributes') Args(1) GET {
 
     $ctx->stash(
         current_view => 'JSON',
-        json_data    => {
-            attributes => $attrs
-        }
+        json_data    => $attrs,
     );
 }
 

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" ng-app>
 
     <head>
         <title>PerlPro</title>
-        <link href="//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.0/jquery.qtip.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+        <link href="//raw.github.com/jharding/typeahead.js-bootstrap.css/master/typeahead.js-bootstrap.css" rel="stylesheet">
         <link href="<: $static_uri :>/css/style.css" rel="stylesheet">
         <meta charset="utf-8">
         <link href="<: $uri('/favicon.ico') :>" rel="shortcut icon">
     </head>
 
-    <body>
+    <body ng-controller="JobListController">
         <div id="wrapper">
 
             <div id="header">
@@ -66,9 +66,9 @@
 
                         <div class="col-md-6">
                             <div class="pullright">
-                                <form method="get" action="/search">
+                                <form ng-submit="fetch_results()">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Encontre uma vaga">
+                                        <input type="text" class="form-control" placeholder="Encontre uma vaga" ng-model="filters.terms">
                                         <span class="input-group-btn">
                                             <button class="btn btn-warning" type="submit"><: $l('Buscar') :></button>
                                         </span>
@@ -85,11 +85,13 @@
                 <div class="container">
                     <div class="row">
 
-                        <form id="form-search-menu">
+                        <div id="form-search-menu">
 
                             <div class="col-md-1 info">
-                                <span>12 vagas<br />
-                                    5 empresas</span>
+                                <span>
+                                    {{ pager.total_entries }} vaga(s)
+:# TODO                             <br /> 5 empresas
+                                </span>
                                 </div>
 
                                 <div id="search-filters" class="col-md-9 filters">
@@ -136,6 +138,7 @@
                                     </ul>
                                 </div>
 
+                                <!--
                                 <div class="col-md-2 order">
                                     <ul class="pull-right">
                                         <li class="dropdown">
@@ -146,14 +149,15 @@
                                             <li><a href="#">Nome da empresa</a></li>
                                             <li><a href="#">Local mais pr&oacute;ximo</a></li>
                                             <li><a href="#">Salário</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
+                                          </ul>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                -->
 
                             <!-- job type modal -->
-                            <div class="modal fade" id="modal-job-type" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modal-job-type" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -166,25 +170,25 @@
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="clt">CLT
+                                                    <input ng-model="filters.contract_types.clt" type="checkbox" value="clt">CLT
                                                 </label>
                                             </div>
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="PJ">Pessoa Jurídica
+                                                    <input ng-model="filters.contract_types.pj" type="checkbox" value="pj">Pessoa Jurídica
                                                 </label>
                                             </div>
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="internship">Estágio
+                                                    <input ng-model="filters.contract_types.internship" type="checkbox" value="internship">Estágio
                                                 </label>
                                             </div>
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="freelance">Freelance
+                                                    <input ng-model="filters.contract_types.freelance" type="checkbox" value="freelance">Freelance
                                                 </label>
                                             </div>
 
@@ -192,7 +196,7 @@
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Filtrar</button>
+                                            <button type="button" class="btn btn-primary" ng-click="close_and_reload()">Filtrar</button>
                                         </div><!-- end .modal-footer -->
 
                                     </div><!-- end .modal-content -->
@@ -200,7 +204,7 @@
                             </div><!-- end .modal -->
 
                             <!-- requirements modal -->
-                            <div class="modal fade" id="modal-tags" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modal-tags" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="AttributesFilterController">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -211,23 +215,30 @@
 
                                         <div class="modal-body">
 
-                                            <div id="requirements-filter" class="requirements">
-                                                <div class="input-group add_requirements">
-                                                    <label class="sr-only" for="required_attributes">Requisitos obrigatórios</label>
-                                                    <input type="text" placeholder="Digite separado por vírgula" id="required_attributes" class="form-control"/>
-                                                    <span class="input-group-btn">
-                                                        <button type="button" form="requirements-filter" class="btn btn-warning">Adicionar</button>
-                                                    </span>
-                                                </div><!-- end .input-group -->
+                                            <form ng-submit="add_attribute()" id="form_attributes">
+                                                <div id="requirements-filter" class="requirements">
+                                                    <div class="input-group add_requirements">
+                                                        <label class="sr-only" for="attributes">Requisitos obrigatórios</label>
+                                                        <input type="text" placeholder="Digite os requisitos" id="attributes" class="form-control"/>
+                                                        <span class="input-group-btn">
+                                                            <button type="submit" class="btn btn-warning" for="form_attributes">Adicionar</button>
+                                                        </span>
+                                                    </div><!-- end .input-group -->
 
-                                                <ul class="requirements"><ul>
-                                            </div>
+                                                    <ul class="requirements">
+                                                        <li ng-repeat="attr in filters.attributes">
+                                                            {{ attr }}
+                                                            <a href class="remove-requirement" ng-click="remove_attribute($index)"><i class="icon-remove-sign"></i></a>
+                                                        </li>
+                                                    <ul>
+                                                </div>
+                                            </form>
 
                                         </div><!-- end .modal-body -->
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Filtrar</button>
+                                            <button type="button" class="btn btn-primary" ng-click="close_and_reload()">Filtrar</button>
                                         </div><!-- end .modal-footer -->
 
                                     </div><!-- end .modal-content -->
@@ -235,7 +246,7 @@
                             </div><!-- end .modal -->
 
                             <!-- company modal -->
-                            <div class="modal fade" id="modal-companies" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modal-companies" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="CompanyFilterController">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -246,25 +257,32 @@
 
                                         <div class="modal-body">
 
-                                            <div class="requirements">
+                                            <form ng-submit="add_company()" id="form_companies">
+                                                <div class="companies">
 
-                                                <p>Filtre por uma ou mais empresas: </p>
-                                                <div class="input-group add_requirements">
-                                                    <label class="sr-only" for="required_attributes">Procure uma empresa</label>
-                                                    <input type="text" placeholder="Procure uma empresa" id="required_attributes" class="form-control"/>
-                                                    <span class="input-group-btn">
-                                                        <button type="button" form="company-filter" class="btn btn-warning">Adicionar</button>
-                                                    </span>
-                                                </div><!-- end .input-group -->
+                                                    <p>Filtre por uma ou mais empresas: </p>
+                                                    <div class="input-group add_requirements">
+                                                        <label class="sr-only" for="companies">Procure uma empresa</label>
+                                                        <input type="text" placeholder="Procure uma empresa" id="companies" class="form-control"/>
+                                                        <span class="input-group-btn">
+                                                            <button type="submit" class="btn btn-warning" form="form_companies">Adicionar</button>
+                                                        </span>
+                                                    </div><!-- end .input-group -->
 
-                                                <ul class="requirements"><ul>
-                                            </div>
+                                                    <ul class="requirements">
+                                                        <li ng-repeat="comp in filters.companies">
+                                                            {{ comp.name }}
+                                                            <a href class="remove-requirement" ng-click="remove_company($index)"><i class="icon-remove-sign"></i></a>
+                                                        </li>
+                                                    <ul>
+                                                </div>
+                                            </form>
 
                                         </div><!-- end .modal-body -->
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Filtrar</button>
+                                            <button type="button" class="btn btn-primary" ng-click="close_and_reload()">Filtrar</button>
                                         </div><!-- end .modal-footer -->
 
                                     </div><!-- end .modal-content -->
@@ -272,7 +290,7 @@
                             </div><!-- end .modal -->
 
                             <!-- location modal -->
-                            <div class="modal fade" id="modal-location" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modal-location" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -287,12 +305,12 @@
 
                                             <div class="form-group">
                                                 <label for="location" class="sr-only">Em um local</label>
-                                                <input type="text" class="form-control" name="location" placeholder="Procurar por cidade ou endereço">
+                                                <input type="text" class="form-control" id="location" ng-model="filters.location" placeholder="Procurar por cidade ou endereço">
                                             </div>
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="presence" />
+                                                    <input type="checkbox" ng-model="filters.is_telecommute" />
                                                     Presença não obrigatória
                                                 </label>
                                             </div>
@@ -301,7 +319,7 @@
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Filtrar</button>
+                                            <button type="button" class="btn btn-primary" ng-click="close_and_reload()">Filtrar</button>
                                         </div><!-- end .modal-footer -->
 
                                     </div><!-- end .modal-content -->
@@ -309,7 +327,7 @@
                             </div><!-- end .modal -->
 
                             <!-- payment modal -->
-                            <div class="modal fade" id="modal-payment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modal-payment" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -322,18 +340,28 @@
 
                                             <div class="form-inline">
 
-                                                <div class="form-group">De </div>
+                                                <div class="form-group">De</div>
 
                                                 <div class="form-group">
-                                                    <label class="sr-only" for="salary.min">Valor mínimo</label>
-                                                    <input type="text" class="form-control" name="salary.min" placeholder="Valor mínimo">
+                                                    <label class="sr-only" for="salary_from">Valor mínimo</label>
+                                                    <input type="text" class="form-control" id="salary_from" ng-model="filters.salary_from" placeholder="Valor mínimo">
                                                 </div>
 
-                                                <div class="form-group">até </div>
+                                                <div class="form-group">até</div>
 
                                                 <div class="form-group">
-                                                    <label class="sr-only" for="salary.max">Valor máximo</label>
-                                                    <input type="text" class="form-control" name="salary.max" placeholder="Valor máximo">
+                                                    <label class="sr-only" for="salary_to">Valor máximo</label>
+                                                    <input type="text" class="form-control" id="salary_to" ng-model="filters.salary_to" placeholder="Valor máximo">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="wages_for">Período</label>
+                                                    <select class="form-control" id="wages_for" ng-model="filters.wages_for">
+                                                        <option>Período</option>
+                                                        <option value="month">Mês</option>
+                                                        <option value="hour">Hora</option>
+                                                        <option value="project">Projeto</option>
+                                                    </select>
                                                 </div>
                                             </div><!-- end .form-inline -->
 
@@ -341,14 +369,14 @@
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Filtrar</button>
+                                            <button type="button" class="btn btn-primary" ng-click="close_and_reload()">Filtrar</button>
                                         </div><!-- end .modal-footer -->
 
                                     </div><!-- end .modal-content -->
                                 </div><!-- end .modal-dialog -->
                             </div><!-- end .modal -->
 
-                        </form>
+                        </div>
 
                     </div><!-- fim do row -->
                 </div><!-- fim do container -->
@@ -434,9 +462,10 @@
         </div><!-- end #wrapper -->
 
         <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.0/jquery.qtip.min.js"></script>
-        <script src="<: $static_uri :>/js/main.js"></script>
+        <script src="//raw.github.com/twitter/typeahead.js/master/dist/typeahead.min.js"></script>
+        <script src="<: $static_uri :>/js/search.js"></script>
 
     </body>
 </html>

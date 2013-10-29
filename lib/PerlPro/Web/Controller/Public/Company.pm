@@ -35,13 +35,9 @@ sub catalog :Chained('base') PathPart('companies') Args(0) GET {
 sub companies_like :Chained('base') PathPart('companies') Args(1) GET {
     my ( $self, $ctx, $query ) = @_;
 
-    my $companies = $ctx->model->get_for_typeahead($query);
-
     $ctx->stash(
         current_view => 'JSON',
-        json_data    => {
-            companies => $companies
-        }
+        json_data    => $ctx->model->get_for_typeahead($query),
     );
 }
 
