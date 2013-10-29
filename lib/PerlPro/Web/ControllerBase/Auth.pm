@@ -66,8 +66,14 @@ sub login : Chained('base') Does('DisplayExecute') PathPart Args(0) {}
 sub login_display {
     my ( $self, $ctx ) = @_;
 
+    if ($ctx->session->{failed_login}) {
+        $ctx->stash(failed_login => 1);
+    }
+
     if ($ctx->user) {
-        $self->save_session($ctx);
+        if (!$ctx->session->{_perlpro_auth_data}) {
+            $self->save_session($ctx);
+        }
 
         my $session_uri = delete $ctx->session->{redirect_after_login_uri};
         $ctx->res->redirect(
@@ -96,6 +102,7 @@ sub login_execute {
     }
     else {
         $ctx->log->info("COULD NOT AUTHENTICATE USER $params->{login}");
+        $ctx->session(failed_login => 1);
     }
 }
 

@@ -16,6 +16,12 @@
     <div class="row">
 
         <div class="col-md-12">
+:           if ($failed_login) {
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><: $l('Não foi possível entrar. Verifique seu login e senha.') :></h4>
+                </div>
+:           }
             <div class="content-block">
                 <div class="row">
 
