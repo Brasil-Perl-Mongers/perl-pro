@@ -3,7 +3,6 @@
 
     <head>
         <title>PerlPro</title>
-        <link href="//raw.github.com/jharding/typeahead.js-bootstrap.css/master/typeahead.js-bootstrap.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
         <link href="<: $static_uri :>/css/style.css" rel="stylesheet">
@@ -475,7 +474,7 @@
         <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        <script src="//raw.github.com/twitter/typeahead.js/master/dist/typeahead.min.js"></script>
+        <script src="<: $static_uri :>/js/typeahead.min.js"></script>
         <script src="<: $static_uri :>/js/search.js"></script>
 
     </body>

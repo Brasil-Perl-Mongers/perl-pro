@@ -148,6 +148,6 @@
 : }
 : after include_scripts -> {
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.min.js"></script>
-    <script src="//raw.github.com/twitter/typeahead.js/master/dist/typeahead.min.js"></script>
+    <script src="<: $static_uri :>/js/typeahead.min.js"></script>
     <script src="<: $static_uri :>/js/search.js"></script>
 : }
