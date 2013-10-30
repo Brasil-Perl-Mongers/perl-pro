@@ -15,6 +15,10 @@ sub base :Chained('/company/auth/requires_login') PathPart('') CaptureArgs(0) {
 sub home :Chained('base') Does('DisplayExecute') Args(0) {
     my ( $self, $ctx ) = @_;
 
+    if (my $dm_data = delete $ctx->session->{_dm_CompanyData_change_password}) {
+        $ctx->stash(%$dm_data);
+    }
+
     $ctx->stash(
         template     => 'company/home.tx',
         current_page => 'home',
@@ -92,6 +96,20 @@ sub profile_execute {
             }
         }
     }
+}
+
+sub change_password :Chained('base') Does('DisplayExecute') Args(0) {
+    my ( $self, $ctx ) = @_;
+
+    my $dm      = $ctx->model('DataManager');
+    my $params  = $ctx->req->body_params;
+    $params->{login} = $ctx->user->get_object->login;
+    $dm->apply_one( 'user.change_password', $params );
+
+    $ctx->stash(
+        uri_to_redirect => '/account/home',
+        DO_NOT_APPLY_DM => 1,
+    );
 }
 
 __PACKAGE__->meta->make_immutable;

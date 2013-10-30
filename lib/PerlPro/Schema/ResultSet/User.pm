@@ -68,6 +68,36 @@ sub verifiers_specs {
                 sub { HTML::Entities::encode_entities( $_[0], qr{<>&"'} ) }
             ],
         ),
+        change_password => Data::Verifier->new(
+            profile => {
+                login                => { required => 1, type => Str },
+                current_password     => {
+                    required   => 1,
+                    type       => Str,
+                    post_check => sub {
+                        my $s = shift;
+                        return $self->find($s->get_value('login'))->check_password($s->get_value('current_password'));
+                    }
+                },
+                new_password         => { required => 1, type => Str },
+                confirm_new_password => {
+                    required   => 1,
+                    type       => Str,
+                    post_check => sub {
+                        my $s = shift;
+
+                        my $p1 = $s->get_value('new_password');
+                        my $p2 = $s->get_value('confirm_new_password');
+
+                        if ( $p1 ne $p2 ) {
+                            die 'confirm-not-equal';
+                        }
+
+                        return 1;
+                    },
+                },
+            },
+        ),
     };
 }
 
@@ -87,6 +117,12 @@ sub action_specs {
             $row->add_to_companies({ name_in_url => $company });
             $row->add_to_user_emails({ email => $email, is_main_address => 1 });
 
+            return $row;
+        },
+        change_password => sub {
+            my %values = shift->valid_values;
+            my $row = $self->find($values{login});
+            $row->update({ password => $values{new_password} });
             return $row;
         },
     };

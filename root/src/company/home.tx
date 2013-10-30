@@ -193,10 +193,10 @@
 </div><!-- end #account-home.content -->
 
 <!-- Category Selection modal -->
-<div class="modal fade" id="modal-change-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-change-password" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form action="<: $uri('/account/change_password') :>" method="post">
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -208,7 +208,7 @@
 
                         <div class="form-group">
                             <label for="password">Senha atual:</label>
-                            <input type="password" name="password" class="form-control" />
+                            <input type="password" name="current_password" class="form-control" />
                         </div>
 
                         <div class="form-group">
@@ -218,7 +218,7 @@
 
                         <div class="form-group">
                             <label for="confirm_password">Confirme a nova senha:</label>
-                            <input type="password" name="confirm_password" class="form-control" />
+                            <input type="password" name="confirm_new_password" class="form-control" />
                         </div>
                     </div>
 
